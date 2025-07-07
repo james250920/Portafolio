@@ -1,35 +1,52 @@
-// Quasar SCSS (& Sass) Variables
+// Quasar SCSS (& Sass) Variables - Pixel Art Theme
 // --------------------------------------------------
-// To customize the look and feel of this app, you can override
-// the Sass/SCSS variables found in Quasar's source Sass/SCSS files.
 
-// Check documentation for full list of Quasar variables
+// Colores principales estilo pixel art / retro gaming
+$primary: #00ff41; // Verde neón clásico
+$secondary: #ff073a; // Rojo neón
+$accent: #ff6600; // Naranja vibrante
 
-// Your own variables (that are declared here) and Quasar's own
-// ones will be available out of the box in your .vue/.scss/.sass files
+$dark: #0a0a0a; // Negro profundo
+$dark-page: #000000; // Negro puro
 
-// It's highly recommended to change the default colors
-// to match your app's branding.
-// Tip: Use the "Theme Builder" on Quasar's documentation website.
+$positive: #00ff00; // Verde brillante
+$negative: #ff0040; // Rojo error
+$info: #00ffff; // Cian brillante
+$warning: #ffff00; // Amarillo neón
 
-$primary: #1976d2;
-$secondary: #26a69a;
-$accent: #9c27b0;
+// Paleta de colores pixel art
+$pixel-green: #00ff41; // Verde Matrix
+$pixel-red: #ff073a; // Rojo intenso
+$pixel-blue: #0066ff; // Azul eléctrico
+$pixel-purple: #cc00ff; // Púrpura neón
+$pixel-yellow: #ffff00; // Amarillo puro
+$pixel-cyan: #00ffff; // Cian brillante
+$pixel-orange: #ff6600; // Naranja vibrante
+$pixel-pink: #ff00cc; // Rosa neón
+$pixel-white: #ffffff; // Blanco puro
+$pixel-gray: #808080; // Gris medio
+$pixel-dark-gray: #404040; // Gris oscuro
 
-$dark: #1d1d1d;
-$dark-page: #121212;
+// Variables de tipografía pixel art
+$font-primary: 'Press Start 2P', monospace; // Fuente pixel clásica
+$font-secondary: 'Orbitron', monospace; // Fuente sci-fi
+$font-body: 'VT323', monospace; // Fuente retro legible
+$font-mono: 'Share Tech Mono', monospace; // Fuente mono tech
 
-$positive: #21ba45;
-$negative: #c10015;
-$info: #31ccec;
-$warning: #f2c037;
-$gold: #d4af37; // Oro
-$burgundy: #800020; // Rojo Borgoña
-$forest-green: #2f4f2f; // Verde Bosque
-$royal-blue: #1e3a5f; // Azul Real
-$wood-brown: #5c4033; // Marrón Madera
-$black: #000000; // Negro
-$ivory-white: #f1e2c6; // Blanco Marfil
-$bronze: #cd7f32; // Bronce
-$stone-gray: #6e7f7f; // Piedra Gris
-$crimson-red: #9e0b0f; // Rojo Carmesí
+// Tamaños de fuente (ajustados para pixel art)
+$font-size-xs: 8px;
+$font-size-sm: 10px;
+$font-size-base: 12px;
+$font-size-lg: 14px;
+$font-size-xl: 16px;
+$font-size-2xl: 20px;
+$font-size-3xl: 24px;
+$font-size-4xl: 32px;
+$font-size-5xl: 40px;
+
+// Pesos de fuente
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 700;
+$font-weight-bold: 900;

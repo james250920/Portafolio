@@ -1,227 +1,306 @@
 <template>
-  <q-page class="portfolio-page full-height flex  justify-center items-center">
-    <!-- Layout principal de dos columnas -->
+  <q-page
+    class="pixel-portfolio-page full-height flex justify-center items-center matrix-bg scanlines"
+  >
+    <!-- Layout principal pixel art -->
     <div class="row full-height no-wrap">
-      <!-- ===== SECCIÓN IZQUIERDA: CONTENIDO PRINCIPAL ===== -->
-      <div
-        class=" flex column justify-center items-start content-section animate-fade-in"
-      >
-        <!-- Encabezado principal -->
-        <header class=" text-white">
-          <h1 class="text-h4 text-weight-bold q-mb-sm animate-slide-up">
-            ¡Bienvenido a mi rincón digital!
-          </h1>
-          <div class="intro-text text-h5 text-weight-light q-mb-sm animate-slide-up-delay">
-            Soy <span class="text-weight-bold highlight-name">James F. Mendoza Rios</span>, un
-            apasionado<br />
-            <span class="text-accent text-weight-medium">desarrollador Junior</span>
+      <!-- ===== SECCIÓN IZQUIERDA: CONTENIDO PRINCIPAL PIXEL ===== -->
+      <div class="flex column justify-center items-start pixel-content-section animate-fade-in">
+        <!-- Encabezado principal pixel art -->
+        <header class="pixel-header">
+          <h1 class="pixel-hero-title animate-slide-up">> BIENVENIDO_</h1>
+          <div class="tech-text animate-slide-up-delay">
+            INICIALIZANDO: <span class="text-pixel-green blink">█</span><br />
+            USUARIO: <span class="text-pixel-yellow glow">JAMES F. MENDOZA RIOS</span><br />
+            CLASE: <span class="text-pixel-cyan">DESARROLLADOR_JUNIOR.EXE</span>
           </div>
-          <q-badge color="positive" text-color="white" class="q-mt-sm animate-bounce-in" outline>
-            🚀 Disponible para nuevos proyectos
-          </q-badge>
+          <div class="pixel-badge q-mt-sm animate-bounce-in">
+            <span class="text-pixel-green">STATUS: </span>
+            <span class="text-pixel-white blink">DISPONIBLE_PARA_MISIONES</span>
+          </div>
         </header>
 
-        <!-- Imagen del programador -->
-        <div class="programmer-image-wrapper q-my-md animate-fade-in-up">
-          <q-img
-            src="/src/assets/pngwing 2.png"
-            class="programmer-image animate-float"
-            contain
-            alt="James F. Mendoza Rios - Desarrollador"
-          />
+        <!-- Imagen del programador pixel -->
+        <div class="pixel-image-wrapper q-my-md animate-fade-in-up">
+          <div class="pixel-avatar">
+            <div class="pixel-frame pixel-border">
+              <q-img
+                src="/src/assets/pngwing 2.png"
+                class="programmer-image-pixel pixel-float"
+                contain
+                alt="James F. Mendoza Rios - Desarrollador"
+              />
+            </div>
+          </div>
         </div>
 
-        <!-- Descripción y llamadas a la acción -->
-        <section class="q-mt-lg text-white animate-fade-in-up">
-          <p class="description-text text-body1 text-weight-light q-mb-md">
-            en búsqueda constante de <span class="text-primary">desafíos emocionantes</span><br />
-            y oportunidades para <span class="text-secondary">crecer</span><br />
-            en el fascinante mundo del <span class="text-accent">desarrollo de software</span>.
-          </p>
+        <!-- Descripción pixel art -->
+        <section class="q-mt-lg pixel-description animate-fade-in-up">
+          <div class="pixel-text q-mb-md">
+            > BUSCANDO: <span class="text-pixel-red">DESAFIOS_EXTREMOS</span><br />
+            > OBJETIVO: <span class="text-pixel-green">EVOLUCIONAR_SKILLS</span><br />
+            > DOMINIO: <span class="text-pixel-cyan">SOFTWARE_DEVELOPMENT.WORLD</span>
+          </div>
 
-          <!-- Botones de acción -->
-          <div class="action-buttons q-mt-lg q-gutter-md animate-bounce-in-delay">
-            <q-btn
-              color="primary"
-              label="Ver CV"
-              icon="description"
-              no-caps
-              rounded
-              class="action-btn"
-              aria-label="Descargar curriculum vitae"
-            />
-            <q-btn
-              color="secondary"
-              label="Contactar"
-              icon="mail"
-              outline
-              no-caps
-              rounded
-              class="action-btn"
-              aria-label="Enviar mensaje de contacto"
-            />
+          <!-- Botones pixel art -->
+          <div class="pixel-buttons q-mt-lg q-gutter-md animate-bounce-in-delay">
+            <button class="pixel-button">
+              <q-icon name="description" class="q-mr-sm" />
+              [VER_CV.PDF]
+            </button>
+            <button class="pixel-button">
+              <q-icon name="mail" class="q-mr-sm" />
+              [CONTACT.EXE]
+            </button>
           </div>
         </section>
       </div>
 
-      <!-- ===== SECCIÓN DERECHA: NAVEGACIÓN CON DIAMANTES ===== -->
-      <div class="col  flex flex-center diamonds-section animate-fade-in">
-        <div class="diamonds-container">
-          <div class="diamond-blue"></div>
+      <!-- ===== SECCIÓN DERECHA: NAVEGACIÓN PIXEL DIAMONDS ===== -->
+      <div class="col flex flex-center pixel-nav-section animate-fade-in">
+        <div class="pixel-diamonds-container">
+          <!-- Efecto de fondo digital -->
+          <div class="digital-bg"></div>
 
           <!-- Rombo superior - Proyectos -->
-          <div class="diamond diamond-top" @click="navigateTo('web')">
-            <div class="diamond-content">
-              <q-icon :name="'folder'" :size="$q.screen.xs ? '1.2rem' : '1.8rem'" color="white" />
-              <div class="diamond-text small-text">Proyectos</div>
+          <div
+            class="pixel-diamond pixel-diamond-top pixel-border-green"
+            @click="navigateTo('/projects')"
+          >
+            <div class="pixel-diamond-content">
+              <q-icon name="folder" size="2rem" class="text-pixel-green glow" />
+              <div class="pixel-diamond-text text-pixel-green">.DIR</div>
             </div>
           </div>
 
           <!-- Rombo izquierdo - Web -->
-          <div class="diamond diamond-left" @click="navigateTo('desktop')">
-            <div class="diamond-content">
-              <q-icon :name="'web'" :size="$q.screen.xs ? '1.8rem' : '2.5rem'" />
-              <div class="diamond-text">Web</div>
+          <div
+            class="pixel-diamond pixel-diamond-left pixel-border-blue"
+            @click="navigateTo('desktop')"
+          >
+            <div class="pixel-diamond-content">
+              <q-icon name="web" size="2.5rem" class="text-pixel-blue glow" />
+              <div class="pixel-diamond-text text-pixel-blue">WEB.HTML</div>
             </div>
           </div>
 
           <!-- Rombo derecho - App -->
-          <div class="diamond diamond-right" @click="navigateTo('mobile')">
-            <div class="diamond-content">
-              <q-icon :name="'android'" :size="$q.screen.xs ? '1.8rem' : '2.5rem'" />
-              <div class="diamond-text">App</div>
+          <div
+            class="pixel-diamond pixel-diamond-right pixel-border-red"
+            @click="navigateTo('mobile')"
+          >
+            <div class="pixel-diamond-content">
+              <q-icon name="android" size="2.5rem" class="text-pixel-red glow" />
+              <div class="pixel-diamond-text text-pixel-red">APPS.APK</div>
             </div>
           </div>
 
-          <!-- Rombo inferior - IoT -->
-          <div class="diamond diamond-bottom" @click="navigateTo('app')">
-            <div class="diamond-content">
-              <q-icon :name="'developer_board'" :size="$q.screen.xs ? '1.8rem' : '2.5rem'" />
-              <div class="diamond-text">APIs & Backend</div>
+          <!-- Rombo inferior - APIs -->
+          <div
+            class="pixel-diamond pixel-diamond-bottom pixel-border-purple"
+            @click="navigateTo('app')"
+          >
+            <div class="pixel-diamond-content">
+              <q-icon name="developer_board" size="2.5rem" class="text-pixel-purple glow" />
+              <div class="pixel-diamond-text text-pixel-purple">API.JSON</div>
             </div>
           </div>
+        </div>
+
+        <!-- Líneas de conexión digitales -->
+        <div class="digital-connections">
+          <div class="connection-line connection-vertical"></div>
+          <div class="connection-line connection-horizontal"></div>
         </div>
       </div>
     </div>
 
-    <!-- ===== ELEMENTOS DECORATIVOS DE FONDO ===== -->
-    <div class="background-decorations absolute-full" aria-hidden="true">
-      <div class="diamond-blue absolute"></div>
-      <div class="geometric-shapes absolute-full">
-        <div class="shape shape-1 absolute"></div>
-        <div class="shape shape-2 absolute"></div>
-        <div class="shape shape-3 absolute"></div>
-      </div>
+    <!-- Efectos de fondo pixel art -->
+    <div class="pixel-background-effects" aria-hidden="true">
+      <div class="digital-particles"></div>
+      <div class="grid-overlay"></div>
     </div>
   </q-page>
 </template>
 
 <script setup lang="ts">
 /**
- * IndexPage - Página principal del portafolio
- * Componente principal que muestra la página de inicio con información personal
- * y navegación interactiva mediante diamantes
+ * IndexPage - Página principal del portafolio PIXEL ART
+ * Componente principal estilo retro gaming con navegación interactiva
  */
 
 // Función de navegación para manejar clicks en los diamantes
 const navigateTo = (section: string) => {
-  console.log(`Navegando a: ${section}`);
+
+  console.log(`> ACCESSING: ${section.toUpperCase()}.DIR`);
   // TODO: Implementar navegación con vue-router
   // router.push(`/${section}`)
 };
 </script>
-<style scoped>
 
-/* ===== LAYOUT PRINCIPAL ===== */
-.portfolio-page {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+<style scoped>
+/* =============================================
+   PIXEL ART PORTFOLIO STYLES
+   ============================================= */
+
+/* ===== LAYOUT PRINCIPAL PIXEL ===== */
+.pixel-portfolio-page {
+  background:
+    linear-gradient(90deg, transparent 50%, rgba(0, 255, 65, 0.03) 50%),
+    linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), #000000;
+  background-size:
+    2px 2px,
+    100% 100%,
+    100% 100%;
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-
 }
 
-.content-section {
+.pixel-content-section {
   z-index: 2;
   position: relative;
+  padding: 2rem;
 }
 
-.diamonds-section {
+.pixel-nav-section {
   z-index: 3;
   position: relative;
 }
 
-/* ===== TIPOGRAFÍA Y TEXTO ===== */
-.intro-text {
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.95);
+/* ===== HEADER PIXEL ART ===== */
+.pixel-header {
+  margin-bottom: 2rem;
 }
 
-.highlight-name {
-  background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.pixel-badge {
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #00ff41;
+  padding: 8px 16px;
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  box-shadow: 0 0 10px #00ff41;
 }
 
-.description-text {
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-/* ===== IMAGEN DEL PROGRAMADOR ===== */
-.programmer-image-wrapper {
-  width: 350px;
-  height: 350px;
+/* ===== IMAGEN PIXEL ART ===== */
+.pixel-image-wrapper {
+  width: 300px;
+  height: 300px;
   position: relative;
 }
 
-.programmer-image {
+.pixel-avatar {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.234));
-  transition: transform 0.3s ease;
+  position: relative;
 }
 
-.programmer-image:hover {
-  transform: scale(1.05);
+.pixel-frame {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00ff41, #ff073a, #0066ff, #00ff41);
+    z-index: -1;
+    animation: borderRotate 3s linear infinite;
+  }
 }
 
-/* ===== BOTONES DE ACCIÓN ===== */
-.action-btn {
-  transition: all 0.3s ease;
-  font-weight: 500;
+@keyframes borderRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.action-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.programmer-image-pixel {
+  width: 100%;
+  height: 100%;
+  filter: contrast(1.2) saturate(1.3) drop-shadow(0 0 20px #00ff41);
 }
 
-/* ===== NAVEGACIÓN CON DIAMANTES ===== */
-.diamonds-container {
+/* ===== DESCRIPCIÓN PIXEL ===== */
+.pixel-description {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ff41;
+  padding: 1.5rem;
+  box-shadow:
+    0 0 20px rgba(0, 255, 65, 0.3),
+    inset 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+/* ===== BOTONES PIXEL ART ===== */
+.pixel-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ===== NAVEGACIÓN DIAMANTES PIXEL ===== */
+.pixel-diamonds-container {
   width: 400px;
   height: 400px;
   position: relative;
+  left: 80px;
 }
 
-.diamond {
+.digital-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 65, 0.05) 2px,
+    rgba(0, 255, 65, 0.05) 4px
+  );
+  animation: digitalScroll 5s linear infinite;
+}
+
+@keyframes digitalScroll {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(4px) translateY(4px);
+  }
+}
+
+.pixel-diamond {
   position: absolute;
   transform: rotate(45deg);
-  border-radius: 12px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 4px;
+  transition: all 0.3s ease;
   cursor: pointer;
-  width: 200px;
-  height: 200px;
+  width: 140px;
+  height: 140px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(12, 180, 124, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: rgba(0, 0, 0, 0.9);
+
+  &:hover {
+    transform: rotate(45deg) scale(1.1);
+    box-shadow: 0 0 30px currentColor;
+  }
+
+  &:active {
+    transform: rotate(45deg) scale(0.95);
+  }
 }
 
-.diamond-content {
+.pixel-diamond-content {
   transform: rotate(-45deg);
   z-index: 2;
   position: relative;
@@ -232,419 +311,341 @@ const navigateTo = (section: string) => {
   text-align: center;
 }
 
-.diamond-text {
-  font-weight: bold;
-  color: #333;
+.pixel-diamond-text {
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 10px !important;
   margin-top: 8px;
-  font-size: 0.9rem;
+  text-shadow:
+    0 0 5px currentColor,
+    1px 1px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000;
+  color: inherit !important;
+  font-weight: normal !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  display: block;
+  white-space: nowrap;
 }
 
-.small-text {
-  font-size: 0.8rem;
+/* ===== DIAMANTES HOVER ESPECÍFICOS ===== */
+.pixel-diamond-top:hover .pixel-diamond-text {
+  color: #00ff41 !important;
+  text-shadow:
+    0 0 10px #00ff41,
+    1px 1px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000;
 }
 
-/* Estados interactivos de diamantes */
-.diamond:focus {
-  outline: 3px solid rgba(255, 255, 255, 0.6);
-  outline-offset: 4px;
+.pixel-diamond-left:hover .pixel-diamond-text {
+  color: #0066ff !important;
+  text-shadow:
+    0 0 10px #0066ff,
+    1px 1px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000;
 }
 
-.diamond:hover {
-  transform: rotate(45deg) scale(1.1);
-  box-shadow: 0 15px 40px rgba(167, 162, 162, 0.4);
+.pixel-diamond-right:hover .pixel-diamond-text {
+  color: #ff073a !important;
+  text-shadow:
+    0 0 10px #ff073a,
+    1px 1px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000;
 }
 
-.diamond:active {
-  transform: rotate(45deg) scale(0.95);
-  transition: all 0.1s ease;
+.pixel-diamond-bottom:hover .pixel-diamond-text {
+  color: #cc00ff !important;
+  text-shadow:
+    0 0 10px #cc00ff,
+    1px 1px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000;
 }
 
-/* Efecto de brillo en hover */
-.diamond::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transform: rotate(-45deg) translateX(-100%);
-  transition: transform 0.6s ease;
+/* ===== ICONOS DIAMANTES ===== */
+.pixel-diamond .q-icon {
+  filter: drop-shadow(0 0 5px currentColor);
+  transition: all 0.3s ease;
 }
 
-.diamond:hover::before {
-  transform: rotate(-45deg) translateX(100%);
+.pixel-diamond:hover .q-icon {
+  filter: drop-shadow(0 0 15px currentColor);
+  transform: scale(1.1);
 }
 
-/* ===== POSICIONAMIENTO ESPECÍFICO DE DIAMANTES ===== */
-.diamond-top {
-  top:20%;
+/* ===== POSICIONAMIENTO DIAMANTES PIXEL ===== */
+.pixel-diamond-top {
+  top: 22%;
   left: 43%;
   transform: translateX(-50%) rotate(45deg);
   width: 100px;
   height: 100px;
-  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-  color: white;
+
+  &:hover {
+    transform: translateX(-50%) rotate(45deg) scale(1.15);
+  }
 }
 
-.diamond-left {
+.pixel-diamond-left {
   left: -10px;
   top: 55%;
   transform: translateY(-50%) rotate(45deg);
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  color: #3498db;
+
+  &:hover {
+    transform: translateY(-50%) rotate(45deg) scale(1.1);
+  }
 }
 
-.diamond-right {
+.pixel-diamond-right {
   right: 50px;
   top: 55%;
   transform: translateY(-50%) rotate(45deg);
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  color: #e67e22;
+
+  &:hover {
+    transform: translateY(-50%) rotate(45deg) scale(1.1);
+  }
 }
 
-.diamond-bottom {
-  bottom: 0;
+.pixel-diamond-bottom {
+  bottom: 0%;
   left: 43%;
   transform: translateX(-50%) rotate(45deg);
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  color: #9b59b6;
+
+  &:hover {
+    transform: translateX(-50%) rotate(45deg) scale(1.1);
+  }
 }
 
-/* Hover específicos */
-.diamond-top:hover {
-  transform: translateX(-50%) rotate(45deg) scale(1.15);
+/* ===== BORDES DE COLORES PARA DIAMANTES ===== */
+.pixel-border-green {
+  border: 2px solid #00ff41;
+  box-shadow:
+    0 0 10px #00ff41,
+    inset 0 0 10px rgba(0, 255, 65, 0.1);
 }
 
-.diamond-left:hover {
-  transform: translateY(-50%) rotate(45deg) scale(1.1);
+.pixel-border-blue {
+  border: 2px solid #0066ff;
+  box-shadow:
+    0 0 10px #0066ff,
+    inset 0 0 10px rgba(0, 102, 255, 0.1);
 }
 
-.diamond-right:hover {
-  transform: translateY(-50%) rotate(45deg) scale(1.1);
+.pixel-border-red {
+  border: 2px solid #ff073a;
+  box-shadow:
+    0 0 10px #ff073a,
+    inset 0 0 10px rgba(255, 7, 58, 0.1);
 }
 
-.diamond-bottom:hover {
-  transform: translateX(-50%) rotate(45deg) scale(1.1);
+.pixel-border-purple {
+  border: 2px solid #cc00ff;
+  box-shadow:
+    0 0 10px #cc00ff,
+    inset 0 0 10px rgba(204, 0, 255, 0.1);
 }
 
-/* ===== ELEMENTOS DECORATIVOS ===== */
-.background-decorations {
-  pointer-events: none;
-  z-index: 1;
-}
-
-.diamond-blue {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  bottom: -150px;
-  right: -75px;
-  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-  border-radius: 50%;
-  opacity: 0.1;
-}
-.diamond-blue::before {
-  content: '';
+/* ===== CONEXIONES DIGITALES ===== */
+.digital-connections {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: float 10s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.shape {
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
+.connection-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #00ff41, transparent);
+  animation: dataFlow 2s ease-in-out infinite;
 }
 
-.shape-1 {
-  width: 100px;
-  height: 100px;
-  top: 10%;
-  left: 5%;
-  transform: rotate(15deg);
-  border-color: rgba(52, 152, 219, 0.4);
-  animation: float 8s ease-in-out infinite;
+.connection-vertical {
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.shape-2 {
-  width: 60px;
-  height: 60px;
-  top: 70%;
-  left: 10%;
-  transform: rotate(-20deg);
-  border-color: rgba(46, 204, 113, 0.4);
-  animation: float 8s ease-in-out infinite 2s;
+.connection-horizontal {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.shape-3 {
-  width: 80px;
-  height: 80px;
-  top: 40%;
-  left: 15%;
-  transform: rotate(45deg);
-  border-color: rgba(155, 89, 182, 0.4);
-  animation: float 8s ease-in-out infinite 4s;
+@keyframes dataFlow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 10px #00ff41;
+  }
 }
 
-/* ===== ANIMACIONES ===== */
-@keyframes fadeIn {
+/* ===== EFECTOS DE FONDO PIXEL ===== */
+.pixel-background-effects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.digital-particles::before {
+  content: '▓▒░ LOADING ░▒▓';
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  color: #00ff41;
+  animation: blink 1s infinite;
+}
+
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: gridMove 10s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(20px, 20px);
+  }
+}
+
+/* ===== ANIMACIONES PIXEL ===== */
+.animate-fade-in {
+  animation: pixelFadeIn 1s ease-out;
+}
+
+.animate-slide-up {
+  animation: pixelSlideUp 0.8s ease-out;
+}
+
+.animate-slide-up-delay {
+  animation: pixelSlideUp 0.8s ease-out 0.3s both;
+}
+
+.animate-fade-in-up {
+  animation: pixelFadeInUp 1s ease-out 0.6s both;
+}
+
+.animate-bounce-in {
+  animation: pixelBounceIn 1s ease-out 0.9s both;
+}
+
+.animate-bounce-in-delay {
+  animation: pixelBounceIn 1s ease-out 1.2s both;
+}
+
+@keyframes pixelFadeIn {
   from {
     opacity: 0;
+    filter: brightness(0);
   }
   to {
     opacity: 1;
+    filter: brightness(1);
   }
 }
 
-@keyframes slideUp {
+@keyframes pixelSlideUp {
   from {
     opacity: 0;
     transform: translateY(30px);
+    filter: blur(2px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
+@keyframes pixelFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
   }
-  50% {
-    transform: translateY(-10px);
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-@keyframes bounceIn {
+@keyframes pixelBounceIn {
   0% {
     opacity: 0;
-    transform: scale(0.3) translateY(20px);
+    transform: scale(0.3) rotate(0deg);
   }
   50% {
     opacity: 1;
-    transform: scale(1.05) translateY(-5px);
+    transform: scale(1.05) rotate(5deg);
   }
   70% {
-    transform: scale(0.95) translateY(0);
+    transform: scale(0.9) rotate(-2deg);
   }
   100% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: scale(1) rotate(0deg);
   }
 }
 
-/* Clases de animación */
-.animate-fade-in {
-  animation: fadeIn 1s ease-out;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.8s ease-out;
-}
-
-.animate-slide-up-delay {
-  animation: slideUp 0.8s ease-out 0.2s both;
-}
-
-.animate-fade-in-up {
-  animation: slideUp 1s ease-out 0.4s both;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-bounce-in {
-  animation: bounceIn 0.8s ease-out 0.6s both;
-}
-
-.animate-bounce-in-delay {
-  animation: bounceIn 0.8s ease-out 0.8s both;
-}
-
-/* ===== RESPONSIVE DESIGN ===== */
-/* Móviles */
+/* ===== RESPONSIVE PIXEL ART ===== */
 @media (max-width: 768px) {
-  .programmer-image-wrapper {
-    width: 250px;
-    height: 250px;
+  .pixel-diamonds-container {
+    width: 300px;
+    height: 300px;
+    left: 20px;
   }
 
-  .diamonds-container {
-    width: 280px;
-    height: 280px;
-  }
-
-  .diamond {
+  .pixel-diamond {
     width: 100px;
     height: 100px;
   }
 
-  .diamond-top {
-    width: 50px;
-    height: 50px;
-    top: 0;
+  .pixel-diamond-top {
+    width: 80px;
+    height: 80px;
   }
 
-  .diamond-left {
-    left: 40px;
-  }
-  .diamond-right {
-    right: 40px;
-  }
-  .diamond-bottom {
-    bottom: 0;
+  .pixel-diamond-text {
+    font-size: 7px !important;
+    margin-top: 6px;
   }
 
-  .diamond-blue {
-    width: 800px;
-    height: 800px;
-    bottom: -200px;
-    right: -100px;
+  .pixel-hero-title {
+    font-size: 24px;
   }
 
-  .diamond-text {
-    font-size: 0.7rem;
-  }
-
-  .small-text {
-    font-size: 0.6rem;
-  }
-}
-
-/* Tablets */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .programmer-image-wrapper {
-    width: 280px;
-    height: 280px;
-  }
-
-  .diamonds-container {
-    width: 320px;
-    height: 320px;
-  }
-
-  .diamond {
-    width: 100px;
-    height: 100px;
-  }
-
-  .diamond-top {
-    width: 70px;
-    height: 70px;
-    top: 0;
-  }
-
-  .diamond-left {
-    left: 50px;
-  }
-  .diamond-right {
-    right: 50px;
-  }
-  .diamond-bottom {
-    bottom: 0;
-  }
-
-  .diamond-text {
-    font-size: 0.8rem;
-  }
-
-  .small-text {
-    font-size: 0.7rem;
-  }
-}
-
-/* Pantallas grandes */
-@media (min-width: 1441px) {
-  .programmer-image-wrapper {
-    width: 400px;
-    height: 400px;
-  }
-
-  .diamonds-container {
-    width: 450px;
-    height: 450px;
-  }
-
-  .diamond {
-    width: 200px;
-    height: 200px;
-  }
-
-  .diamond-top {
-    width: 100px;
-    height: 100px;
-  }
-
-  .diamond-text {
-    font-size: 1rem;
-  }
-
-  .small-text {
-    font-size: 0.9rem;
-  }
-  .diamond-top {
-  top:20%;
-  left: 43%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 100px;
-  height: 100px;
-  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-  color: white;
-}
-
-.diamond-left {
-  left: -55px;
-  top: 55%;
-  transform: translateY(-50%) rotate(45deg);
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  color: #3498db;
-}
-
-.diamond-right {
-  right: 10px;
-  top: 55%;
-  transform: translateY(-50%) rotate(45deg);
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  color: #e67e22;
-}
-
-.diamond-bottom {
-  bottom: -10%;
-  left: 43%;
-  transform: translateX(-50%) rotate(45deg);
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  color: #9b59b6;
-}
-}
-
-/* ===== ACCESIBILIDAD ===== */
-@media (prefers-reduced-motion: reduce) {
-  .diamond,
-  .programmer-image,
-  .animate-fade-in,
-  .animate-slide-up,
-  .animate-slide-up-delay,
-  .animate-fade-in-up,
-  .animate-float,
-  .animate-bounce-in,
-  .animate-bounce-in-delay {
-    animation: none;
-    transition: none;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .diamond {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  .pixel-content-section {
+    padding: 1rem;
   }
 }
 </style>
