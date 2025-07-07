@@ -1,25 +1,28 @@
 <template>
   <q-layout view="lHh Rpr LFf" class="text-black">
-    <q-header elevated class="bg-white text-black">
-      <q-toolbar class="q-pl-md">
+    <q-header class="bg-black  text-white q-px-sm q-py-sm">
+      <q-toolbar class="q-gutter-sm">
+
         <q-icon
-          name="home"
+          name="apps"
           class="q-mr-md"
-          style="color: #1976d2; font-size: 32px; cursor: pointer"
+          style="color: white; font-size: 45px; cursor: pointer; transform: rotate(45deg)"
           @click="$router.push('/')"
         />
-        <q-btn flat label="Home" to="/" />
-        <q-btn flat label="About" to="/about" />
-        <q-btn flat label="Projects" to="/projects" />
-        <q-btn flat label="Contact" to="/contact" />
+        <q-btn flat label="Home" to="/" color="white" />
+        <q-btn flat label="About" to="/about" color="white" />
+        <q-btn flat label="Projects" to="/projects" color="white" />
+        <q-btn flat label="Contact" to="/contact" color="white" />
       </q-toolbar>
     </q-header>
 
-    <q-page-container class="bg-indigo-10 text-black">
+    <q-page-container>
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup lang="ts"></script>
-<style scoped></style>
+<style scoped>
+
+</style>
