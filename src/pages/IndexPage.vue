@@ -1,14 +1,14 @@
 <template>
-  <q-page class="portfolio-page">
+  <q-page class="portfolio-page full-height flex  justify-center items-center">
     <!-- Layout principal de dos columnas -->
     <div class="row full-height no-wrap">
       <!-- ===== SECCIÓN IZQUIERDA: CONTENIDO PRINCIPAL ===== -->
       <div
-        class="col-7 flex column justify-center items-start q-pa-xl content-section animate-fade-in"
+        class=" flex column justify-center items-start content-section animate-fade-in"
       >
         <!-- Encabezado principal -->
-        <header class="q-mb-xl text-white">
-          <h1 class="text-h2 text-weight-bold q-mb-md animate-slide-up">
+        <header class=" text-white">
+          <h1 class="text-h4 text-weight-bold q-mb-sm animate-slide-up">
             ¡Bienvenido a mi rincón digital!
           </h1>
           <div class="intro-text text-h5 text-weight-light q-mb-sm animate-slide-up-delay">
@@ -65,7 +65,7 @@
       </div>
 
       <!-- ===== SECCIÓN DERECHA: NAVEGACIÓN CON DIAMANTES ===== -->
-      <div class="col-5 flex flex-center diamonds-section">
+      <div class="col  flex flex-center diamonds-section animate-fade-in">
         <div class="diamonds-container">
           <div class="diamond-blue"></div>
 
@@ -131,12 +131,14 @@ const navigateTo = (section: string) => {
 };
 </script>
 <style scoped>
+
 /* ===== LAYOUT PRINCIPAL ===== */
 .portfolio-page {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   position: relative;
   overflow: hidden;
   min-height: 100vh;
+
 }
 
 .content-section {
@@ -177,7 +179,7 @@ const navigateTo = (section: string) => {
 .programmer-image {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.234));
   transition: transform 0.3s ease;
 }
 
@@ -212,7 +214,7 @@ const navigateTo = (section: string) => {
   width: 200px;
   height: 200px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(12, 180, 124, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -249,7 +251,7 @@ const navigateTo = (section: string) => {
 
 .diamond:hover {
   transform: rotate(45deg) scale(1.1);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 15px 40px rgba(167, 162, 162, 0.4);
 }
 
 .diamond:active {
@@ -333,14 +335,25 @@ const navigateTo = (section: string) => {
 }
 
 .diamond-blue {
-  background: linear-gradient(135deg, rgba(31, 31, 31, 0.8), rgba(15, 52, 96, 0.6));
-  width: 1200px;
-  height: 1200px;
-  bottom: -300px;
-  right: -200px;
-  transform: rotate(45deg);
-  border-radius: 50px;
-  filter: blur(1px);
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  bottom: -150px;
+  right: -75px;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  border-radius: 50%;
+  opacity: 0.1;
+}
+.diamond-blue::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 10s ease-in-out infinite;
 }
 
 .shape {
