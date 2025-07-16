@@ -24,7 +24,7 @@
               <q-icon name="mail" size="3rem" class="text-hack-green" />
             </div>
             <h3>Email</h3>
-            <p class="method-info">james@dev.com</p>
+            <p class="method-info">jamesfrankmendozarios@gmail.com</p>
             <p class="method-description">Send me an email for professional inquiries</p>
             <div class="method-status">
               <span class="status-dot online"></span>
@@ -38,7 +38,7 @@
               <q-icon name="work" size="3rem" class="text-hack-blue" />
             </div>
             <h3>LinkedIn</h3>
-            <p class="method-info">@james-dev</p>
+            <p class="method-info">@menfroyt-dev</p>
             <p class="method-description">Professional networking and opportunities</p>
             <div class="method-status">
               <span class="status-dot online"></span>
@@ -80,7 +80,7 @@
                 <div class="terminal-line">cat contact-info.txt</div>
                 <div class="output">
                   <div class="info-line">
-                    <span class="text-hack-green">Name:</span> James Developer
+                    <span class="text-hack-green">Name:</span> James Mendoza
                   </div>
                   <div class="info-line">
                     <span class="text-hack-blue">Location:</span> Available Worldwide
@@ -260,11 +260,11 @@ const sendMessage = () => {
 };
 
 const openEmail = () => {
-  window.open('mailto:james@dev.com', '_blank');
+  window.open('mailto:jamesfrankmendozarios@gmail.com', '_blank');
 };
 
 const openLinkedIn = () => {
-  window.open('https://linkedin.com/in/james-dev', '_blank');
+  window.open('https://www.linkedin.com/in/menfroyt-dev', '_blank');
 };
 
 const openGitHub = () => {
@@ -277,6 +277,12 @@ const copyToClipboard = (text: string) => {
       type: 'positive',
       message: 'Copied to clipboard!',
       icon: 'content_copy',
+    });
+  }, () => {
+    $q.notify({
+      type: 'negative',
+      message: 'Failed to copy to clipboard.',
+      icon: 'error',
     });
   });
 };
