@@ -1,0 +1,319 @@
+// =============================================
+// HACKING CLEAN PORTFOLIO STYLES
+// =============================================
+
+// Importar Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+// =============================================
+// ESTILOS GLOBALES HACKING CLEAN
+// =============================================
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+// =============================================
+// TIPOGRAFÍA HACKING CLEAN
+// =============================================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3rem;
+  color: $hack-green;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: $hack-blue;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 2rem;
+  color: $hack-white;
+  font-weight: 600;
+}
+
+p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #c9d1d9;
+  margin: 0 0 1rem 0;
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(110, 118, 129, 0.4);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+  color: $hack-green;
+}
+
+// =============================================
+// EFECTOS Y ANIMACIONES
+// =============================================
+
+@keyframes glow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
+  50% {
+    text-shadow:
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+// Clases de animación
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.8s ease-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
+}
+
+// =============================================
+// COMPONENTES BASE
+// =============================================
+
+// Botones estilo hacking
+.hack-button {
+  background: transparent;
+  border: 2px solid $hack-green;
+  color: $hack-green;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background: $hack-green;
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+// Cards estilo hacking
+.hack-card {
+  background: rgba(22, 27, 34, 0.8);
+  border: 1px solid $hack-border;
+  border-radius: 8px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: $hack-green;
+    box-shadow: 0 8px 32px rgba(0, 255, 136, 0.1);
+    transform: translateY(-4px);
+  }
+}
+
+// Terminal estilo
+.terminal {
+  background: #0d1117;
+  border: 1px solid $hack-border;
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: $hack-green;
+  overflow-x: auto;
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $hack-border;
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+
+      &.red {
+        background: #ff5f56;
+      }
+      &.yellow {
+        background: #ffbd2e;
+      }
+      &.green {
+        background: #27ca3f;
+      }
+    }
+  }
+
+  .terminal-line {
+    &::before {
+      content: '$ ';
+      color: $hack-blue;
+    }
+  }
+}
+
+// Grid responsive
+.hack-grid {
+  display: grid;
+  gap: 2rem;
+
+  &.cols-1 {
+    grid-template-columns: 1fr;
+  }
+  &.cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+}
+
+// Utilidades de color
+.text-hack-green {
+  color: $hack-green;
+}
+.text-hack-blue {
+  color: $hack-blue;
+}
+.text-hack-red {
+  color: $hack-red;
+}
+.text-hack-yellow {
+  color: $hack-yellow;
+}
+.text-hack-gray {
+  color: $hack-gray;
+}
+
+// Scrollbar personalizada
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #161b22;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $hack-border;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $hack-green;
+}
