@@ -126,7 +126,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 // Data
-const name = ref('James Rodriguez');
+const name = ref('James Mendoza');
 const title = ref('Junior Full Stack Developer');
 const bio = ref(
   'Passionate about creating innovative solutions with clean, efficient code. Always learning new technologies and best practices.',
