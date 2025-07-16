@@ -1,651 +1,424 @@
 <template>
-  <q-page
-    class="pixel-portfolio-page full-height flex justify-center items-center matrix-bg scanlines"
-  >
-    <!-- Layout principal pixel art -->
-    <div class="row full-height no-wrap">
-      <!-- ===== SECCIÓN IZQUIERDA: CONTENIDO PRINCIPAL PIXEL ===== -->
-      <div class="flex column justify-center items-start pixel-content-section animate-fade-in">
-        <!-- Encabezado principal pixel art -->
-        <header class="pixel-header">
-          <h1 class="pixel-hero-title animate-slide-up">> BIENVENIDO_</h1>
-          <div class="tech-text animate-slide-up-delay">
-            INICIALIZANDO: <span class="text-pixel-green blink">█</span><br />
-            USUARIO: <span class="text-pixel-yellow glow">JAMES F. MENDOZA RIOS</span><br />
-            CLASE: <span class="text-pixel-cyan">DESARROLLADOR_JUNIOR.EXE</span>
-          </div>
-          <div class="pixel-badge q-mt-sm animate-bounce-in">
-            <span class="text-pixel-green">STATUS: </span>
-            <span class="text-pixel-white blink">DISPONIBLE_PARA_MISIONES</span>
-          </div>
-        </header>
-
-        <!-- Imagen del programador pixel -->
-        <div class="pixel-image-wrapper q-my-md animate-fade-in-up">
-          <div class="pixel-avatar">
-            <div class="pixel-frame pixel-border">
-              <q-img
-                src="/src/assets/pngwing 2.png"
-                class="programmer-image-pixel pixel-float"
-                contain
-                alt="James F. Mendoza Rios - Desarrollador"
-              />
+  <q-page class="index-page">
+    <!-- Hero Section con Terminal -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hack-grid cols-2">
+          <!-- Terminal interactivo -->
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+              <span class="terminal-title">~/portfolio/james</span>
             </div>
-          </div>
-        </div>
-
-        <!-- Descripción pixel art -->
-        <section class="q-mt-lg pixel-description animate-fade-in-up">
-          <div class="pixel-text q-mb-md">
-            > BUSCANDO: <span class="text-pixel-red">DESAFIOS_EXTREMOS</span><br />
-            > OBJETIVO: <span class="text-pixel-green">EVOLUCIONAR_SKILLS</span><br />
-            > DOMINIO: <span class="text-pixel-cyan">SOFTWARE_DEVELOPMENT.WORLD</span>
-          </div>
-
-          <!-- Botones pixel art -->
-          <div class="pixel-buttons q-mt-lg q-gutter-md animate-bounce-in-delay">
-            <button class="pixel-button">
-              <q-icon name="description" class="q-mr-sm" />
-              [VER_CV.PDF]
-            </button>
-            <button class="pixel-button">
-              <q-icon name="mail" class="q-mr-sm" />
-              [CONTACT.EXE]
-            </button>
-          </div>
-        </section>
-      </div>
-
-      <!-- ===== SECCIÓN DERECHA: NAVEGACIÓN PIXEL DIAMONDS ===== -->
-      <div class="col flex flex-center pixel-nav-section animate-fade-in">
-        <div class="pixel-diamonds-container">
-          <!-- Efecto de fondo digital -->
-          <div class="digital-bg"></div>
-
-          <!-- Rombo superior - Proyectos -->
-          <div
-            class="pixel-diamond pixel-diamond-top pixel-border-green"
-            @click="navigateTo('/projects')"
-          >
-            <div class="pixel-diamond-content">
-              <q-icon name="folder" size="2rem" class="text-pixel-green glow" />
-              <div class="pixel-diamond-text text-pixel-green">.DIR</div>
+            <div class="terminal-content">
+              <div class="terminal-line">whoami</div>
+              <div class="output">{{ name }}</div>
+              <div class="terminal-line">cat skills.txt</div>
+              <div class="output">
+                <div v-for="skill in skills" :key="skill" class="skill-line">> {{ skill }}</div>
+              </div>
+              <div class="terminal-line">status</div>
+              <div class="output">
+                <span class="text-hack-green">● Online</span> -
+                <span class="text-hack-blue">Ready for new challenges</span>
+              </div>
+              <div class="terminal-line prompt">
+                <span>james@dev:~$ </span>
+                <span class="cursor-blink">|</span>
+              </div>
             </div>
           </div>
 
-          <!-- Rombo izquierdo - Web -->
-          <div
-            class="pixel-diamond pixel-diamond-left pixel-border-blue"
-            @click="navigateTo('desktop')"
-          >
-            <div class="pixel-diamond-content">
-              <q-icon name="web" size="2.5rem" class="text-pixel-blue glow" />
-              <div class="pixel-diamond-text text-pixel-blue">WEB.HTML</div>
+          <!-- Profile Card -->
+          <div class="profile-section">
+            <div class="hack-card profile-card">
+              <div class="avatar-container">
+                <div class="avatar">
+                  <q-icon name="person" size="4rem" class="text-hack-green" />
+                </div>
+                <div class="status-indicator">
+                  <div class="status-dot"></div>
+                  <span>Available for work</span>
+                </div>
+              </div>
+
+              <h1 class="name">{{ name }}</h1>
+              <h2 class="title">{{ title }}</h2>
+
+              <p class="bio">{{ bio }}</p>
+
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <div class="stat-number text-hack-green">{{ experience }}+</div>
+                  <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number text-hack-blue">{{ projects }}+</div>
+                  <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number text-hack-yellow">{{ technologies }}+</div>
+                  <div class="stat-label">Technologies</div>
+                </div>
+              </div>
             </div>
           </div>
-
-          <!-- Rombo derecho - App -->
-          <div
-            class="pixel-diamond pixel-diamond-right pixel-border-red"
-            @click="navigateTo('mobile')"
-          >
-            <div class="pixel-diamond-content">
-              <q-icon name="android" size="2.5rem" class="text-pixel-red glow" />
-              <div class="pixel-diamond-text text-pixel-red">APPS.APK</div>
-            </div>
-          </div>
-
-          <!-- Rombo inferior - APIs -->
-          <div
-            class="pixel-diamond pixel-diamond-bottom pixel-border-purple"
-            @click="navigateTo('app')"
-          >
-            <div class="pixel-diamond-content">
-              <q-icon name="developer_board" size="2.5rem" class="text-pixel-purple glow" />
-              <div class="pixel-diamond-text text-pixel-purple">API.JSON</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Líneas de conexión digitales -->
-        <div class="digital-connections">
-          <div class="connection-line connection-vertical"></div>
-          <div class="connection-line connection-horizontal"></div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Efectos de fondo pixel art -->
-    <div class="pixel-background-effects" aria-hidden="true">
-      <div class="digital-particles"></div>
-      <div class="grid-overlay"></div>
-    </div>
+    <!-- Quick Access Section -->
+    <section class="quick-access">
+      <div class="container">
+        <h2 class="section-title text-center">Quick Access</h2>
+        <div class="hack-grid cols-3">
+          <div class="hack-card access-card" @click="navigateTo('/about')">
+            <q-icon name="person_outline" size="2rem" class="card-icon text-hack-blue" />
+            <h3>About Me</h3>
+            <p>Learn more about my background, skills, and experience in development.</p>
+            <div class="card-arrow">
+              <q-icon name="arrow_forward" />
+            </div>
+          </div>
+
+          <div class="hack-card access-card" @click="navigateTo('/projects')">
+            <q-icon name="code" size="2rem" class="card-icon text-hack-green" />
+            <h3>Projects</h3>
+            <p>Explore my latest projects and technical implementations.</p>
+            <div class="card-arrow">
+              <q-icon name="arrow_forward" />
+            </div>
+          </div>
+
+          <div class="hack-card access-card" @click="navigateTo('/contact')">
+            <q-icon name="mail_outline" size="2rem" class="card-icon text-hack-yellow" />
+            <h3>Contact</h3>
+            <p>Get in touch for collaboration opportunities and projects.</p>
+            <div class="card-arrow">
+              <q-icon name="arrow_forward" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Preview -->
+    <section class="skills-preview">
+      <div class="container">
+        <h2 class="section-title text-center">Technology Stack</h2>
+        <div class="tech-stack">
+          <div v-for="tech in techStack" :key="tech.name" class="tech-item">
+            <q-icon :name="tech.icon" size="2rem" :class="tech.color" />
+            <span>{{ tech.name }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
   </q-page>
 </template>
 
 <script setup lang="ts">
-/**
- * IndexPage - Página principal del portafolio PIXEL ART
- * Componente principal estilo retro gaming con navegación interactiva
- */
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
-// Función de navegación para manejar clicks en los diamantes
-const navigateTo = (section: string) => {
+const router = useRouter();
 
-  console.log(`> ACCESSING: ${section.toUpperCase()}.DIR`);
-  // TODO: Implementar navegación con vue-router
-  // router.push(`/${section}`)
+// Data
+const name = ref('James Rodriguez');
+const title = ref('Junior Full Stack Developer');
+const bio = ref(
+  'Passionate about creating innovative solutions with clean, efficient code. Always learning new technologies and best practices.',
+);
+const experience = ref('2');
+const projects = ref('15');
+const technologies = ref('20');
+
+const skills = ref([
+  'Frontend: Vue.js, React, TypeScript',
+  'Backend: Node.js, Python, Express',
+  'Database: MongoDB, PostgreSQL',
+  'Tools: Git, Docker, VS Code',
+]);
+
+const techStack = ref([
+  { name: 'Vue.js', icon: 'code', color: 'text-hack-green' },
+  { name: 'TypeScript', icon: 'integration_instructions', color: 'text-hack-blue' },
+  { name: 'Node.js', icon: 'dns', color: 'text-hack-yellow' },
+  { name: 'Python', icon: 'psychology', color: 'text-hack-green' },
+  { name: 'Git', icon: 'source', color: 'text-hack-red' },
+  { name: 'Docker', icon: 'container', color: 'text-hack-blue' },
+]);
+
+// Methods
+const navigateTo = async (path: string) => {
+  try {
+    await router.push(path);
+  } catch (error) {
+    console.error('Navigation error:', error);
+  }
 };
+
+onMounted(() => {
+  // Agregar animaciones de entrada
+  const cards = document.querySelectorAll('.hack-card');
+  cards.forEach((card, index) => {
+    setTimeout(() => {
+      card.classList.add('animate-slide-up');
+    }, index * 100);
+  });
+});
 </script>
 
-<style scoped>
-/* =============================================
-   PIXEL ART PORTFOLIO STYLES
-   ============================================= */
-
-/* ===== LAYOUT PRINCIPAL PIXEL ===== */
-.pixel-portfolio-page {
-  background:
-    linear-gradient(90deg, transparent 50%, rgba(0, 255, 65, 0.03) 50%),
-    linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), #000000;
-  background-size:
-    2px 2px,
-    100% 100%,
-    100% 100%;
-  position: relative;
-  overflow: hidden;
+<style lang="scss" scoped>
+.index-page {
   min-height: 100vh;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%);
 }
 
-.pixel-content-section {
-  z-index: 2;
-  position: relative;
-  padding: 2rem;
+.hero-section {
+  padding: 4rem 0;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
-.pixel-nav-section {
-  z-index: 3;
-  position: relative;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-/* ===== HEADER PIXEL ART ===== */
-.pixel-header {
+.terminal {
+  height: fit-content;
+
+  .terminal-title {
+    color: $hack-gray;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+  }
+
+  .terminal-content {
+    .terminal-line {
+      margin: 0.5rem 0;
+      color: $hack-green;
+      font-weight: 500;
+    }
+
+    .output {
+      color: $hack-white;
+      margin: 0.25rem 0 1rem 2rem;
+
+      .skill-line {
+        margin: 0.2rem 0;
+        color: $hack-gray;
+      }
+    }
+
+    .prompt {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+
+  .profile-card {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.avatar-container {
   margin-bottom: 2rem;
-}
 
-.pixel-badge {
-  background: rgba(0, 0, 0, 0.8);
-  border: 2px solid #00ff41;
-  padding: 8px 16px;
-  font-family: 'VT323', monospace;
-  font-size: 16px;
-  box-shadow: 0 0 10px #00ff41;
-}
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid $hack-green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+    background: rgba(0, 255, 136, 0.1);
+  }
 
-/* ===== IMAGEN PIXEL ART ===== */
-.pixel-image-wrapper {
-  width: 300px;
-  height: 300px;
-  position: relative;
-}
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: $hack-green;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
 
-.pixel-avatar {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.pixel-frame {
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.8);
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #00ff41, #ff073a, #0066ff, #00ff41);
-    z-index: -1;
-    animation: borderRotate 3s linear infinite;
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: $hack-green;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
   }
 }
 
-@keyframes borderRotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.name {
+  margin-bottom: 0.5rem;
 }
 
-.programmer-image-pixel {
-  width: 100%;
-  height: 100%;
-  filter: contrast(1.2) saturate(1.3) drop-shadow(0 0 20px #00ff41);
+.title {
+  color: $hack-blue;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
 }
 
-/* ===== DESCRIPCIÓN PIXEL ===== */
-.pixel-description {
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid #00ff41;
-  padding: 1.5rem;
-  box-shadow:
-    0 0 20px rgba(0, 255, 65, 0.3),
-    inset 0 0 20px rgba(0, 255, 65, 0.1);
+.bio {
+  margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
-/* ===== BOTONES PIXEL ART ===== */
-.pixel-buttons {
-  display: flex;
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  flex-wrap: wrap;
-}
 
-/* ===== NAVEGACIÓN DIAMANTES PIXEL ===== */
-.pixel-diamonds-container {
-  width: 400px;
-  height: 400px;
-  position: relative;
-  left: 80px;
-}
+  .stat-item {
+    text-align: center;
 
-.digital-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 255, 65, 0.05) 2px,
-    rgba(0, 255, 65, 0.05) 4px
-  );
-  animation: digitalScroll 5s linear infinite;
-}
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      display: block;
+    }
 
-@keyframes digitalScroll {
-  0% {
-    transform: translateX(0) translateY(0);
-  }
-  100% {
-    transform: translateX(4px) translateY(4px);
+    .stat-label {
+      font-size: 0.8rem;
+      color: $hack-gray;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
   }
 }
 
-.pixel-diamond {
-  position: absolute;
-  transform: rotate(45deg);
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  width: 140px;
-  height: 140px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.9);
+.quick-access {
+  padding: 4rem 0;
 
-  &:hover {
-    transform: rotate(45deg) scale(1.1);
-    box-shadow: 0 0 30px currentColor;
+  .section-title {
+    margin-bottom: 3rem;
+    color: $hack-white;
   }
 
-  &:active {
-    transform: rotate(45deg) scale(0.95);
+  .access-card {
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    .card-icon {
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      margin-bottom: 1rem;
+      color: $hack-white;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      color: $hack-gray;
+    }
+
+    .card-arrow {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      color: $hack-green;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover .card-arrow {
+      transform: translateX(0);
+    }
   }
 }
 
-.pixel-diamond-content {
-  transform: rotate(-45deg);
-  z-index: 2;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.skills-preview {
+  padding: 4rem 0;
+  background: rgba(22, 27, 34, 0.5);
+
+  .section-title {
+    margin-bottom: 3rem;
+    color: $hack-white;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(0, 255, 136, 0.1);
+        transform: translateY(-4px);
+      }
+
+      span {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        color: $hack-white;
+      }
+    }
+  }
+}
+
+.text-center {
   text-align: center;
 }
 
-.pixel-diamond-text {
-  font-family: 'Press Start 2P', monospace !important;
-  font-size: 10px !important;
-  margin-top: 8px;
-  text-shadow:
-    0 0 5px currentColor,
-    1px 1px 0px #000,
-    -1px -1px 0px #000,
-    1px -1px 0px #000,
-    -1px 1px 0px #000;
-  color: inherit !important;
-  font-weight: normal !important;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  line-height: 1.2;
-  display: block;
-  white-space: nowrap;
-}
-
-/* ===== DIAMANTES HOVER ESPECÍFICOS ===== */
-.pixel-diamond-top:hover .pixel-diamond-text {
-  color: #00ff41 !important;
-  text-shadow:
-    0 0 10px #00ff41,
-    1px 1px 0px #000,
-    -1px -1px 0px #000,
-    1px -1px 0px #000,
-    -1px 1px 0px #000;
-}
-
-.pixel-diamond-left:hover .pixel-diamond-text {
-  color: #0066ff !important;
-  text-shadow:
-    0 0 10px #0066ff,
-    1px 1px 0px #000,
-    -1px -1px 0px #000,
-    1px -1px 0px #000,
-    -1px 1px 0px #000;
-}
-
-.pixel-diamond-right:hover .pixel-diamond-text {
-  color: #ff073a !important;
-  text-shadow:
-    0 0 10px #ff073a,
-    1px 1px 0px #000,
-    -1px -1px 0px #000,
-    1px -1px 0px #000,
-    -1px 1px 0px #000;
-}
-
-.pixel-diamond-bottom:hover .pixel-diamond-text {
-  color: #cc00ff !important;
-  text-shadow:
-    0 0 10px #cc00ff,
-    1px 1px 0px #000,
-    -1px -1px 0px #000,
-    1px -1px 0px #000,
-    -1px 1px 0px #000;
-}
-
-/* ===== ICONOS DIAMANTES ===== */
-.pixel-diamond .q-icon {
-  filter: drop-shadow(0 0 5px currentColor);
-  transition: all 0.3s ease;
-}
-
-.pixel-diamond:hover .q-icon {
-  filter: drop-shadow(0 0 15px currentColor);
-  transform: scale(1.1);
-}
-
-/* ===== POSICIONAMIENTO DIAMANTES PIXEL ===== */
-.pixel-diamond-top {
-  top: 22%;
-  left: 43%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 100px;
-  height: 100px;
-
-  &:hover {
-    transform: translateX(-50%) rotate(45deg) scale(1.15);
-  }
-}
-
-.pixel-diamond-left {
-  left: -10px;
-  top: 55%;
-  transform: translateY(-50%) rotate(45deg);
-
-  &:hover {
-    transform: translateY(-50%) rotate(45deg) scale(1.1);
-  }
-}
-
-.pixel-diamond-right {
-  right: 50px;
-  top: 55%;
-  transform: translateY(-50%) rotate(45deg);
-
-  &:hover {
-    transform: translateY(-50%) rotate(45deg) scale(1.1);
-  }
-}
-
-.pixel-diamond-bottom {
-  bottom: 0%;
-  left: 43%;
-  transform: translateX(-50%) rotate(45deg);
-
-  &:hover {
-    transform: translateX(-50%) rotate(45deg) scale(1.1);
-  }
-}
-
-/* ===== BORDES DE COLORES PARA DIAMANTES ===== */
-.pixel-border-green {
-  border: 2px solid #00ff41;
-  box-shadow:
-    0 0 10px #00ff41,
-    inset 0 0 10px rgba(0, 255, 65, 0.1);
-}
-
-.pixel-border-blue {
-  border: 2px solid #0066ff;
-  box-shadow:
-    0 0 10px #0066ff,
-    inset 0 0 10px rgba(0, 102, 255, 0.1);
-}
-
-.pixel-border-red {
-  border: 2px solid #ff073a;
-  box-shadow:
-    0 0 10px #ff073a,
-    inset 0 0 10px rgba(255, 7, 58, 0.1);
-}
-
-.pixel-border-purple {
-  border: 2px solid #cc00ff;
-  box-shadow:
-    0 0 10px #cc00ff,
-    inset 0 0 10px rgba(204, 0, 255, 0.1);
-}
-
-/* ===== CONEXIONES DIGITALES ===== */
-.digital-connections {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.connection-line {
-  position: absolute;
-  background: linear-gradient(90deg, transparent, #00ff41, transparent);
-  animation: dataFlow 2s ease-in-out infinite;
-}
-
-.connection-vertical {
-  width: 2px;
-  height: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.connection-horizontal {
-  width: 100%;
-  height: 2px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-@keyframes dataFlow {
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 1;
-    box-shadow: 0 0 10px #00ff41;
-  }
-}
-
-/* ===== EFECTOS DE FONDO PIXEL ===== */
-.pixel-background-effects {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.digital-particles::before {
-  content: '▓▒░ LOADING ░▒▓';
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-family: 'VT323', monospace;
-  font-size: 14px;
-  color: #00ff41;
-  animation: blink 1s infinite;
-}
-
-.grid-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-    linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-  animation: gridMove 10s linear infinite;
-}
-
-@keyframes gridMove {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(20px, 20px);
-  }
-}
-
-/* ===== ANIMACIONES PIXEL ===== */
-.animate-fade-in {
-  animation: pixelFadeIn 1s ease-out;
-}
-
-.animate-slide-up {
-  animation: pixelSlideUp 0.8s ease-out;
-}
-
-.animate-slide-up-delay {
-  animation: pixelSlideUp 0.8s ease-out 0.3s both;
-}
-
-.animate-fade-in-up {
-  animation: pixelFadeInUp 1s ease-out 0.6s both;
-}
-
-.animate-bounce-in {
-  animation: pixelBounceIn 1s ease-out 0.9s both;
-}
-
-.animate-bounce-in-delay {
-  animation: pixelBounceIn 1s ease-out 1.2s both;
-}
-
-@keyframes pixelFadeIn {
-  from {
-    opacity: 0;
-    filter: brightness(0);
-  }
-  to {
-    opacity: 1;
-    filter: brightness(1);
-  }
-}
-
-@keyframes pixelSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-    filter: blur(2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-@keyframes pixelFadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes pixelBounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3) rotate(0deg);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05) rotate(5deg);
-  }
-  70% {
-    transform: scale(0.9) rotate(-2deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-/* ===== RESPONSIVE PIXEL ART ===== */
+// Responsive
 @media (max-width: 768px) {
-  .pixel-diamonds-container {
-    width: 300px;
-    height: 300px;
-    left: 20px;
+  .hero-section {
+    padding: 2rem 0;
+
+    .hack-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
   }
 
-  .pixel-diamond {
-    width: 100px;
-    height: 100px;
+  .container {
+    padding: 0 1rem;
   }
 
-  .pixel-diamond-top {
-    width: 80px;
-    height: 80px;
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .pixel-diamond-text {
-    font-size: 7px !important;
-    margin-top: 6px;
-  }
+  .tech-stack {
+    gap: 1rem;
 
-  .pixel-hero-title {
-    font-size: 24px;
-  }
-
-  .pixel-content-section {
-    padding: 1rem;
+    .tech-item {
+      flex: 1 1 calc(50% - 0.5rem);
+      min-width: 120px;
+    }
   }
 }
 </style>
