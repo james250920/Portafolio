@@ -8,7 +8,7 @@
             <q-icon name="person" class="text-hack-blue" /> About.me
           </h1>
           <p class="page-subtitle animate-fade-in">
-            Passionate developer crafting digital solutions with clean code and innovative thinking.
+            Estudiante de Ingeniería en TI enfocado en el desarrollo Web y Mobile, con una mentalidad orientada a la calidad de software (QA) y la seguridad para crear soluciones robustas y eficientes.
           </p>
         </div>
       </div>
@@ -32,25 +32,19 @@
 
               <div class="profile-details">
                 <h2 class="profile-name">James Developer</h2>
-                <h3 class="profile-title">Full-Stack Developer</h3>
+                <h3 class="profile-title">Junior Full Stack Developer</h3>
                 <p class="profile-bio">
-                  I'm a passionate developer with {{ experience }}+ years of experience building
-                  modern web applications. I love turning complex problems into simple, beautiful
-                  solutions that users enjoy.
+                  Desarrollador en formación con {{ experience }}+ años de experiencia en el desarrollo de aplicaciones web y móviles. Apasionado por crear soluciones eficientes y seguras que impulsen el éxito de los proyectos.
                 </p>
 
                 <div class="profile-stats">
                   <div class="stat-item">
                     <span class="stat-number text-hack-green">{{ experience }}+</span>
-                    <span class="stat-label">Years</span>
+                    <span class="stat-label">Años</span>
                   </div>
                   <div class="stat-item">
                     <span class="stat-number text-hack-blue">{{ projects }}+</span>
-                    <span class="stat-label">Projects</span>
-                  </div>
-                  <div class="stat-item">
-                    <span class="stat-number text-hack-yellow">{{ clients }}+</span>
-                    <span class="stat-label">Clients</span>
+                    <span class="stat-label">Proyectos</span>
                   </div>
                 </div>
               </div>
@@ -80,9 +74,9 @@
                 </div>
                 <div class="terminal-line">whoami --current-focus</div>
                 <div class="output">
-                  <span class="text-hack-blue">● Building scalable web applications</span><br />
-                  <span class="text-hack-yellow">● Learning cutting-edge technologies</span><br />
-                  <span class="text-hack-green">● Contributing to open source</span>
+                  <span class="text-hack-blue">● Desarrollo de aplicaciones web y móviles</span><br />
+                  <span class="text-hack-yellow">● Aprendiendo tecnologías de vanguardia</span><br />
+                  <span class="text-hack-purple">● Mejorando habilidades en QA y seguridad</span>
                 </div>
                 <div class="terminal-line prompt">
                   <span>james@about:~$ </span>
@@ -98,7 +92,7 @@
     <!-- Skills Section -->
     <section class="skills-section">
       <div class="container">
-        <h2 class="section-title text-center">Technical Arsenal</h2>
+        <h2 class="section-title text-center">Skills </h2>
         <div class="skills-grid">
           <!-- Frontend Skills -->
           <div class="skill-category">
@@ -164,7 +158,7 @@
     <!-- Experience Section -->
     <section class="experience-section">
       <div class="container">
-        <h2 class="section-title text-center">Professional Experience</h2>
+        <h2 class="section-title text-center">Experiencia Profesional</h2>
         <div class="experience-timeline">
           <div v-for="(exp, index) in experiences" :key="index" class="experience-item">
             <div class="experience-marker">
@@ -232,17 +226,15 @@
 import { ref } from 'vue';
 
 // Data
-const experience = ref(5);
-const projects = ref(50);
-const clients = ref(20);
+const experience = ref(1);
+const projects = ref(3);
 
 const careerTimeline = ref([
-  { year: '2019', event: 'Started programming journey' },
-  { year: '2020', event: 'First freelance projects' },
-  { year: '2021', event: 'Full-stack developer role' },
-  { year: '2022', event: 'Lead developer position' },
-  { year: '2023', event: 'Specialized in modern frameworks' },
-  { year: '2024', event: 'Founded tech consulting' },
+  { year: '2020', event: 'Inició mi viaje en la programación' },
+  { year: '2024', event: 'Desarrollador Full-Stack en prácticas' },
+  { year: '2025', event: 'Actualización de habilidades y conocimientos' },
+  { year: '2026', event: 'En proceso...' },
+
 ]);
 
 const frontendSkills = ref([
@@ -487,7 +479,7 @@ const interests = ref([
 
       .skills-list {
         .skill-item {
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.2rem;
 
           .skill-info {
             display: flex;
