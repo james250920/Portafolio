@@ -5,11 +5,11 @@
       <div class="container">
         <div class="header-content">
           <h1 class="page-title animate-slide-up">
-            <q-icon name="code" class="text-hack-green" /> Projects.portfolio
+            <q-icon name="code" class="text-hack-green" /> Proyectos.portafolio
           </h1>
           <p class="page-subtitle animate-fade-in">
-            A showcase of my latest work, from concept to deployment. Each project tells a story of
-            innovation and problem-solving.
+            Una muestra de mi trabajo más reciente, desde el concepto hasta el despliegue. Cada proyecto cuenta una historia de
+            innovación y resolución de problemas.
           </p>
         </div>
       </div>
@@ -51,7 +51,7 @@
                       dark
                       dense
                       class="tech-select"
-                      placeholder="Filter by technology"
+                      placeholder="Filtrar por tecnología"
                       clearable
                     />
                   </div>
@@ -79,7 +79,7 @@
                 <div class="project-overlay">
                   <div class="overlay-content">
                     <q-icon name="visibility" size="2rem" class="text-hack-white" />
-                    <span>View Details</span>
+                    <span>Ver Detalles</span>
                   </div>
                 </div>
               </div>
@@ -108,14 +108,14 @@
                     @click.stop="openProject(project.liveUrl)"
                     v-if="project.liveUrl"
                   >
-                    <q-icon name="launch" /> Live Demo
+                    <q-icon name="launch" /> Demo en Vivo
                   </button>
                   <button
                     class="action-btn code"
                     @click.stop="openProject(project.githubUrl)"
                     v-if="project.githubUrl"
                   >
-                    <q-icon name="code" /> Source Code
+                    <q-icon name="code" /> Código Fuente
                   </button>
                 </div>
               </div>
@@ -126,7 +126,7 @@
         <!-- Load More Button -->
         <div class="load-more-section" v-if="hasMoreProjects">
           <button class="hack-button primary" @click="loadMoreProjects">
-            <q-icon name="refresh" /> Load More Projects
+            <q-icon name="refresh" /> Cargar Más Proyectos
           </button>
         </div>
       </div>
@@ -135,7 +135,7 @@
     <!-- Featured Project Section -->
     <section class="featured-project" v-if="featuredProject">
       <div class="container">
-        <h2 class="section-title text-center">Featured Project</h2>
+        <h2 class="section-title text-center">Proyecto Destacado</h2>
         <div class="hack-card featured-card">
           <div class="hack-grid cols-2">
             <div class="featured-content">
@@ -143,7 +143,7 @@
               <p class="featured-description">{{ featuredProject.fullDescription }}</p>
 
               <div class="featured-highlights">
-                <h4>Key Features:</h4>
+                <h4>Características Clave:</h4>
                 <ul>
                   <li v-for="feature in featuredProject.features" :key="feature">
                     <q-icon name="check_circle" class="text-hack-green" />
@@ -153,7 +153,7 @@
               </div>
 
               <div class="featured-tech">
-                <h4>Technologies Used:</h4>
+                <h4>Tecnologías Utilizadas:</h4>
                 <div class="tech-grid">
                   <span
                     v-for="tech in featuredProject.technologies"
@@ -167,13 +167,13 @@
 
               <div class="featured-actions">
                 <button class="hack-button primary" @click="openProject(featuredProject.liveUrl || '')">
-                  <q-icon name="launch" /> View Live Project
+                  <q-icon name="launch" /> Ver Proyecto en Vivo
                 </button>
                 <button
                   class="hack-button secondary"
                   @click="openProject(featuredProject.githubUrl || '')"
                 >
-                  <q-icon name="code" /> View Source Code
+                  <q-icon name="code" /> Ver Código Fuente
                 </button>
               </div>
             </div>
@@ -196,28 +196,28 @@
             <div class="hack-card">
               <q-icon name="code" size="3rem" class="text-hack-green" />
               <h3>{{ totalProjects }}</h3>
-              <p>Total Projects</p>
+              <p>Proyectos Totales</p>
             </div>
           </div>
           <div class="stat-card">
             <div class="hack-card">
               <q-icon name="language" size="3rem" class="text-hack-blue" />
               <h3>{{ totalTechnologies }}</h3>
-              <p>Technologies Used</p>
+              <p>Tecnologías Utilizadas</p>
             </div>
           </div>
           <div class="stat-card">
             <div class="hack-card">
               <q-icon name="timeline" size="3rem" class="text-hack-yellow" />
               <h3>{{ completedProjects }}</h3>
-              <p>Completed</p>
+              <p>Completados</p>
             </div>
           </div>
           <div class="stat-card">
             <div class="hack-card">
               <q-icon name="trending_up" size="3rem" class="text-hack-purple" />
               <h3>{{ activeProjects }}</h3>
-              <p>In Progress</p>
+              <p>En Progreso</p>
             </div>
           </div>
         </div>
@@ -245,7 +245,7 @@
             </p>
 
             <div class="modal-tech">
-              <h4>Technologies:</h4>
+              <h4>Tecnologías:</h4>
               <div class="tech-tags">
                 <span v-for="tech in selectedProject.technologies" :key="tech" class="tech-tag">
                   {{ tech }}
@@ -259,14 +259,14 @@
                 @click="openProject(selectedProject.liveUrl)"
                 v-if="selectedProject.liveUrl"
               >
-                <q-icon name="launch" /> Live Demo
+                <q-icon name="launch" /> Demo en Vivo
               </button>
               <button
                 class="hack-button secondary"
                 @click="openProject(selectedProject.githubUrl)"
                 v-if="selectedProject.githubUrl"
               >
-                <q-icon name="code" /> Source Code
+                <q-icon name="code" /> Código Fuente
               </button>
             </div>
           </div>
@@ -301,7 +301,7 @@ const showProjectModal = ref(false);
 const selectedProject = ref<Project | null>(null);
 const displayedProjects = ref(6);
 
-const categories = ref(['All', 'Web Apps', 'Mobile', 'APIs', 'Tools', 'Open Source']);
+const categories = ref(['Todos', 'Web', 'Móvil', 'APIs', 'Herramientas']);
 
 const techOptions = ref([
   'Vue.js',
@@ -311,101 +311,94 @@ const techOptions = ref([
   'Python',
   'PostgreSQL',
   'MongoDB',
-  'Docker',
+  'SQLite',
   'AWS',
-  'Next.js',
-  'Nuxt.js',
+  'Kotlin',
+  'Flutter',
+  'JetPack Compose',
+  'Firebase',
+  '.Net'
 ]);
 
 const projects = ref<Project[]>([
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with advanced features and modern UI.',
+    title: 'Plataforma E-Commerce',
+    description: 'Solución de comercio electrónico full-stack con características avanzadas e interfaz moderna.',
     fullDescription:
-      'A comprehensive e-commerce platform built with modern technologies. Features include user authentication, product catalog, shopping cart, payment integration, order management, and admin dashboard.',
-    category: 'Web Apps',
+      'Una plataforma de comercio electrónico integral construida con tecnologías modernas. Las características incluyen autenticación de usuarios, catálogo de productos, carrito de compras, integración de pagos, gestión de pedidos y panel de administración.',
+    category: 'Web',
     technologies: ['Vue.js', 'Node.js', 'PostgreSQL', 'Stripe', 'Docker'],
     image: '/src/assets/otro.png',
     status: 'completed',
     liveUrl: 'https://example-ecommerce.com',
     githubUrl: 'https://github.com/james250920/ecommerce-platform',
     features: [
-      'User authentication and authorization',
-      'Product catalog with search and filters',
-      'Shopping cart and checkout process',
-      'Payment integration with Stripe',
-      'Order management system',
-      'Admin dashboard for inventory management',
+      'Autenticación y autorización de usuarios',
+      'Catálogo de productos con búsqueda y filtros',
+      'Carrito de compras y proceso de pago',
+      'Integración de pagos con Stripe',
+      'Sistema de gestión de pedidos',
+      'Panel de administración para gestión de inventario',
     ],
   },
   {
     id: 2,
-    title: 'Task Management App',
-    description: 'Collaborative task management tool with real-time updates.',
+    title: 'StudyOso',
+    description: 'Herramienta de gestión de tareas colaborativa con actualizaciones en tiempo real.',
     fullDescription:
-      'A modern task management application designed for teams. Built with Vue.js and featuring real-time collaboration, project organization, and productivity tracking.',
-    category: 'Web Apps',
-    technologies: ['Vue.js', 'TypeScript', 'Socket.io', 'MongoDB'],
+      'Una aplicación moderna de gestión de tareas diseñada para equipos. Construida con Vue.js y con colaboración en tiempo real, organización de proyectos y seguimiento de productividad.',
+    category: 'Móvil',
+    technologies: ['JetPack Compose', 'Kotlin', 'SQLite', 'Firebase'],
     image: '/src/assets/pngwing 2.png',
     status: 'completed',
     liveUrl: 'https://example-tasks.com',
     githubUrl: 'https://github.com/james250920/task-manager',
     features: [
-      'Real-time collaborative editing',
-      'Project and task organization',
-      'Team member management',
-      'Progress tracking and analytics',
-      'Mobile-responsive design',
+      'Edición colaborativa en tiempo real',
+      'Organización de proyectos y tareas',
+      'Gestión de miembros del equipo',
+      'Seguimiento de progreso y analíticas',
+      'Diseño responsivo para móviles',
     ],
   },
   {
     id: 3,
-    title: 'Weather API Service',
-    description: 'RESTful API service providing weather data with caching and rate limiting.',
-    category: 'APIs',
-    technologies: ['Node.js', 'Express', 'Redis', 'MongoDB', 'Docker'],
+    title: 'Impulso',
+    description: 'Servicio de API RESTful que proporciona datos meteorológicos con caché y limitación de velocidad.',
+    category: 'Móvil',
+    technologies: ['JetPack Compose', 'Kotlin', 'SQLite', 'Firebase'],
     image: '/src/assets/otro.png',
     status: 'completed',
     githubUrl: 'https://github.com/james250920/weather-api',
   },
   {
     id: 4,
-    title: 'Mobile Finance Tracker',
-    description: 'React Native app for personal finance management.',
-    category: 'Mobile',
-    technologies: ['React Native', 'TypeScript', 'SQLite'],
+    title: 'Zentry Tracker',
+    description: 'Aplicación React Native para gestión de finanzas personales.',
+    category: 'Móvil',
+    technologies: ['Flutter', 'Firebase', 'PostgreSQL'],
     image: '/src/assets/pngwing 2.png',
     status: 'in-progress',
   },
   {
     id: 5,
-    title: 'Portfolio Website',
-    description: 'Personal portfolio showcasing projects and skills.',
-    category: 'Web Apps',
-    technologies: ['Vue.js', 'Quasar', 'TypeScript', 'SCSS'],
+    title: 'AprendePe',
+    description: 'Portafolio personal que muestra proyectos y habilidades.',
+    category: 'Web',
+    technologies: ['React', 'PostgreSQL', 'TypeScript', 'SCSS',".Net"],
     image: '/src/assets/otro.png',
     status: 'completed',
     liveUrl: 'https://james-portfolio.dev',
     githubUrl: 'https://github.com/james250920/portfolio',
-  },
-  {
-    id: 6,
-    title: 'Code Generator CLI',
-    description: 'Command-line tool for generating boilerplate code.',
-    category: 'Tools',
-    technologies: ['Node.js', 'TypeScript', 'Commander.js'],
-    image: '/src/assets/pngwing 2.png',
-    status: 'completed',
-    githubUrl: 'https://github.com/james250920/code-generator',
-  },
+  }
 ]);
 
 // Computed properties
 const filteredProjects = computed(() => {
   let filtered = projects.value;
 
-  if (selectedCategory.value !== 'All') {
+  if (selectedCategory.value !== 'Todos') {
     filtered = filtered.filter((project) => project.category === selectedCategory.value);
   }
 

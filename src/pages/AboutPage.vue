@@ -297,7 +297,7 @@ const DBskills = ref([
 
 const MobileSkills = ref([
   { name: 'Kotlin' },
-  { name: 'Fluter' },
+  { name: 'Flutter' },
   { name: 'KMP' },
 ]);
 

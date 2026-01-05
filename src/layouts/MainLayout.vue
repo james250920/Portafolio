@@ -29,7 +29,7 @@
             @click="$router.push('/about')"
           >
             <q-icon name="person" class="q-mr-xs" />
-            about
+            Sobre mí
           </q-btn>
           <q-btn
             flat
@@ -38,7 +38,7 @@
             @click="$router.push('/projects')"
           >
             <q-icon name="code" class="q-mr-xs" />
-            projects
+            proyectos
           </q-btn>
           <q-btn
             flat
@@ -47,7 +47,7 @@
             @click="$router.push('/contact')"
           >
             <q-icon name="mail" class="q-mr-xs" />
-            contact
+            contacto
           </q-btn>
         </div>
       </q-toolbar>
