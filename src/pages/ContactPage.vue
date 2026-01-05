@@ -8,7 +8,7 @@
             <q-icon name="terminal" class="text-hack-green" /> Contact.exe
           </h1>
           <p class="page-subtitle animate-fade-in">
-            Ready to collaborate? Let's build something amazing together.
+            ¿Listo para colaborar? Construyamos algo increíble juntos.
           </p>
         </div>
       </div>
@@ -25,10 +25,10 @@
             </div>
             <h3>Email</h3>
             <p class="method-info">jamesfrankmendozarios@gmail.com</p>
-            <p class="method-description">Send me an email for professional inquiries</p>
+            <p class="method-description">Envíame un email para consultas profesionales</p>
             <div class="method-status">
               <span class="status-dot online"></span>
-              Response within 24h
+              Respuesta en 24h
             </div>
           </div>
 
@@ -39,10 +39,10 @@
             </div>
             <h3>LinkedIn</h3>
             <p class="method-info">@menfroyt-dev</p>
-            <p class="method-description">Professional networking and opportunities</p>
+            <p class="method-description">Networking profesional y oportunidades</p>
             <div class="method-status">
               <span class="status-dot online"></span>
-              Active daily
+              Activo diariamente
             </div>
           </div>
 
@@ -53,10 +53,10 @@
             </div>
             <h3>GitHub</h3>
             <p class="method-info">@james250920</p>
-            <p class="method-description">Check out my code and contributions</p>
+            <p class="method-description">Revisa mi código y contribuciones</p>
             <div class="method-status">
               <span class="status-dot online"></span>
-              Updated frequently
+              Actualizado frecuentemente
             </div>
           </div>
         </div>
@@ -83,21 +83,21 @@
                     <span class="text-hack-green">Name:</span> James Mendoza
                   </div>
                   <div class="info-line">
-                    <span class="text-hack-blue">Location:</span> Available Worldwide
+                    <span class="text-hack-blue">Location:</span> Disponible en Todo el Mundo
                   </div>
                   <div class="info-line">
                     <span class="text-hack-yellow">Timezone:</span> UTC-5 (EST)
                   </div>
                   <div class="info-line">
-                    <span class="text-hack-purple">Availability:</span> Open to opportunities
+                    <span class="text-hack-purple">Availability:</span> Abierto a Oportunidades
                   </div>
                   <div class="info-line">
-                    <span class="text-hack-cyan">Specialties:</span> Full-Stack Development
+                    <span class="text-hack-cyan">Specialties:</span> Desarrollo Full-Stack
                   </div>
                 </div>
                 <div class="terminal-line">status --availability</div>
                 <div class="output">
-                  <span class="text-hack-green">● AVAILABLE</span> - Ready for new projects
+                  <span class="text-hack-green">● DISPONIBLE</span> - Listo para nuevos proyectos
                 </div>
                 <div class="terminal-line prompt">
                   <span>james@contact:~$ </span>
@@ -110,18 +110,18 @@
           <!-- Contact Form -->
           <div class="contact-form-container">
             <div class="hack-card">
-              <h2 class="form-title">Send Message</h2>
+              <h2 class="form-title">Enviar Mensaje</h2>
               <form @submit.prevent="sendMessage" class="contact-form">
                 <div class="form-group">
-                  <label for="name" class="form-label">Name</label>
+                  <label for="name" class="form-label">Nombre</label>
                   <q-input
                     v-model="form.name"
                     id="name"
                     outlined
                     dark
                     class="hack-input"
-                    placeholder="Your name"
-                    :rules="[(val) => !!val || 'Name is required']"
+                    placeholder="Tu nombre"
+                    :rules="[(val) => !!val || 'El nombre es requerido']"
                   />
                 </div>
 
@@ -134,28 +134,28 @@
                     outlined
                     dark
                     class="hack-input"
-                    placeholder="your.email@example.com"
+                    placeholder="tu.email@ejemplo.com"
                     :rules="[
-                      (val) => !!val || 'Email is required',
-                      (val) => /.+@.+\..+/.test(val) || 'Email must be valid',
+                      (val) => !!val || 'El email es requerido',
+                      (val) => /.+@.+\..+/.test(val) || 'El email debe ser válido',
                     ]"
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="subject" class="form-label">Subject</label>
+                  <label for="subject" class="form-label">Asunto</label>
                   <q-select
                     v-model="form.subject"
                     :options="subjectOptions"
                     outlined
                     dark
                     class="hack-input"
-                    placeholder="Select a subject"
+                    placeholder="Selecciona un asunto"
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="message" class="form-label">Message</label>
+                  <label for="message" class="form-label">Mensaje</label>
                   <q-input
                     v-model="form.message"
                     id="message"
@@ -163,15 +163,15 @@
                     outlined
                     dark
                     class="hack-input"
-                    placeholder="Tell me about your project..."
-                    :rules="[(val) => !!val || 'Message is required']"
+                    placeholder="Cuéntame sobre tu proyecto..."
+                    :rules="[(val) => !!val || 'El mensaje es requerido']"
                     rows="5"
                   />
                 </div>
 
                 <div class="form-actions">
                   <button type="submit" class="hack-button primary" :disabled="!isFormValid">
-                    <q-icon name="send" /> Send Message
+                    <q-icon name="send" /> Enviar Mensaje
                   </button>
                 </div>
               </form>
@@ -184,19 +184,19 @@
     <!-- Quick Contact Section -->
     <section class="quick-contact">
       <div class="container">
-        <h2 class="section-title text-center">Quick Contact</h2>
+        <h2 class="section-title text-center">Contacto Rápido</h2>
         <div class="quick-contact-grid">
           <div class="quick-contact-item" @click="copyToClipboard('james@dev.com')">
             <q-icon name="content_copy" class="copy-icon" />
-            <span>Copy Email</span>
+            <span>Copiar Email</span>
           </div>
           <div class="quick-contact-item" @click="openCalendar">
             <q-icon name="event" class="copy-icon" />
-            <span>Schedule Meeting</span>
+            <span>Agendar Reunión</span>
           </div>
           <div class="quick-contact-item" @click="downloadCV">
             <q-icon name="download" class="copy-icon" />
-            <span>Download CV</span>
+            <span>Descargar CV</span>
           </div>
         </div>
       </div>
@@ -219,12 +219,12 @@ const form = ref({
 });
 
 const subjectOptions = [
-  'Project Collaboration',
-  'Job Opportunity',
-  'Freelance Work',
-  'Technical Consultation',
-  'General Inquiry',
-  'Other',
+  'Colaboración en Proyecto',
+  'Oportunidad Laboral',
+  'Trabajo Freelance',
+  'Consultoría Técnica',
+  'Consulta General',
+  'Otro',
 ];
 
 // Computed properties
@@ -244,8 +244,8 @@ const sendMessage = () => {
     // Simulate sending message
     $q.notify({
       type: 'positive',
-      message: 'Message sent successfully!',
-      caption: "I'll get back to you soon.",
+      message: '¡Mensaje enviado exitosamente!',
+      caption: 'Te responderé pronto.',
       icon: 'send',
     });
 
@@ -272,25 +272,28 @@ const openGitHub = () => {
 };
 
 const copyToClipboard = (text: string) => {
-  navigator.clipboard.writeText(text).then(() => {
-    $q.notify({
-      type: 'positive',
-      message: 'Copied to clipboard!',
-      icon: 'content_copy',
-    });
-  }, () => {
-    $q.notify({
-      type: 'negative',
-      message: 'Failed to copy to clipboard.',
-      icon: 'error',
-    });
-  });
+  navigator.clipboard.writeText(text).then(
+    () => {
+      $q.notify({
+        type: 'positive',
+        message: '¡Copiado al portapapeles!',
+        icon: 'content_copy',
+      });
+    },
+    () => {
+      $q.notify({
+        type: 'negative',
+        message: 'Error al copiar al portapapeles.',
+        icon: 'error',
+      });
+    },
+  );
 };
 
 const openCalendar = () => {
   $q.notify({
     type: 'info',
-    message: 'Calendar integration coming soon!',
+    message: '¡Integración de calendario próximamente!',
     icon: 'event',
   });
 };
@@ -298,7 +301,7 @@ const openCalendar = () => {
 const downloadCV = () => {
   $q.notify({
     type: 'info',
-    message: 'CV download will be available soon!',
+    message: '¡Descarga de CV estará disponible pronto!',
     icon: 'download',
   });
 };
