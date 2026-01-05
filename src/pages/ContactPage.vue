@@ -25,7 +25,7 @@
             </div>
             <h3>Email</h3>
             <p class="method-info">jamesfrankmendozarios@gmail.com</p>
-            <p class="method-description">Envíame un email para consultas profesionales</p>
+            <p class="method-description">Envíame un email</p>
             <div class="method-status">
               <span class="status-dot online"></span>
               Respuesta en 24h
@@ -42,7 +42,7 @@
             <p class="method-description">Networking profesional y oportunidades</p>
             <div class="method-status">
               <span class="status-dot online"></span>
-              Activo diariamente
+              Activo
             </div>
           </div>
 
@@ -83,7 +83,7 @@
                     <span class="text-hack-green">Name:</span> James Mendoza
                   </div>
                   <div class="info-line">
-                    <span class="text-hack-blue">Location:</span> Disponible en Todo el Mundo
+                    <span class="text-hack-blue">Location:</span> Disponible
                   </div>
                   <div class="info-line">
                     <span class="text-hack-yellow">Timezone:</span> UTC-5 (EST)
