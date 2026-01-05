@@ -10,7 +10,7 @@
               <div class="dot red"></div>
               <div class="dot yellow"></div>
               <div class="dot green"></div>
-              <span class="terminal-title">~/portfolio/james</span>
+              <span class="terminal-title">~/portfalio/james</span>
             </div>
             <div class="terminal-content">
               <div class="terminal-line">whoami</div>
@@ -22,7 +22,7 @@
               <div class="terminal-line">status</div>
               <div class="output">
                 <span class="text-hack-green">● Online</span> -
-                <span class="text-hack-blue">Ready for new challenges</span>
+                <span class="text-hack-blue">Listo para nuevos desafíos</span>
               </div>
               <div class="terminal-line prompt">
                 <span>james@dev:~$ </span>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="status-indicator">
                   <div class="status-dot"></div>
-                  <span>Available for work</span>
+                  <span>Disponible</span>
                 </div>
               </div>
 
@@ -52,15 +52,15 @@
               <div class="stats-grid">
                 <div class="stat-item">
                   <div class="stat-number text-hack-green">{{ experience }}+</div>
-                  <div class="stat-label">Years Experience</div>
+                  <div class="stat-label">Años de Experiencia</div>
                 </div>
                 <div class="stat-item">
                   <div class="stat-number text-hack-blue">{{ projects }}+</div>
-                  <div class="stat-label">Projects</div>
+                  <div class="stat-label">Proyectos</div>
                 </div>
                 <div class="stat-item">
                   <div class="stat-number text-hack-yellow">{{ technologies }}+</div>
-                  <div class="stat-label">Technologies</div>
+                  <div class="stat-label">Tecnologías</div>
                 </div>
               </div>
             </div>
@@ -72,12 +72,12 @@
     <!-- Quick Access Section -->
     <section class="quick-access">
       <div class="container">
-        <h2 class="section-title text-center">Quick Access</h2>
+        <h2 class="section-title text-center">Acceso Rápido</h2>
         <div class="hack-grid cols-3">
           <div class="hack-card access-card" @click="navigateTo('/about')">
             <q-icon name="person_outline" size="2rem" class="card-icon text-hack-blue" />
-            <h3>About Me</h3>
-            <p>Learn more about my background, skills, and experience in development.</p>
+            <h3>Sobre Mí</h3>
+            <p>Aprende más sobre mi experiencia, habilidades y trayectoria en el desarrollo.</p>
             <div class="card-arrow">
               <q-icon name="arrow_forward" />
             </div>
@@ -85,8 +85,8 @@
 
           <div class="hack-card access-card" @click="navigateTo('/projects')">
             <q-icon name="code" size="2rem" class="card-icon text-hack-green" />
-            <h3>Projects</h3>
-            <p>Explore my latest projects and technical implementations.</p>
+            <h3>Proyectos</h3>
+            <p>Explora mis últimos proyectos e implementaciones técnicas.</p>
             <div class="card-arrow">
               <q-icon name="arrow_forward" />
             </div>
@@ -94,8 +94,8 @@
 
           <div class="hack-card access-card" @click="navigateTo('/contact')">
             <q-icon name="mail_outline" size="2rem" class="card-icon text-hack-yellow" />
-            <h3>Contact</h3>
-            <p>Get in touch for collaboration opportunities and projects.</p>
+            <h3>Contacto</h3>
+            <p>Ponte en contacto para oportunidades de colaboración y proyectos.</p>
             <div class="card-arrow">
               <q-icon name="arrow_forward" />
             </div>
@@ -107,7 +107,7 @@
     <!-- Skills Preview -->
     <section class="skills-preview">
       <div class="container">
-        <h2 class="section-title text-center">Technology Stack</h2>
+        <h2 class="section-title text-center">Stack</h2>
         <div class="tech-stack">
           <div v-for="tech in techStack" :key="tech.name" class="tech-item">
             <q-icon :name="tech.icon" size="2rem" :class="tech.color" />
@@ -129,26 +129,27 @@ const router = useRouter();
 const name = ref('James Mendoza');
 const title = ref('Junior Full Stack Developer');
 const bio = ref(
-  'Passionate about creating innovative solutions with clean, efficient code. Always learning new technologies and best practices.',
+  'Estudiante de Ingeniería en TI enfocado en el desarrollo Web y Mobile, con una mentalidad orientada a la calidad de software (QA) y la seguridad para crear soluciones robustas y eficientes.',
 );
-const experience = ref('2');
-const projects = ref('15');
-const technologies = ref('20');
+const experience = ref('1');
+const projects = ref('3');
+const technologies = ref('10');
 
 const skills = ref([
-  'Frontend: Vue.js, React, TypeScript',
-  'Backend: Node.js, Python, Express',
-  'Database: MongoDB, PostgreSQL',
-  'Tools: Git, Docker, VS Code',
+  'Frontend: Blazor, Jetpack Compose, Angular',
+  'Backend: .Net, FastApi, Express',
+  'Mobile: Kotlin, Flutter',
+  'QA: K6, Nunit, Appium, Cypress, Selenium',
+  'Database: MongoDB, PostgreSQL, MySQL, SQLServer',
+  'Tools: Git, Docker, AWS, Azure, Ubuntu',
 ]);
 
 const techStack = ref([
-  { name: 'Vue.js', icon: 'code', color: 'text-hack-green' },
+  { name: 'Quasar Framework', icon: 'code', color: 'text-hack-green' },
   { name: 'TypeScript', icon: 'integration_instructions', color: 'text-hack-blue' },
   { name: 'Node.js', icon: 'dns', color: 'text-hack-yellow' },
-  { name: 'Python', icon: 'psychology', color: 'text-hack-green' },
   { name: 'Git', icon: 'source', color: 'text-hack-red' },
-  { name: 'Docker', icon: 'container', color: 'text-hack-blue' },
+
 ]);
 
 // Methods
