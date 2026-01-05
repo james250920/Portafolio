@@ -8,7 +8,9 @@
             <q-icon name="person" class="text-hack-blue" /> About.me
           </h1>
           <p class="page-subtitle animate-fade-in">
-            Estudiante de Ingeniería en TI enfocado en el desarrollo Web y Mobile, con una mentalidad orientada a la calidad de software (QA) y la seguridad para crear soluciones robustas y eficientes.
+            Estudiante de Ingeniería en TI enfocado en el desarrollo Web y Mobile, con una
+            mentalidad orientada a la calidad de software (QA) y la seguridad para crear soluciones
+            robustas y eficientes.
           </p>
         </div>
       </div>
@@ -34,7 +36,9 @@
                 <h2 class="profile-name">James Developer</h2>
                 <h3 class="profile-title">Junior Full Stack Developer</h3>
                 <p class="profile-bio">
-                  Desarrollador en formación con {{ experience }}+ años de experiencia en el desarrollo de aplicaciones web y móviles. Apasionado por crear soluciones eficientes y seguras que impulsen el éxito de los proyectos.
+                  Desarrollador en formación con {{ experience }}+ años de experiencia en el
+                  desarrollo de aplicaciones web y móviles. Apasionado por crear soluciones
+                  eficientes y seguras que impulsen el éxito de los proyectos.
                 </p>
 
                 <div class="profile-stats">
@@ -74,8 +78,10 @@
                 </div>
                 <div class="terminal-line">whoami --current-focus</div>
                 <div class="output">
-                  <span class="text-hack-blue">● Desarrollo de aplicaciones web y móviles</span><br />
-                  <span class="text-hack-yellow">● Aprendiendo tecnologías de vanguardia</span><br />
+                  <span class="text-hack-blue">● Desarrollo de aplicaciones web y móviles</span
+                  ><br />
+                  <span class="text-hack-yellow">● Aprendiendo tecnologías de vanguardia</span
+                  ><br />
                   <span class="text-hack-purple">● Mejorando habilidades en QA y seguridad</span>
                 </div>
                 <div class="terminal-line prompt">
@@ -92,62 +98,83 @@
     <!-- Skills Section -->
     <section class="skills-section">
       <div class="container">
-        <h2 class="section-title text-center">Skills </h2>
-        <div class="skills-grid">
-          <!-- Frontend Skills -->
-          <div class="skill-category">
-            <div class="hack-card">
-              <h3 class="category-title"><q-icon name="web" class="text-hack-blue" /> Frontend</h3>
-              <div class="skills-list">
-                <div v-for="skill in frontendSkills" :key="skill.name" class="skill-item">
-                  <div class="skill-info">
-                    <span class="skill-name">{{ skill.name }}</span>
-                    <span class="skill-level">{{ skill.level }}%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" :style="{ width: skill.level + '%' }"></div>
-                  </div>
-                </div>
+        <h2 class="section-title text-center">Skills</h2>
+
+        <!-- Frontend Skills -->
+        <div class="skill-category">
+          <h3 class="category-title"><q-icon name="web" class="text-hack-blue" /> Frontend</h3>
+          <div class="skills-grid">
+            <div v-for="skill in frontendSkills" :key="skill.name" class="skill-card">
+              <div class="hack-card skill-block">
+                <div class="skill-name">{{ skill.name }}</div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Backend Skills -->
-          <div class="skill-category">
-            <div class="hack-card">
-              <h3 class="category-title">
-                <q-icon name="storage" class="text-hack-green" /> Backend
-              </h3>
-              <div class="skills-list">
-                <div v-for="skill in backendSkills" :key="skill.name" class="skill-item">
-                  <div class="skill-info">
-                    <span class="skill-name">{{ skill.name }}</span>
-                    <span class="skill-level">{{ skill.level }}%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" :style="{ width: skill.level + '%' }"></div>
-                  </div>
-                </div>
+        <!-- Backend Skills -->
+        <div class="skill-category">
+          <h3 class="category-title"><q-icon name="storage" class="text-hack-green" /> Backend</h3>
+          <div class="skills-grid">
+            <div v-for="skill in backendSkills" :key="skill.name" class="skill-card">
+              <div class="hack-card skill-block">
+                <div class="skill-name">{{ skill.name }}</div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Tools & DevOps -->
-          <div class="skill-category">
-            <div class="hack-card">
-              <h3 class="category-title">
-                <q-icon name="build" class="text-hack-yellow" /> Tools & DevOps
-              </h3>
-              <div class="skills-list">
-                <div v-for="skill in toolsSkills" :key="skill.name" class="skill-item">
-                  <div class="skill-info">
-                    <span class="skill-name">{{ skill.name }}</span>
-                    <span class="skill-level">{{ skill.level }}%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" :style="{ width: skill.level + '%' }"></div>
-                  </div>
-                </div>
+        <!-- QA Skills -->
+        <div class="skill-category">
+          <h3 class="category-title">
+            <q-icon name="check_circle" class="text-hack-purple" /> QA & Testing
+          </h3>
+          <div class="skills-grid">
+            <div v-for="skill in QAskills" :key="skill.name" class="skill-card">
+              <div class="hack-card skill-block">
+                <div class="skill-name">{{ skill.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Database Skills -->
+        <div class="skill-category">
+          <h3 class="category-title"><q-icon name="dns" class="text-hack-orange" /> Databases</h3>
+          <div class="skills-grid">
+            <div v-for="skill in DBskills" :key="skill.name" class="skill-card">
+              <div class="hack-card skill-block">
+                <div class="skill-name">{{ skill.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Skills -->
+        <div class="skill-category">
+          <h3 class="category-title">
+            <q-icon name="smartphone" class="text-hack-teal" /> Mobile Development
+          </h3>
+          <div class="skills-grid">
+            <div v-for="skill in MobileSkills" :key="skill.name" class="skill-card">
+              <div class="hack-card skill-block">
+                <div class="skill-name">{{ skill.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Tools & DevOps -->
+        <div class="skill-category">
+          <h3 class="category-title">
+            <q-icon name="build" class="text-hack-yellow" /> Tools & DevOps
+          </h3>
+          <div class="skills-grid">
+            <div v-for="skill in toolsSkills" :key="skill.name" class="skill-card">
+              <div class="hack-card skill-block">
+                <div class="skill-name">{{ skill.name }}</div>
               </div>
             </div>
           </div>
@@ -186,7 +213,7 @@
     <!-- Interests Section -->
     <section class="interests-section">
       <div class="container">
-        <h2 class="section-title text-center">Beyond Code</h2>
+        <h2 class="section-title text-center">Más allá del código</h2>
         <div class="hack-grid cols-4">
           <div v-for="interest in interests" :key="interest.name" class="interest-item">
             <div class="hack-card interest-card">
@@ -203,17 +230,13 @@
     <section class="cta-section">
       <div class="container">
         <div class="hack-card cta-card">
-          <h2 class="cta-title">Let's Build Something Amazing Together</h2>
-          <p class="cta-description">
-            Ready to turn your ideas into reality? Let's collaborate and create something
-            extraordinary.
-          </p>
+          <h2 class="cta-title">Construyamos Algo Increíble Juntos</h2>
           <div class="cta-actions">
             <button class="hack-button primary" @click="$router.push('/contact')">
-              <q-icon name="message" /> Get In Touch
+              <q-icon name="message" /> Contáctame
             </button>
             <button class="hack-button secondary" @click="$router.push('/projects')">
-              <q-icon name="work" /> View Projects
+              <q-icon name="work" /> Ver Proyectos
             </button>
           </div>
         </div>
@@ -234,84 +257,114 @@ const careerTimeline = ref([
   { year: '2024', event: 'Desarrollador Full-Stack en prácticas' },
   { year: '2025', event: 'Actualización de habilidades y conocimientos' },
   { year: '2026', event: 'En proceso...' },
-
 ]);
 
 const frontendSkills = ref([
-  { name: 'Vue.js / Nuxt.js', level: 95 },
-  { name: 'React / Next.js', level: 90 },
-  { name: 'TypeScript', level: 88 },
-  { name: 'HTML5 / CSS3', level: 95 },
-  { name: 'Tailwind CSS', level: 92 },
+  { name: 'Vue.js / Quasar' },
+  { name: 'Angular' },
+  { name: 'TypeScript' },
+  { name: 'HTML5 / CSS3' },
+  { name: 'Flask' },
+  { name: 'JetPack Compose' },
 ]);
 
 const backendSkills = ref([
-  { name: 'Node.js', level: 90 },
-  { name: 'Python', level: 85 },
-  { name: 'PostgreSQL', level: 88 },
-  { name: 'MongoDB', level: 82 },
-  { name: 'REST APIs', level: 95 },
+  { name: 'FastAPI' },
+  { name: '.Net' },
+  { name: 'Express' },
+  { name: 'REST APIs' },
+  { name: 'Azure' },
+  { name: 'AWS' },
 ]);
 
+const QAskills = ref([
+  { name: 'K6' },
+  { name: 'Appium' },
+  { name: 'Nunit' },
+  { name: 'Selenium' },
+  { name: 'Cypress' },
+  { name: 'TestRail' },
+  { name: 'Xray/Jira' },
+]);
+
+const DBskills = ref([
+  { name: 'MySQL' },
+  { name: 'PostgreSQL' },
+  { name: 'MongoDB' },
+  { name: 'SQLite' },
+  { name: 'Firebase' },
+]);
+
+const MobileSkills = ref([
+  { name: 'Kotlin' },
+  { name: 'Fluter' },
+  { name: 'KMP' },
+]);
+
+
+
 const toolsSkills = ref([
-  { name: 'Git / GitHub', level: 95 },
-  { name: 'Docker', level: 85 },
-  { name: 'VS Code', level: 98 },
-  { name: 'Linux', level: 80 },
-  { name: 'AWS', level: 75 },
+  { name: 'Git / GitHub' },
+  { name: 'Docker' },
+  { name: 'Podman' },
+  { name: 'Ubuntu' },
+  { name: 'Postman' },
 ]);
 
 const experiences = ref([
   {
-    title: 'Senior Full-Stack Developer',
-    company: 'Tech Innovations Inc.',
-    period: '2022 - Present',
+    title: 'Desarrollador Web - Prácticas',
+    company: 'Corporación Evly',
+    period: '2024 - 2025 (1 año)',
     description:
-      'Lead development of scalable web applications using modern frameworks. Mentored junior developers and established best practices for the team.',
-    technologies: ['Vue.js', 'Node.js', 'PostgreSQL', 'AWS', 'Docker'],
+      'Implementé funcionalidades backend en .NET Core y PostgreSQL para aplicaciones internas y para la Municipalidad de Comas. Desarrollé componentes frontend con Angular, integrando diseños UX/UI y consumiendo APIs REST. Gestioné control de versiones con Git.',
+    technologies: [
+      'Angular',
+      'Node.js',
+      'PostgreSQL',
+      'AWS',
+      'Express',
+      'Git',
+      '.NET Core',
+      'Azure',
+    ],
   },
   {
-    title: 'Frontend Developer',
-    company: 'Digital Solutions Ltd.',
-    period: '2020 - 2022',
+    title: 'Área de Arquitectura TI - Prácticas',
+    company: 'Aenza',
+    period: '2025 - 2025 (3 meses)',
     description:
-      'Developed responsive user interfaces and improved application performance. Collaborated with UX designers to implement pixel-perfect designs.',
-    technologies: ['React', 'TypeScript', 'Sass', 'Jest', 'Webpack'],
+      'Recopilé y documenté información de los sistemas de la organización para facilitar la gobernanza de TI. Apoyé en la implementación de la metodología TIME para estandarizar procesos y mejorar la eficiencia operativa. Realicé validación de datos y análisis para la toma de decisiones técnicas.',
+    technologies: ['Metodología TIME', 'Excel', 'Sass'],
   },
   {
-    title: 'Junior Developer',
-    company: 'StartUp Ventures',
-    period: '2019 - 2020',
+    title: 'Operador Informático - Voluntariado',
+    company: 'Pronabec',
+    period: '2024 - 2024',
     description:
-      'Built and maintained web applications while learning modern development practices. Contributed to multiple projects and gained valuable experience.',
-    technologies: ['JavaScript', 'HTML', 'CSS', 'MySQL', 'PHP'],
+      'Examen Nacional de Preselección del concurso Beca de Excelencia Académica para Hijos de Docentes, convocatoria 2024.',
+    technologies: ['Microsoft Office', 'QR lector'],
   },
 ]);
 
 const interests = ref([
   {
-    name: 'Open Source',
-    icon: 'code',
-    color: 'text-hack-green',
-    description: 'Contributing to projects that make a difference',
-  },
-  {
     name: 'AI & ML',
     icon: 'psychology',
     color: 'text-hack-blue',
-    description: 'Exploring artificial intelligence applications',
+    description: 'Explorando aplicaciones de inteligencia artificial y Deep learning',
   },
   {
     name: 'Gaming',
     icon: 'sports_esports',
     color: 'text-hack-yellow',
-    description: 'Relaxing with video games and game development',
+    description: 'Relajándome con videojuegos y juegos de estrategia',
   },
   {
-    name: 'Music',
-    icon: 'music_note',
-    color: 'text-hack-purple',
-    description: 'Playing guitar and discovering new artists',
+    name: 'Travel',
+    icon: 'flight_takeoff',
+    color: 'text-hack-green',
+    description: 'Descubriendo nuevos lugares',
   },
 ]);
 </script>
@@ -463,54 +516,44 @@ const interests = ref([
     margin-bottom: 3rem;
   }
 
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+  .skill-category {
+    margin-bottom: 3rem;
 
-    .skill-category {
-      .category-title {
-        color: $hack-white;
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
+    .category-title {
+      color: $hack-white;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-      .skills-list {
-        .skill-item {
-          margin-bottom: 1.2rem;
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
 
-          .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
+      .skill-card {
+        .skill-block {
+          padding: 1.2rem 1rem;
+          text-align: center;
+          transition: all 0.3s ease;
+          cursor: default;
+          min-height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-            .skill-name {
-              color: $hack-white;
-              font-weight: 500;
-            }
-
-            .skill-level {
-              color: $hack-green;
-              font-family: 'JetBrains Mono', monospace;
-              font-weight: 600;
-            }
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 255, 136, 0.2);
+            border-color: $hack-green;
           }
 
-          .skill-bar {
-            height: 8px;
-            background: rgba(48, 54, 61, 0.5);
-            border-radius: 4px;
-            overflow: hidden;
-
-            .skill-progress {
-              height: 100%;
-              background: linear-gradient(90deg, $hack-green, $hack-blue);
-              border-radius: 4px;
-              transition: width 0.8s ease;
-              box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-            }
+          .skill-name {
+            color: $hack-white;
+            font-weight: 500;
+            font-size: 0.95rem;
           }
         }
       }
