@@ -8,8 +8,7 @@
             <q-icon name="code" class="text-hack-green" /> Proyectos.portafolio
           </h1>
           <p class="page-subtitle animate-fade-in">
-            Una muestra de mi trabajo más reciente, desde el concepto hasta el despliegue. Cada proyecto cuenta una historia de
-            innovación y resolución de problemas.
+            Una muestra de mis trabajos.
           </p>
         </div>
       </div>
@@ -295,7 +294,7 @@ interface Project {
 }
 
 // Data
-const selectedCategory = ref('All');
+const selectedCategory = ref('Todos');
 const selectedTech = ref('');
 const showProjectModal = ref(false);
 const selectedProject = ref<Project | null>(null);
