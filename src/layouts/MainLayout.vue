@@ -5,7 +5,7 @@
         <!-- Logo/Brand -->
         <div class="hack-brand" @click="$router.push('/')">
           <q-icon name="terminal" class="brand-icon" />
-          <span class="brand-text">dev@james:~$</span>
+          <span class="brand-text">menfroyt-dev@james:~$</span>
         </div>
 
         <!-- Spacer -->

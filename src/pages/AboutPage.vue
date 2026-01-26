@@ -85,7 +85,7 @@
                   <span class="text-hack-purple">● Mejorando habilidades en QA y seguridad</span>
                 </div>
                 <div class="terminal-line prompt">
-                  <span>james@about:~$ </span>
+                  <span>menfroyt-dev@about:~$ </span>
                   <span class="cursor-blink">|</span>
                 </div>
               </div>

@@ -56,7 +56,7 @@
                   </div>
                 </div>
                 <div class="terminal-line prompt">
-                  <span>james@projects:~$ </span>
+                  <span>menfroyt-dev@projects:~$ </span>
                   <span class="cursor-blink">|</span>
                 </div>
               </div>

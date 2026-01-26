@@ -25,7 +25,7 @@
                 <span class="text-hack-blue">Listo para nuevos desafíos</span>
               </div>
               <div class="terminal-line prompt">
-                <span>james@dev:~$ </span>
+                <span>menfroyt-dev@james:~$ </span>
                 <span class="cursor-blink">|</span>
               </div>
             </div>

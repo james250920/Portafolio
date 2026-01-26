@@ -100,7 +100,7 @@
                   <span class="text-hack-green">● DISPONIBLE</span> - Listo para nuevos proyectos
                 </div>
                 <div class="terminal-line prompt">
-                  <span>james@contact:~$ </span>
+                  <span>menfroyt-dev@contact:~$ </span>
                   <span class="cursor-blink">|</span>
                 </div>
               </div>
@@ -187,7 +187,7 @@
       <div class="container">
         <h2 class="section-title text-center">Contacto Rápido</h2>
         <div class="quick-contact-grid">
-          <div class="quick-contact-item" @click="copyToClipboard('james@dev.com')">
+          <div class="quick-contact-item" @click="copyToClipboard('jamesfrankmendozarios@gmail.com')">
             <q-icon name="content_copy" class="copy-icon" />
             <span>Copiar Email</span>
           </div>
