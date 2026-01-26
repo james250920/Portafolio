@@ -111,7 +111,7 @@
           <div class="contact-form-container">
             <div class="hack-card">
               <h2 class="form-title">Enviar Mensaje</h2>
-              <form @submit.prevent="sendMessage" class="contact-form">
+              <q-form @submit="sendMessage" class="contact-form" ref="contactForm">
                 <div class="form-group">
                   <label for="name" class="form-label">Nombre</label>
                   <q-input
@@ -151,6 +151,7 @@
                     dark
                     class="hack-input"
                     placeholder="Selecciona un asunto"
+                    :rules="[(val) => !!val || 'Debes seleccionar un asunto']"
                   />
                 </div>
 
@@ -170,11 +171,11 @@
                 </div>
 
                 <div class="form-actions">
-                  <button type="submit" class="hack-button primary" :disabled="!isFormValid">
+                  <button type="submit" class="hack-button primary">
                     <q-icon name="send" /> Enviar Mensaje
                   </button>
                 </div>
-              </form>
+              </q-form>
             </div>
           </div>
         </div>
@@ -205,10 +206,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useQuasar } from 'quasar';
+import { sendEmail } from 'src/service/email.service';
+
+type ContactFormRef = {
+  validate: () => Promise<boolean>;
+  resetValidation: () => void;
+};
 
 const $q = useQuasar();
+const contactForm = ref<ContactFormRef | null>(null);
 
 // Form data
 const form = ref({
@@ -227,21 +235,34 @@ const subjectOptions = [
   'Otro',
 ];
 
-// Computed properties
-const isFormValid = computed(() => {
-  return (
-    form.value.name &&
-    form.value.email &&
-    /.+@.+\..+/.test(form.value.email) &&
-    form.value.subject &&
-    form.value.message
-  );
-});
-
 // Methods
-const sendMessage = () => {
-  if (isFormValid.value) {
-    // Simulate sending message
+const sendMessage = async () => {
+  // Validar formulario antes de enviar
+  const valid = await contactForm.value?.validate();
+  if (!valid) return;
+
+  try {
+    $q.loading.show({
+      message: 'Enviando mensaje...',
+    });
+
+    await sendEmail({
+      toEmail: 'jamesfrankmendozarios@gmail.com',
+      toName: 'James Mendoza',
+      subject: form.value.subject,
+      textContent: form.value.message,
+      htmlContent: `
+          <h2>Nuevo mensaje de contacto</h2>
+          <p><strong>De:</strong> ${form.value.name}</p>
+          <p><strong>Email:</strong> ${form.value.email}</p>
+          <p><strong>Asunto:</strong> ${form.value.subject}</p>
+          <hr>
+          <p>${form.value.message.replace(/\n/g, '<br>')}</p>
+        `,
+      senderName: form.value.name,
+      senderEmail: form.value.email,
+    });
+
     $q.notify({
       type: 'positive',
       message: '¡Mensaje enviado exitosamente!',
@@ -256,6 +277,18 @@ const sendMessage = () => {
       subject: '',
       message: '',
     };
+    contactForm.value?.resetValidation();
+  } catch (error) {
+    console.error('Error sending contact message:', error);
+
+    $q.notify({
+      type: 'negative',
+      message: 'Error al enviar el mensaje',
+      caption: 'Por favor, intenta de nuevo más tarde.',
+      icon: 'error',
+    });
+  } finally {
+    $q.loading.hide();
   }
 };
 
