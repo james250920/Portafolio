@@ -18,56 +18,7 @@
     <section class="contact-methods">
       <div class="container">
         <div class="hack-grid cols-3">
-          <!-- Email Contact -->
-          <div class="hack-card contact-method" @click="openEmail">
-            <div class="method-icon">
-              <q-icon name="mail" size="3rem" class="text-hack-green" />
-            </div>
-            <h3>Email</h3>
-            <p class="method-info">jamesfrankmendozarios@gmail.com</p>
-            <p class="method-description">Envíame un email</p>
-            <div class="method-status">
-              <span class="status-dot online"></span>
-              Respuesta en 24h
-            </div>
-          </div>
 
-          <!-- LinkedIn Contact -->
-          <div class="hack-card contact-method" @click="openLinkedIn">
-            <div class="method-icon">
-              <q-icon name="work" size="3rem" class="text-hack-blue" />
-            </div>
-            <h3>LinkedIn</h3>
-            <p class="method-info">@menfroyt-dev</p>
-            <p class="method-description">Networking profesional y oportunidades</p>
-            <div class="method-status">
-              <span class="status-dot online"></span>
-              Activo
-            </div>
-          </div>
-
-          <!-- GitHub Contact -->
-          <div class="hack-card contact-method" @click="openGitHub">
-            <div class="method-icon">
-              <q-icon name="code" size="3rem" class="text-hack-yellow" />
-            </div>
-            <h3>GitHub</h3>
-            <p class="method-info">@james250920</p>
-            <p class="method-description">Revisa mi código y contribuciones</p>
-            <div class="method-status">
-              <span class="status-dot online"></span>
-              Actualizado frecuentemente
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Form Section -->
-    <section class="contact-form-section">
-      <div class="container">
-        <div class="hack-grid cols-2">
-          <!-- Terminal Info -->
           <div class="terminal-info">
             <div class="terminal">
               <div class="terminal-header">
@@ -107,6 +58,41 @@
             </div>
           </div>
 
+          <!-- LinkedIn Contact -->
+          <div class="hack-card contact-method" @click="openLinkedIn">
+            <div class="method-icon">
+              <q-icon name="work" size="3rem" class="text-hack-blue" />
+            </div>
+            <h3>LinkedIn</h3>
+            <p class="method-info">@menfroyt-dev</p>
+            <p class="method-description">Networking profesional y oportunidades</p>
+            <div class="method-status">
+              <span class="status-dot online"></span>
+              Activo
+            </div>
+          </div>
+
+          <!-- GitHub Contact -->
+          <div class="hack-card contact-method" @click="openGitHub">
+            <div class="method-icon">
+              <q-icon name="code" size="3rem" class="text-hack-yellow" />
+            </div>
+            <h3>GitHub</h3>
+            <p class="method-info">@james250920</p>
+            <p class="method-description">Revisa mi código y contribuciones</p>
+            <div class="method-status">
+              <span class="status-dot online"></span>
+              Actualizado frecuentemente
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+      <div class="container">
+        <div class="hack-grid cols-2">
           <!-- Contact Form -->
           <div class="contact-form-container">
             <div class="hack-card">
@@ -181,11 +167,7 @@
               </q-form>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quick Contact Section -->
+          <!-- Quick Contact Section -->
     <section class="quick-contact">
       <div class="container">
         <h2 class="section-title text-center">Contacto Rápido</h2>
@@ -197,10 +179,7 @@
             <q-icon name="content_copy" class="copy-icon" />
             <span>Copiar Email</span>
           </div>
-          <div class="quick-contact-item" @click="openCalendar">
-            <q-icon name="event" class="copy-icon" />
-            <span>Agendar Reunión</span>
-          </div>
+
           <div class="quick-contact-item" @click="downloadCV">
             <q-icon name="download" class="copy-icon" />
             <span>Descargar CV</span>
@@ -208,6 +187,12 @@
         </div>
       </div>
     </section>
+        </div>
+
+      </div>
+    </section>
+
+
   </q-page>
 </template>
 
@@ -236,9 +221,6 @@ const subjectOptions = [
   'Colaboración en Proyecto',
   'Oportunidad Laboral',
   'Trabajo Freelance',
-  'Consultoría Técnica',
-  'Consulta General',
-  'Otro',
 ];
 
 // Lista de palabras prohibidas
@@ -385,9 +367,7 @@ const sendMessage = async () => {
   }
 };
 
-const openEmail = () => {
-  window.open('mailto:jamesfrankmendozarios@gmail.com', '_blank');
-};
+
 
 const openLinkedIn = () => {
   window.open('https://www.linkedin.com/in/menfroyt-dev', '_blank');
@@ -414,14 +394,6 @@ const copyToClipboard = (text: string) => {
       });
     },
   );
-};
-
-const openCalendar = () => {
-  $q.notify({
-    type: 'info',
-    message: '¡Integración de calendario próximamente!',
-    icon: 'event',
-  });
 };
 
 const downloadCV = () => {

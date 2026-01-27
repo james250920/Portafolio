@@ -332,6 +332,7 @@ const toolsSkills = ref([
    { name: 'Azure', icon: 'https://swimburger.net/media/fbqnp2ie/azure.svg' },
   { name: 'AWS', icon: 'https://www.pngall.com/wp-content/uploads/13/AWS-Logo-PNG-File.png' },
   { name: 'Tailwind', icon: 'https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg' },
+   { name: 'n8n', icon: 'https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B' },
 ]);
 
 const experiences = ref([

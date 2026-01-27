@@ -110,7 +110,7 @@
         <h2 class="section-title text-center">Stack</h2>
         <div class="tech-stack">
           <div v-for="tech in techStack" :key="tech.name" class="tech-item">
-            <q-icon :name="tech.icon" size="2rem" :class="tech.color" />
+            <img :src="tech.icon" :alt="tech.name" class="tech-icon" />
             <span>{{ tech.name }}</span>
           </div>
         </div>
@@ -129,14 +129,14 @@ const router = useRouter();
 const name = ref('James Mendoza');
 const title = ref('Junior Full Stack Developer');
 const bio = ref(
-  'Estudiante de Ingeniería en TI enfocado en el desarrollo Web y Mobile, con una mentalidad orientada a la calidad de software (QA) y la seguridad para crear soluciones robustas y eficientes.',
+  'Estudiante de Ingeniería en TI enfocado en el desarrollo de software, con una mentalidad orientada a la calidad de software (QA) y la seguridad para crear soluciones robustas y eficientes.',
 );
 const experience = ref('1');
 const projects = ref('3');
 const technologies = ref('10');
 
 const skills = ref([
-  'Frontend: Blazor, Jetpack Compose, Angular',
+  'Frontend: quasar, Jetpack Compose, Angular',
   'Backend: .Net, FastApi, Express',
   'Mobile: Kotlin, Flutter',
   'QA: K6, Nunit, Appium, Cypress, Selenium',
@@ -145,10 +145,10 @@ const skills = ref([
 ]);
 
 const techStack = ref([
-  { name: 'Quasar Framework', icon: 'code', color: 'text-hack-green' },
-  { name: 'TypeScript', icon: 'integration_instructions', color: 'text-hack-blue' },
-  { name: 'Node.js', icon: 'dns', color: 'text-hack-yellow' },
-  { name: 'Git', icon: 'source', color: 'text-hack-red' },
+  { name: 'Quasar Framework', icon: 'https://cdn.quasar.dev/logo/svg/quasar-logo.svg'},
+  { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6'},
+  { name: 'Node.js', icon: 'https://icon.icepanel.io/Technology/svg/Node.js.svg'},
+  { name: 'Git/GitHub', icon: 'https://cdn.simpleicons.org/github/181717' },
 
 ]);
 
@@ -379,6 +379,12 @@ onMounted(() => {
       &:hover {
         background: rgba(0, 255, 136, 0.1);
         transform: translateY(-4px);
+      }
+
+      .tech-icon {
+        width: 2rem;
+        height: 2rem;
+        object-fit: contain;
       }
 
       span {

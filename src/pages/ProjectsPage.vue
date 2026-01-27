@@ -187,41 +187,6 @@
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="hack-grid cols-4">
-          <div class="stat-card">
-            <div class="hack-card">
-              <q-icon name="code" size="3rem" class="text-hack-green" />
-              <h3>{{ totalProjects }}</h3>
-              <p>Proyectos Totales</p>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="hack-card">
-              <q-icon name="language" size="3rem" class="text-hack-blue" />
-              <h3>{{ totalTechnologies }}</h3>
-              <p>Tecnologías Utilizadas</p>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="hack-card">
-              <q-icon name="timeline" size="3rem" class="text-hack-yellow" />
-              <h3>{{ completedProjects }}</h3>
-              <p>Completados</p>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="hack-card">
-              <q-icon name="trending_up" size="3rem" class="text-hack-purple" />
-              <h3>{{ activeProjects }}</h3>
-              <p>En Progreso</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Project Modal -->
     <q-dialog v-model="showProjectModal" class="project-modal">
@@ -416,17 +381,7 @@ const featuredProject = computed(() => {
   return projects.value.find((project) => project.id === 1);
 });
 
-const totalProjects = computed(() => projects.value.length);
-const totalTechnologies = computed(() => {
-  const allTech = projects.value.flatMap((project) => project.technologies);
-  return [...new Set(allTech)].length;
-});
-const completedProjects = computed(
-  () => projects.value.filter((project) => project.status === 'completed').length,
-);
-const activeProjects = computed(
-  () => projects.value.filter((project) => project.status === 'in-progress').length,
-);
+
 
 // Methods
 const openProjectModal = (project: Project) => {
