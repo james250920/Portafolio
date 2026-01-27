@@ -106,6 +106,7 @@
           <div class="skills-grid">
             <div v-for="skill in frontendSkills" :key="skill.name" class="skill-card">
               <div class="hack-card skill-block">
+                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
                 <div class="skill-name">{{ skill.name }}</div>
               </div>
             </div>
@@ -118,6 +119,7 @@
           <div class="skills-grid">
             <div v-for="skill in backendSkills" :key="skill.name" class="skill-card">
               <div class="hack-card skill-block">
+                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
                 <div class="skill-name">{{ skill.name }}</div>
               </div>
             </div>
@@ -132,6 +134,7 @@
           <div class="skills-grid">
             <div v-for="skill in QAskills" :key="skill.name" class="skill-card">
               <div class="hack-card skill-block">
+                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
                 <div class="skill-name">{{ skill.name }}</div>
               </div>
             </div>
@@ -144,6 +147,7 @@
           <div class="skills-grid">
             <div v-for="skill in DBskills" :key="skill.name" class="skill-card">
               <div class="hack-card skill-block">
+                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
                 <div class="skill-name">{{ skill.name }}</div>
               </div>
             </div>
@@ -158,13 +162,12 @@
           <div class="skills-grid">
             <div v-for="skill in MobileSkills" :key="skill.name" class="skill-card">
               <div class="hack-card skill-block">
+                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
                 <div class="skill-name">{{ skill.name }}</div>
               </div>
             </div>
           </div>
         </div>
-
-
 
         <!-- Tools & DevOps -->
         <div class="skill-category">
@@ -174,6 +177,7 @@
           <div class="skills-grid">
             <div v-for="skill in toolsSkills" :key="skill.name" class="skill-card">
               <div class="hack-card skill-block">
+                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
                 <div class="skill-name">{{ skill.name }}</div>
               </div>
             </div>
@@ -214,7 +218,7 @@
     <section class="interests-section">
       <div class="container">
         <h2 class="section-title text-center">Más allá del código</h2>
-        <div class="hack-grid cols-4">
+        <div class="interests-grid">
           <div v-for="interest in interests" :key="interest.name" class="interest-item">
             <div class="hack-card interest-card">
               <q-icon :name="interest.icon" size="3rem" :class="interest.color" />
@@ -260,55 +264,74 @@ const careerTimeline = ref([
 ]);
 
 const frontendSkills = ref([
-  { name: 'Vue.js / Quasar' },
-  { name: 'Angular' },
-  { name: 'TypeScript' },
-  { name: 'HTML5 / CSS3' },
-  { name: 'Flask' },
-  { name: 'JetPack Compose' },
+  { name: 'Vue.js / Quasar', icon: 'https://cdn.quasar.dev/logo/svg/quasar-logo.svg' },
+  { name: 'Angular', icon: 'https://cdn.simpleicons.org/angular/DD0031' },
+  { name: 'HTML5', icon: 'https://cdn.simpleicons.org/html5/E34F26' },
+  {
+    name: 'CSS',
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Official_CSS_Logo.svg',
+  },
+  { name: 'Flask', icon: 'https://cdn.simpleicons.org/flask/000000' },
+  { name: 'JetPack Compose', icon: 'https://cdn.simpleicons.org/jetpackcompose/4285F4' },
 ]);
 
 const backendSkills = ref([
-  { name: 'FastAPI' },
-  { name: '.Net' },
-  { name: 'Express' },
-  { name: 'REST APIs' },
-  { name: 'Azure' },
-  { name: 'AWS' },
+  { name: 'FastAPI', icon: 'https://cdn.simpleicons.org/fastapi/009688' },
+  {
+    name: '.Net',
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/960px-.NET_Core_Logo.svg.png',
+  },
+  { name: 'Express', icon: 'https://cdn.simpleicons.org/express/000000' },
+
+  {
+    name: 'Python',
+    icon: 'https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png',
+  },
+  {
+    name: 'C#',
+    icon: 'https://images.icon-icons.com/2415/PNG/512/csharp_plain_logo_icon_146577.png',
+  },
+  { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6' },
 ]);
 
 const QAskills = ref([
-  { name: 'K6' },
-  { name: 'Appium' },
-  { name: 'Nunit' },
-  { name: 'Selenium' },
-  { name: 'Cypress' },
-  { name: 'TestRail' },
-  { name: 'Xray/Jira' },
+  { name: 'K6', icon: 'https://cdn.simpleicons.org/k6/7D64FF' },
+  { name: 'Appium', icon: 'https://cdn.simpleicons.org/appium/662D91' },
+  {
+    name: 'Nunit',
+    icon: 'https://www.automatetheplanet.com/wp-content/uploads/2023/04/nUnit-logo.png',
+  },
+  { name: 'Selenium', icon: 'https://cdn.simpleicons.org/selenium/43B02A' },
+  { name: 'Cypress', icon: 'https://cdn.worldvectorlogo.com/logos/cypress-1.svg' },
+  { name: 'TestRail', icon: 'https://cdn.simpleicons.org/testrail/65C179' },
+  {
+    name: 'Xray/Jira',
+    icon: 'https://cdn.prod.website-files.com/659bd602c8644fb17135bbe7/659bd602c8644fb17135bf7d_1535446267509.jpeg',
+  },
 ]);
 
 const DBskills = ref([
-  { name: 'MySQL' },
-  { name: 'PostgreSQL' },
-  { name: 'MongoDB' },
-  { name: 'SQLite' },
-  { name: 'Firebase' },
+  { name: 'MySQL', icon: 'https://cdn.simpleicons.org/mysql/4479A1' },
+  { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/4169E1' },
+  { name: 'MongoDB', icon: 'https://cdn.simpleicons.org/mongodb/47A248' },
+  { name: 'SQLite', icon: 'https://cdn.simpleicons.org/sqlite/003B57' },
+  { name: 'Firebase', icon: 'https://cdn.simpleicons.org/firebase/FFCA28' },
 ]);
 
 const MobileSkills = ref([
-  { name: 'Kotlin' },
-  { name: 'Flutter' },
-  { name: 'KMP' },
+  { name: 'Kotlin', icon: 'https://cdn.simpleicons.org/kotlin/7F52FF' },
+  { name: 'Flutter', icon: 'https://cdn.simpleicons.org/flutter/02569B' },
 ]);
 
-
-
 const toolsSkills = ref([
-  { name: 'Git / GitHub' },
-  { name: 'Docker' },
-  { name: 'Podman' },
-  { name: 'Ubuntu' },
-  { name: 'Postman' },
+  { name: 'Git / GitHub', icon: 'https://cdn.simpleicons.org/github/181717' },
+  { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker/2496ED' },
+  { name: 'Podman', icon: 'https://cdn.simpleicons.org/podman/892CA0' },
+  { name: 'Ubuntu', icon: 'https://cdn.simpleicons.org/ubuntu/E95420' },
+  { name: 'Postman', icon: 'https://cdn.simpleicons.org/postman/FF6C37' },
+   { name: 'Azure', icon: 'https://swimburger.net/media/fbqnp2ie/azure.svg' },
+  { name: 'AWS', icon: 'https://www.pngall.com/wp-content/uploads/13/AWS-Logo-PNG-File.png' },
+  { name: 'Tailwind', icon: 'https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg' },
 ]);
 
 const experiences = ref([
@@ -539,15 +562,28 @@ const interests = ref([
           text-align: center;
           transition: all 0.3s ease;
           cursor: default;
-          min-height: 60px;
+          min-height: 100px;
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
+          gap: 0.8rem;
 
           &:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 255, 136, 0.2);
             border-color: $hack-green;
+
+            .skill-icon {
+              transform: scale(1.1);
+            }
+          }
+
+          .skill-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            transition: transform 0.3s ease;
+            filter: brightness(1);
           }
 
           .skill-name {
@@ -665,29 +701,51 @@ const interests = ref([
     margin-bottom: 3rem;
   }
 
-  .interest-card {
-    text-align: center;
-    transition: all 0.3s ease;
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
-    &:hover {
-      transform: translateY(-8px);
-      border-color: $hack-green;
-      box-shadow: 0 12px 40px rgba(0, 255, 136, 0.15);
-    }
+  .interest-item {
+    .interest-card {
+      text-align: center;
+      transition: all 0.3s ease;
+      padding: 2rem 1.5rem;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-    .q-icon {
-      margin-bottom: 1rem;
-    }
+      &:hover {
+        transform: translateY(-8px);
+        border-color: $hack-green;
+        box-shadow: 0 12px 40px rgba(0, 255, 136, 0.15);
 
-    h4 {
-      color: $hack-white;
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
+        .q-icon {
+          transform: scale(1.1);
+        }
+      }
 
-    p {
-      color: #c9d1d9;
-      font-size: 0.9rem;
+      .q-icon {
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+      }
+
+      h4 {
+        color: $hack-white;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      p {
+        color: #c9d1d9;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
     }
   }
 }

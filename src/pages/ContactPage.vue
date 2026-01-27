@@ -165,7 +165,10 @@
                     dark
                     class="hack-input"
                     placeholder="Cuéntame sobre tu proyecto..."
-                    :rules="[(val) => !!val || 'El mensaje es requerido']"
+                    :rules="[
+                      (val) => !!val || 'El mensaje es requerido',
+                      (val) => validateForbiddenWords(val),
+                    ]"
                     rows="5"
                   />
                 </div>
@@ -238,6 +241,55 @@ const subjectOptions = [
   'Otro',
 ];
 
+// Lista de palabras prohibidas
+const forbiddenWords = [
+  'idiota',
+  'imbecil',
+  'estupido',
+  'tonto',
+  'pendejo',
+  'mierda',
+  'puto',
+  'puta',
+  'carajo',
+  'joder',
+  'maldito',
+  'bastardo',
+  'cabron',
+  'hijo de puta',
+  'hdp',
+  'gilipollas',
+  'boludo',
+  'pelotudo',
+  'estúpido',
+  'imbécil',
+  'cabrón',
+  'hijo de perra',
+];
+
+// Función para validar palabras prohibidas
+const validateForbiddenWords = (text: string): boolean | string => {
+  if (!text) return true;
+
+  const normalizedText = text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, ''); // Elimina acentos
+
+  for (const word of forbiddenWords) {
+    const normalizedWord = word
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+
+    if (normalizedText.includes(normalizedWord)) {
+      return 'Por favor, mantén un lenguaje respetuoso y profesional';
+    }
+  }
+
+  return true;
+};
+
 // Methods
 const sendMessage = async () => {
   // Validar formulario antes de enviar
@@ -251,12 +303,12 @@ const sendMessage = async () => {
 
     await sendEmail({
       sender: {
-        email:"jamesfrankmendozarios@gmail.com",
-        name:"Portafolio" ,
+        email: 'jamesfrankmendozarios@gmail.com',
+        name: 'Portafolio',
       },
       to: [
         {
-          email: "jamesfrankmendozarios@gmail.com",
+          email: 'jamesfrankmendozarios@gmail.com',
           name: form.value.name,
         },
       ],
