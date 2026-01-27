@@ -187,7 +187,10 @@
       <div class="container">
         <h2 class="section-title text-center">Contacto Rápido</h2>
         <div class="quick-contact-grid">
-          <div class="quick-contact-item" @click="copyToClipboard('jamesfrankmendozarios@gmail.com')">
+          <div
+            class="quick-contact-item"
+            @click="copyToClipboard('jamesfrankmendozarios@gmail.com')"
+          >
             <q-icon name="content_copy" class="copy-icon" />
             <span>Copiar Email</span>
           </div>
@@ -247,27 +250,65 @@ const sendMessage = async () => {
     });
 
     await sendEmail({
-      toEmail: 'jamesfrankmendozarios@gmail.com',
-      toName: 'James Mendoza',
+      sender: {
+        email:"jamesfrankmendozarios@gmail.com",
+        name:"Portafolio" ,
+      },
+      to: [
+        {
+          email: "jamesfrankmendozarios@gmail.com",
+          name: form.value.name,
+        },
+      ],
       subject: form.value.subject,
-      textContent: form.value.message,
       htmlContent: `
-          <h2>Nuevo mensaje de contacto</h2>
-          <p><strong>De:</strong> ${form.value.name}</p>
-          <p><strong>Email:</strong> ${form.value.email}</p>
-          <p><strong>Asunto:</strong> ${form.value.subject}</p>
-          <hr>
-          <p>${form.value.message.replace(/\n/g, '<br>')}</p>
+          <div style="font-family: Arial, Helvetica, sans-serif; color: #333; line-height: 1.6;">
+  <h2 style="color: #2c3e50; border-bottom: 2px solid #eaeaea; padding-bottom: 8px;">
+    📩 Nuevo mensaje de contacto
+  </h2>
+
+  <table width="100%" cellpadding="6" cellspacing="0" style="border-collapse: collapse; margin-top: 10px;">
+    <tr>
+      <td style="font-weight: bold; width: 90px;">De:</td>
+      <td>${form.value.name}</td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold;">Email:</td>
+      <td>
+        <a href="mailto:${form.value.email}" style="color: #1a73e8; text-decoration: none;">
+          ${form.value.email}
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold;">Asunto:</td>
+      <td>${form.value.subject}</td>
+    </tr>
+  </table>
+
+  <hr style="border: none; border-top: 1px solid #eaeaea; margin: 20px 0;">
+
+  <h3 style="margin-bottom: 8px; color: #2c3e50;">Mensaje</h3>
+
+  <div style="background-color: #f9f9f9; padding: 12px; border-radius: 6px;">
+    ${form.value.message.replace(/\n/g, '<br>')}
+  </div>
+
+  <p style="margin-top: 20px; font-size: 12px; color: #777;">
+    Este mensaje fue enviado desde el formulario de contacto del sitio web.
+  </p>
+</div>
+
         `,
-      senderName: form.value.name,
-      senderEmail: form.value.email,
+      textContent: form.value.message,
     });
 
     $q.notify({
       type: 'positive',
       message: '¡Mensaje enviado exitosamente!',
       caption: 'Te responderé pronto.',
-      icon: 'send',
+      icon: 'mail',
+      color: 'green',
     });
 
     // Reset form

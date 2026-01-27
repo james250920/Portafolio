@@ -1,9 +1,12 @@
+export interface EmailContact {
+  email: string;
+  name: string;
+}
+
 export interface sendEmailParams {
-  toEmail: string;
-  toName: string;
+  sender: EmailContact;
+  to: EmailContact[];
   subject: string;
-  textContent: string;
   htmlContent: string;
-  senderName: string;
-  senderEmail: string;
+  textContent?: string;
 }
