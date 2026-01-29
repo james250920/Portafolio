@@ -20,7 +20,7 @@
             @click="scrollToSection('home')"
           >
             <q-icon name="home" class="q-mr-xs" />
-            home
+            <span class="nav-text">home</span>
           </q-btn>
           <q-btn
             flat
@@ -29,7 +29,7 @@
             @click="scrollToSection('about')"
           >
             <q-icon name="person" class="q-mr-xs" />
-            Sobre mí
+            <span class="nav-text">Sobre mí</span>
           </q-btn>
           <q-btn
             flat
@@ -38,7 +38,7 @@
             @click="scrollToSection('projects')"
           >
             <q-icon name="code" class="q-mr-xs" />
-            proyectos
+            <span class="nav-text">proyectos</span>
           </q-btn>
           <q-btn
             flat
@@ -47,7 +47,7 @@
             @click="scrollToSection('education')"
           >
             <q-icon name="school" class="q-mr-xs" />
-            educación
+            <span class="nav-text">educación</span>
           </q-btn>
           <q-btn
             flat
@@ -56,7 +56,7 @@
             @click="scrollToSection('contact')"
           >
             <q-icon name="mail" class="q-mr-xs" />
-            contacto
+            <span class="nav-text">contacto</span>
           </q-btn>
         </div>
       </q-toolbar>
@@ -209,20 +209,31 @@ onUnmounted(() => {
 // Responsive
 @media (max-width: 768px) {
   .hack-toolbar {
-    padding: 0 1rem;
+    padding: 0 0.5rem;
   }
 
-  .hack-nav {
-    gap: 0.25rem;
-
-    .nav-btn {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.8rem;
+  .hack-brand {
+    .brand-text {
+      display: none;
     }
   }
 
-  .brand-text {
-    display: none;
+  .hack-nav {
+    gap: 0.15rem;
+
+    .nav-btn {
+      padding: 0.5rem;
+      min-width: auto;
+
+      .q-icon {
+        margin: 0 !important;
+        font-size: 1.2rem;
+      }
+
+      .nav-text {
+        display: none;
+      }
+    }
   }
 }
 </style>
