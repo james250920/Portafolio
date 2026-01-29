@@ -38,41 +38,13 @@
             </div>
           </div>
 
-          <!-- Profile Card -->
+          <!-- Profile Image -->
           <div class="profile-section">
-            <div class="hack-card profile-card">
-              <div class="avatar-container">
-                <div class="avatar">
-                  <q-icon name="person" size="4rem" class="text-hack-green" />
-                </div>
-                <div class="status-indicator">
-                  <div class="status-dot"></div>
-                  <span>Disponible</span>
-                </div>
-              </div>
-
-              <h1 class="name">James Mendoza</h1>
-              <h2 class="title">Junior Full Stack Developer</h2>
-
-              <p class="bio">
-                Estudiante de Ingeniería en TI enfocado en el desarrollo de software, con una
-                mentalidad orientada a la calidad de software (QA) y la seguridad para crear
-                soluciones robustas y eficientes.
-              </p>
-
-              <div class="stats-grid">
-                <div class="stat-item">
-                  <div class="stat-number text-hack-green">1+</div>
-                  <div class="stat-label">Años</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number text-hack-blue">5+</div>
-                  <div class="stat-label">Proyectos</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number text-hack-yellow">15+</div>
-                  <div class="stat-label">Tecnologías</div>
-                </div>
+            <div class="profile-image-container">
+              <img :src="ImgURL" alt="James Mendoza" class="profile-image" />
+              <div class="image-overlay">
+                <h1 class="name">{{ name }}</h1>
+                <h2 class="title">{{ title }}</h2>
               </div>
             </div>
           </div>
@@ -122,6 +94,10 @@ import AboutPage from './AboutPage.vue';
 import ProjectsPage from './ProjectsPage.vue';
 import EducationPage from './EducationPage.vue';
 import ContactPage from './ContactPage.vue';
+
+const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/matrix.jpeg`;
+const name = ref('James Mendoza');
+const title = ref('Junior Full Stack Developer');
 
 const techStack = ref([
   { name: 'Quasar', icon: 'https://cdn.quasar.dev/logo/svg/quasar-logo.svg' },
