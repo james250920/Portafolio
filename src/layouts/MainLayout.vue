@@ -43,6 +43,15 @@
           <q-btn
             flat
             class="nav-btn"
+            :class="{ active: $route.path === '/education' }"
+            @click="$router.push('/education')"
+          >
+            <q-icon name="school" class="q-mr-xs" />
+            educación
+          </q-btn>
+          <q-btn
+            flat
+            class="nav-btn"
             :class="{ active: $route.path === '/contact' }"
             @click="$router.push('/contact')"
           >
