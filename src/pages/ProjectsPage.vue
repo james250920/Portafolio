@@ -173,6 +173,8 @@ const techOptions = ref([
   '.Net',
 ]);
 
+const IMG_BASE_URL = import.meta.env.VITE_IMG_URL;
+
 const projects = ref<Project[]>([
   {
     id: 1,
@@ -183,8 +185,8 @@ const projects = ref<Project[]>([
       'Una plataforma de comercio electrónico integral construida con tecnologías modernas. Las características incluyen autenticación de usuarios, catálogo de productos, carrito de compras, integración de pagos, gestión de pedidos y panel de administración.',
     category: ['Web', 'Móvil'],
     technologies: ['Angular', 'Node.js', 'PostgreSQL', 'TypeScript', 'Docker', 'Flutter', 'Firebase'],
-    image: '/src/assets/otro.png',
-    status: 'completed',
+    image: `https://${IMG_BASE_URL}/imagenes/img/logo.jpg`,
+    status: 'in-progress',
     liveUrl: '',
     githubUrl: '',
     features: [
@@ -205,7 +207,7 @@ const projects = ref<Project[]>([
 
     category: ['Móvil'],
     technologies: ['JetPack Compose', 'Kotlin', 'SQLite', 'Firebase'],
-    image: '/src/assets/pngwing 2.png',
+    image: `https://${IMG_BASE_URL}/imagenes/img/studyoso.png`,
     status: 'completed',
     liveUrl: '',
     githubUrl: '',
@@ -220,7 +222,7 @@ const projects = ref<Project[]>([
       'Aplicación móvil para organización de herramientas y recursos de estudio.',
     category: ['Móvil'],
     technologies: ['JetPack Compose', 'Kotlin', 'SQLite', 'Firebase'],
-    image: '/src/assets/otro.png',
+    image: `https://${IMG_BASE_URL}/imagenes/img/Impluso.png`,
     status: 'completed',
     githubUrl: '',
   },
@@ -230,7 +232,7 @@ const projects = ref<Project[]>([
     description: 'Aplicación móvil para el seguimiento de denuncias ciudadanas.',
     category: ['Móvil'],
     technologies: ['Flutter', 'Firebase', 'PostgreSQL'],
-    image: '/src/assets/pngwing 2.png',
+    image: `https://${IMG_BASE_URL}/imagenes/img/logo.jpg`,
     status: 'in-progress',
   },
   {
@@ -239,7 +241,7 @@ const projects = ref<Project[]>([
     description: 'Aplicación web educativa para aprendizaje interactivo.',
     category: ['Web'],
     technologies: ['React', 'PostgreSQL', 'TypeScript', 'SCSS', '.Net'],
-    image: '/src/assets/otro.png',
+    image: `https://${IMG_BASE_URL}/imagenes/img/aprendePE.png`,
     status: 'completed',
     liveUrl: 'https://james250920.github.io/EnsenaPe/',
     githubUrl: 'https://github.com/james250920/EnsenaPe',
