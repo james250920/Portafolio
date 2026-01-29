@@ -492,7 +492,7 @@ section {
 
     .hack-grid {
       grid-template-columns: 1fr !important;
-      gap: 3rem;
+      gap: 2rem;
     }
   }
 
@@ -500,20 +500,107 @@ section {
     padding: 0 1rem;
   }
 
-  .profile-image-container {
-    .profile-image {
-      min-height: 300px !important;
+  .terminal {
+    .terminal-title {
+      font-size: 0.7rem;
     }
 
-    .image-overlay {
-      padding: 1.5rem !important;
-
-      .name {
-        font-size: 1.8rem !important;
+    .terminal-content {
+      .terminal-line {
+        font-size: 0.9rem;
       }
 
-      .title {
-        font-size: 1rem !important;
+      .output {
+        font-size: 0.85rem;
+        margin-left: 1rem;
+
+        .skill-line {
+          font-size: 0.8rem;
+          margin: 0.3rem 0;
+        }
+      }
+
+      .prompt {
+        font-size: 0.85rem;
+        margin-top: 1.5rem;
+      }
+    }
+  }
+
+  .profile-section {
+    .profile-image-container {
+      .profile-image {
+        min-height: 350px !important;
+      }
+
+      .status-indicator {
+        bottom: 15px;
+        right: 15px;
+        padding: 0.4rem 0.8rem;
+
+        .status-dot {
+          width: 8px;
+          height: 8px;
+        }
+
+        .status-text {
+          font-size: 0.75rem;
+        }
+      }
+
+      .image-overlay {
+        padding: 1.5rem 1.2rem !important;
+
+        .name {
+          font-size: 1.6rem !important;
+          margin-bottom: 0.3rem;
+        }
+
+        .title {
+          font-size: 1rem !important;
+        }
+      }
+    }
+  }
+
+  .skills-preview {
+    padding: 3rem 0;
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .tech-stack {
+      gap: 1rem;
+
+      .tech-item {
+        padding: 1rem;
+        min-width: 80px;
+
+        .tech-icon {
+          width: 2.2rem;
+          height: 2.2rem;
+        }
+
+        span {
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.8rem;
+
+    .stat-item {
+      .stat-number {
+        font-size: 1.5rem;
+      }
+
+      .stat-label {
+        font-size: 0.75rem;
       }
     }
   }

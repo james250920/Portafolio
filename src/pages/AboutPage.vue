@@ -835,7 +835,16 @@ const interests = ref([
     padding: 2rem 0 1rem;
 
     .page-title {
-      font-size: 2.5rem;
+      font-size: 2rem;
+
+      .q-icon {
+        font-size: 1.8rem;
+      }
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      padding: 0 0.5rem;
     }
   }
 
@@ -843,35 +852,176 @@ const interests = ref([
     padding: 0 1rem;
   }
 
-  .profile-stats {
-    flex-direction: column;
-    gap: 1rem !important;
-  }
+  .profile-section {
+    .profile-card {
+      .profile-avatar {
+        .avatar-container {
+          .avatar-image {
+            width: 10rem;
+            height: 10rem;
+          }
+        }
+      }
 
-  .experience-item {
-    flex-direction: column;
-    gap: 1rem !important;
+      .profile-name {
+        font-size: 2rem;
+      }
 
-    .experience-marker {
-      flex-direction: row;
-      margin-top: 0 !important;
+      .profile-title {
+        font-size: 1.2rem;
+      }
 
-      .marker-line {
-        width: 50px !important;
-        height: 2px !important;
-        margin-top: 0 !important;
-        margin-left: 0.5rem;
+      .profile-bio {
+        font-size: 1rem;
+      }
+
+      .profile-stats {
+        flex-direction: row;
+        gap: 1.5rem !important;
+
+        .stat-item {
+          .stat-number {
+            font-size: 1.5rem;
+          }
+
+          .stat-label {
+            font-size: 0.8rem;
+          }
+        }
       }
     }
   }
 
-  .cta-actions {
-    flex-direction: column;
-    align-items: center;
+  .skills-section {
+    .section-title {
+      font-size: 2rem;
+    }
 
-    .hack-button {
-      width: 100%;
-      max-width: 300px;
+    .skill-category {
+      .category-title {
+        font-size: 1.5rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.8rem;
+
+        .skill-card {
+          .skill-block {
+            padding: 1rem 0.8rem;
+            min-height: 80px;
+
+            .skill-icon {
+              width: 2rem;
+              height: 2rem;
+            }
+
+            .skill-name {
+              font-size: 0.85rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .experience-section {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .experience-timeline {
+      .experience-item {
+        flex-direction: column;
+        gap: 1rem !important;
+
+        .experience-marker {
+          flex-direction: row;
+          margin-top: 0 !important;
+
+          .marker-line {
+            width: 50px !important;
+            height: 2px !important;
+            margin-top: 0 !important;
+            margin-left: 0.5rem;
+          }
+        }
+
+        .experience-card {
+          .experience-header {
+            .experience-title {
+              font-size: 1.3rem;
+            }
+
+            .experience-company {
+              font-size: 1rem;
+            }
+
+            .experience-period {
+              font-size: 0.85rem;
+            }
+          }
+
+          .experience-description {
+            font-size: 0.95rem;
+          }
+
+          .experience-tech {
+            .tech-tag {
+              font-size: 0.75rem;
+              padding: 0.2rem 0.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .interests-section {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .interests-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .interest-item {
+      .interest-card {
+        padding: 1.5rem 1rem;
+        min-height: 150px;
+
+        .q-icon {
+          font-size: 2.5rem;
+        }
+
+        h4 {
+          font-size: 1.1rem;
+        }
+
+        p {
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+
+  .cta-section {
+    .cta-card {
+      .cta-title {
+        font-size: 1.8rem;
+      }
+
+      .cta-actions {
+        flex-direction: column;
+        align-items: center;
+
+        .hack-button {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
     }
   }
 }

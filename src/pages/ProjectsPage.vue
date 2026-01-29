@@ -781,7 +781,16 @@ onMounted(() => {
     padding: 2rem 0 1rem;
 
     .page-title {
-      font-size: 2.5rem;
+      font-size: 2rem;
+
+      .q-icon {
+        font-size: 1.8rem;
+      }
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      padding: 0 0.5rem;
     }
   }
 
@@ -789,23 +798,112 @@ onMounted(() => {
     padding: 0 1rem;
   }
 
-  .projects-grid {
-    max-width: 100%;
+  .filter-section {
+    padding: 1.5rem 0;
+
+    .terminal-filter {
+      .terminal-title {
+        font-size: 0.7rem;
+      }
+
+      .filter-options {
+        justify-content: center;
+        gap: 0.4rem;
+
+        .filter-btn {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.85rem;
+        }
+      }
+
+      .tech-filter {
+        max-width: 100%;
+
+        .tech-select {
+          font-size: 0.9rem;
+        }
+      }
+    }
   }
 
-  .project-card {
-    flex-direction: column !important;
-    min-height: auto;
+  .projects-grid-section {
+    padding: 2rem 0;
 
-    .project-image {
-      width: 100% !important;
-      min-width: auto;
-      height: 200px;
-      border-radius: 8px 8px 0 0 !important;
+    .projects-grid {
+      max-width: 100%;
+      gap: 1.5rem;
     }
 
-    .project-info {
-      padding: 1.5rem !important;
+    .project-card {
+      flex-direction: column !important;
+      min-height: auto;
+
+      .project-image {
+        width: 100% !important;
+        min-width: auto;
+        height: 180px;
+        border-radius: 8px 8px 0 0 !important;
+
+        img {
+          height: 100%;
+        }
+      }
+
+      .project-info {
+        padding: 1.2rem !important;
+
+        .project-header {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: flex-start;
+
+          .project-title {
+            font-size: 1.3rem;
+          }
+
+          .project-status {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+          }
+        }
+
+        .project-description {
+          font-size: 0.9rem;
+        }
+
+        .project-tech {
+          flex-wrap: wrap;
+          gap: 0.4rem;
+
+          .tech-tag {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.6rem;
+          }
+        }
+
+        .project-actions {
+          flex-direction: column;
+          gap: 0.8rem;
+
+          .action-btn {
+            width: 100%;
+            justify-content: center;
+            font-size: 0.9rem;
+            padding: 0.6rem 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .load-more-section {
+    text-align: center;
+    margin-top: 2rem;
+
+    .hack-button {
+      width: 100%;
+      max-width: 300px;
+      font-size: 0.95rem;
     }
   }
 
@@ -816,18 +914,6 @@ onMounted(() => {
       .hack-button {
         width: 100%;
       }
-    }
-  }
-
-  .filter-options {
-    justify-content: center;
-  }
-
-  .project-actions {
-    flex-direction: column;
-
-    .action-btn {
-      justify-content: center;
     }
   }
 }

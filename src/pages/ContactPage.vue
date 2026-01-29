@@ -18,7 +18,6 @@
     <section class="contact-methods">
       <div class="container">
         <div class="hack-grid cols-3">
-
           <div class="terminal-info">
             <div class="terminal">
               <div class="terminal-header">
@@ -168,31 +167,28 @@
             </div>
           </div>
           <!-- Quick Contact Section -->
-    <section class="quick-contact">
-      <div class="container">
-        <h2 class="section-title text-center">Contacto Rápido</h2>
-        <div class="quick-contact-grid">
-          <div
-            class="quick-contact-item"
-            @click="copyToClipboard('jamesfrankmendozarios@gmail.com')"
-          >
-            <q-icon name="content_copy" class="copy-icon" />
-            <span>Copiar Email</span>
-          </div>
+          <section class="quick-contact">
+            <div class="container">
+              <h2 class="section-title text-center">Contacto Rápido</h2>
+              <div class="quick-contact-grid">
+                <div
+                  class="quick-contact-item"
+                  @click="copyToClipboard('jamesfrankmendozarios@gmail.com')"
+                >
+                  <q-icon name="content_copy" class="copy-icon" />
+                  <span>Copiar Email</span>
+                </div>
 
-          <div class="quick-contact-item" @click="downloadCV">
-            <q-icon name="download" class="copy-icon" />
-            <span>Descargar CV</span>
-          </div>
+                <div class="quick-contact-item" @click="downloadCV">
+                  <q-icon name="download" class="copy-icon" />
+                  <span>Descargar CV</span>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>
-        </div>
-
-      </div>
-    </section>
-
-
   </q-page>
 </template>
 
@@ -217,11 +213,7 @@ const form = ref({
   message: '',
 });
 
-const subjectOptions = [
-  'Colaboración en Proyecto',
-  'Oportunidad Laboral',
-  'Trabajo Freelance',
-];
+const subjectOptions = ['Colaboración en Proyecto', 'Oportunidad Laboral', 'Trabajo Freelance'];
 
 // Lista de palabras prohibidas
 const forbiddenWords = [
@@ -366,8 +358,6 @@ const sendMessage = async () => {
     $q.loading.hide();
   }
 };
-
-
 
 const openLinkedIn = () => {
   window.open('https://www.linkedin.com/in/menfroyt-dev', '_blank');
@@ -639,7 +629,16 @@ const downloadCV = () => {
     padding: 2rem 0 1rem;
 
     .page-title {
-      font-size: 2.5rem;
+      font-size: 2rem;
+
+      .q-icon {
+        font-size: 1.8rem;
+      }
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      padding: 0 0.5rem;
     }
   }
 
@@ -647,14 +646,79 @@ const downloadCV = () => {
     padding: 0 1rem;
   }
 
-  .quick-contact-grid {
-    flex-direction: column;
-    align-items: center;
+  .contact-methods {
+    .hack-grid {
+      grid-template-columns: 1fr !important;
+      gap: 1.5rem;
+    }
 
-    .quick-contact-item {
-      width: 100%;
-      max-width: 300px;
-      justify-content: center;
+    .terminal-info {
+      order: -1;
+    }
+
+    .contact-method {
+      .method-icon {
+        .q-icon {
+          font-size: 2.5rem;
+        }
+      }
+
+      h3 {
+        font-size: 1.3rem;
+      }
+
+      .method-info {
+        font-size: 0.95rem;
+      }
+
+      .method-description {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .contact-form-section {
+    .hack-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    .form-title {
+      font-size: 1.8rem;
+    }
+
+    .form-label {
+      font-size: 0.9rem;
+    }
+
+    .form-actions {
+      .hack-button {
+        width: 100%;
+        font-size: 0.95rem;
+        padding: 0.8rem 1.5rem;
+      }
+    }
+  }
+
+  .quick-contact {
+    .section-title {
+      font-size: 1.8rem;
+    }
+
+    .quick-contact-grid {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: stretch;
+
+      .quick-contact-item {
+        width: 100%;
+        justify-content: center;
+        padding: 1.2rem;
+        font-size: 1rem;
+
+        .copy-icon {
+          font-size: 1.5rem;
+        }
+      }
     }
   }
 }

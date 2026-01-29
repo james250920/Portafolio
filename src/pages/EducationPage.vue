@@ -749,7 +749,16 @@ const openUrl = (url: string) => {
     padding: 2rem 0 1rem;
 
     .page-title {
-      font-size: 2.5rem;
+      font-size: 2rem;
+
+      .q-icon {
+        font-size: 1.8rem;
+      }
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      padding: 0 0.5rem;
     }
   }
 
@@ -758,29 +767,167 @@ const openUrl = (url: string) => {
   }
 
   .section-title {
-    font-size: 2rem;
-  }
-
-  .timeline-item {
-    gap: 1rem !important;
-  }
-
-  .certification-card {
-    flex-direction: column !important;
+    font-size: 1.8rem;
     text-align: center;
+  }
 
-    .cert-info {
-      text-align: center;
+  .education-timeline {
+    .timeline-item {
+      gap: 1rem !important;
+      flex-direction: column;
 
-      .cert-date,
-      .cert-credential {
-        justify-content: center;
+      .timeline-marker {
+        flex-direction: row;
+        margin-top: 0 !important;
+
+        .marker-line {
+          width: 50px !important;
+          height: 2px !important;
+          margin-top: 0 !important;
+          margin-left: 0.5rem;
+        }
+      }
+
+      .education-card {
+        padding: 1.2rem;
+
+        .education-header {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+
+          .education-icon {
+            margin: 0 auto;
+
+            .q-icon {
+              font-size: 2.5rem;
+            }
+          }
+
+          .education-info {
+            .education-degree {
+              font-size: 1.3rem;
+            }
+
+            .education-institution {
+              font-size: 1rem;
+            }
+
+            .education-period {
+              font-size: 0.85rem;
+              justify-content: center;
+            }
+          }
+        }
+
+        .education-description {
+          font-size: 0.95rem;
+        }
+
+        .education-achievements {
+          .achievements-title {
+            font-size: 0.95rem;
+          }
+
+          .achievements-list {
+            li {
+              font-size: 0.9rem;
+            }
+          }
+        }
       }
     }
   }
 
-  .course-category .courses-list {
-    padding-left: 1rem;
+  .certifications-section {
+    .certifications-grid {
+      grid-template-columns: 1fr !important;
+      gap: 1rem;
+    }
+
+    .certification-card {
+      flex-direction: column !important;
+      text-align: center;
+      padding: 1.2rem;
+
+      .cert-icon {
+        margin: 0 auto 1rem;
+
+        .q-icon {
+          font-size: 2rem;
+        }
+      }
+
+      .cert-info {
+        text-align: center;
+
+        .cert-name {
+          font-size: 1.1rem;
+        }
+
+        .cert-issuer {
+          font-size: 0.9rem;
+        }
+
+        .cert-date,
+        .cert-credential {
+          justify-content: center;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .courses-section {
+    .course-category {
+      margin-bottom: 2rem;
+
+      .category-title {
+        font-size: 1.3rem;
+
+        .q-icon {
+          font-size: 1.2rem;
+        }
+      }
+
+      .courses-list {
+        padding-left: 1rem;
+
+        li {
+          font-size: 0.9rem;
+          padding: 0.4rem 0;
+
+          .q-icon {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  .stats-section {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      padding: 1.2rem;
+
+      .stat-icon {
+        .q-icon {
+          font-size: 2rem;
+        }
+      }
+
+      .stat-number {
+        font-size: 1.8rem;
+      }
+
+      .stat-label {
+        font-size: 0.85rem;
+      }
+    }
   }
 }
 
