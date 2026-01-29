@@ -132,7 +132,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 
 // Types
 interface Project {
@@ -140,7 +140,7 @@ interface Project {
   title: string;
   description: string;
   fullDescription?: string;
-  category: string;
+  category: string[];
   technologies: string[];
   image: string;
   status: string;
@@ -151,7 +151,7 @@ interface Project {
 
 // Data
 const selectedCategory = ref('Todos');
-const selectedTech = ref('');
+const selectedTech = ref<string | null>('');
 const displayedProjects = ref(6);
 
 const categories = ref(['Todos', 'Web', 'Móvil', 'APIs', 'Herramientas']);
@@ -176,17 +176,17 @@ const techOptions = ref([
 const projects = ref<Project[]>([
   {
     id: 1,
-    title: 'Plataforma E-Commerce',
+    title: 'Plataforma E-Commerce WEb | Mobile',
     description:
       'Solución de comercio electrónico full-stack con características avanzadas e interfaz moderna.',
     fullDescription:
       'Una plataforma de comercio electrónico integral construida con tecnologías modernas. Las características incluyen autenticación de usuarios, catálogo de productos, carrito de compras, integración de pagos, gestión de pedidos y panel de administración.',
-    category: 'Web',
-    technologies: ['Vue.js', 'Node.js', 'PostgreSQL', 'Stripe', 'Docker'],
+    category: ['Web', 'Móvil'],
+    technologies: ['Angular', 'Node.js', 'PostgreSQL', 'TypeScript', 'Docker', 'Flutter', 'Firebase'],
     image: '/src/assets/otro.png',
     status: 'completed',
-    liveUrl: 'https://example-ecommerce.com',
-    githubUrl: 'https://github.com/james250920/ecommerce-platform',
+    liveUrl: '',
+    githubUrl: '',
     features: [
       'Autenticación y autorización de usuarios',
       'Catálogo de productos con búsqueda y filtros',
@@ -200,39 +200,35 @@ const projects = ref<Project[]>([
     id: 2,
     title: 'StudyOso',
     description:
-      'Herramienta de gestión de tareas colaborativa con actualizaciones en tiempo real.',
-    fullDescription:
-      'Una aplicación moderna de gestión de tareas diseñada para equipos. Construida con Vue.js y con colaboración en tiempo real, organización de proyectos y seguimiento de productividad.',
-    category: 'Móvil',
+      'Herramienta de gestio educativo para estudiantes universitarios.',
+    fullDescription:"",
+
+    category: ['Móvil'],
     technologies: ['JetPack Compose', 'Kotlin', 'SQLite', 'Firebase'],
     image: '/src/assets/pngwing 2.png',
     status: 'completed',
-    liveUrl: 'https://example-tasks.com',
-    githubUrl: 'https://github.com/james250920/task-manager',
+    liveUrl: '',
+    githubUrl: '',
     features: [
-      'Edición colaborativa en tiempo real',
-      'Organización de proyectos y tareas',
-      'Gestión de miembros del equipo',
-      'Seguimiento de progreso y analíticas',
-      'Diseño responsivo para móviles',
+
     ],
   },
   {
     id: 3,
     title: 'Impulso',
     description:
-      'Servicio de API RESTful que proporciona datos meteorológicos con caché y limitación de velocidad.',
-    category: 'Móvil',
+      'Aplicación móvil para organización de herramientas y recursos de estudio.',
+    category: ['Móvil'],
     technologies: ['JetPack Compose', 'Kotlin', 'SQLite', 'Firebase'],
     image: '/src/assets/otro.png',
     status: 'completed',
-    githubUrl: 'https://github.com/james250920/weather-api',
+    githubUrl: '',
   },
   {
     id: 4,
     title: 'Zentry Tracker',
-    description: 'Aplicación React Native para gestión de finanzas personales.',
-    category: 'Móvil',
+    description: 'Aplicación móvil para el seguimiento de denuncias ciudadanas.',
+    category: ['Móvil'],
     technologies: ['Flutter', 'Firebase', 'PostgreSQL'],
     image: '/src/assets/pngwing 2.png',
     status: 'in-progress',
@@ -240,33 +236,38 @@ const projects = ref<Project[]>([
   {
     id: 5,
     title: 'AprendePe',
-    description: 'Portafolio personal que muestra proyectos y habilidades.',
-    category: 'Web',
+    description: 'Aplicación web educativa para aprendizaje interactivo.',
+    category: ['Web'],
     technologies: ['React', 'PostgreSQL', 'TypeScript', 'SCSS', '.Net'],
     image: '/src/assets/otro.png',
     status: 'completed',
-    liveUrl: 'https://james-portfolio.dev',
-    githubUrl: 'https://github.com/james250920/portfolio',
+    liveUrl: 'https://james250920.github.io/EnsenaPe/',
+    githubUrl: 'https://github.com/james250920/EnsenaPe',
   },
 ]);
 
 // Computed properties
-const filteredProjects = computed(() => {
+const allFilteredProjects = computed(() => {
   let filtered = projects.value;
 
   if (selectedCategory.value !== 'Todos') {
-    filtered = filtered.filter((project) => project.category === selectedCategory.value);
+    filtered = filtered.filter((project) => project.category.includes(selectedCategory.value));
   }
 
-  if (selectedTech.value) {
-    filtered = filtered.filter((project) => project.technologies.includes(selectedTech.value));
+  const tech = selectedTech.value;
+  if (tech != null && tech !== '') {
+    filtered = filtered.filter((project) => project.technologies.includes(tech));
   }
 
-  return filtered.slice(0, displayedProjects.value);
+  return filtered;
+});
+
+const filteredProjects = computed(() => {
+  return allFilteredProjects.value.slice(0, displayedProjects.value);
 });
 
 const hasMoreProjects = computed(() => {
-  return displayedProjects.value < projects.value.length;
+  return displayedProjects.value < allFilteredProjects.value.length;
 });
 
 // Methods
@@ -283,6 +284,15 @@ const openProject = (url: string) => {
 const loadMoreProjects = () => {
   displayedProjects.value += 3;
 };
+
+// Reset pagination when filters change
+watch(selectedCategory, () => {
+  displayedProjects.value = 6;
+});
+
+watch(selectedTech, () => {
+  displayedProjects.value = 6;
+});
 
 onMounted(() => {
   // Animation on mount
