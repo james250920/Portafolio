@@ -8,7 +8,9 @@
             <q-icon name="person" class="text-hack-blue" /> About.me
           </h1>
           <p class="page-subtitle animate-fade-in">
-            Estudiante de Ingeniería en TI enfocado en el desarrollo de software, con una mentalidad orientada a la calidad de software (QA) y la seguridad para crear soluciones robustas y eficientes.
+            Estudiante de Ingeniería en TI enfocado en el desarrollo de software, con una mentalidad
+            orientada a la calidad de software (QA) y la seguridad para crear soluciones robustas y
+            eficientes.
           </p>
         </div>
       </div>
@@ -23,7 +25,7 @@
             <div class="hack-card profile-card">
               <div class="profile-avatar">
                 <div class="avatar-container">
-                  <q-icon name="account_circle" size="8rem" class="text-hack-green" />
+                  <img :src="ImgURL" alt="DevMenfroyt" class="avatar-image" />
                   <div class="status-ring">
                     <div class="status-dot active"></div>
                   </div>
@@ -32,7 +34,7 @@
 
               <div class="profile-details">
                 <h2 class="profile-name">DevMenfroyt</h2>
-                <h3 class="profile-title"> </h3>
+                <h3 class="profile-title"></h3>
                 <p class="profile-bio">
                   Desarrollador en formación con {{ experience }}+ años de experiencia en el
                   desarrollo de aplicaciones web y móviles. Apasionado por crear soluciones
@@ -250,6 +252,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/logo.jpg`;
+
 // Data
 const experience = ref(1);
 const projects = ref(3);
@@ -327,10 +331,16 @@ const toolsSkills = ref([
   { name: 'Podman', icon: 'https://cdn.simpleicons.org/podman/892CA0' },
   { name: 'Ubuntu', icon: 'https://cdn.simpleicons.org/ubuntu/E95420' },
   { name: 'Postman', icon: 'https://cdn.simpleicons.org/postman/FF6C37' },
-   { name: 'Azure', icon: 'https://swimburger.net/media/fbqnp2ie/azure.svg' },
+  { name: 'Azure', icon: 'https://swimburger.net/media/fbqnp2ie/azure.svg' },
   { name: 'AWS', icon: 'https://www.pngall.com/wp-content/uploads/13/AWS-Logo-PNG-File.png' },
-  { name: 'Tailwind', icon: 'https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg' },
-   { name: 'n8n', icon: 'https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B' },
+  {
+    name: 'Tailwind',
+    icon: 'https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg',
+  },
+  {
+    name: 'n8n',
+    icon: 'https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B',
+  },
 ]);
 
 const experiences = ref([
@@ -440,6 +450,21 @@ const interests = ref([
       .avatar-container {
         position: relative;
         display: inline-block;
+
+        .avatar-image {
+          width: 12rem;
+          height: 12rem;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 3px solid $hack-green;
+          box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+          }
+        }
 
         .status-ring {
           position: absolute;
