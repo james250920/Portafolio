@@ -31,7 +31,7 @@
               </div>
 
               <div class="profile-details">
-                <h2 class="profile-name">Menfroyt-Dev</h2>
+                <h2 class="profile-name">DevMenfroyt</h2>
                 <h3 class="profile-title"> </h3>
                 <p class="profile-bio">
                   Desarrollador en formación con {{ experience }}+ años de experiencia en el
@@ -83,7 +83,7 @@
                   <span class="text-hack-purple">● Mejorando habilidades en QA y seguridad</span>
                 </div>
                 <div class="terminal-line prompt">
-                  <span>menfroyt-dev@about:~$ </span>
+                  <span>DevMenfroyt@about:~$ </span>
                   <span class="cursor-blink">|</span>
                 </div>
               </div>

@@ -5,7 +5,7 @@
         <!-- Logo/Brand -->
         <div class="hack-brand" @click="scrollToSection('home')">
           <q-icon name="terminal" class="brand-icon" />
-          <span class="brand-text">menfroyt-dev@james:~$</span>
+          <span class="brand-text">DevMenfroyt@james:~$</span>
         </div>
 
         <!-- Spacer -->

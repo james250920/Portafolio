@@ -51,7 +51,7 @@
                   <span class="text-hack-green">● DISPONIBLE</span> - Listo para nuevos proyectos
                 </div>
                 <div class="terminal-line prompt">
-                  <span>menfroyt-dev@contact:~$ </span>
+                  <span>DevMenfroyt@contact:~$ </span>
                   <span class="cursor-blink">|</span>
                 </div>
               </div>

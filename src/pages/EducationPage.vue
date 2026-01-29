@@ -68,7 +68,7 @@
                 </div>
               </div>
               <div class="terminal-line prompt">
-                <span>menfroyt-dev@education:~$ </span>
+                <span>DevMenfroyt@education:~$ </span>
                 <span class="cursor-blink">|</span>
               </div>
             </div>
@@ -159,7 +159,7 @@
                 </div>
               </div>
               <div class="terminal-line prompt">
-                <span>menfroyt-dev@courses:~$ </span>
+                <span>DevMenfroyt@courses:~$ </span>
                 <span class="cursor-blink">|</span>
               </div>
             </div>
