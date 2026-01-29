@@ -1,5 +1,8 @@
 <template>
   <q-page class="home-page">
+    <!-- Matrix Background Effect -->
+    <MatrixBackground />
+
     <!-- Home Section -->
     <section id="home" class="hero-section">
       <div class="container">
@@ -77,8 +80,6 @@
       </div>
     </section>
 
-
-
     <!-- About Section -->
     <section id="about" class="about-section">
       <AboutPage />
@@ -116,6 +117,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import MatrixBackground from '../components/MatrixBackground.vue';
 import AboutPage from './AboutPage.vue';
 import ProjectsPage from './ProjectsPage.vue';
 import EducationPage from './EducationPage.vue';
@@ -134,7 +136,15 @@ const techStack = ref([
 <style lang="scss" scoped>
 .home-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  background: #0d1117;
+  position: relative;
+  overflow-x: hidden;
+}
+
+// All sections need higher z-index than background
+section {
+  position: relative;
+  z-index: 1;
 }
 
 // Home Section
