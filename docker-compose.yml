@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  portafolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portafolio-app
+    ports:
+      - '5181:5181'
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - portafolio-network
+
+networks:
+  portafolio-network:
+    driver: bridge
