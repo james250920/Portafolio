@@ -3,7 +3,7 @@
     <q-header class="hack-header">
       <q-toolbar class="hack-toolbar">
         <!-- Logo/Brand -->
-        <div class="hack-brand" @click="$router.push('/')">
+        <div class="hack-brand" @click="scrollToSection('home')">
           <q-icon name="terminal" class="brand-icon" />
           <span class="brand-text">menfroyt-dev@james:~$</span>
         </div>
@@ -16,8 +16,8 @@
           <q-btn
             flat
             class="nav-btn"
-            :class="{ active: $route.path === '/' }"
-            @click="$router.push('/')"
+            :class="{ active: activeSection === 'home' }"
+            @click="scrollToSection('home')"
           >
             <q-icon name="home" class="q-mr-xs" />
             home
@@ -25,8 +25,8 @@
           <q-btn
             flat
             class="nav-btn"
-            :class="{ active: $route.path === '/about' }"
-            @click="$router.push('/about')"
+            :class="{ active: activeSection === 'about' }"
+            @click="scrollToSection('about')"
           >
             <q-icon name="person" class="q-mr-xs" />
             Sobre mí
@@ -34,8 +34,8 @@
           <q-btn
             flat
             class="nav-btn"
-            :class="{ active: $route.path === '/projects' }"
-            @click="$router.push('/projects')"
+            :class="{ active: activeSection === 'projects' }"
+            @click="scrollToSection('projects')"
           >
             <q-icon name="code" class="q-mr-xs" />
             proyectos
@@ -43,8 +43,8 @@
           <q-btn
             flat
             class="nav-btn"
-            :class="{ active: $route.path === '/education' }"
-            @click="$router.push('/education')"
+            :class="{ active: activeSection === 'education' }"
+            @click="scrollToSection('education')"
           >
             <q-icon name="school" class="q-mr-xs" />
             educación
@@ -52,8 +52,8 @@
           <q-btn
             flat
             class="nav-btn"
-            :class="{ active: $route.path === '/contact' }"
-            @click="$router.push('/contact')"
+            :class="{ active: activeSection === 'contact' }"
+            @click="scrollToSection('contact')"
           >
             <q-icon name="mail" class="q-mr-xs" />
             contacto
@@ -69,7 +69,50 @@
 </template>
 
 <script setup lang="ts">
-// No need for additional logic
+import { ref, onMounted, onUnmounted } from 'vue';
+
+const activeSection = ref('home');
+
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    const headerOffset = 70;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth',
+    });
+  }
+};
+
+const handleScroll = () => {
+  const sections = ['home', 'about', 'projects', 'education', 'contact'];
+  const scrollPosition = window.scrollY + 100;
+
+  for (const sectionId of sections) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offsetTop = element.offsetTop;
+      const offsetHeight = element.offsetHeight;
+
+      if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+        activeSection.value = sectionId;
+        break;
+      }
+    }
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <style scoped lang="scss">
