@@ -15,20 +15,61 @@
       })(window, document, 'script', 'dataLayer', 'GTM-KNN2QJFR');
     </script>
     <!-- End Google Tag Manager -->
-    <title><%= productName %></title>
+    <title>James Frank Mendoza Rios | Desarrollador Full Stack | <%= productName %></title>
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>"
+    />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="James Frank Mendoza Rios - Desarrollador Full Stack especializado en aplicaciones web y móviles. Vue.js, React, Node.js, TypeScript. Portafolio de proyectos y experiencia profesional."
+    />
+    <meta
+      name="keywords"
+      content="James Mendoza, James Frank Mendoza Rios, DevMenfroyt, Desarrollador Full Stack, Programador, Vue.js, React, TypeScript, Node.js, Desarrollador Web, Desarrollador de Software, menfroyt"
+    />
+    <meta name="author" content="James Frank Mendoza Rios" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Open Graph Meta Tags (Facebook, LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="James Frank Mendoza Rios | Desarrollador Full Stack" />
+    <meta
+      property="og:description"
+      content="Desarrollador Full Stack especializado en aplicaciones web y móviles. Vue.js, React, Node.js, TypeScript."
+    />
+    <meta property="og:image" content="https://cdn.menfroyt-dev.com/imagenes/svg/logo.svg" />
+    <meta property="og:url" content="https://portafolio.menfroyt-dev.com" />
+    <meta property="og:site_name" content="DevMenfroyt - James Mendoza" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="James Frank Mendoza Rios | Desarrollador Full Stack" />
+    <meta
+      name="twitter:description"
+      content="Desarrollador Full Stack especializado en aplicaciones web y móviles. Vue.js, React, Node.js, TypeScript."
+    />
+    <meta name="twitter:image" content="https://cdn.menfroyt-dev.com/imagenes/svg/logo.svg" />
+    <meta name="twitter:creator" content="@DevMenfroyt" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://portafolio.menfroyt-dev.com/" />
+
     <!-- Fuentes Pixel Art -->
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono:wght@400&family=VT323&display=swap"
       rel="stylesheet"
     />
-    <meta charset="utf-8" />
-    <meta name="description" content="<%= productDescription %>" />
+
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-    <meta
-      name="viewport"
-      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>"
-    />
 
     <link
       rel="icon"
@@ -40,6 +81,36 @@
       type="image/svg+xml"
       href="https://cdn.menfroyt-dev.com/imagenes/svg/logo.svg"
     />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "James Frank Mendoza Rios",
+        "alternateName": "DevMenfroyt",
+        "url": "https://portafolio.menfroyt-dev.com",
+        "image": "https://cdn.menfroyt-dev.com/imagenes/svg/logo.svg",
+        "jobTitle": "Desarrollador Full Stack",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "DevMenfroyt"
+        },
+        "description": "Desarrollador de software Full Stack especializado en aplicaciones web y móviles. Experto en Vue.js, React, Node.js y TypeScript.",
+        "email": "21100654@ue.edu.pe",
+        "knowsAbout": [
+          "Vue.js",
+          "React",
+          "TypeScript",
+          "Node.js",
+          "JavaScript",
+          "Desarrollo Web",
+          "Desarrollo Full Stack",
+          "Quasar Framework"
+        ],
+        "sameAs": ["https://github.com/menfroyt", "https://linkedin.com/in/james-mendoza"]
+      }
+    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
