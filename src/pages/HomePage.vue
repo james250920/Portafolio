@@ -247,7 +247,7 @@ section {
       transition: all 0.3s ease;
       filter: brightness(0.9) contrast(1.06);
       position: relative;
-      animation: glitch 2s infinite;
+      animation: glitch 1.5s infinite;
 
       &::before,
       &::after {
@@ -264,7 +264,7 @@ section {
 
     &:hover {
       .profile-image {
-        animation: glitch 0.5s ease-in-out;
+        animation: glitch 0.4s ease-in-out;
       }
     }
 

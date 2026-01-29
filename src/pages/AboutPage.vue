@@ -31,8 +31,8 @@
               </div>
 
               <div class="profile-details">
-                <h2 class="profile-name">James Developer</h2>
-                <h3 class="profile-title">Junior Full Stack Developer</h3>
+                <h2 class="profile-name">Menfroyt-Dev</h2>
+                <h3 class="profile-title"> </h3>
                 <p class="profile-bio">
                   Desarrollador en formación con {{ experience }}+ años de experiencia en el
                   desarrollo de aplicaciones web y móviles. Apasionado por crear soluciones
