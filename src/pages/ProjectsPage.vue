@@ -7,9 +7,7 @@
           <h1 class="page-title animate-slide-up">
             <q-icon name="code" class="text-hack-green" /> Proyectos.portafolio
           </h1>
-          <p class="page-subtitle animate-fade-in">
-            Una muestra de mis trabajos.
-          </p>
+          <p class="page-subtitle animate-fade-in">Una muestra de mis trabajos.</p>
         </div>
       </div>
     </section>
@@ -130,113 +128,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Featured Project Section -->
-    <section class="featured-project" v-if="featuredProject">
-      <div class="container">
-        <h2 class="section-title text-center">Proyecto Destacado</h2>
-        <div class="hack-card featured-card">
-          <div class="hack-grid cols-2">
-            <div class="featured-content">
-              <h3 class="featured-title">{{ featuredProject.title }}</h3>
-              <p class="featured-description">{{ featuredProject.fullDescription }}</p>
-
-              <div class="featured-highlights">
-                <h4>Características Clave:</h4>
-                <ul>
-                  <li v-for="feature in featuredProject.features" :key="feature">
-                    <q-icon name="check_circle" class="text-hack-green" />
-                    {{ feature }}
-                  </li>
-                </ul>
-              </div>
-
-              <div class="featured-tech">
-                <h4>Tecnologías Utilizadas:</h4>
-                <div class="tech-grid">
-                  <span
-                    v-for="tech in featuredProject.technologies"
-                    :key="tech"
-                    class="tech-tag featured"
-                  >
-                    {{ tech }}
-                  </span>
-                </div>
-              </div>
-
-              <div class="featured-actions">
-                <button class="hack-button primary" @click="openProject(featuredProject.liveUrl || '')">
-                  <q-icon name="launch" /> Ver Proyecto en Vivo
-                </button>
-                <button
-                  class="hack-button secondary"
-                  @click="openProject(featuredProject.githubUrl || '')"
-                >
-                  <q-icon name="code" /> Ver Código Fuente
-                </button>
-              </div>
-            </div>
-
-            <div class="featured-media">
-              <div class="featured-image">
-                <img :src="featuredProject.image" :alt="featuredProject.title" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Project Modal -->
-    <q-dialog v-model="showProjectModal" class="project-modal">
-      <q-card class="modal-card" v-if="selectedProject">
-        <q-card-section class="modal-header">
-          <div class="modal-title">
-            <h2>{{ selectedProject.title }}</h2>
-            <q-btn icon="close" flat round dense @click="showProjectModal = false" />
-          </div>
-        </q-card-section>
-
-        <q-card-section class="modal-content">
-          <div class="modal-image">
-            <img :src="selectedProject.image" :alt="selectedProject.title" />
-          </div>
-
-          <div class="modal-details">
-            <p class="modal-description">
-              {{ selectedProject.fullDescription || selectedProject.description }}
-            </p>
-
-            <div class="modal-tech">
-              <h4>Tecnologías:</h4>
-              <div class="tech-tags">
-                <span v-for="tech in selectedProject.technologies" :key="tech" class="tech-tag">
-                  {{ tech }}
-                </span>
-              </div>
-            </div>
-
-            <div class="modal-actions">
-              <button
-                class="hack-button primary"
-                @click="openProject(selectedProject.liveUrl)"
-                v-if="selectedProject.liveUrl"
-              >
-                <q-icon name="launch" /> Demo en Vivo
-              </button>
-              <button
-                class="hack-button secondary"
-                @click="openProject(selectedProject.githubUrl)"
-                v-if="selectedProject.githubUrl"
-              >
-                <q-icon name="code" /> Código Fuente
-              </button>
-            </div>
-          </div>
-        </q-card-section>
-      </q-card>
-    </q-dialog>
   </q-page>
 </template>
 
@@ -261,8 +152,6 @@ interface Project {
 // Data
 const selectedCategory = ref('Todos');
 const selectedTech = ref('');
-const showProjectModal = ref(false);
-const selectedProject = ref<Project | null>(null);
 const displayedProjects = ref(6);
 
 const categories = ref(['Todos', 'Web', 'Móvil', 'APIs', 'Herramientas']);
@@ -281,14 +170,15 @@ const techOptions = ref([
   'Flutter',
   'JetPack Compose',
   'Firebase',
-  '.Net'
+  '.Net',
 ]);
 
 const projects = ref<Project[]>([
   {
     id: 1,
     title: 'Plataforma E-Commerce',
-    description: 'Solución de comercio electrónico full-stack con características avanzadas e interfaz moderna.',
+    description:
+      'Solución de comercio electrónico full-stack con características avanzadas e interfaz moderna.',
     fullDescription:
       'Una plataforma de comercio electrónico integral construida con tecnologías modernas. Las características incluyen autenticación de usuarios, catálogo de productos, carrito de compras, integración de pagos, gestión de pedidos y panel de administración.',
     category: 'Web',
@@ -309,7 +199,8 @@ const projects = ref<Project[]>([
   {
     id: 2,
     title: 'StudyOso',
-    description: 'Herramienta de gestión de tareas colaborativa con actualizaciones en tiempo real.',
+    description:
+      'Herramienta de gestión de tareas colaborativa con actualizaciones en tiempo real.',
     fullDescription:
       'Una aplicación moderna de gestión de tareas diseñada para equipos. Construida con Vue.js y con colaboración en tiempo real, organización de proyectos y seguimiento de productividad.',
     category: 'Móvil',
@@ -329,7 +220,8 @@ const projects = ref<Project[]>([
   {
     id: 3,
     title: 'Impulso',
-    description: 'Servicio de API RESTful que proporciona datos meteorológicos con caché y limitación de velocidad.',
+    description:
+      'Servicio de API RESTful que proporciona datos meteorológicos con caché y limitación de velocidad.',
     category: 'Móvil',
     technologies: ['JetPack Compose', 'Kotlin', 'SQLite', 'Firebase'],
     image: '/src/assets/otro.png',
@@ -350,12 +242,12 @@ const projects = ref<Project[]>([
     title: 'AprendePe',
     description: 'Portafolio personal que muestra proyectos y habilidades.',
     category: 'Web',
-    technologies: ['React', 'PostgreSQL', 'TypeScript', 'SCSS',".Net"],
+    technologies: ['React', 'PostgreSQL', 'TypeScript', 'SCSS', '.Net'],
     image: '/src/assets/otro.png',
     status: 'completed',
     liveUrl: 'https://james-portfolio.dev',
     githubUrl: 'https://github.com/james250920/portfolio',
-  }
+  },
 ]);
 
 // Computed properties
@@ -377,16 +269,9 @@ const hasMoreProjects = computed(() => {
   return displayedProjects.value < projects.value.length;
 });
 
-const featuredProject = computed(() => {
-  return projects.value.find((project) => project.id === 1);
-});
-
-
-
 // Methods
 const openProjectModal = (project: Project) => {
-  selectedProject.value = project;
-  showProjectModal.value = true;
+  openProject(project.liveUrl || project.githubUrl || '');
 };
 
 const openProject = (url: string) => {
@@ -489,16 +374,20 @@ onMounted(() => {
   padding: 3rem 0;
 
   .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
-    margin-bottom: 3rem;
+    max-width: 900px;
+    margin: 0 auto 3rem;
   }
 
   .project-card {
     cursor: pointer;
     transition: all 0.3s ease;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    min-height: 280px;
 
     &:hover {
       transform: translateY(-8px);
@@ -508,13 +397,18 @@ onMounted(() => {
       .project-overlay {
         opacity: 1;
       }
+
+      .project-image img {
+        transform: scale(1.05);
+      }
     }
 
     .project-image {
       position: relative;
-      height: 200px;
+      width: 40%;
+      min-width: 300px;
       overflow: hidden;
-      border-radius: 8px 8px 0 0;
+      border-radius: 8px 0 0 8px;
 
       img {
         width: 100%;
@@ -547,7 +441,11 @@ onMounted(() => {
     }
 
     .project-info {
-      padding: 1.5rem;
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       .project-header {
         display: flex;
@@ -892,7 +790,23 @@ onMounted(() => {
   }
 
   .projects-grid {
-    grid-template-columns: 1fr !important;
+    max-width: 100%;
+  }
+
+  .project-card {
+    flex-direction: column !important;
+    min-height: auto;
+
+    .project-image {
+      width: 100% !important;
+      min-width: auto;
+      height: 200px;
+      border-radius: 8px 8px 0 0 !important;
+    }
+
+    .project-info {
+      padding: 1.5rem !important;
+    }
   }
 
   .featured-content {
