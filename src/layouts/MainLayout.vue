@@ -4,7 +4,7 @@
       <q-toolbar class="hack-toolbar">
         <!-- Logo/Brand -->
         <div class="hack-brand" @click="scrollToSection('home')">
-          <q-icon name="terminal" class="brand-icon" />
+          <img :src="logoURL" alt="DevMenfroyt" class="brand-logo" />
           <span class="brand-text">DevMenfroyt@james:~$</span>
         </div>
 
@@ -71,6 +71,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 
+const logoURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/logo.jpg`;
 const activeSection = ref('home');
 
 const scrollToSection = (sectionId: string) => {
@@ -141,6 +142,20 @@ onUnmounted(() => {
   &:hover {
     color: #00ff88;
     transform: scale(1.05);
+  }
+
+  .brand-logo {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+    }
   }
 
   .brand-icon {
