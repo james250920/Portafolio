@@ -300,43 +300,11 @@ const courseCategories = ref<CourseCategory[]>([
     name: 'Desarrollo Web',
     icon: 'language',
     courses: [
-      { name: 'Vue.js Avanzado', platform: 'Udemy', duration: '40h' },
-      { name: 'TypeScript Fundamentals', platform: 'Pluralsight', duration: '8h' },
-      { name: 'Node.js y Express', platform: 'Udemy', duration: '30h' },
-      { name: 'React - The Complete Guide', platform: 'Udemy', duration: '48h' },
+      { name: '.NET', platform: 'Microsoft Learn', duration: '40h' },
+
     ],
   },
-  {
-    name: 'Desarrollo Móvil',
-    icon: 'smartphone',
-    courses: [
-      { name: 'Kotlin para Android', platform: 'Udacity', duration: '32h' },
-      { name: 'JetPack Compose Masterclass', platform: 'Udemy', duration: '24h' },
-      { name: 'Flutter & Dart', platform: 'Udemy', duration: '36h' },
-    ],
-  },
-  {
-    name: 'DevOps & Cloud',
-    icon: 'cloud_queue',
-    courses: [
-      { name: 'Docker y Kubernetes', platform: 'Coursera', duration: '20h' },
-      { name: 'AWS Fundamentals', platform: 'AWS Training', duration: '16h' },
-      { name: 'CI/CD con GitHub Actions', platform: 'GitHub Learning Lab', duration: '4h' },
-    ],
-  },
-  {
-    name: 'QA & Testing',
-    icon: 'bug_report',
-    courses: [
-      { name: 'Software Testing Fundamentals', platform: 'edX', duration: '12h' },
-      { name: 'Automated Testing with Jest', platform: 'Frontend Masters', duration: '6h' },
-      {
-        name: 'Cypress End-to-End Testing',
-        platform: 'Test Automation University',
-        duration: '8h',
-      },
-    ],
-  },
+
 ]);
 
 // Methods
