@@ -42,6 +42,10 @@
           <div class="profile-section">
             <div class="profile-image-container">
               <img :src="ImgURL" alt="James Mendoza" class="profile-image" />
+              <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span class="status-text">ONLINE</span>
+              </div>
               <div class="image-overlay">
                 <h1 class="name">{{ name }}</h1>
                 <h2 class="title">{{ title }}</h2>
@@ -220,6 +224,7 @@ section {
       .profile-image {
         transform: scale(1.02);
         filter: brightness(1.1);
+        animation: glitch 0.5s ease-in-out;
       }
 
       .image-overlay {
@@ -239,8 +244,60 @@ section {
       object-fit: cover;
       display: block;
       min-height: 450px;
-      transition: all 0.4s ease;
-      filter: brightness(0.9) contrast(1.1);
+      transition: all 0.3s ease;
+      filter: brightness(0.9) contrast(1.06);
+      position: relative;
+      animation: glitch 2s infinite;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: inherit;
+        opacity: 0;
+      }
+    }
+
+    &:hover {
+      .profile-image {
+        animation: glitch 0.5s ease-in-out;
+      }
+    }
+
+    .status-indicator {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(13, 17, 23, 0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      backdrop-filter: blur(10px);
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: $hack-green;
+        animation: pulse 2s ease-in-out infinite;
+        box-shadow: 0 0 19px $hack-green;
+      }
+
+      .status-text {
+        color: $hack-green;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
     }
 
     .image-overlay {
@@ -468,6 +525,43 @@ section {
   }
   to {
     box-shadow: 0 0 15px $hack-green;
+  }
+}
+
+@keyframes glitch {
+  0%,
+  90%,
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+  91% {
+    transform: translate(-2px, 2px);
+    opacity: 0.8;
+  }
+  92% {
+    transform: translate(2px, -2px);
+    opacity: 0.9;
+  }
+  93% {
+    transform: translate(-1px, 1px);
+    opacity: 0.85;
+  }
+  94% {
+    transform: translate(1px, -1px);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 19px $hack-green;
+  }
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 29px $hack-green;
   }
 }
 </style>
