@@ -8,9 +8,7 @@
             <q-icon name="person" class="text-hack-blue" /> About.me
           </h1>
           <p class="page-subtitle animate-fade-in">
-            Estudiante de Ingeniería en TI enfocado en el desarrollo Web y Mobile, con una
-            mentalidad orientada a la calidad de software (QA) y la seguridad para crear soluciones
-            robustas y eficientes.
+            Estudiante de Ingeniería en TI enfocado en el desarrollo de software, con una mentalidad orientada a la calidad de software (QA) y la seguridad para crear soluciones robustas y eficientes.
           </p>
         </div>
       </div>
