@@ -236,10 +236,10 @@
         <div class="hack-card cta-card">
           <h2 class="cta-title">Construyamos Algo Increíble Juntos</h2>
           <div class="cta-actions">
-            <button class="hack-button primary" @click="$router.push('/contact')">
+            <button class="hack-button primary" @click="scrollToSection('contact')">
               <q-icon name="message" /> Contáctame
             </button>
-            <button class="hack-button secondary" @click="$router.push('/projects')">
+            <button class="hack-button secondary" @click="scrollToSection('projects')">
               <q-icon name="work" /> Ver Proyectos
             </button>
           </div>
@@ -257,6 +257,21 @@ const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/logo.jpg`;
 // Data
 const experience = ref(1);
 const projects = ref(3);
+
+// Scroll to section function
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    const headerOffset = 70;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth',
+    });
+  }
+};
 
 const careerTimeline = ref([
   { year: '2020', event: 'Inició mi viaje en la programación' },
