@@ -17,7 +17,8 @@ onMounted(() => {
   canvas.value.width = window.innerWidth;
   canvas.value.height = window.innerHeight;
 
-  const fontSize = 29;
+  const fontSize = 13
+  ;
   const speed = 0.99; // Velocidad del efecto (0.5 = mitad de velocidad, 1 = velocidad normal)
 
   let drops = new Float32Array(Math.floor(canvas.value.width / fontSize));
