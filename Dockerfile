@@ -5,14 +5,11 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy all source files first (quasar prepare needs quasar.config.ts)
+COPY . .
 
 # Install dependencies
 RUN npm ci --legacy-peer-deps
-
-# Copy source code
-COPY . .
 
 # Build the application for production
 RUN npm run build
