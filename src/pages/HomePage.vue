@@ -420,7 +420,7 @@ section {
 
 // Skills Preview Section
 .skills-preview {
-  padding: 4rem 0;
+  padding: 2rem 0;
   background: rgba(22, 27, 34, 0.5);
 
   .section-title {
@@ -442,7 +442,7 @@ section {
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      padding: 1.5rem;
+      padding: 1rem;
       border-radius: 8px;
       transition: all 0.3s ease;
       background: rgba(13, 17, 23, 0.5);
