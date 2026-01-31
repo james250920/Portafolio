@@ -22,6 +22,3 @@ Allow: /
 
 # Sitemap Location
 Sitemap: https://portafolio.menfroyt-dev.com/sitemap.xml
-
-# Host
-Host: https://portafolio.menfroyt-dev.com
