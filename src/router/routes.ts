@@ -12,6 +12,13 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: '/services',
+    component: () => import('pages/ServicesPage.vue'),
+    meta: {
+      title: 'Servicios - James Mendoza | DevMenfroyt',
+    },
+  },
+  {
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue'),
   },
