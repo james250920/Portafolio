@@ -218,7 +218,6 @@ const educationTimeline = ref<Education[]>([
     description:
       'Formación integral en desarrollo de software, arquitectura de sistemas, bases de datos, y gestión de proyectos tecnológicos. Enfoque en desarrollo web, móvil y aseguramiento de calidad con énfasis en innovación tecnológica.',
     achievements: [
-      'Estudiante Becado por Pronabec (Excelencia Académica)',
       'Desarrollo de aplicaciones full-stack con tecnologías modernas',
       'Implementación de metodologías ágiles en proyectos académicos',
       'Participación en proyectos de desarrollo de software empresarial',
