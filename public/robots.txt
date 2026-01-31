@@ -1,8 +1,27 @@
 # robots.txt para DevMenfroyt Portfolio
+# https://portafolio.menfroyt-dev.com
+
+# Permitir todos los crawlers principales
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /*.json$
+Disallow: /assets/*.map
 
-# Sitemap
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# Sitemap Location
 Sitemap: https://portafolio.menfroyt-dev.com/sitemap.xml
+
+# Host
+Host: https://portafolio.menfroyt-dev.com
