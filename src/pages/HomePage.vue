@@ -3,6 +3,16 @@
     <!-- Matrix Background Effect -->
     <MatrixBackground />
 
+    <!-- Floating Button to Services -->
+    <router-link to="/services" class="floating-services-btn">
+      <div class="btn-content">
+        <q-icon name="code" size="28px" />
+      </div>
+      <div class="btn-ring"></div>
+      <div class="btn-ring delay"></div>
+      <span class="btn-tooltip">Mis Servicios</span>
+    </router-link>
+
     <!-- Home Section -->
     <section id="home" class="hero-section">
       <div class="container">
@@ -649,6 +659,129 @@ section {
   50% {
     opacity: 0.9;
     box-shadow: 0 0 29px $hack-green;
+  }
+}
+
+// Floating Services Button
+.floating-services-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ff88, #00cc6a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow:
+    0 0 20px rgba(0, 255, 136, 0.5),
+    0 0 40px rgba(0, 255, 136, 0.3),
+    0 4px 15px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow:
+      0 0 30px rgba(0, 255, 136, 0.7),
+      0 0 60px rgba(0, 255, 136, 0.5),
+      0 6px 20px rgba(0, 0, 0, 0.4);
+
+    .btn-tooltip {
+      opacity: 1;
+      transform: translateX(-10px);
+    }
+  }
+
+  .btn-content {
+    position: relative;
+    z-index: 2;
+    color: #0d1117;
+  }
+
+  .btn-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 255, 136, 0.6);
+    animation: ring-pulse 2s infinite;
+
+    &.delay {
+      animation-delay: 1s;
+    }
+  }
+
+  .btn-tooltip {
+    position: absolute;
+    right: 70px;
+    background: rgba(13, 17, 23, 0.95);
+    color: #00ff88;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+  }
+}
+
+@keyframes ring-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+// Responsive - Floating Button
+@media (max-width: 768px) {
+  .floating-services-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+
+    .btn-content {
+      .q-icon {
+        font-size: 22px !important;
+      }
+    }
+
+    .btn-tooltip {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-services-btn {
+    bottom: 15px;
+    right: 15px;
+    width: 44px;
+    height: 44px;
+    box-shadow:
+      0 0 15px rgba(0, 255, 136, 0.4),
+      0 0 25px rgba(0, 255, 136, 0.2),
+      0 3px 10px rgba(0, 0, 0, 0.3);
+
+    .btn-content {
+      .q-icon {
+        font-size: 18px !important;
+      }
+    }
+
+    .btn-ring {
+      border-width: 1px;
+    }
   }
 }
 </style>
