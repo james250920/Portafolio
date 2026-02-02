@@ -376,7 +376,7 @@ const services = ref<Service[]>([
     id: 2,
     name: 'Desarrollo Móvil',
     description:
-      'Aplicaciones nativas y multiplataforma para Android e iOS con experiencia de usuario excepcional.',
+      'Aplicaciones nativas Android con Kotlin y multiplataforma con Flutter para llegar a más usuarios.',
     icon: 'smartphone',
     features: [
       'Kotlin / Jetpack Compose',
