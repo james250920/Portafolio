@@ -37,8 +37,7 @@
                 <h3 class="profile-title"></h3>
                 <p class="profile-bio">
                   Desarrollador en formación con {{ experience }}+ años de experiencia en el
-                  desarrollo de aplicaciones web y móviles. Apasionado por crear soluciones
-                  eficientes y seguras que impulsen el éxito de los proyectos.
+                  desarrollo de software.
                 </p>
 
                 <div class="profile-stats">

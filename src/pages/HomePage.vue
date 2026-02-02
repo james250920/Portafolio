@@ -111,7 +111,7 @@ import ContactPage from './ContactPage.vue';
 
 const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/matrix.jpeg`;
 const name = ref('James Mendoza');
-const title = ref('Junior Full Stack Developer');
+const title = ref('Desarrollador Full Stack');
 
 const techStack = ref([
   { name: 'Quasar', icon: 'https://cdn.quasar.dev/logo/svg/quasar-logo.svg' },
