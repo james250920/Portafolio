@@ -273,7 +273,11 @@ const scrollToSection = (sectionId: string) => {
 };
 
 const careerTimeline = ref([
-  { year: '2020', event: 'Inició mi viaje en la programación' },
+  { year: '2018', event: 'Inició mi viaje en la programación' },
+  { year: '2019', event: 'Exploré desarrollo web básico' },
+  { year: '2021', event: 'Inicio de carrera universitaria' },
+  { year: '2022', event: 'Aprendí sobre desarrollo web' },
+  { year: '2023', event: 'Aprendí sobre desarrollo móvil' },
   { year: '2024', event: 'Desarrollador Full-Stack en prácticas' },
   { year: '2025', event: 'Actualización de habilidades y conocimientos' },
   { year: '2026', event: 'En proceso...' },
