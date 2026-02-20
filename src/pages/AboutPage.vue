@@ -213,8 +213,6 @@
       </div>
     </section>
 
-
-
     <!-- Interests Section -->
     <section class="interests-section">
       <div class="container">
