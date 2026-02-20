@@ -63,6 +63,15 @@
             </div>
           </div>
         </div>
+
+        <!-- CTA Button -->
+        <div class="hero-cta">
+          <button class="contact-cta-btn" @click="scrollToContact">
+            <q-icon name="mail" />
+            <span class="btn-text">Contactar</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -113,6 +122,15 @@ const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/matrix.jpeg
 const name = ref('James Mendoza');
 const title = ref('Desarrollador Full Stack');
 
+const scrollToContact = () => {
+  const element = document.getElementById('contact');
+  if (element) {
+    const headerOffset = 70;
+    const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+  }
+};
+
 const techStack = ref([
   { name: 'Quasar', icon: 'https://cdn.quasar.dev/logo/svg/quasar-logo.svg' },
   { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6' },
@@ -143,6 +161,71 @@ section {
   display: flex;
   align-items: center;
   padding: 4rem 0;
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+
+  .contact-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    border: 2px solid $hack-green;
+    color: $hack-green;
+    padding: 0.85rem 2.5rem;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: $hack-green;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+      z-index: 0;
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
+    }
+
+    &:hover {
+      color: #000;
+      box-shadow: 0 0 24px rgba(0, 255, 136, 0.45);
+
+      .q-icon {
+        color: #000;
+      }
+
+      .btn-arrow {
+        transform: translateX(4px);
+      }
+    }
+
+    .q-icon,
+    .btn-text,
+    .btn-arrow {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-arrow {
+      transition: transform 0.3s ease;
+      font-style: normal;
+    }
+  }
 }
 
 .container {
