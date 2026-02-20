@@ -60,7 +60,7 @@
           <!-- LinkedIn Contact -->
           <div class="hack-card contact-method" @click="openLinkedIn">
             <div class="method-icon">
-              <q-icon name="work" size="3rem" class="text-hack-blue" />
+              <q-icon name="work" size="2.2rem" class="text-hack-blue" />
             </div>
             <h3>LinkedIn</h3>
             <p class="method-info">@menfroyt-dev</p>
@@ -74,7 +74,7 @@
           <!-- GitHub Contact -->
           <div class="hack-card contact-method" @click="openGitHub">
             <div class="method-icon">
-              <q-icon name="code" size="3rem" class="text-hack-yellow" />
+              <q-icon name="code" size="2.2rem" class="text-hack-yellow" />
             </div>
             <h3>GitHub</h3>
             <p class="method-info">@james250920</p>
@@ -412,27 +412,27 @@ const downloadCV = () => {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 // Header Section
 .contact-header {
-  padding: 4rem 0 2rem;
+  padding: 3rem 0 1.5rem;
   text-align: center;
 
   .page-title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-family: 'Space Grotesk', sans-serif;
 
     .q-icon {
-      margin-right: 1rem;
+      margin-right: 0.75rem;
     }
   }
 
   .page-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #c9d1d9;
     max-width: 600px;
     margin: 0 auto;
@@ -441,7 +441,7 @@ const downloadCV = () => {
 
 // Contact Methods
 .contact-methods {
-  padding: 3rem 0;
+  padding: 2rem 0;
 
   .contact-method {
     text-align: center;
@@ -455,26 +455,26 @@ const downloadCV = () => {
     }
 
     .method-icon {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     h3 {
       color: $hack-white;
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.2rem;
     }
 
     .method-info {
       color: $hack-green;
       font-family: 'JetBrains Mono', monospace;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .method-description {
       color: #c9d1d9;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+      font-size: 0.82rem;
+      margin-bottom: 0.75rem;
     }
 
     .method-status {
@@ -501,14 +501,14 @@ const downloadCV = () => {
 
 // Contact Form Section
 .contact-form-section {
-  padding: 3rem 0;
+  padding: 2rem 0;
 
   .terminal-info {
     .terminal {
       height: fit-content;
 
       .info-line {
-        margin: 0.5rem 0;
+        margin: 0.4rem 0;
         display: flex;
         gap: 0.5rem;
       }
@@ -518,30 +518,30 @@ const downloadCV = () => {
   .contact-form-container {
     .form-title {
       color: $hack-blue;
-      margin-bottom: 2rem;
-      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
     }
 
     .contact-form {
       .form-group {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem;
 
         .form-label {
           display: block;
           color: $hack-white;
           font-weight: 600;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.4rem;
           font-family: 'JetBrains Mono', monospace;
         }
       }
 
       .form-actions {
-        margin-top: 2rem;
+        margin-top: 1.5rem;
 
         .hack-button {
           width: 100%;
-          padding: 1rem;
-          font-size: 1rem;
+          padding: 0.75rem;
+          font-size: 0.88rem;
 
           &.primary {
             border-color: $hack-green;
@@ -571,25 +571,25 @@ const downloadCV = () => {
 
 // Quick Contact
 .quick-contact {
-  padding: 3rem 0;
+  padding: 2rem 0;
 
   .section-title {
     color: $hack-blue;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .quick-contact-grid {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
 
     .quick-contact-item {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 1rem 2rem;
+      gap: 0.4rem;
+      padding: 0.75rem 1.5rem;
       background: rgba(22, 27, 34, 0.8);
       border: 1px solid $hack-border;
       border-radius: 8px;
@@ -637,14 +637,14 @@ const downloadCV = () => {
     padding: 1.5rem 0 1rem;
 
     .page-title {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       .q-icon {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
       }
     }
 
     .page-subtitle {
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       padding: 0 0.5rem;
     }
   }
@@ -654,11 +654,11 @@ const downloadCV = () => {
   }
 
   .contact-methods {
-    padding: 1.5rem 0;
+    padding: 1.25rem 0;
 
     .hack-grid {
       grid-template-columns: 1fr !important;
-      gap: 1rem;
+      gap: 0.75rem;
     }
 
     .terminal-info {
@@ -666,62 +666,62 @@ const downloadCV = () => {
     }
 
     .contact-method {
-      padding: 1.2rem;
+      padding: 1rem;
 
       .method-icon .q-icon {
-        font-size: 2rem;
+        font-size: 1.7rem;
       }
       h3 {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
       .method-info {
-        font-size: 0.85rem;
+        font-size: 0.78rem;
       }
       .method-description {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
       }
     }
   }
 
   .contact-form-section {
-    padding: 1.5rem 0;
+    padding: 1.25rem 0;
 
     .hack-grid {
       grid-template-columns: 1fr !important;
     }
 
     .form-title {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
     .form-label {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
 
     .form-actions .hack-button {
       width: 100%;
-      font-size: 0.9rem;
-      padding: 0.75rem 1.2rem;
+      font-size: 0.82rem;
+      padding: 0.6rem 1rem;
     }
   }
 
   .quick-contact {
     .section-title {
-      font-size: 1.4rem;
+      font-size: 1.25rem;
     }
 
     .quick-contact-grid {
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.6rem;
       align-items: stretch;
 
       .quick-contact-item {
         width: 100%;
         justify-content: center;
-        padding: 1rem;
-        font-size: 0.9rem;
+        padding: 0.75rem;
+        font-size: 0.82rem;
 
         .copy-icon {
-          font-size: 1.3rem;
+          font-size: 1.1rem;
         }
       }
     }
@@ -731,7 +731,7 @@ const downloadCV = () => {
 @media (max-width: 480px) {
   .contact-header {
     .page-title {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
     }
   }
 }

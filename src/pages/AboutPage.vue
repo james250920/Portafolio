@@ -222,7 +222,7 @@
         <div class="interests-grid">
           <div v-for="interest in interests" :key="interest.name" class="interest-item">
             <div class="hack-card interest-card">
-              <q-icon :name="interest.icon" size="3rem" :class="interest.color" />
+              <q-icon :name="interest.icon" size="2.2rem" :class="interest.color" />
               <h4>{{ interest.name }}</h4>
               <p>{{ interest.description }}</p>
             </div>
@@ -263,7 +263,7 @@ const projects = ref(3);
 const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId);
   if (element) {
-    const headerOffset = 70;
+    const headerOffset = 56;
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -430,27 +430,27 @@ const interests = ref([
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 // Header Section
 .about-header {
-  padding: 4rem 0 2rem;
+  padding: 3rem 0 1.5rem;
   text-align: center;
 
   .page-title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-family: 'Space Grotesk', sans-serif;
 
     .q-icon {
-      margin-right: 1rem;
+      margin-right: 0.75rem;
     }
   }
 
   .page-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #c9d1d9;
     max-width: 600px;
     margin: 0 auto;
@@ -459,7 +459,7 @@ const interests = ref([
 
 // Profile Section
 .profile-section {
-  padding: 3rem 0;
+  padding: 2rem 0;
 
   .profile-card {
     text-align: center;
@@ -472,8 +472,8 @@ const interests = ref([
         display: inline-block;
 
         .avatar-image {
-          width: 12rem;
-          height: 12rem;
+          width: 9rem;
+          height: 9rem;
           border-radius: 50%;
           object-fit: cover;
           border: 3px solid $hack-green;
@@ -508,22 +508,22 @@ const interests = ref([
 
     .profile-name {
       color: $hack-white;
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
     }
 
     .profile-title {
       color: $hack-blue;
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
+      font-size: 1.15rem;
+      margin-bottom: 1.2rem;
       font-weight: 500;
     }
 
     .profile-bio {
       color: #c9d1d9;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       line-height: 1.6;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .profile-stats {
@@ -537,15 +537,15 @@ const interests = ref([
         align-items: center;
 
         .stat-number {
-          font-size: 2rem;
+          font-size: 1.6rem;
           font-weight: 700;
           font-family: 'JetBrains Mono', monospace;
         }
 
         .stat-label {
           color: #c9d1d9;
-          font-size: 0.9rem;
-          margin-top: 0.5rem;
+          font-size: 0.82rem;
+          margin-top: 0.4rem;
         }
       }
     }
@@ -575,43 +575,43 @@ const interests = ref([
 
 // Skills Section
 .skills-section {
-  padding: 4rem 0;
+  padding: 3rem 0;
 
   .section-title {
     color: $hack-blue;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
   }
 
   .skill-category {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 
     .category-title {
       color: $hack-white;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.75rem;
 
       .skill-card {
         .skill-block {
-          padding: 1.2rem 1rem;
+          padding: 0.9rem 0.75rem;
           text-align: center;
           transition: all 0.3s ease;
           cursor: default;
-          min-height: 100px;
+          min-height: 80px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 0.8rem;
+          gap: 0.6rem;
 
           &:hover {
             transform: translateY(-5px);
@@ -624,8 +624,8 @@ const interests = ref([
           }
 
           .skill-icon {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 2rem;
+            height: 2rem;
             transition: transform 0.3s ease;
             filter: brightness(1);
           }
@@ -633,7 +633,7 @@ const interests = ref([
           .skill-name {
             color: $hack-white;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.82rem;
           }
         }
       }
@@ -643,12 +643,12 @@ const interests = ref([
 
 // Experience Section
 .experience-section {
-  padding: 4rem 0;
+  padding: 3rem 0;
 
   .section-title {
     color: $hack-blue;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
   }
 
   .experience-timeline {
@@ -657,8 +657,8 @@ const interests = ref([
 
     .experience-item {
       display: flex;
-      gap: 2rem;
-      margin-bottom: 3rem;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
 
       .experience-marker {
         display: flex;
@@ -691,21 +691,21 @@ const interests = ref([
 
           .experience-title {
             color: $hack-white;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
           }
 
           .experience-company {
             color: $hack-blue;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
           }
 
           .experience-period {
             color: $hack-green;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+            font-size: 0.82rem;
+            margin-top: 0.4rem;
           }
         }
 
@@ -737,18 +737,18 @@ const interests = ref([
 
 // Interests Section
 .interests-section {
-  padding: 4rem 0;
+  padding: 3rem 0;
 
   .section-title {
     color: $hack-blue;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
   }
 
   .interests-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.25rem;
     max-width: 900px;
     margin: 0 auto;
   }
@@ -757,8 +757,8 @@ const interests = ref([
     .interest-card {
       text-align: center;
       transition: all 0.3s ease;
-      padding: 2rem 1.5rem;
-      min-height: 200px;
+      padding: 1.5rem 1rem;
+      min-height: 160px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -781,13 +781,13 @@ const interests = ref([
 
       h4 {
         color: $hack-white;
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+        font-size: 1rem;
       }
 
       p {
         color: #c9d1d9;
-        font-size: 0.9rem;
+        font-size: 0.82rem;
         line-height: 1.5;
       }
     }
@@ -796,7 +796,7 @@ const interests = ref([
 
 // CTA Section
 .cta-section {
-  padding: 4rem 0;
+  padding: 3rem 0;
 
   .cta-card {
     text-align: center;
@@ -805,14 +805,14 @@ const interests = ref([
 
     .cta-title {
       color: $hack-white;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
     }
 
     .cta-description {
       color: #c9d1d9;
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
@@ -874,18 +874,18 @@ const interests = ref([
   .profile-section {
     .profile-card {
       .profile-avatar .avatar-container .avatar-image {
-        width: 8rem;
-        height: 8rem;
+        width: 7rem;
+        height: 7rem;
       }
 
       .profile-name {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
       }
       .profile-title {
-        font-size: 1rem;
+        font-size: 0.9rem;
       }
       .profile-bio {
-        font-size: 0.88rem;
+        font-size: 0.82rem;
       }
 
       .profile-stats {
@@ -906,28 +906,28 @@ const interests = ref([
 
   .skills-section {
     .section-title {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
     }
 
     .skill-category {
       .category-title {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
       }
 
       .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-        gap: 0.6rem;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 0.5rem;
 
         .skill-card .skill-block {
-          padding: 0.75rem 0.6rem;
-          min-height: 70px;
+          padding: 0.65rem 0.5rem;
+          min-height: 65px;
 
           .skill-icon {
-            width: 1.75rem;
-            height: 1.75rem;
+            width: 1.5rem;
+            height: 1.5rem;
           }
           .skill-name {
-            font-size: 0.78rem;
+            font-size: 0.72rem;
           }
         }
       }
@@ -936,47 +936,47 @@ const interests = ref([
 
   .experience-section {
     .section-title {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
     }
 
     .experience-timeline {
       .experience-item {
         flex-direction: column;
-        gap: 0.75rem !important;
+        gap: 0.6rem !important;
 
         .experience-marker {
           flex-direction: row;
           margin-top: 0 !important;
 
           .marker-line {
-            width: 40px !important;
+            width: 30px !important;
             height: 2px !important;
             margin-top: 0 !important;
           }
         }
 
         .experience-card {
-          padding: 1rem;
+          padding: 0.85rem;
 
           .experience-header {
             .experience-title {
-              font-size: 1.1rem;
+              font-size: 1rem;
             }
             .experience-company {
-              font-size: 0.9rem;
+              font-size: 0.82rem;
             }
             .experience-period {
-              font-size: 0.8rem;
+              font-size: 0.72rem;
             }
           }
 
           .experience-description {
-            font-size: 0.85rem;
+            font-size: 0.78rem;
           }
 
           .experience-tech .tech-tag {
-            font-size: 0.7rem;
-            padding: 0.18rem 0.5rem;
+            font-size: 0.65rem;
+            padding: 0.15rem 0.45rem;
           }
         }
       }
@@ -985,26 +985,26 @@ const interests = ref([
 
   .interests-section {
     .section-title {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
     }
 
     .interests-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
 
     .interest-item .interest-card {
-      padding: 1.2rem 0.8rem;
-      min-height: 120px;
+      padding: 1rem 0.7rem;
+      min-height: 110px;
 
       .q-icon {
-        font-size: 2rem;
+        font-size: 1.6rem;
       }
       h4 {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
       }
       p {
-        font-size: 0.78rem;
+        font-size: 0.72rem;
       }
     }
   }
@@ -1012,7 +1012,7 @@ const interests = ref([
   .cta-section {
     .cta-card {
       .cta-title {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
       }
 
       .cta-actions {

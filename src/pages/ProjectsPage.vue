@@ -75,7 +75,7 @@
                 <img :src="project.image" :alt="project.title" />
                 <div class="project-overlay">
                   <div class="overlay-content">
-                    <q-icon name="visibility" size="2rem" class="text-hack-white" />
+                    <q-icon name="visibility" size="1.5rem" class="text-hack-white" />
                     <span>Ver Detalles</span>
                   </div>
                 </div>
@@ -314,27 +314,27 @@ onMounted(() => {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 // Header Section
 .projects-header {
-  padding: 4rem 0 2rem;
+  padding: 3rem 0 1.5rem;
   text-align: center;
 
   .page-title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-family: 'Space Grotesk', sans-serif;
 
     .q-icon {
-      margin-right: 1rem;
+      margin-right: 0.75rem;
     }
   }
 
   .page-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #c9d1d9;
     max-width: 700px;
     margin: 0 auto;
@@ -343,7 +343,7 @@ onMounted(() => {
 
 // Filter Section
 .filter-section {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
 
   .terminal-filter {
     max-width: 800px;
@@ -387,13 +387,13 @@ onMounted(() => {
 
 // Projects Grid
 .projects-grid-section {
-  padding: 3rem 0;
+  padding: 2rem 0;
 
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
   }
 
   .project-card-container {
@@ -425,7 +425,7 @@ onMounted(() => {
     .project-image {
       position: relative;
       width: 100%;
-      height: 200px;
+      height: 170px;
       overflow: hidden;
       border-radius: 8px 8px 0 0;
 
@@ -460,7 +460,7 @@ onMounted(() => {
     }
 
     .project-info {
-      padding: 1.5rem;
+      padding: 1.2rem;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -470,11 +470,11 @@ onMounted(() => {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
 
         .project-title {
           color: $hack-white;
-          font-size: 1.5rem;
+          font-size: 1.15rem;
           margin: 0;
           flex: 1;
         }
@@ -512,22 +512,23 @@ onMounted(() => {
 
       .project-description {
         color: #c9d1d9;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+        font-size: 0.88rem;
       }
 
       .project-tech {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
+        gap: 0.4rem;
+        margin-bottom: 1rem;
 
         .tech-tag {
           background: rgba(0, 255, 136, 0.1);
           color: $hack-green;
-          padding: 0.25rem 0.75rem;
+          padding: 0.2rem 0.6rem;
           border-radius: 12px;
-          font-size: 0.8rem;
+          font-size: 0.72rem;
           font-family: 'JetBrains Mono', monospace;
           border: 1px solid rgba(0, 255, 136, 0.3);
         }
@@ -535,20 +536,20 @@ onMounted(() => {
 
       .project-actions {
         display: flex;
-        gap: 0.5rem;
+        gap: 0.4rem;
 
         .action-btn {
           background: transparent;
           border: 1px solid;
-          padding: 0.5rem 1rem;
+          padding: 0.4rem 0.8rem;
           border-radius: 4px;
           cursor: pointer;
           transition: all 0.3s ease;
           font-family: 'JetBrains Mono', monospace;
-          font-size: 0.8rem;
+          font-size: 0.72rem;
           display: flex;
           align-items: center;
-          gap: 0.5rem;
+          gap: 0.4rem;
 
           &.live {
             border-color: $hack-blue;
@@ -581,12 +582,12 @@ onMounted(() => {
 
 // Featured Project
 .featured-project {
-  padding: 4rem 0;
+  padding: 3rem 0;
 
   .section-title {
     color: $hack-blue;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
   }
 
   .featured-card {
@@ -596,13 +597,13 @@ onMounted(() => {
     .featured-content {
       .featured-title {
         color: $hack-white;
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
       }
 
       .featured-description {
         color: #c9d1d9;
-        font-size: 1.1rem;
+        font-size: 0.95rem;
         line-height: 1.6;
         margin-bottom: 2rem;
       }
@@ -677,7 +678,7 @@ onMounted(() => {
 
 // Stats Section
 .stats-section {
-  padding: 4rem 0;
+  padding: 3rem 0;
 
   .stat-card {
     .hack-card {
@@ -690,13 +691,13 @@ onMounted(() => {
       }
 
       .q-icon {
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
       }
 
       h3 {
         color: $hack-white;
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.8rem;
+        margin-bottom: 0.4rem;
         font-family: 'JetBrains Mono', monospace;
       }
 
@@ -860,46 +861,46 @@ onMounted(() => {
 
     .project-card {
       .project-image {
-        height: 150px;
+        height: 130px;
       }
 
       .project-info {
-        padding: 1rem;
+        padding: 0.85rem;
 
         .project-header {
           flex-direction: column;
-          gap: 0.4rem;
+          gap: 0.3rem;
           align-items: flex-start;
 
           .project-title {
-            font-size: 1rem;
+            font-size: 0.9rem;
           }
           .project-status {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
           }
         }
 
         .project-description {
-          font-size: 0.82rem;
+          font-size: 0.75rem;
         }
 
         .project-tech {
-          gap: 0.35rem;
+          gap: 0.3rem;
           .tech-tag {
-            font-size: 0.68rem;
-            padding: 0.2rem 0.5rem;
+            font-size: 0.62rem;
+            padding: 0.15rem 0.4rem;
           }
         }
 
         .project-actions {
           flex-direction: column;
-          gap: 0.6rem;
+          gap: 0.5rem;
 
           .action-btn {
             width: 100%;
             justify-content: center;
-            font-size: 0.82rem;
-            padding: 0.5rem 0.8rem;
+            font-size: 0.72rem;
+            padding: 0.4rem 0.6rem;
           }
         }
       }

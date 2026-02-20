@@ -38,7 +38,7 @@
                       <div class="hack-card education-card">
                         <div class="education-header">
                           <div class="education-icon">
-                            <q-icon :name="edu.icon" size="2.5rem" :class="edu.iconClass" />
+                            <q-icon :name="edu.icon" size="2rem" :class="edu.iconClass" />
                           </div>
                           <div class="education-info">
                             <h3 class="education-degree">{{ edu.degree }}</h3>
@@ -88,7 +88,7 @@
             <div class="hack-card certification-card">
               <div class="cert-header">
                 <div class="cert-icon">
-                  <q-icon :name="cert.icon" size="2rem" class="text-hack-yellow" />
+                  <q-icon :name="cert.icon" size="1.5rem" class="text-hack-yellow" />
                 </div>
                 <div class="cert-badge" v-if="cert.badge">
                   <img :src="cert.badge" :alt="cert.name" />
@@ -319,27 +319,27 @@ const openUrl = (url: string) => {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 // Header Section
 .education-header {
-  padding: 4rem 0 2rem;
+  padding: 3rem 0 1.5rem;
   text-align: center;
 
   .page-title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-family: 'Space Grotesk', sans-serif;
 
     .q-icon {
-      margin-right: 1rem;
+      margin-right: 0.75rem;
     }
   }
 
   .page-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #c9d1d9;
     max-width: 700px;
     margin: 0 auto;
@@ -348,14 +348,14 @@ const openUrl = (url: string) => {
 
 // Section Title
 .section-title {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   font-family: 'Space Grotesk', sans-serif;
   color: #c9d1d9;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
 
   &.text-center {
     justify-content: center;
@@ -364,7 +364,7 @@ const openUrl = (url: string) => {
 
 // Timeline Section
 .timeline-section {
-  padding: 3rem 0;
+  padding: 2rem 0;
 
   .terminal-wrapper {
     max-width: 900px;
@@ -376,8 +376,8 @@ const openUrl = (url: string) => {
 
     .timeline-item {
       display: flex;
-      gap: 2rem;
-      margin-bottom: 2rem;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
 
       &:last-child {
         margin-bottom: 0;
@@ -391,8 +391,8 @@ const openUrl = (url: string) => {
         padding-top: 0.5rem;
 
         .timeline-dot {
-          width: 16px;
-          height: 16px;
+          width: 12px;
+          height: 12px;
           border-radius: 50%;
           background: $hack-green;
           border: 3px solid #161b22;
@@ -412,13 +412,13 @@ const openUrl = (url: string) => {
         flex: 1;
 
         .education-card {
-          padding: 1.5rem;
+          padding: 1.2rem;
           margin-bottom: 0;
 
           .education-header {
             display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
 
             .education-icon {
               flex-shrink: 0;
@@ -429,22 +429,22 @@ const openUrl = (url: string) => {
 
               .education-degree {
                 color: $hack-white;
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 font-weight: 600;
-                margin: 0 0 0.5rem;
+                margin: 0 0 0.4rem;
               }
 
               .education-institution {
                 color: $hack-blue;
-                font-size: 1.1rem;
+                font-size: 0.95rem;
                 font-weight: 500;
-                margin: 0 0 0.5rem;
+                margin: 0 0 0.4rem;
               }
 
               .education-period {
                 color: #c9d1d9;
                 font-family: 'JetBrains Mono', monospace;
-                font-size: 0.9rem;
+                font-size: 0.82rem;
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
@@ -474,13 +474,13 @@ const openUrl = (url: string) => {
           }
 
           .education-achievements {
-            margin-top: 1.5rem;
+            margin-top: 1rem;
 
             .achievements-title {
               color: $hack-yellow;
-              font-size: 1rem;
+              font-size: 0.88rem;
               font-weight: 600;
-              margin-bottom: 0.75rem;
+              margin-bottom: 0.5rem;
             }
 
             .achievements-list {
@@ -510,12 +510,12 @@ const openUrl = (url: string) => {
 
 // Certifications Section
 .certifications-section {
-  padding: 3rem 0;
+  padding: 2rem 0;
 
   .certifications-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .certification-card-container {
@@ -523,12 +523,12 @@ const openUrl = (url: string) => {
   }
 
   .certification-card {
-    padding: 1.75rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1rem;
+    gap: 0.75rem;
     width: 100%;
     transition: all 0.3s ease;
 
@@ -545,8 +545,8 @@ const openUrl = (url: string) => {
       gap: 0.75rem;
 
       .cert-icon {
-        width: 72px;
-        height: 72px;
+        width: 56px;
+        height: 56px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -556,8 +556,8 @@ const openUrl = (url: string) => {
       }
 
       .cert-badge img {
-        width: 48px;
-        height: 48px;
+        width: 36px;
+        height: 36px;
         object-fit: contain;
       }
     }
@@ -571,7 +571,7 @@ const openUrl = (url: string) => {
 
       .cert-name {
         color: $hack-white;
-        font-size: 1rem;
+        font-size: 0.88rem;
         font-weight: 600;
         margin: 0;
         line-height: 1.3;
@@ -579,7 +579,7 @@ const openUrl = (url: string) => {
 
       .cert-issuer {
         color: $hack-blue;
-        font-size: 0.9rem;
+        font-size: 0.82rem;
         font-weight: 500;
         margin: 0;
       }
@@ -587,7 +587,7 @@ const openUrl = (url: string) => {
       .cert-date {
         color: #8b949e;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.8rem;
+        font-size: 0.72rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -603,16 +603,16 @@ const openUrl = (url: string) => {
 
         .credential-label {
           color: #8b949e;
-          font-size: 0.8rem;
+          font-size: 0.72rem;
         }
 
         .credential-id {
           background: rgba(0, 255, 136, 0.1);
           color: $hack-green;
-          padding: 0.2rem 0.6rem;
+          padding: 0.15rem 0.5rem;
           border-radius: 4px;
           font-family: 'JetBrains Mono', monospace;
-          font-size: 0.78rem;
+          font-size: 0.7rem;
           border: 1px solid rgba(0, 255, 136, 0.3);
         }
       }
@@ -627,12 +627,12 @@ const openUrl = (url: string) => {
         background: transparent;
         border: 1px solid $hack-yellow;
         color: $hack-yellow;
-        padding: 0.6rem 1rem;
+        padding: 0.45rem 0.8rem;
         border-radius: 4px;
         cursor: pointer;
         transition: all 0.3s ease;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.85rem;
+        font-size: 0.78rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -649,7 +649,7 @@ const openUrl = (url: string) => {
 
 // Courses Section
 .courses-section {
-  padding: 3rem 0 5rem;
+  padding: 2rem 0 4rem;
 
   .terminal-wrapper {
     max-width: 900px;
@@ -666,30 +666,30 @@ const openUrl = (url: string) => {
     .category-header {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
       color: $hack-green;
       font-family: 'JetBrains Mono', monospace;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
 
       .category-count {
         color: #8b949e;
-        font-size: 0.9rem;
+        font-size: 0.82rem;
         font-weight: 400;
       }
     }
 
     .courses-list {
-      padding-left: 2rem;
+      padding-left: 1.5rem;
 
       .course-item {
         display: flex;
-        gap: 0.75rem;
-        padding: 0.5rem 0;
+        gap: 0.6rem;
+        padding: 0.4rem 0;
         color: #c9d1d9;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.9rem;
+        font-size: 0.82rem;
 
         .course-bullet {
           color: $hack-blue;
@@ -740,14 +740,14 @@ const openUrl = (url: string) => {
     padding: 1.5rem 0 1rem;
 
     .page-title {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       .q-icon {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
       }
     }
 
     .page-subtitle {
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       padding: 0 0.5rem;
     }
   }
@@ -757,7 +757,7 @@ const openUrl = (url: string) => {
   }
 
   .section-title {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     text-align: center;
   }
 
@@ -778,44 +778,44 @@ const openUrl = (url: string) => {
       }
 
       .education-card {
-        padding: 1rem;
+        padding: 0.85rem;
 
         .education-header {
           flex-direction: column;
-          gap: 0.75rem;
+          gap: 0.6rem;
           text-align: center;
 
           .education-icon {
             margin: 0 auto;
             .q-icon {
-              font-size: 2rem;
+              font-size: 1.7rem;
             }
           }
 
           .education-info {
             .education-degree {
-              font-size: 1.1rem;
+              font-size: 1rem;
             }
             .education-institution {
-              font-size: 0.9rem;
+              font-size: 0.85rem;
             }
             .education-period {
-              font-size: 0.8rem;
+              font-size: 0.75rem;
               justify-content: center;
             }
           }
         }
 
         .education-description {
-          font-size: 0.85rem;
+          font-size: 0.8rem;
         }
 
         .education-achievements {
           .achievements-title {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
           }
           .achievements-list li {
-            font-size: 0.82rem;
+            font-size: 0.78rem;
           }
         }
       }
@@ -823,31 +823,31 @@ const openUrl = (url: string) => {
   }
 
   .certifications-section {
-    padding: 1.5rem 0;
+    padding: 1.25rem 0;
 
     .certifications-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
   }
 
   .courses-section {
     .course-category {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
 
       .category-header {
-        font-size: 0.9rem;
+        font-size: 0.82rem;
       }
 
       .courses-list {
         padding-left: 0.75rem;
 
         .course-item .course-name {
-          font-size: 0.82rem;
+          font-size: 0.78rem;
         }
         .course-platform,
         .course-duration {
-          font-size: 0.78rem;
+          font-size: 0.72rem;
         }
       }
     }
@@ -856,20 +856,20 @@ const openUrl = (url: string) => {
   .stats-section {
     .stats-grid {
       grid-template-columns: repeat(2, 1fr) !important;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
 
     .stat-card {
-      padding: 1rem;
+      padding: 0.85rem;
 
       .stat-icon .q-icon {
-        font-size: 1.8rem;
-      }
-      .stat-number {
         font-size: 1.5rem;
       }
+      .stat-number {
+        font-size: 1.3rem;
+      }
       .stat-label {
-        font-size: 0.78rem;
+        font-size: 0.72rem;
       }
     }
   }

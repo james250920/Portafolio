@@ -6,7 +6,7 @@
     <!-- Floating Button to Services -->
     <router-link to="/services" class="floating-services-btn">
       <div class="btn-content">
-        <q-icon name="code" size="28px" />
+        <q-icon name="code" size="22px" />
       </div>
       <div class="btn-ring"></div>
       <div class="btn-ring delay"></div>
@@ -16,7 +16,7 @@
     <!-- Floating Back to Top Button -->
     <Transition name="back-top">
       <button v-if="showBackToTop" class="floating-back-top" @click="scrollToTop">
-        <q-icon name="keyboard_arrow_up" size="26px" />
+        <q-icon name="keyboard_arrow_up" size="22px" />
         <span class="back-top-label">Inicio</span>
       </button>
     </Transition>
@@ -149,7 +149,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScrollTop));
 const scrollToContact = () => {
   const element = document.getElementById('contact');
   if (element) {
-    const headerOffset = 70;
+    const headerOffset = 56;
     const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
   }
@@ -184,25 +184,25 @@ section {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 4rem 0;
+  padding: 3rem 0;
 }
 
 .hero-cta {
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
 
   .contact-cta-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     background: transparent;
     border: 2px solid $hack-green;
     color: $hack-green;
-    padding: 0.85rem 2.5rem;
+    padding: 0.65rem 1.8rem;
     border-radius: 6px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1rem;
+    font-size: 0.88rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -255,7 +255,7 @@ section {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 .terminal {
@@ -360,7 +360,7 @@ section {
       height: 100%;
       object-fit: cover;
       display: block;
-      min-height: 450px;
+      min-height: 350px;
       transition: all 0.3s ease;
       filter: brightness(0.9) contrast(1.06);
       position: relative;
@@ -412,7 +412,7 @@ section {
       .status-text {
         color: $hack-green;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         font-weight: 500;
       }
     }
@@ -428,14 +428,14 @@ section {
         rgba(13, 17, 23, 0.5) 40%,
         transparent
       );
-      padding: 2.5rem 2rem;
+      padding: 1.8rem 1.5rem;
       opacity: 0.95;
       transition: all 0.4s ease;
       backdrop-filter: blur(2px);
 
       .name {
         color: $hack-white;
-        font-size: 2.2rem;
+        font-size: 1.8rem;
         font-weight: 700;
         margin-bottom: 0.5rem;
         text-shadow:
@@ -447,7 +447,7 @@ section {
 
       .title {
         color: $hack-green;
-        font-size: 1.3rem;
+        font-size: 1.05rem;
         font-weight: 500;
         text-shadow:
           0 2px 12px rgba(0, 0, 0, 0.9),
@@ -462,8 +462,8 @@ section {
   margin-bottom: 2rem;
 
   .avatar {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     border: 3px solid $hack-green;
     display: flex;
@@ -494,7 +494,7 @@ section {
 
 .name {
   margin-bottom: 0.5rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: $hack-white;
 }
 
@@ -502,7 +502,7 @@ section {
   color: $hack-blue;
   font-weight: 500;
   margin-bottom: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .bio {
@@ -520,7 +520,7 @@ section {
     text-align: center;
 
     .stat-number {
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 700;
       font-family: 'JetBrains Mono', monospace;
       display: block;
@@ -537,13 +537,13 @@ section {
 
 // Skills Preview Section
 .skills-preview {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   background: rgba(22, 27, 34, 0.5);
 
   .section-title {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-family: 'Space Grotesk', sans-serif;
     color: $hack-white;
   }
@@ -552,19 +552,19 @@ section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.25rem;
 
     .tech-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      padding: 1rem;
+      gap: 0.4rem;
+      padding: 0.75rem;
       border-radius: 8px;
       transition: all 0.3s ease;
       background: rgba(13, 17, 23, 0.5);
       border: 1px solid $hack-border;
-      min-width: 100px;
+      min-width: 85px;
 
       &:hover {
         background: rgba(0, 255, 136, 0.1);
@@ -573,14 +573,14 @@ section {
       }
 
       .tech-icon {
-        width: 3rem;
-        height: 3rem;
+        width: 2.2rem;
+        height: 2.2rem;
         object-fit: contain;
       }
 
       span {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.85rem;
+        font-size: 0.78rem;
         color: $hack-white;
       }
     }
@@ -647,61 +647,61 @@ section {
   .profile-section {
     .profile-image-container {
       .profile-image {
-        min-height: 350px !important;
+        min-height: 260px !important;
       }
 
       .status-indicator {
-        bottom: 15px;
-        right: 15px;
-        padding: 0.4rem 0.8rem;
+        bottom: 12px;
+        right: 12px;
+        padding: 0.3rem 0.6rem;
 
         .status-dot {
-          width: 8px;
-          height: 8px;
+          width: 7px;
+          height: 7px;
         }
 
         .status-text {
-          font-size: 0.75rem;
+          font-size: 0.68rem;
         }
       }
 
       .image-overlay {
-        padding: 1.5rem 1.2rem !important;
+        padding: 1.2rem 1rem !important;
 
         .name {
-          font-size: 1.6rem !important;
-          margin-bottom: 0.3rem;
+          font-size: 1.4rem !important;
+          margin-bottom: 0.2rem;
         }
 
         .title {
-          font-size: 1rem !important;
+          font-size: 0.88rem !important;
         }
       }
     }
   }
 
   .skills-preview {
-    padding: 3rem 0;
+    padding: 2rem 0;
 
     .section-title {
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
     }
 
     .tech-stack {
-      gap: 1rem;
+      gap: 0.75rem;
 
       .tech-item {
-        padding: 1rem;
-        min-width: 80px;
+        padding: 0.75rem;
+        min-width: 70px;
 
         .tech-icon {
-          width: 2.2rem;
-          height: 2.2rem;
+          width: 1.8rem;
+          height: 1.8rem;
         }
 
         span {
-          font-size: 0.75rem;
+          font-size: 0.68rem;
         }
       }
     }
@@ -772,8 +772,8 @@ section {
 // Floating Back to Top Button
 .floating-back-top {
   position: fixed;
-  bottom: 30px;
-  left: 30px;
+  bottom: 24px;
+  left: 24px;
   z-index: 9999;
   display: flex;
   flex-direction: column;
@@ -782,11 +782,11 @@ section {
   background: rgba(13, 17, 23, 0.92);
   border: 2px solid $hack-green;
   color: $hack-green;
-  padding: 10px 16px;
+  padding: 8px 12px;
   border-radius: 10px;
   cursor: pointer;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   transition: all 0.3s ease;
@@ -825,11 +825,11 @@ section {
 // Floating Services Button
 .floating-services-btn {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 24px;
+  right: 24px;
   z-index: 9999;
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, #00ff88, #00cc6a);
   display: flex;
@@ -905,17 +905,17 @@ section {
 // Responsive - Floating Button
 @media (max-width: 768px) {
   .floating-back-top {
-    bottom: 20px;
-    left: 20px;
-    padding: 8px 12px;
-    font-size: 0.65rem;
+    bottom: 16px;
+    left: 16px;
+    padding: 6px 10px;
+    font-size: 0.6rem;
   }
 
   .floating-services-btn {
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
+    bottom: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
 
     .btn-content {
       .q-icon {
@@ -931,10 +931,10 @@ section {
 
 @media (max-width: 480px) {
   .floating-services-btn {
-    bottom: 15px;
-    right: 15px;
-    width: 44px;
-    height: 44px;
+    bottom: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
     box-shadow:
       0 0 15px rgba(0, 255, 136, 0.4),
       0 0 25px rgba(0, 255, 136, 0.2),

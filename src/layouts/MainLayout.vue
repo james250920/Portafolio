@@ -103,7 +103,7 @@ const scrollToSection = (sectionId: string) => {
 
   const element = document.getElementById(sectionId);
   if (element) {
-    const headerOffset = 70;
+    const headerOffset = 56;
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -116,7 +116,7 @@ const scrollToSection = (sectionId: string) => {
 
 const handleScroll = () => {
   const sections = ['home', 'about',  'education','projects', 'contact'];
-  const scrollPosition = window.scrollY + 100;
+  const scrollPosition = window.scrollY + 60;
 
   for (const sectionId of sections) {
     const element = document.getElementById(sectionId);
@@ -149,7 +149,7 @@ onMounted(() => {
     setTimeout(() => {
       const element = document.getElementById(initialSection);
       if (element) {
-        const headerOffset = 70;
+        const headerOffset = 56;
         const offsetPosition =
           element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
         window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
@@ -177,8 +177,8 @@ onUnmounted(() => {
 }
 
 .hack-toolbar {
-  padding: 0 2rem;
-  min-height: 70px;
+  padding: 0 1.5rem;
+  min-height: 56px;
 }
 
 .hack-brand {
@@ -194,8 +194,8 @@ onUnmounted(() => {
   }
 
   .brand-logo {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #00ff88;
@@ -214,7 +214,7 @@ onUnmounted(() => {
 
   .brand-text {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: #ffffff;
   }
@@ -226,10 +226,10 @@ onUnmounted(() => {
 
   .nav-btn {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 400;
     color: #8b949e;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.75rem;
     border-radius: 6px;
     transition: all 0.3s ease;
     text-transform: lowercase;
@@ -246,7 +246,7 @@ onUnmounted(() => {
     }
 
     .q-icon {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
   }
 }
