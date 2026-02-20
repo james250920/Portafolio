@@ -94,6 +94,34 @@
       </div>
     </section>
 
+    <!-- Experience Section -->
+    <section class="experience-section">
+      <div class="container">
+        <h2 class="section-title text-center">Experiencia Profesional</h2>
+        <div class="experience-timeline">
+          <div v-for="(exp, index) in experiences" :key="index" class="experience-item">
+            <div class="experience-marker">
+              <div class="marker-dot"></div>
+              <div class="marker-line" v-if="index < experiences.length - 1"></div>
+            </div>
+            <div class="hack-card experience-card">
+              <div class="experience-header">
+                <h3 class="experience-title">{{ exp.title }}</h3>
+                <div class="experience-company">{{ exp.company }}</div>
+                <div class="experience-period">{{ exp.period }}</div>
+              </div>
+              <p class="experience-description">{{ exp.description }}</p>
+              <div class="experience-tech">
+                <span v-for="tech in exp.technologies" :key="tech" class="tech-tag">
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Skills Section -->
     <section class="skills-section">
       <div class="container">
@@ -185,33 +213,7 @@
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section class="experience-section">
-      <div class="container">
-        <h2 class="section-title text-center">Experiencia Profesional</h2>
-        <div class="experience-timeline">
-          <div v-for="(exp, index) in experiences" :key="index" class="experience-item">
-            <div class="experience-marker">
-              <div class="marker-dot"></div>
-              <div class="marker-line" v-if="index < experiences.length - 1"></div>
-            </div>
-            <div class="hack-card experience-card">
-              <div class="experience-header">
-                <h3 class="experience-title">{{ exp.title }}</h3>
-                <div class="experience-company">{{ exp.company }}</div>
-                <div class="experience-period">{{ exp.period }}</div>
-              </div>
-              <p class="experience-description">{{ exp.description }}</p>
-              <div class="experience-tech">
-                <span v-for="tech in exp.technologies" :key="tech" class="tech-tag">
-                  {{ tech }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     <!-- Interests Section -->
     <section class="interests-section">
@@ -850,18 +852,17 @@ const interests = ref([
 // Responsive Design
 @media (max-width: 768px) {
   .about-header {
-    padding: 2rem 0 1rem;
+    padding: 1.5rem 0 1rem;
 
     .page-title {
-      font-size: 2rem;
-
+      font-size: 1.6rem;
       .q-icon {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
       }
     }
 
     .page-subtitle {
-      font-size: 1rem;
+      font-size: 0.9rem;
       padding: 0 0.5rem;
     }
   }
@@ -872,38 +873,31 @@ const interests = ref([
 
   .profile-section {
     .profile-card {
-      .profile-avatar {
-        .avatar-container {
-          .avatar-image {
-            width: 10rem;
-            height: 10rem;
-          }
-        }
+      .profile-avatar .avatar-container .avatar-image {
+        width: 8rem;
+        height: 8rem;
       }
 
       .profile-name {
-        font-size: 2rem;
+        font-size: 1.6rem;
       }
-
       .profile-title {
-        font-size: 1.2rem;
-      }
-
-      .profile-bio {
         font-size: 1rem;
+      }
+      .profile-bio {
+        font-size: 0.88rem;
       }
 
       .profile-stats {
         flex-direction: row;
-        gap: 1.5rem !important;
+        gap: 1rem !important;
 
         .stat-item {
           .stat-number {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
           }
-
           .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.72rem;
           }
         }
       }
@@ -912,31 +906,28 @@ const interests = ref([
 
   .skills-section {
     .section-title {
-      font-size: 2rem;
+      font-size: 1.4rem;
     }
 
     .skill-category {
       .category-title {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
       }
 
       .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 0.8rem;
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 0.6rem;
 
-        .skill-card {
-          .skill-block {
-            padding: 1rem 0.8rem;
-            min-height: 80px;
+        .skill-card .skill-block {
+          padding: 0.75rem 0.6rem;
+          min-height: 70px;
 
-            .skill-icon {
-              width: 2rem;
-              height: 2rem;
-            }
-
-            .skill-name {
-              font-size: 0.85rem;
-            }
+          .skill-icon {
+            width: 1.75rem;
+            height: 1.75rem;
+          }
+          .skill-name {
+            font-size: 0.78rem;
           }
         }
       }
@@ -945,50 +936,47 @@ const interests = ref([
 
   .experience-section {
     .section-title {
-      font-size: 2rem;
+      font-size: 1.4rem;
     }
 
     .experience-timeline {
       .experience-item {
         flex-direction: column;
-        gap: 1rem !important;
+        gap: 0.75rem !important;
 
         .experience-marker {
           flex-direction: row;
           margin-top: 0 !important;
 
           .marker-line {
-            width: 50px !important;
+            width: 40px !important;
             height: 2px !important;
             margin-top: 0 !important;
-            margin-left: 0.5rem;
           }
         }
 
         .experience-card {
+          padding: 1rem;
+
           .experience-header {
             .experience-title {
-              font-size: 1.3rem;
+              font-size: 1.1rem;
             }
-
             .experience-company {
-              font-size: 1rem;
+              font-size: 0.9rem;
             }
-
             .experience-period {
-              font-size: 0.85rem;
+              font-size: 0.8rem;
             }
           }
 
           .experience-description {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
           }
 
-          .experience-tech {
-            .tech-tag {
-              font-size: 0.75rem;
-              padding: 0.2rem 0.6rem;
-            }
+          .experience-tech .tech-tag {
+            font-size: 0.7rem;
+            padding: 0.18rem 0.5rem;
           }
         }
       }
@@ -997,30 +985,26 @@ const interests = ref([
 
   .interests-section {
     .section-title {
-      font-size: 2rem;
+      font-size: 1.4rem;
     }
 
     .interests-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
     }
 
-    .interest-item {
-      .interest-card {
-        padding: 1.5rem 1rem;
-        min-height: 150px;
+    .interest-item .interest-card {
+      padding: 1.2rem 0.8rem;
+      min-height: 120px;
 
-        .q-icon {
-          font-size: 2.5rem;
-        }
-
-        h4 {
-          font-size: 1.1rem;
-        }
-
-        p {
-          font-size: 0.85rem;
-        }
+      .q-icon {
+        font-size: 2rem;
+      }
+      h4 {
+        font-size: 0.95rem;
+      }
+      p {
+        font-size: 0.78rem;
       }
     }
   }
@@ -1028,7 +1012,7 @@ const interests = ref([
   .cta-section {
     .cta-card {
       .cta-title {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
       }
 
       .cta-actions {
@@ -1037,9 +1021,17 @@ const interests = ref([
 
         .hack-button {
           width: 100%;
-          max-width: 300px;
+          max-width: 280px;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .interests-section {
+    .interests-grid {
+      grid-template-columns: 1fr;
     }
   }
 }

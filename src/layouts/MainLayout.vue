@@ -115,7 +115,7 @@ const scrollToSection = (sectionId: string) => {
 };
 
 const handleScroll = () => {
-  const sections = ['home', 'about', 'projects', 'education', 'contact'];
+  const sections = ['home', 'about',  'education','projects', 'contact'];
   const scrollPosition = window.scrollY + 100;
 
   for (const sectionId of sections) {

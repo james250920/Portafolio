@@ -737,18 +737,17 @@ const openUrl = (url: string) => {
 
 @media (max-width: 768px) {
   .education-header {
-    padding: 2rem 0 1rem;
+    padding: 1.5rem 0 1rem;
 
     .page-title {
-      font-size: 2rem;
-
+      font-size: 1.6rem;
       .q-icon {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
       }
     }
 
     .page-subtitle {
-      font-size: 1rem;
+      font-size: 0.9rem;
       padding: 0 0.5rem;
     }
   }
@@ -758,13 +757,13 @@ const openUrl = (url: string) => {
   }
 
   .section-title {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     text-align: center;
   }
 
   .education-timeline {
     .timeline-item {
-      gap: 1rem !important;
+      gap: 0.75rem !important;
       flex-direction: column;
 
       .timeline-marker {
@@ -772,58 +771,51 @@ const openUrl = (url: string) => {
         margin-top: 0 !important;
 
         .marker-line {
-          width: 50px !important;
+          width: 40px !important;
           height: 2px !important;
           margin-top: 0 !important;
-          margin-left: 0.5rem;
         }
       }
 
       .education-card {
-        padding: 1.2rem;
+        padding: 1rem;
 
         .education-header {
           flex-direction: column;
-          gap: 1rem;
+          gap: 0.75rem;
           text-align: center;
 
           .education-icon {
             margin: 0 auto;
-
             .q-icon {
-              font-size: 2.5rem;
+              font-size: 2rem;
             }
           }
 
           .education-info {
             .education-degree {
-              font-size: 1.3rem;
+              font-size: 1.1rem;
             }
-
             .education-institution {
-              font-size: 1rem;
+              font-size: 0.9rem;
             }
-
             .education-period {
-              font-size: 0.85rem;
+              font-size: 0.8rem;
               justify-content: center;
             }
           }
         }
 
         .education-description {
-          font-size: 0.95rem;
+          font-size: 0.85rem;
         }
 
         .education-achievements {
           .achievements-title {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
           }
-
-          .achievements-list {
-            li {
-              font-size: 0.9rem;
-            }
+          .achievements-list li {
+            font-size: 0.82rem;
           }
         }
       }
@@ -831,34 +823,31 @@ const openUrl = (url: string) => {
   }
 
   .certifications-section {
+    padding: 1.5rem 0;
+
     .certifications-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      gap: 0.75rem;
     }
   }
 
   .courses-section {
     .course-category {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
 
-      .category-title {
-        font-size: 1.3rem;
-
-        .q-icon {
-          font-size: 1.2rem;
-        }
+      .category-header {
+        font-size: 0.9rem;
       }
 
       .courses-list {
-        padding-left: 1rem;
+        padding-left: 0.75rem;
 
-        li {
-          font-size: 0.9rem;
-          padding: 0.4rem 0;
-
-          .q-icon {
-            font-size: 0.8rem;
-          }
+        .course-item .course-name {
+          font-size: 0.82rem;
+        }
+        .course-platform,
+        .course-duration {
+          font-size: 0.78rem;
         }
       }
     }
@@ -867,24 +856,20 @@ const openUrl = (url: string) => {
   .stats-section {
     .stats-grid {
       grid-template-columns: repeat(2, 1fr) !important;
-      gap: 1rem;
+      gap: 0.75rem;
     }
 
     .stat-card {
-      padding: 1.2rem;
+      padding: 1rem;
 
-      .stat-icon {
-        .q-icon {
-          font-size: 2rem;
-        }
-      }
-
-      .stat-number {
+      .stat-icon .q-icon {
         font-size: 1.8rem;
       }
-
+      .stat-number {
+        font-size: 1.5rem;
+      }
       .stat-label {
-        font-size: 0.85rem;
+        font-size: 0.78rem;
       }
     }
   }

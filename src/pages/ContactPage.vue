@@ -634,18 +634,17 @@ const downloadCV = () => {
 // Responsive Design
 @media (max-width: 768px) {
   .contact-header {
-    padding: 2rem 0 1rem;
+    padding: 1.5rem 0 1rem;
 
     .page-title {
-      font-size: 2rem;
-
+      font-size: 1.6rem;
       .q-icon {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
       }
     }
 
     .page-subtitle {
-      font-size: 1rem;
+      font-size: 0.9rem;
       padding: 0 0.5rem;
     }
   }
@@ -655,9 +654,11 @@ const downloadCV = () => {
   }
 
   .contact-methods {
+    padding: 1.5rem 0;
+
     .hack-grid {
       grid-template-columns: 1fr !important;
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
     .terminal-info {
@@ -665,68 +666,72 @@ const downloadCV = () => {
     }
 
     .contact-method {
-      .method-icon {
-        .q-icon {
-          font-size: 2.5rem;
-        }
-      }
+      padding: 1.2rem;
 
+      .method-icon .q-icon {
+        font-size: 2rem;
+      }
       h3 {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
       }
-
       .method-info {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
       }
-
       .method-description {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
       }
     }
   }
 
   .contact-form-section {
+    padding: 1.5rem 0;
+
     .hack-grid {
       grid-template-columns: 1fr !important;
     }
 
     .form-title {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
     }
-
     .form-label {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
-    .form-actions {
-      .hack-button {
-        width: 100%;
-        font-size: 0.95rem;
-        padding: 0.8rem 1.5rem;
-      }
+    .form-actions .hack-button {
+      width: 100%;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.2rem;
     }
   }
 
   .quick-contact {
     .section-title {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
     }
 
     .quick-contact-grid {
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.75rem;
       align-items: stretch;
 
       .quick-contact-item {
         width: 100%;
         justify-content: center;
-        padding: 1.2rem;
-        font-size: 1rem;
+        padding: 1rem;
+        font-size: 0.9rem;
 
         .copy-icon {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-header {
+    .page-title {
+      font-size: 1.35rem;
     }
   }
 }

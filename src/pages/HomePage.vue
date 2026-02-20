@@ -106,7 +106,7 @@
     <!-- Skills Preview -->
     <section class="skills-preview">
       <div class="container">
-        <h5 class="section-title text-center">Stack Portafolio</h5>
+        <h4 class="section-title text-center">Stack Portafolio</h4>
         <div class="tech-stack">
           <div v-for="tech in techStack" :key="tech.name" class="tech-item">
             <img :src="tech.icon" :alt="tech.name" class="tech-icon" />

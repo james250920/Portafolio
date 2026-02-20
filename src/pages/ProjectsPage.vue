@@ -799,24 +799,24 @@ onMounted(() => {
   .projects-grid-section {
     .projects-grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
   }
 }
 
 @media (max-width: 768px) {
   .projects-header {
-    padding: 2rem 0 1rem;
+    padding: 1.5rem 0 1rem;
 
     .page-title {
-      font-size: 2rem;
-
+      font-size: 1.6rem;
       .q-icon {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
       }
     }
 
     .page-subtitle {
-      font-size: 1rem;
+      font-size: 0.9rem;
       padding: 0 0.5rem;
     }
   }
@@ -826,7 +826,7 @@ onMounted(() => {
   }
 
   .filter-section {
-    padding: 1.5rem 0;
+    padding: 1rem 0;
 
     .terminal-filter {
       .terminal-title {
@@ -835,26 +835,23 @@ onMounted(() => {
 
       .filter-options {
         justify-content: center;
-        gap: 0.4rem;
+        gap: 0.35rem;
+        flex-wrap: wrap;
 
         .filter-btn {
-          padding: 0.4rem 0.8rem;
-          font-size: 0.85rem;
+          padding: 0.35rem 0.7rem;
+          font-size: 0.78rem;
         }
       }
 
-      .tech-filter {
-        max-width: 100%;
-
-        .tech-select {
-          font-size: 0.9rem;
-        }
+      .tech-filter .tech-select {
+        font-size: 0.85rem;
       }
     }
   }
 
   .projects-grid-section {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
 
     .projects-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -862,69 +859,49 @@ onMounted(() => {
     }
 
     .project-card {
+      .project-image {
+        height: 150px;
+      }
+
       .project-info {
-        padding: 1.2rem;
+        padding: 1rem;
 
         .project-header {
           flex-direction: column;
-          gap: 0.5rem;
+          gap: 0.4rem;
           align-items: flex-start;
 
           .project-title {
-            font-size: 1.2rem;
+            font-size: 1rem;
           }
-
           .project-status {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
           }
         }
 
         .project-description {
-          font-size: 0.9rem;
+          font-size: 0.82rem;
         }
 
         .project-tech {
-          flex-wrap: wrap;
-          gap: 0.4rem;
-
+          gap: 0.35rem;
           .tech-tag {
-            font-size: 0.7rem;
-            padding: 0.25rem 0.6rem;
+            font-size: 0.68rem;
+            padding: 0.2rem 0.5rem;
           }
         }
 
         .project-actions {
           flex-direction: column;
-          gap: 0.8rem;
+          gap: 0.6rem;
 
           .action-btn {
             width: 100%;
             justify-content: center;
-            font-size: 0.9rem;
-            padding: 0.6rem 1rem;
+            font-size: 0.82rem;
+            padding: 0.5rem 0.8rem;
           }
         }
-      }
-    }
-  }
-
-  .load-more-section {
-    text-align: center;
-    margin-top: 2rem;
-
-    .hack-button {
-      width: 100%;
-      max-width: 300px;
-      font-size: 0.95rem;
-    }
-  }
-
-  .featured-content {
-    .featured-actions {
-      flex-direction: column;
-
-      .hack-button {
-        width: 100%;
       }
     }
   }

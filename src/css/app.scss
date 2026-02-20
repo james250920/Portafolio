@@ -317,3 +317,40 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background: $hack-green;
 }
+
+// =============================================
+// TIPOGRAFÍA RESPONSIVE GLOBAL
+// =============================================
+@media (max-width: 768px) {
+  html,
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  h3 {
+    font-size: 1.15rem;
+  }
+}
