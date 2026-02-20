@@ -70,11 +70,37 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+
+const router = useRouter();
+const route = useRoute();
 
 const logoURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/logo.jpg`;
 const activeSection = ref('home');
 
+const SECTION_TO_PATH: Record<string, string> = {
+  home: '/',
+  about: '/about',
+  projects: '/projects',
+  education: '/education',
+  contact: '/contact',
+};
+
+const PATH_TO_SECTION: Record<string, string> = {
+  '/': 'home',
+  '/about': 'about',
+  '/projects': 'projects',
+  '/education': 'education',
+  '/contact': 'contact',
+};
+
 const scrollToSection = (sectionId: string) => {
+  // Actualizar la URL para reflejar la sección actual
+  const path = SECTION_TO_PATH[sectionId] ?? '/';
+  if (route.path !== path) {
+    void router.replace(path);
+  }
+
   const element = document.getElementById(sectionId);
   if (element) {
     const headerOffset = 70;
@@ -99,7 +125,14 @@ const handleScroll = () => {
       const offsetHeight = element.offsetHeight;
 
       if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-        activeSection.value = sectionId;
+        if (activeSection.value !== sectionId) {
+          activeSection.value = sectionId;
+          // Actualizar la URL al hacer scroll sin forzar navegación del router
+          const newPath = SECTION_TO_PATH[sectionId] ?? '/';
+          if (route.path !== newPath) {
+            void router.replace(newPath);
+          }
+        }
         break;
       }
     }
@@ -108,7 +141,23 @@ const handleScroll = () => {
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
-  handleScroll();
+
+  // Al cargar directamente una URL de sección (ej: /#/contact), hacer scroll a esa sección
+  const initialSection = PATH_TO_SECTION[route.path];
+  if (initialSection && initialSection !== 'home') {
+    activeSection.value = initialSection;
+    setTimeout(() => {
+      const element = document.getElementById(initialSection);
+      if (element) {
+        const headerOffset = 70;
+        const offsetPosition =
+          element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    }, 400);
+  } else {
+    handleScroll();
+  }
 });
 
 onUnmounted(() => {

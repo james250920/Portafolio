@@ -193,7 +193,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, nextTick } from 'vue';
 import { useQuasar } from 'quasar';
 import { sendEmail } from 'src/service/email.service';
 
@@ -270,6 +270,9 @@ const sendMessage = async () => {
   const valid = await contactForm.value?.validate();
   if (!valid) return;
 
+  // Guardar posición de scroll para restaurarla después del envío
+  const savedScrollY = window.scrollY;
+
   try {
     $q.loading.show({
       message: 'Enviando mensaje...',
@@ -344,6 +347,8 @@ const sendMessage = async () => {
       subject: '',
       message: '',
     };
+    // Esperar el siguiente tick para limpiar la validación sin mostrar errores rojos
+    await nextTick();
     contactForm.value?.resetValidation();
   } catch (error) {
     console.error('Error sending contact message:', error);
@@ -356,6 +361,9 @@ const sendMessage = async () => {
     });
   } finally {
     $q.loading.hide();
+    // Restaurar posición de scroll para que no suba al inicio de la página
+    await nextTick();
+    window.scrollTo({ top: savedScrollY, behavior: 'instant' });
   }
 };
 
