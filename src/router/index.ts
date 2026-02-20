@@ -14,8 +14,16 @@ export default defineRouter(function (/* { store, ssrContext } */) {
       ? createWebHistory
       : createWebHashHistory;
 
+  const sectionPaths = ['/', '/about', '/projects', '/education', '/contact'];
+
   const Router = createRouter({
-    scrollBehavior: () => ({ left: 0, top: 0 }),
+    scrollBehavior(to) {
+      // Para rutas de sección, no interferir con el scroll (lo maneja MainLayout)
+      if (sectionPaths.includes(to.path)) {
+        return false;
+      }
+      return { left: 0, top: 0 };
+    },
     routes,
 
     history: createHistory(process.env.VUE_ROUTER_BASE),
