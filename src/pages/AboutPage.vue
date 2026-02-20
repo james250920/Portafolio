@@ -219,7 +219,10 @@ const skillCategories = ref([
         icon: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Official_CSS_Logo.svg',
       },
       { name: 'Flask', icon: 'https://cdn.simpleicons.org/flask/000000' },
-      { name: 'JetPack Compose', icon: 'https://cdn.simpleicons.org/jetpackcompose/4285F4' },
+{
+        name: 'Tailwind',
+        icon: 'https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg',
+      },
     ],
   },
   {
@@ -283,6 +286,7 @@ const skillCategories = ref([
     skills: [
       { name: 'Kotlin', icon: 'https://cdn.simpleicons.org/kotlin/7F52FF' },
       { name: 'Flutter', icon: 'https://cdn.simpleicons.org/flutter/02569B' },
+      { name: 'JetPack Compose', icon: 'https://cdn.simpleicons.org/jetpackcompose/4285F4' },
     ],
   },
   {
@@ -290,17 +294,13 @@ const skillCategories = ref([
     icon: 'build',
     color: 'text-hack-yellow',
     skills: [
-      { name: 'Git / GitHub', icon: 'https://cdn.simpleicons.org/github/181717' },
+      { name: 'Git / GitHub', icon: 'https://www.cesaralexander.dev/github-mark-white.svg' },
       { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker/2496ED' },
       { name: 'Podman', icon: 'https://cdn.simpleicons.org/podman/892CA0' },
       { name: 'Ubuntu', icon: 'https://cdn.simpleicons.org/ubuntu/E95420' },
       { name: 'Postman', icon: 'https://cdn.simpleicons.org/postman/FF6C37' },
       { name: 'Azure', icon: 'https://swimburger.net/media/fbqnp2ie/azure.svg' },
       { name: 'AWS', icon: 'https://www.pngall.com/wp-content/uploads/13/AWS-Logo-PNG-File.png' },
-      {
-        name: 'Tailwind',
-        icon: 'https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg',
-      },
       {
         name: 'n8n',
         icon: 'https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B',

@@ -161,7 +161,7 @@ const techStack = ref([
   { name: 'Vue.js', icon: 'https://cdn.simpleicons.org/vuedotjs/4FC08D' },
   { name: 'Node.js', icon: 'https://cdn.simpleicons.org/nodedotjs/339933' },
   { name: 'Git', icon: 'https://cdn.simpleicons.org/git/F05032' },
-  { name: 'GitHub', icon: 'https://cdn.simpleicons.org/github/181717' },
+  { name: 'GitHub', icon: 'https://www.cesaralexander.dev/github-mark-white.svg' },
 ]);
 </script>
 
