@@ -298,12 +298,8 @@ const courseCategories = ref<CourseCategory[]>([
   {
     name: 'Desarrollo Web',
     icon: 'language',
-    courses: [
-      { name: '.NET', platform: 'Microsoft Learn', duration: '40h' },
-
-    ],
+    courses: [{ name: '.NET', platform: 'Microsoft Learn', duration: '40h' }],
   },
-
 ]);
 
 // Methods
@@ -517,37 +513,40 @@ const openUrl = (url: string) => {
   padding: 3rem 0;
 
   .certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .certification-card-container {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
   }
 
   .certification-card {
-    padding: 2rem;
+    padding: 1.75rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    text-align: center;
+    gap: 1rem;
+    width: 100%;
     transition: all 0.3s ease;
 
     &:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
       border-color: $hack-yellow;
       box-shadow: 0 12px 40px rgba(255, 193, 7, 0.15);
     }
 
     .cert-header {
-      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
 
       .cert-icon {
-        width: 80px;
-        height: 80px;
+        width: 72px;
+        height: 72px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -557,77 +556,86 @@ const openUrl = (url: string) => {
       }
 
       .cert-badge img {
-        width: 60px;
-        height: 60px;
+        width: 48px;
+        height: 48px;
         object-fit: contain;
       }
     }
 
     .cert-info {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
 
       .cert-name {
         color: $hack-white;
-        font-size: 1.4rem;
+        font-size: 1rem;
         font-weight: 600;
-        margin: 0 0 0.5rem;
+        margin: 0;
+        line-height: 1.3;
       }
 
       .cert-issuer {
         color: $hack-blue;
-        font-size: 1.1rem;
+        font-size: 0.9rem;
         font-weight: 500;
-        margin: 0 0 0.5rem;
+        margin: 0;
       }
 
       .cert-date {
-        color: #c9d1d9;
+        color: #8b949e;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
+        justify-content: center;
+        gap: 0.4rem;
       }
 
       .cert-credential {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        margin-top: 0.75rem;
+        justify-content: center;
+        gap: 0.4rem;
+        flex-wrap: wrap;
 
         .credential-label {
           color: #8b949e;
-          font-size: 0.85rem;
+          font-size: 0.8rem;
         }
 
         .credential-id {
           background: rgba(0, 255, 136, 0.1);
           color: $hack-green;
-          padding: 0.25rem 0.75rem;
+          padding: 0.2rem 0.6rem;
           border-radius: 4px;
           font-family: 'JetBrains Mono', monospace;
-          font-size: 0.85rem;
+          font-size: 0.78rem;
           border: 1px solid rgba(0, 255, 136, 0.3);
         }
       }
     }
 
     .cert-actions {
-      flex-shrink: 0;
+      margin-top: auto;
+      width: 100%;
 
       .action-btn {
+        width: 100%;
         background: transparent;
         border: 1px solid $hack-yellow;
         color: $hack-yellow;
-        padding: 0.75rem 1.5rem;
+        padding: 0.6rem 1rem;
         border-radius: 4px;
         cursor: pointer;
         transition: all 0.3s ease;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 0.5rem;
 
         &:hover {
@@ -711,6 +719,22 @@ const openUrl = (url: string) => {
 }
 
 // Responsive Design
+@media (max-width: 1024px) {
+  .certifications-section {
+    .certifications-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .certifications-section {
+    .certifications-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .education-header {
     padding: 2rem 0 1rem;
@@ -808,40 +832,8 @@ const openUrl = (url: string) => {
 
   .certifications-section {
     .certifications-grid {
-      grid-template-columns: 1fr !important;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
-    }
-
-    .certification-card {
-      flex-direction: column !important;
-      text-align: center;
-      padding: 1.2rem;
-
-      .cert-icon {
-        margin: 0 auto 1rem;
-
-        .q-icon {
-          font-size: 2rem;
-        }
-      }
-
-      .cert-info {
-        text-align: center;
-
-        .cert-name {
-          font-size: 1.1rem;
-        }
-
-        .cert-issuer {
-          font-size: 0.9rem;
-        }
-
-        .cert-date,
-        .cert-credential {
-          justify-content: center;
-          font-size: 0.8rem;
-        }
-      }
     }
   }
 
