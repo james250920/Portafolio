@@ -127,85 +127,22 @@
       <div class="container">
         <h2 class="section-title text-center">Skills</h2>
 
-        <!-- Frontend Skills -->
-        <div class="skill-category">
-          <h3 class="category-title"><q-icon name="web" class="text-hack-blue" /> Frontend</h3>
-          <div class="skills-grid">
-            <div v-for="skill in frontendSkills" :key="skill.name" class="skill-card">
-              <div class="hack-card skill-block">
-                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
-                <div class="skill-name">{{ skill.name }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Backend Skills -->
-        <div class="skill-category">
-          <h3 class="category-title"><q-icon name="storage" class="text-hack-green" /> Backend</h3>
-          <div class="skills-grid">
-            <div v-for="skill in backendSkills" :key="skill.name" class="skill-card">
-              <div class="hack-card skill-block">
-                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
-                <div class="skill-name">{{ skill.name }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- QA Skills -->
-        <div class="skill-category">
-          <h3 class="category-title">
-            <q-icon name="check_circle" class="text-hack-purple" /> QA & Testing
-          </h3>
-          <div class="skills-grid">
-            <div v-for="skill in QAskills" :key="skill.name" class="skill-card">
-              <div class="hack-card skill-block">
-                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
-                <div class="skill-name">{{ skill.name }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Database Skills -->
-        <div class="skill-category">
-          <h3 class="category-title"><q-icon name="dns" class="text-hack-orange" /> Databases</h3>
-          <div class="skills-grid">
-            <div v-for="skill in DBskills" :key="skill.name" class="skill-card">
-              <div class="hack-card skill-block">
-                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
-                <div class="skill-name">{{ skill.name }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile Skills -->
-        <div class="skill-category">
-          <h3 class="category-title">
-            <q-icon name="smartphone" class="text-hack-teal" /> Mobile Development
-          </h3>
-          <div class="skills-grid">
-            <div v-for="skill in MobileSkills" :key="skill.name" class="skill-card">
-              <div class="hack-card skill-block">
-                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
-                <div class="skill-name">{{ skill.name }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tools & DevOps -->
-        <div class="skill-category">
-          <h3 class="category-title">
-            <q-icon name="build" class="text-hack-yellow" /> Tools & DevOps
-          </h3>
-          <div class="skills-grid">
-            <div v-for="skill in toolsSkills" :key="skill.name" class="skill-card">
-              <div class="hack-card skill-block">
-                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
-                <div class="skill-name">{{ skill.name }}</div>
+        <div class="categories-grid">
+          <div
+            v-for="category in skillCategories"
+            :key="category.name"
+            class="hack-card skill-category-card"
+          >
+            <h3 class="category-header">
+              <q-icon :name="category.icon" :class="category.color" />
+              {{ category.name }}
+            </h3>
+            <div class="skills-inner-grid">
+              <div v-for="skill in category.skills" :key="skill.name" class="skill-item">
+                <div class="skill-icon-wrap">
+                  <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
+                </div>
+                <span class="skill-name">{{ skill.name }}</span>
               </div>
             </div>
           </div>
@@ -213,21 +150,6 @@
       </div>
     </section>
 
-    <!-- Interests Section -->
-    <section class="interests-section">
-      <div class="container">
-        <h2 class="section-title text-center">Más allá del código</h2>
-        <div class="interests-grid">
-          <div v-for="interest in interests" :key="interest.name" class="interest-item">
-            <div class="hack-card interest-card">
-              <q-icon :name="interest.icon" size="2.2rem" :class="interest.color" />
-              <h4>{{ interest.name }}</h4>
-              <p>{{ interest.description }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
@@ -283,81 +205,107 @@ const careerTimeline = ref([
   { year: '2026', event: 'En proceso...' },
 ]);
 
-const frontendSkills = ref([
-  { name: 'Vue.js / Quasar', icon: 'https://cdn.quasar.dev/logo/svg/quasar-logo.svg' },
-  { name: 'Angular', icon: 'https://cdn.simpleicons.org/angular/DD0031' },
-  { name: 'HTML5', icon: 'https://cdn.simpleicons.org/html5/E34F26' },
+const skillCategories = ref([
   {
-    name: 'CSS',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Official_CSS_Logo.svg',
-  },
-  { name: 'Flask', icon: 'https://cdn.simpleicons.org/flask/000000' },
-  { name: 'JetPack Compose', icon: 'https://cdn.simpleicons.org/jetpackcompose/4285F4' },
-]);
-
-const backendSkills = ref([
-  { name: 'FastAPI', icon: 'https://cdn.simpleicons.org/fastapi/009688' },
-  {
-    name: '.Net',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/960px-.NET_Core_Logo.svg.png',
-  },
-  { name: 'Express', icon: 'https://cdn.simpleicons.org/express/000000' },
-
-  {
-    name: 'Python',
-    icon: 'https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png',
+    name: 'Frontend',
+    icon: 'web',
+    color: 'text-hack-blue',
+    skills: [
+      { name: 'Vue.js / Quasar', icon: 'https://cdn.quasar.dev/logo/svg/quasar-logo.svg' },
+      { name: 'Angular', icon: 'https://cdn.simpleicons.org/angular/DD0031' },
+      { name: 'HTML5', icon: 'https://cdn.simpleicons.org/html5/E34F26' },
+      {
+        name: 'CSS',
+        icon: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Official_CSS_Logo.svg',
+      },
+      { name: 'Flask', icon: 'https://cdn.simpleicons.org/flask/000000' },
+      { name: 'JetPack Compose', icon: 'https://cdn.simpleicons.org/jetpackcompose/4285F4' },
+    ],
   },
   {
-    name: 'C#',
-    icon: 'https://images.icon-icons.com/2415/PNG/512/csharp_plain_logo_icon_146577.png',
-  },
-  { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6' },
-]);
-
-const QAskills = ref([
-  { name: 'K6', icon: 'https://cdn.simpleicons.org/k6/7D64FF' },
-  { name: 'Appium', icon: 'https://cdn.simpleicons.org/appium/662D91' },
-  {
-    name: 'Nunit',
-    icon: 'https://www.automatetheplanet.com/wp-content/uploads/2023/04/nUnit-logo.png',
-  },
-  { name: 'Selenium', icon: 'https://cdn.simpleicons.org/selenium/43B02A' },
-  { name: 'Cypress', icon: 'https://cdn.worldvectorlogo.com/logos/cypress-1.svg' },
-  { name: 'TestRail', icon: 'https://cdn.simpleicons.org/testrail/65C179' },
-  {
-    name: 'Xray/Jira',
-    icon: 'https://cdn.prod.website-files.com/659bd602c8644fb17135bbe7/659bd602c8644fb17135bf7d_1535446267509.jpeg',
-  },
-]);
-
-const DBskills = ref([
-  { name: 'MySQL', icon: 'https://cdn.simpleicons.org/mysql/4479A1' },
-  { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/4169E1' },
-  { name: 'MongoDB', icon: 'https://cdn.simpleicons.org/mongodb/47A248' },
-  { name: 'SQLite', icon: 'https://cdn.simpleicons.org/sqlite/003B57' },
-  { name: 'Firebase', icon: 'https://cdn.simpleicons.org/firebase/FFCA28' },
-]);
-
-const MobileSkills = ref([
-  { name: 'Kotlin', icon: 'https://cdn.simpleicons.org/kotlin/7F52FF' },
-  { name: 'Flutter', icon: 'https://cdn.simpleicons.org/flutter/02569B' },
-]);
-
-const toolsSkills = ref([
-  { name: 'Git / GitHub', icon: 'https://cdn.simpleicons.org/github/181717' },
-  { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker/2496ED' },
-  { name: 'Podman', icon: 'https://cdn.simpleicons.org/podman/892CA0' },
-  { name: 'Ubuntu', icon: 'https://cdn.simpleicons.org/ubuntu/E95420' },
-  { name: 'Postman', icon: 'https://cdn.simpleicons.org/postman/FF6C37' },
-  { name: 'Azure', icon: 'https://swimburger.net/media/fbqnp2ie/azure.svg' },
-  { name: 'AWS', icon: 'https://www.pngall.com/wp-content/uploads/13/AWS-Logo-PNG-File.png' },
-  {
-    name: 'Tailwind',
-    icon: 'https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg',
+    name: 'Backend',
+    icon: 'storage',
+    color: 'text-hack-green',
+    skills: [
+      { name: 'FastAPI', icon: 'https://cdn.simpleicons.org/fastapi/009688' },
+      {
+        name: '.Net',
+        icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/960px-.NET_Core_Logo.svg.png',
+      },
+      { name: 'Express', icon: 'https://cdn.simpleicons.org/express/000000' },
+      {
+        name: 'Python',
+        icon: 'https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png',
+      },
+      {
+        name: 'C#',
+        icon: 'https://images.icon-icons.com/2415/PNG/512/csharp_plain_logo_icon_146577.png',
+      },
+      { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6' },
+    ],
   },
   {
-    name: 'n8n',
-    icon: 'https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B',
+    name: 'QA & Testing',
+    icon: 'check_circle',
+    color: 'text-hack-purple',
+    skills: [
+      { name: 'K6', icon: 'https://cdn.simpleicons.org/k6/7D64FF' },
+      { name: 'Appium', icon: 'https://cdn.simpleicons.org/appium/662D91' },
+      {
+        name: 'Nunit',
+        icon: 'https://www.automatetheplanet.com/wp-content/uploads/2023/04/nUnit-logo.png',
+      },
+      { name: 'Selenium', icon: 'https://cdn.simpleicons.org/selenium/43B02A' },
+      { name: 'Cypress', icon: 'https://cdn.worldvectorlogo.com/logos/cypress-1.svg' },
+      { name: 'TestRail', icon: 'https://cdn.simpleicons.org/testrail/65C179' },
+      {
+        name: 'Xray/Jira',
+        icon: 'https://cdn.prod.website-files.com/659bd602c8644fb17135bbe7/659bd602c8644fb17135bf7d_1535446267509.jpeg',
+      },
+    ],
+  },
+  {
+    name: 'Databases',
+    icon: 'dns',
+    color: 'text-hack-orange',
+    skills: [
+      { name: 'MySQL', icon: 'https://cdn.simpleicons.org/mysql/4479A1' },
+      { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/4169E1' },
+      { name: 'MongoDB', icon: 'https://cdn.simpleicons.org/mongodb/47A248' },
+      { name: 'SQLite', icon: 'https://cdn.simpleicons.org/sqlite/003B57' },
+      { name: 'Firebase', icon: 'https://cdn.simpleicons.org/firebase/FFCA28' },
+    ],
+  },
+  {
+    name: 'Mobile',
+    icon: 'smartphone',
+    color: 'text-hack-teal',
+    skills: [
+      { name: 'Kotlin', icon: 'https://cdn.simpleicons.org/kotlin/7F52FF' },
+      { name: 'Flutter', icon: 'https://cdn.simpleicons.org/flutter/02569B' },
+    ],
+  },
+  {
+    name: 'Tools & DevOps',
+    icon: 'build',
+    color: 'text-hack-yellow',
+    skills: [
+      { name: 'Git / GitHub', icon: 'https://cdn.simpleicons.org/github/181717' },
+      { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker/2496ED' },
+      { name: 'Podman', icon: 'https://cdn.simpleicons.org/podman/892CA0' },
+      { name: 'Ubuntu', icon: 'https://cdn.simpleicons.org/ubuntu/E95420' },
+      { name: 'Postman', icon: 'https://cdn.simpleicons.org/postman/FF6C37' },
+      { name: 'Azure', icon: 'https://swimburger.net/media/fbqnp2ie/azure.svg' },
+      { name: 'AWS', icon: 'https://www.pngall.com/wp-content/uploads/13/AWS-Logo-PNG-File.png' },
+      {
+        name: 'Tailwind',
+        icon: 'https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg',
+      },
+      {
+        name: 'n8n',
+        icon: 'https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B',
+      },
+    ],
   },
 ]);
 
@@ -397,26 +345,6 @@ const experiences = ref([
   },
 ]);
 
-const interests = ref([
-  {
-    name: 'AI & ML',
-    icon: 'psychology',
-    color: 'text-hack-blue',
-    description: 'Explorando aplicaciones de inteligencia artificial y Deep learning',
-  },
-  {
-    name: 'Gaming',
-    icon: 'sports_esports',
-    color: 'text-hack-yellow',
-    description: 'Relajándome con videojuegos y juegos de estrategia',
-  },
-  {
-    name: 'Travel',
-    icon: 'flight_takeoff',
-    color: 'text-hack-green',
-    description: 'Descubriendo nuevos lugares',
-  },
-]);
 </script>
 
 <style lang="scss" scoped>
@@ -571,7 +499,7 @@ const interests = ref([
   }
 }
 
-// Skills Section
+// Skills Section — grid of grids
 .skills-section {
   padding: 3rem 0;
 
@@ -581,59 +509,83 @@ const interests = ref([
     margin-bottom: 2rem;
   }
 
-  .skill-category {
-    margin-bottom: 2rem;
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
 
-    .category-title {
-      color: $hack-white;
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
+  .skill-category-card {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .category-header {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
+      color: $hack-white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      margin: 0;
+
+      .q-icon {
+        font-size: 1.2rem;
+      }
     }
 
-    .skills-grid {
+    .skills-inner-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.75rem;
+    }
 
-      .skill-card {
-        .skill-block {
-          padding: 0.9rem 0.75rem;
-          text-align: center;
-          transition: all 0.3s ease;
-          cursor: default;
-          min-height: 80px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 0.6rem;
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 0.4rem;
+      background: rgba(22, 27, 34, 0.8);
+      border: 1px solid $hack-border;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      cursor: default;
 
-          &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 255, 136, 0.2);
-            border-color: $hack-green;
+      &:hover {
+        transform: translateY(-4px);
+        border-color: $hack-green;
+        box-shadow: 0 6px 18px rgba(0, 255, 136, 0.15);
 
-            .skill-icon {
-              transform: scale(1.1);
-            }
-          }
-
-          .skill-icon {
-            width: 2rem;
-            height: 2rem;
-            transition: transform 0.3s ease;
-            filter: brightness(1);
-          }
-
-          .skill-name {
-            color: $hack-white;
-            font-weight: 500;
-            font-size: 0.82rem;
-          }
+        .skill-icon {
+          transform: scale(1.12);
         }
+      }
+
+      .skill-icon-wrap {
+        width: 2.2rem;
+        height: 2.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .skill-icon {
+        width: 2rem;
+        height: 2rem;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+      }
+
+      .skill-name {
+        color: $hack-white;
+        font-size: 0.72rem;
+        font-weight: 500;
+        text-align: center;
+        line-height: 1.2;
       }
     }
   }
@@ -907,26 +859,36 @@ const interests = ref([
       font-size: 1.3rem;
     }
 
-    .skill-category {
-      .category-title {
-        font-size: 1.05rem;
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .skill-category-card {
+      padding: 0.85rem;
+
+      .category-header {
+        font-size: 0.95rem;
       }
 
-      .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      .skills-inner-grid {
+        grid-template-columns: repeat(3, 1fr);
         gap: 0.5rem;
+      }
 
-        .skill-card .skill-block {
-          padding: 0.65rem 0.5rem;
-          min-height: 65px;
+      .skill-item {
+        padding: 0.5rem 0.3rem;
 
-          .skill-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-          }
-          .skill-name {
-            font-size: 0.72rem;
-          }
+        .skill-icon-wrap {
+          width: 1.6rem;
+          height: 1.6rem;
+        }
+        .skill-icon {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+        .skill-name {
+          font-size: 0.62rem;
         }
       }
     }
@@ -1027,6 +989,12 @@ const interests = ref([
 }
 
 @media (max-width: 480px) {
+  .skills-section {
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .interests-section {
     .interests-grid {
       grid-template-columns: 1fr;

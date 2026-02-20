@@ -14,87 +14,13 @@
       </div>
     </section>
 
-    <!-- Contact Methods Section -->
-    <section class="contact-methods">
+    <!-- Main Contact Section -->
+    <section class="contact-main-section">
       <div class="container">
-        <div class="hack-grid cols-3">
-          <div class="terminal-info">
-            <div class="terminal">
-              <div class="terminal-header">
-                <div class="dot red"></div>
-                <div class="dot yellow"></div>
-                <div class="dot green"></div>
-                <span class="terminal-title">~/contact/info</span>
-              </div>
-              <div class="terminal-content">
-                <div class="terminal-line">cat contact-info.txt</div>
-                <div class="output">
-                  <div class="info-line">
-                    <span class="text-hack-green">Name:</span> James Mendoza
-                  </div>
-                  <div class="info-line">
-                    <span class="text-hack-blue">Location:</span> Disponible
-                  </div>
-                  <div class="info-line">
-                    <span class="text-hack-yellow">Timezone:</span> UTC-5 (EST)
-                  </div>
-                  <div class="info-line">
-                    <span class="text-hack-purple">Availability:</span> Abierto a Oportunidades
-                  </div>
-                  <div class="info-line">
-                    <span class="text-hack-cyan">Specialties:</span> Desarrollo Full-Stack
-                  </div>
-                </div>
-                <div class="terminal-line">status --availability</div>
-                <div class="output">
-                  <span class="text-hack-green">● DISPONIBLE</span> - Listo para nuevos proyectos
-                </div>
-                <div class="terminal-line prompt">
-                  <span>DevMenfroyt@contact:~$ </span>
-                  <span class="cursor-blink">|</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- LinkedIn Contact -->
-          <div class="hack-card contact-method" @click="openLinkedIn">
-            <div class="method-icon">
-              <q-icon name="work" size="2.2rem" class="text-hack-blue" />
-            </div>
-            <h3>LinkedIn</h3>
-            <p class="method-info">@menfroyt-dev</p>
-            <p class="method-description">Networking profesional y oportunidades</p>
-            <div class="method-status">
-              <span class="status-dot online"></span>
-              Activo
-            </div>
-          </div>
-
-          <!-- GitHub Contact -->
-          <div class="hack-card contact-method" @click="openGitHub">
-            <div class="method-icon">
-              <q-icon name="code" size="2.2rem" class="text-hack-yellow" />
-            </div>
-            <h3>GitHub</h3>
-            <p class="method-info">@james250920</p>
-            <p class="method-description">Revisa mi código y contribuciones</p>
-            <div class="method-status">
-              <span class="status-dot online"></span>
-              Actualizado frecuentemente
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Form Section -->
-    <section class="contact-form-section">
-      <div class="container">
-        <div class="hack-grid cols-2">
-          <!-- Contact Form -->
+        <div class="contact-layout">
+          <!-- LEFT: Contact Form -->
           <div class="contact-form-container">
-            <div class="hack-card">
+            <div class="hack-card form-card">
               <h2 class="form-title">Enviar Mensaje</h2>
               <q-form @submit="sendMessage" class="contact-form" ref="contactForm">
                 <div class="form-group">
@@ -166,26 +92,77 @@
               </q-form>
             </div>
           </div>
-          <!-- Quick Contact Section -->
-          <section class="quick-contact">
-            <div class="container">
-              <h2 class="section-title text-center">Contacto Rápido</h2>
-              <div class="quick-contact-grid">
-                <div
-                  class="quick-contact-item"
-                  @click="copyToClipboard('jamesfrankmendozarios@gmail.com')"
-                >
-                  <q-icon name="content_copy" class="copy-icon" />
-                  <span>Copiar Email</span>
-                </div>
 
-                <div class="quick-contact-item" @click="downloadCV">
-                  <q-icon name="download" class="copy-icon" />
-                  <span>Descargar CV</span>
+          <!-- RIGHT: Terminal + LinkedIn + GitHub -->
+          <div class="contact-sidebar">
+            <!-- Terminal Info -->
+            <div class="terminal-info">
+              <div class="terminal">
+                <div class="terminal-header">
+                  <div class="dot red"></div>
+                  <div class="dot yellow"></div>
+                  <div class="dot green"></div>
+                  <span class="terminal-title">~/contact/info</span>
+                </div>
+                <div class="terminal-content">
+                  <div class="terminal-line">cat contact-info.txt</div>
+                  <div class="output">
+                    <div class="info-line">
+                      <span class="text-hack-green">Name:</span> James Mendoza
+                    </div>
+                    <div class="info-line">
+                      <span class="text-hack-blue">Location:</span> Disponible
+                    </div>
+                    <div class="info-line">
+                      <span class="text-hack-yellow">Timezone:</span> UTC-5 (EST)
+                    </div>
+                    <div class="info-line">
+                      <span class="text-hack-purple">Availability:</span> Abierto a Oportunidades
+                    </div>
+                    <div class="info-line">
+                      <span class="text-hack-cyan">Specialties:</span> Full-Stack Dev
+                    </div>
+                  </div>
+                  <div class="terminal-line">status --availability</div>
+                  <div class="output">
+                    <span class="text-hack-green">● DISPONIBLE</span> - Nuevos proyectos
+                  </div>
+                  <div class="terminal-line prompt">
+                    <span>DevMenfroyt@contact:~$ </span>
+                    <span class="cursor-blink">|</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </section>
+
+            <!-- LinkedIn -->
+            <div class="hack-card contact-method" @click="openLinkedIn">
+              <div class="method-icon">
+                <q-icon name="work" size="2rem" class="text-hack-blue" />
+              </div>
+              <h3>LinkedIn</h3>
+              <p class="method-info">@menfroyt-dev</p>
+              <p class="method-description">Networking profesional y oportunidades</p>
+              <div class="method-status">
+                <span class="status-dot online"></span>
+                Activo
+              </div>
+            </div>
+
+            <!-- GitHub -->
+            <div class="hack-card contact-method" @click="openGitHub">
+              <div class="method-icon">
+                <q-icon name="code" size="2rem" class="text-hack-yellow" />
+              </div>
+              <h3>GitHub</h3>
+              <p class="method-info">@james250920</p>
+              <p class="method-description">Revisa mi código y contribuciones</p>
+              <div class="method-status">
+                <span class="status-dot online"></span>
+                Actualizado frecuentemente
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -374,33 +351,6 @@ const openLinkedIn = () => {
 const openGitHub = () => {
   window.open('https://github.com/james250920', '_blank');
 };
-
-const copyToClipboard = (text: string) => {
-  navigator.clipboard.writeText(text).then(
-    () => {
-      $q.notify({
-        type: 'positive',
-        message: '¡Copiado al portapapeles!',
-        icon: 'content_copy',
-      });
-    },
-    () => {
-      $q.notify({
-        type: 'negative',
-        message: 'Error al copiar al portapapeles.',
-        icon: 'error',
-      });
-    },
-  );
-};
-
-const downloadCV = () => {
-  $q.notify({
-    type: 'info',
-    message: '¡Descarga de CV estará disponible pronto!',
-    icon: 'download',
-  });
-};
 </script>
 
 <style lang="scss" scoped>
@@ -439,83 +389,28 @@ const downloadCV = () => {
   }
 }
 
-// Contact Methods
-.contact-methods {
+// Main Contact Section
+.contact-main-section {
   padding: 2rem 0;
 
-  .contact-method {
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-      border-color: $hack-green;
-      transform: translateY(-8px);
-      box-shadow: 0 12px 40px rgba(0, 255, 136, 0.15);
-    }
-
-    .method-icon {
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      color: $hack-white;
-      margin-bottom: 0.4rem;
-      font-size: 1.2rem;
-    }
-
-    .method-info {
-      color: $hack-green;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .method-description {
-      color: #c9d1d9;
-      font-size: 0.82rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .method-status {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      color: $hack-gray;
-
-      .status-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-
-        &.online {
-          background: $hack-green;
-          box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-        }
-      }
-    }
-  }
-}
-
-// Contact Form Section
-.contact-form-section {
-  padding: 2rem 0;
-
-  .terminal-info {
-    .terminal {
-      height: fit-content;
-
-      .info-line {
-        margin: 0.4rem 0;
-        display: flex;
-        gap: 0.5rem;
-      }
-    }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
   }
 
+  // LEFT: Form
   .contact-form-container {
+    display: flex;
+    flex-direction: column;
+
+    .form-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
     .form-title {
       color: $hack-blue;
       margin-bottom: 1.5rem;
@@ -523,6 +418,10 @@ const downloadCV = () => {
     }
 
     .contact-form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
       .form-group {
         margin-bottom: 1.2rem;
 
@@ -536,7 +435,8 @@ const downloadCV = () => {
       }
 
       .form-actions {
-        margin-top: 1.5rem;
+        margin-top: auto;
+        padding-top: 1.5rem;
 
         .hack-button {
           width: 100%;
@@ -562,6 +462,85 @@ const downloadCV = () => {
                 transform: none;
               }
             }
+          }
+        }
+      }
+    }
+  }
+
+  // RIGHT: Sidebar
+  .contact-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .terminal-info {
+      flex: 1;
+
+      .terminal {
+        height: 100%;
+
+        .info-line {
+          margin: 0.4rem 0;
+          display: flex;
+          gap: 0.5rem;
+          font-size: 0.82rem;
+        }
+      }
+    }
+
+    .contact-method {
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      flex: 1;
+
+      &:hover {
+        border-color: $hack-green;
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0, 255, 136, 0.15);
+      }
+
+      .method-icon {
+        margin-bottom: 0.5rem;
+      }
+
+      h3 {
+        color: $hack-white;
+        margin-bottom: 0.3rem;
+        font-size: 1.1rem;
+      }
+
+      .method-info {
+        color: $hack-green;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        font-size: 0.85rem;
+      }
+
+      .method-description {
+        color: #c9d1d9;
+        font-size: 0.78rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .method-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-size: 0.78rem;
+        color: $hack-gray;
+
+        .status-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+
+          &.online {
+            background: $hack-green;
+            box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
           }
         }
       }
@@ -683,10 +662,10 @@ const downloadCV = () => {
     }
   }
 
-  .contact-form-section {
+  .contact-main-section {
     padding: 1.25rem 0;
 
-    .hack-grid {
+    .contact-layout {
       grid-template-columns: 1fr !important;
     }
 
@@ -701,6 +680,10 @@ const downloadCV = () => {
       width: 100%;
       font-size: 0.82rem;
       padding: 0.6rem 1rem;
+    }
+
+    .contact-sidebar {
+      flex-direction: column;
     }
   }
 
