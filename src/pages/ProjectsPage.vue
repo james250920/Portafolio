@@ -184,7 +184,15 @@ const projects = ref<Project[]>([
     fullDescription:
       'Una plataforma de comercio electrónico integral construida con tecnologías modernas. Las características incluyen autenticación de usuarios, catálogo de productos, carrito de compras, integración de pagos, gestión de pedidos y panel de administración.',
     category: ['Web', 'Móvil'],
-    technologies: ['Angular', 'Node.js', 'PostgreSQL', 'TypeScript', 'Docker', 'Flutter', 'Firebase'],
+    technologies: [
+      'Angular',
+      'Node.js',
+      'PostgreSQL',
+      'TypeScript',
+      'Docker',
+      'Flutter',
+      'Firebase',
+    ],
     image: `https://${IMG_BASE_URL}/imagenes/img/logo.jpg`,
     status: 'in-progress',
     liveUrl: '',
@@ -201,9 +209,8 @@ const projects = ref<Project[]>([
   {
     id: 2,
     title: 'StudyOso',
-    description:
-      'Herramienta de gestio educativo para estudiantes universitarios.',
-    fullDescription:"",
+    description: 'Herramienta de gestio educativo para estudiantes universitarios.',
+    fullDescription: '',
 
     category: ['Móvil'],
     technologies: ['JetPack Compose', 'Kotlin', 'SQLite', 'Firebase'],
@@ -211,15 +218,12 @@ const projects = ref<Project[]>([
     status: 'completed',
     liveUrl: '',
     githubUrl: '',
-    features: [
-
-    ],
+    features: [],
   },
   {
     id: 3,
     title: 'Impulso',
-    description:
-      'Aplicación móvil para organización de herramientas y recursos de estudio.',
+    description: 'Aplicación móvil para organización de herramientas y recursos de estudio.',
     category: ['Móvil'],
     technologies: ['JetPack Compose', 'Kotlin', 'SQLite', 'Firebase'],
     image: `https://${IMG_BASE_URL}/imagenes/img/Impluso.png`,
@@ -386,11 +390,14 @@ onMounted(() => {
   padding: 3rem 0;
 
   .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .project-card-container {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto 3rem;
   }
 
   .project-card {
@@ -398,8 +405,8 @@ onMounted(() => {
     transition: all 0.3s ease;
     overflow: hidden;
     display: flex;
-    flex-direction: row;
-    min-height: 280px;
+    flex-direction: column;
+    width: 100%;
 
     &:hover {
       transform: translateY(-8px);
@@ -417,10 +424,10 @@ onMounted(() => {
 
     .project-image {
       position: relative;
-      width: 40%;
-      min-width: 300px;
+      width: 100%;
+      height: 200px;
       overflow: hidden;
-      border-radius: 8px 0 0 8px;
+      border-radius: 8px 8px 0 0;
 
       img {
         width: 100%;
@@ -453,7 +460,7 @@ onMounted(() => {
     }
 
     .project-info {
-      padding: 2rem;
+      padding: 1.5rem;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -788,6 +795,14 @@ onMounted(() => {
 }
 
 // Responsive Design
+@media (max-width: 480px) {
+  .projects-grid-section {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .projects-header {
     padding: 2rem 0 1rem;
@@ -842,27 +857,13 @@ onMounted(() => {
     padding: 2rem 0;
 
     .projects-grid {
-      max-width: 100%;
-      gap: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
     }
 
     .project-card {
-      flex-direction: column !important;
-      min-height: auto;
-
-      .project-image {
-        width: 100% !important;
-        min-width: auto;
-        height: 180px;
-        border-radius: 8px 8px 0 0 !important;
-
-        img {
-          height: 100%;
-        }
-      }
-
       .project-info {
-        padding: 1.2rem !important;
+        padding: 1.2rem;
 
         .project-header {
           flex-direction: column;
@@ -870,12 +871,11 @@ onMounted(() => {
           align-items: flex-start;
 
           .project-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
           }
 
           .project-status {
             font-size: 0.75rem;
-            padding: 0.3rem 0.6rem;
           }
         }
 
