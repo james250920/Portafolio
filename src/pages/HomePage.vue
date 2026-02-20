@@ -13,6 +13,14 @@
       <span class="btn-tooltip">Mis Servicios</span>
     </router-link>
 
+    <!-- Floating Back to Top Button -->
+    <Transition name="back-top">
+      <button v-if="showBackToTop" class="floating-back-top" @click="scrollToTop">
+        <q-icon name="keyboard_arrow_up" size="26px" />
+        <span class="back-top-label">Inicio</span>
+      </button>
+    </Transition>
+
     <!-- Home Section -->
     <section id="home" class="hero-section">
       <div class="container">
@@ -111,7 +119,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import MatrixBackground from '../components/MatrixBackground.vue';
 import AboutPage from './AboutPage.vue';
 import ProjectsPage from './ProjectsPage.vue';
@@ -121,6 +129,22 @@ import ContactPage from './ContactPage.vue';
 const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/matrix.jpeg`;
 const name = ref('James Mendoza');
 const title = ref('Desarrollador Full Stack');
+
+// Back to top
+const showBackToTop = ref(false);
+
+const handleScrollTop = () => {
+  const scrolled = window.scrollY + window.innerHeight;
+  const total = document.documentElement.scrollHeight;
+  showBackToTop.value = scrolled >= total - 300;
+};
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+onMounted(() => window.addEventListener('scroll', handleScrollTop));
+onUnmounted(() => window.removeEventListener('scroll', handleScrollTop));
 
 const scrollToContact = () => {
   const element = document.getElementById('contact');
@@ -745,6 +769,59 @@ section {
   }
 }
 
+// Floating Back to Top Button
+.floating-back-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: rgba(13, 17, 23, 0.92);
+  border: 2px solid $hack-green;
+  color: $hack-green;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.25);
+
+  &:hover {
+    background: $hack-green;
+    color: #000;
+    box-shadow: 0 0 28px rgba(0, 255, 136, 0.55);
+    transform: translateY(-3px);
+
+    .q-icon {
+      color: #000;
+    }
+  }
+
+  .back-top-label {
+    line-height: 1;
+  }
+}
+
+// Transition
+.back-top-enter-active,
+.back-top-leave-active {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+.back-top-enter-from,
+.back-top-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
 // Floating Services Button
 .floating-services-btn {
   position: fixed;
@@ -827,6 +904,13 @@ section {
 
 // Responsive - Floating Button
 @media (max-width: 768px) {
+  .floating-back-top {
+    bottom: 20px;
+    left: 20px;
+    padding: 8px 12px;
+    font-size: 0.65rem;
+  }
+
   .floating-services-btn {
     bottom: 20px;
     right: 20px;
