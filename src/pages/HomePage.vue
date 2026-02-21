@@ -24,39 +24,72 @@
     <!-- Home Section -->
     <section id="home" class="hero-section">
       <div class="container">
-        <div class="hack-grid cols-2">
-          <!-- Terminal interactivo -->
-          <div class="terminal">
-            <div class="terminal-header">
-              <div class="dot red"></div>
-              <div class="dot yellow"></div>
-              <div class="dot green"></div>
-              <span class="terminal-title">~/portfalio/james</span>
+        <div class="hero-layout">
+          <!-- LEFT: Terminal + CTA + Social -->
+          <div class="hero-left">
+            <div class="terminal">
+              <div class="terminal-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+                <span class="terminal-title">~/portfalio/james</span>
+              </div>
+              <div class="terminal-content">
+                <div class="terminal-line">whoami</div>
+                <div class="output">James Mendoza</div>
+                <div class="terminal-line">cat skills.txt</div>
+                <div class="output">
+                  <div class="skill-line">> Frontend: Quasar, Jetpack Compose, Angular</div>
+                  <div class="skill-line">> Backend: .Net, FastApi, Express</div>
+                  <div class="skill-line">> Mobile: Kotlin, Flutter</div>
+                  <div class="skill-line">> QA: K6, Nunit, Appium, Cypress, Selenium</div>
+                  <div class="skill-line">> Database: MongoDB, PostgreSQL, MySQL, SQLServer</div>
+                </div>
+                <div class="terminal-line">status</div>
+                <div class="output">
+                  <span class="text-hack-green">● Online</span> -
+                  <span class="text-hack-blue">Listo para nuevos desafíos</span>
+                </div>
+                <div class="terminal-line prompt">
+                  <span>DevMenfroyt@james:~$ </span>
+                  <span class="cursor-blink">|</span>
+                </div>
+              </div>
             </div>
-            <div class="terminal-content">
-              <div class="terminal-line">whoami</div>
-              <div class="output">James Mendoza</div>
-              <div class="terminal-line">cat skills.txt</div>
-              <div class="output">
-                <div class="skill-line">> Frontend: Quasar, Jetpack Compose, Angular</div>
-                <div class="skill-line">> Backend: .Net, FastApi, Express</div>
-                <div class="skill-line">> Mobile: Kotlin, Flutter</div>
-                <div class="skill-line">> QA: K6, Nunit, Appium, Cypress, Selenium</div>
-                <div class="skill-line">> Database: MongoDB, PostgreSQL, MySQL, SQLServer</div>
-              </div>
-              <div class="terminal-line">status</div>
-              <div class="output">
-                <span class="text-hack-green">● Online</span> -
-                <span class="text-hack-blue">Listo para nuevos desafíos</span>
-              </div>
-              <div class="terminal-line prompt">
-                <span>DevMenfroyt@james:~$ </span>
-                <span class="cursor-blink">|</span>
+
+            <!-- CTA + Social Row -->
+            <div class="hero-actions">
+              <button class="contact-cta-btn" @click="scrollToContact">
+                <q-icon name="mail" />
+                <span class="btn-text">Contactar</span>
+                <span class="btn-arrow">→</span>
+              </button>
+              <div class="social-links">
+                <a href="https://github.com/james250920" target="_blank" class="social-btn github">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                    />
+                  </svg>
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/menfroyt-dev"
+                  target="_blank"
+                  class="social-btn linkedin"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                    />
+                  </svg>
+                  <span>LinkedIn</span>
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Profile Image -->
+          <!-- RIGHT: Profile Image -->
           <div class="profile-section">
             <div class="profile-image-container">
               <img :src="ImgURL" alt="James Mendoza" class="profile-image" />
@@ -70,15 +103,6 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- CTA Button -->
-        <div class="hero-cta">
-          <button class="contact-cta-btn" @click="scrollToContact">
-            <q-icon name="mail" />
-            <span class="btn-text">Contactar</span>
-            <span class="btn-arrow">→</span>
-          </button>
         </div>
       </div>
     </section>
@@ -167,7 +191,7 @@ const techStack = ref([
 
 <style lang="scss" scoped>
 .home-page {
-  min-height: 100vh;
+  min-height: 90vh;
   background: #0d1117;
   position: relative;
   overflow-x: hidden;
@@ -184,76 +208,73 @@ section {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 3rem 0;
+  padding: 2rem 0;
 }
 
-.hero-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
+.contact-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 2px solid $hack-green;
+  color: $hack-green;
+  padding: 0.65rem 1.8rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
 
-  .contact-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: transparent;
-    border: 2px solid $hack-green;
-    color: $hack-green;
-    padding: 0.65rem 1.8rem;
-    border-radius: 6px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    letter-spacing: 0.05em;
-    position: relative;
-    overflow: hidden;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: $hack-green;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: 0;
+  }
 
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: $hack-green;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-      z-index: 0;
-    }
+  &:hover::before {
+    transform: scaleX(1);
+  }
 
-    &:hover::before {
-      transform: scaleX(1);
-    }
+  &:hover {
+    color: #000;
+    box-shadow: 0 0 24px rgba(0, 255, 136, 0.45);
 
-    &:hover {
+    .q-icon {
       color: #000;
-      box-shadow: 0 0 24px rgba(0, 255, 136, 0.45);
-
-      .q-icon {
-        color: #000;
-      }
-
-      .btn-arrow {
-        transform: translateX(4px);
-      }
-    }
-
-    .q-icon,
-    .btn-text,
-    .btn-arrow {
-      position: relative;
-      z-index: 1;
     }
 
     .btn-arrow {
-      transition: transform 0.3s ease;
-      font-style: normal;
+      transform: translateX(4px);
     }
+  }
+
+  .q-icon,
+  .btn-text,
+  .btn-arrow {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+  }
+
+  .btn-arrow {
+    transition:
+      transform 0.3s ease,
+      color 0.3s ease;
+    font-style: normal;
   }
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1090px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -292,9 +313,103 @@ section {
   }
 }
 
-.profile-section {
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-actions {
   display: flex;
   align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+
+  .social-links {
+    display: flex;
+    gap: 0.75rem;
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      border: 2px solid $hack-border;
+      color: $hack-white;
+      padding: 0.65rem 1.2rem;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+        z-index: 0;
+      }
+
+      svg,
+      span {
+        position: relative;
+        z-index: 1;
+        transition: color 0.3s ease;
+      }
+
+      &:hover::before {
+        transform: scaleX(1);
+      }
+
+      &.github {
+        border-color: #e6edf3;
+        color: #e6edf3;
+
+        &::before {
+          background: #e6edf3;
+        }
+
+        &:hover {
+          color: #000;
+          box-shadow: 0 0 20px rgba(230, 237, 243, 0.3);
+        }
+      }
+
+      &.linkedin {
+        border-color: #0a66c2;
+        color: #0a66c2;
+
+        &::before {
+          background: #0a66c2;
+        }
+
+        &:hover {
+          color: #fff;
+          box-shadow: 0 0 20px rgba(10, 102, 194, 0.4);
+        }
+      }
+    }
+  }
+}
+
+.profile-section {
+  display: flex;
+  align-items: stretch;
 
   .profile-image-container {
     position: relative;
@@ -360,7 +475,7 @@ section {
       height: 100%;
       object-fit: cover;
       display: block;
-      min-height: 350px;
+      min-height: 420px;
       transition: all 0.3s ease;
       filter: brightness(0.9) contrast(1.06);
       position: relative;
@@ -606,11 +721,16 @@ section {
   .hero-section {
     padding: 2rem 0;
     min-height: auto;
+  }
 
-    .hack-grid {
-      grid-template-columns: 1fr !important;
-      gap: 2rem;
-    }
+  .hero-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    justify-content: flex-start;
   }
 
   .container {
@@ -647,7 +767,7 @@ section {
   .profile-section {
     .profile-image-container {
       .profile-image {
-        min-height: 260px !important;
+        min-height: 200px !important;
       }
 
       .status-indicator {
