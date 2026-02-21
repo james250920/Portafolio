@@ -39,11 +39,11 @@
                 <div class="output">James Mendoza</div>
                 <div class="terminal-line">cat skills.txt</div>
                 <div class="output">
-                  <div class="skill-line">> Frontend: Quasar, Jetpack Compose, Angular</div>
+                  <div class="skill-line">> Frontend: Quasar, Angular</div>
                   <div class="skill-line">> Backend: .Net, FastApi, Express</div>
-                  <div class="skill-line">> Mobile: Kotlin, Flutter</div>
+                  <div class="skill-line">> Mobile: Kotlin, Jetpack Compose</div>
                   <div class="skill-line">> QA: K6, Nunit, Appium, Cypress, Selenium</div>
-                  <div class="skill-line">> Database: MongoDB, PostgreSQL, MySQL, SQLServer</div>
+                  <div class="skill-line">> Database: MongoDB, PostgreSQL, MySQL</div>
                 </div>
                 <div class="terminal-line">status</div>
                 <div class="output">
