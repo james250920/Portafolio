@@ -354,3 +354,662 @@ code {
     font-size: 1.05rem;
   }
 }
+
+// =============================================
+// LIGHT THEME (data-theme="light")
+// =============================================
+html[data-theme='light'] {
+  // Background stays DARK — only cards, terminals, inputs turn white
+
+  // ── Global text color overrides on white surfaces ──
+  // Any text using #c9d1d9, rgba(255,255,255,...), $hack-white, $hack-gray
+  // needs dark contrast on white backgrounds
+
+  // Cards → white with full text contrast
+  .hack-card {
+    background: #ffffff !important;
+    border-color: #d0d7de !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+
+    &:hover {
+      border-color: #00995c !important;
+      box-shadow: 0 6px 24px rgba(0, 153, 92, 0.1) !important;
+    }
+
+    // All headings inside cards
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #1a1a2e !important;
+    }
+
+    // All paragraph/body text inside cards
+    p,
+    span,
+    li,
+    div {
+      &:not([class*='text-hack-']):not([class*='status']):not(.q-icon):not(.dot) {
+        color: #3d4852 !important;
+      }
+    }
+
+    // Specific overrides for colored utility classes (keep but darken)
+    .text-hack-green {
+      color: #00804a !important;
+    }
+    .text-hack-blue {
+      color: #0969da !important;
+    }
+    .text-hack-yellow {
+      color: #9a6700 !important;
+    }
+    .text-hack-purple {
+      color: #7c3aed !important;
+    }
+    .text-hack-cyan {
+      color: #0891b2 !important;
+    }
+  }
+
+  // Terminal → white with contrast
+  .terminal {
+    background: #ffffff !important;
+    border-color: #d0d7de !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+
+    .terminal-header {
+      background: #f6f8fa !important;
+      border-bottom-color: #d0d7de !important;
+
+      .terminal-title {
+        color: #57606a !important;
+      }
+    }
+
+    .terminal-content {
+      .terminal-line {
+        color: #00804a !important;
+      }
+
+      .output {
+        color: #1a1a2e !important;
+
+        .skill-line {
+          color: #3d4852 !important;
+        }
+      }
+
+      // Info lines inside terminal (contact page)
+      .info-line {
+        color: #3d4852 !important;
+        .text-hack-green {
+          color: #00804a !important;
+        }
+        .text-hack-blue {
+          color: #0969da !important;
+        }
+        .text-hack-yellow {
+          color: #9a6700 !important;
+        }
+        .text-hack-purple {
+          color: #7c3aed !important;
+        }
+        .text-hack-cyan {
+          color: #0891b2 !important;
+        }
+      }
+
+      // Timeline events
+      .timeline-item {
+        .timeline-event {
+          color: #3d4852 !important;
+        }
+        .timeline-year {
+          color: #00804a !important;
+        }
+      }
+    }
+  }
+
+  // ── Inputs / Form fields → light bg with dark text ──
+  .hack-input,
+  .matrix-input {
+    .q-field__control {
+      background: #f6f8fa !important;
+      border-color: #d0d7de !important;
+    }
+
+    .q-field__native,
+    .q-field__input {
+      color: #1a1a2e !important;
+    }
+
+    // Placeholder text
+    .q-field__native::placeholder,
+    .q-field__input::placeholder,
+    input::placeholder,
+    textarea::placeholder {
+      color: #8b949e !important;
+      opacity: 1 !important;
+    }
+
+    // Label inside select
+    .q-field__label {
+      color: #8b949e !important;
+    }
+
+    // Dropdown arrow
+    .q-select__dropdown-icon {
+      color: #57606a !important;
+    }
+  }
+
+  // Q-select popup (dropdown options)
+  .q-menu,
+  .q-select__dialog {
+    background: #ffffff !important;
+    border: 1px solid #d0d7de !important;
+
+    .q-item {
+      color: #1a1a2e !important;
+
+      &:hover,
+      &.q-manual-focusable--focused {
+        background: #f6f8fa !important;
+      }
+    }
+  }
+
+  // ── Contact page form ──
+  .form-card {
+    .form-title {
+      color: #0969da !important;
+    }
+
+    .form-label {
+      color: #1a1a2e !important;
+    }
+  }
+
+  // ── About page — profile card (scoped to cards, NOT image overlay) ──
+  .hack-card .profile-name {
+    color: #1a1a2e !important;
+  }
+
+  .hack-card .profile-title {
+    color: #0969da !important;
+  }
+
+  .hack-card .profile-bio,
+  .hack-card .bio {
+    color: #3d4852 !important;
+  }
+
+  .stat-item {
+    .stat-number {
+      &.text-hack-green {
+        color: #00804a !important;
+      }
+      &.text-hack-blue {
+        color: #0969da !important;
+      }
+    }
+    .stat-label {
+      color: #57606a !important;
+    }
+  }
+
+  // ── Skills section ──
+  .skills-preview .tech-item {
+    background: #ffffff !important;
+    border-color: #d0d7de !important;
+
+    &:hover {
+      border-color: #00995c !important;
+      background: rgba(0, 153, 92, 0.04) !important;
+    }
+
+    span {
+      color: #1a1a2e !important;
+    }
+  }
+
+  // Skill category cards (About page)
+  .skill-category-card {
+    background: #ffffff !important;
+    border-color: #d0d7de !important;
+
+    .category-header {
+      color: #1a1a2e !important;
+    }
+
+    .skill-item {
+      background: #f6f8fa !important;
+      border-color: #d0d7de !important;
+
+      &:hover {
+        border-color: #00995c !important;
+        background: rgba(0, 153, 92, 0.06) !important;
+      }
+
+      .skill-name {
+        color: #1a1a2e !important;
+      }
+    }
+  }
+
+  // ── Experience section (About page) ──
+  .experience-card {
+    background: #ffffff !important;
+    border-color: #d0d7de !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+
+    .experience-title {
+      color: #1a1a2e !important;
+    }
+    .experience-company {
+      color: #0969da !important;
+    }
+    .experience-period {
+      color: #00804a !important;
+    }
+    .experience-description {
+      color: #3d4852 !important;
+    }
+    .tech-tag {
+      background: rgba(0, 153, 92, 0.08) !important;
+      color: #00804a !important;
+      border-color: rgba(0, 153, 92, 0.3) !important;
+    }
+  }
+
+  // ── Interest cards (About page) ──
+  .interest-card {
+    background: #ffffff !important;
+    border-color: #d0d7de !important;
+
+    h4 {
+      color: #1a1a2e !important;
+    }
+    p {
+      color: #57606a !important;
+    }
+  }
+
+  // ── CTA card (About page) ──
+  .cta-card {
+    background: #ffffff !important;
+    border-color: #d0d7de !important;
+
+    .cta-title,
+    h2 {
+      color: #1a1a2e !important;
+    }
+    .cta-description,
+    p {
+      color: #57606a !important;
+    }
+    .code-block {
+      background: #1a1a2e !important;
+      color: #c9d1d9 !important;
+      pre,
+      code {
+        color: #c9d1d9 !important;
+      }
+    }
+  }
+
+  // ── Education page ──
+  .education-card {
+    background: #ffffff !important;
+    border-color: #d0d7de !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+
+    .education-degree {
+      color: #1a1a2e !important;
+    }
+    .education-institution {
+      color: #0969da !important;
+    }
+    .education-period {
+      color: #57606a !important;
+    }
+    .education-description {
+      color: #3d4852 !important;
+    }
+    .achievements-title {
+      color: #9a6700 !important;
+    }
+    .achievements-list li {
+      color: #3d4852 !important;
+    }
+    .status-badge.en-curso {
+      background: rgba(0, 153, 92, 0.1) !important;
+      color: #00804a !important;
+      border-color: rgba(0, 153, 92, 0.3) !important;
+    }
+  }
+
+  // Certification cards
+  .certification-card {
+    background: #ffffff !important;
+    border-color: #d0d7de !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+
+    .cert-name {
+      color: #1a1a2e !important;
+    }
+    .cert-issuer {
+      color: #0969da !important;
+    }
+    .cert-date {
+      color: #57606a !important;
+    }
+    .credential-label {
+      color: #57606a !important;
+    }
+    .credential-id {
+      background: rgba(0, 153, 92, 0.08) !important;
+      color: #00804a !important;
+      border-color: rgba(0, 153, 92, 0.3) !important;
+    }
+  }
+
+  // Course section text
+  .course-item {
+    .course-name {
+      color: #1a1a2e !important;
+    }
+    .course-platform {
+      color: #57606a !important;
+    }
+    .course-duration {
+      color: #57606a !important;
+    }
+  }
+  .category-header {
+    color: #00804a !important;
+    .category-count {
+      color: #57606a !important;
+    }
+  }
+
+  // ── Project cards — full contrast ──
+  .project-card {
+    background: #ffffff !important;
+    border-color: #d0d7de !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+
+    .project-info {
+      .project-header .project-title {
+        color: #1a1a2e !important;
+      }
+
+      .project-description {
+        color: #3d4852 !important;
+      }
+
+      .project-tech .tech-tag {
+        background: rgba(0, 153, 92, 0.08) !important;
+        color: #00804a !important;
+        border-color: rgba(0, 153, 92, 0.3) !important;
+      }
+
+      .project-actions .action-btn {
+        &.live {
+          border-color: #0969da !important;
+          color: #0969da !important;
+          &:hover {
+            background: #0969da !important;
+            color: #fff !important;
+          }
+        }
+        &.code {
+          border-color: #00804a !important;
+          color: #00804a !important;
+          &:hover {
+            background: #00804a !important;
+            color: #fff !important;
+          }
+        }
+      }
+    }
+  }
+
+  // Filter buttons
+  .filter-btn {
+    color: #3d4852 !important;
+    border-color: #d0d7de !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+
+    &:hover {
+      color: #00804a !important;
+      border-color: #00804a !important;
+      background: rgba(0, 153, 92, 0.06) !important;
+    }
+
+    &.active {
+      background: #00995c !important;
+      color: #fff !important;
+      border-color: #00995c !important;
+    }
+  }
+
+  // Tech select in filter
+  .tech-select {
+    .q-field__control {
+      background: #f6f8fa !important;
+      border-color: #d0d7de !important;
+    }
+    .q-field__native {
+      color: #1a1a2e !important;
+    }
+  }
+
+  // ── Featured project section ──
+  .featured-card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: #00995c !important;
+
+    .featured-title {
+      color: #1a1a2e !important;
+    }
+    .featured-description {
+      color: #3d4852 !important;
+    }
+    .featured-highlights {
+      h4 {
+        color: #0969da !important;
+      }
+      ul li {
+        color: #3d4852 !important;
+      }
+    }
+    .tech-tag.featured {
+      background: rgba(0, 153, 92, 0.08) !important;
+      color: #00804a !important;
+      border-color: rgba(0, 153, 92, 0.3) !important;
+    }
+  }
+
+  // Stats cards text
+  .stat-card .hack-card {
+    h3 {
+      color: #1a1a2e !important;
+    }
+    p {
+      color: #57606a !important;
+    }
+  }
+
+  // ── Service card full contrast ──
+  .service-card {
+    .card-content {
+      background: #ffffff !important;
+
+      .service-icon {
+        background: rgba(0, 153, 92, 0.08) !important;
+        border-color: rgba(0, 153, 92, 0.25) !important;
+        color: #00804a !important;
+      }
+
+      .service-title {
+        color: #00804a !important;
+        &::before {
+          color: rgba(0, 128, 74, 0.4) !important;
+        }
+      }
+
+      .service-description {
+        color: #3d4852 !important;
+      }
+
+      .service-features {
+        border-left-color: rgba(0, 153, 92, 0.3) !important;
+
+        li {
+          color: #3d4852 !important;
+
+          .q-icon {
+            color: #00804a !important;
+          }
+        }
+      }
+
+      .service-cta {
+        border-color: #00995c !important;
+        color: #00995c !important;
+
+        &:hover {
+          background: #00995c !important;
+          color: #fff !important;
+        }
+      }
+    }
+
+    .card-border {
+      border-color: #d0d7de !important;
+    }
+  }
+
+  // ── Contact method cards ──
+  .contact-method {
+    background: #ffffff !important;
+    border-color: #d0d7de !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+
+    h3 {
+      color: #1a1a2e !important;
+    }
+    .method-info {
+      color: #3d4852 !important;
+    }
+    .method-description {
+      color: #57606a !important;
+    }
+    .method-status {
+      color: #57606a !important;
+      .status-dot.online {
+        background: #00995c !important;
+      }
+    }
+  }
+
+  // ── Floating toggles ──
+  .floating-toggles .toggle-btn {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-color: #d0d7de !important;
+    color: #57606a !important;
+
+    &:hover {
+      border-color: #00995c !important;
+      color: #00995c !important;
+      background: rgba(0, 153, 92, 0.06) !important;
+      box-shadow: 0 0 12px rgba(0, 153, 92, 0.15) !important;
+    }
+  }
+
+  // ── Profile image ──
+  .profile-image-container {
+    border-color: rgba(0, 153, 92, 0.3) !important;
+    box-shadow:
+      0 0 20px rgba(0, 153, 92, 0.08),
+      0 8px 24px rgba(0, 0, 0, 0.1) !important;
+
+    &:hover {
+      border-color: rgba(0, 153, 92, 0.6) !important;
+      box-shadow:
+        0 0 30px rgba(0, 153, 92, 0.2),
+        0 12px 32px rgba(0, 0, 0, 0.15) !important;
+    }
+  }
+
+  // ── Status indicator ──
+  .status-indicator {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(0, 153, 92, 0.3) !important;
+
+    .status-dot {
+      background: #00995c !important;
+      box-shadow: 0 0 12px #00995c !important;
+    }
+
+    .status-text {
+      color: #00995c !important;
+    }
+  }
+
+  // ── Matrix section boxes ──
+  .matrix-box {
+    .matrix-content {
+      .matrix-label {
+        color: #1a1a2e !important;
+      }
+    }
+  }
+
+  // ── Modal in light theme ──
+  .modal-container,
+  .project-modal .modal-card {
+    background: #ffffff !important;
+    color: #1a1a2e !important;
+
+    h2,
+    h3,
+    h4 {
+      color: #1a1a2e !important;
+    }
+    p,
+    .modal-description {
+      color: #3d4852 !important;
+    }
+    .modal-subtitle {
+      color: #57606a !important;
+    }
+
+    .form-label {
+      color: #1a1a2e !important;
+    }
+
+    .cancel-btn {
+      color: #57606a !important;
+      border-color: #d0d7de !important;
+    }
+  }
+
+  // ── Page titles & subtitles (outside cards, on dark bg — keep light) ──
+  // These stay light-colored because background is still dark
+
+  // ── Section titles inside white cards only ──
+  .hack-card .section-title {
+    color: #0969da !important;
+  }
+
+  // ── Quasar Q-notify for light theme ──
+  .q-loading__message {
+    color: #1a1a2e !important;
+  }
+}
