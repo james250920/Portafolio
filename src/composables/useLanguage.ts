@@ -23,12 +23,12 @@ const translations: Record<string, Record<Lang, string>> = {
   // ===================== ABOUT =====================
   'about.title': { es: 'About.me', en: 'About.me' },
   'about.subtitle': {
-    es: 'Estudiante de Ingeniería en TI enfocado en el desarrollo de software, con una mentalidad orientada a la calidad de software (QA) y la seguridad para crear soluciones robustas y eficientes.',
-    en: 'IT Engineering student focused on software development, with a quality-oriented (QA) and security-first mindset to build robust and efficient solutions.',
+    es: 'Full Stack Software Engineer especializado en Angular, .NET y FastAPI, con experiencia en desarrollo web y mobile, despliegues cloud en AWS y Azure, testing automatizado y arquitectura orientada a escalabilidad y calidad.',
+    en: 'Full Stack Software Engineer specialized in Angular, .NET, and FastAPI, with experience in web and mobile development, cloud deployments on AWS and Azure, automated testing, and architecture focused on scalability and quality.',
   },
   'about.bio': {
-    es: 'Desarrollador en formación con {n}+ años de experiencia en el desarrollo de software.',
-    en: 'Developer in training with {n}+ years of software development experience.',
+    es: 'Full Stack Software Engineer con más de {n}+ años de experiencia en el desarrollo de software y cloud.',
+    en: 'Full Stack Software Engineer with {n}+ years of software development and cloud experience.',
   },
   'about.years': { es: 'Años', en: 'Years' },
   'about.projects': { es: 'Proyectos', en: 'Projects' },
