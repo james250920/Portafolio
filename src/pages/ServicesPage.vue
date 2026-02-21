@@ -233,13 +233,44 @@ startProject(project);</code></pre>
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import { useQuasar } from 'quasar';
+import { useQuasar, useMeta } from 'quasar';
 import CyberpunkBackground from '../components/CyberpunkBackground.vue';
 import { sendEmail } from 'src/service/email.service';
 import { useLanguage } from 'src/composables/useLanguage';
 
 const { t } = useLanguage();
 const $q = useQuasar();
+
+// SEO: Meta tags dinámicos para la página de servicios
+useMeta({
+  title: 'Servicios - James Mendoza | DevMenfroyt',
+  meta: {
+    description: {
+      name: 'description',
+      content:
+        'Servicios de desarrollo web y móvil profesional. Desarrollo Full Stack, aplicaciones empresariales, consultoría tecnológica y más. James Mendoza - DevMenfroyt.',
+    },
+    ogTitle: {
+      property: 'og:title',
+      content: 'Servicios - James Mendoza | DevMenfroyt',
+    },
+    ogDescription: {
+      property: 'og:description',
+      content:
+        'Servicios de desarrollo web y móvil profesional. Desarrollo Full Stack, aplicaciones empresariales, consultoría tecnológica.',
+    },
+    ogUrl: {
+      property: 'og:url',
+      content: 'https://portafolio.menfroyt-dev.com/services',
+    },
+  },
+  link: {
+    canonical: {
+      rel: 'canonical',
+      href: 'https://portafolio.menfroyt-dev.com/services',
+    },
+  },
+});
 
 type ContactFormRef = {
   validate: () => Promise<boolean>;

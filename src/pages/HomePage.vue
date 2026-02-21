@@ -144,6 +144,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useMeta } from 'quasar';
 import MatrixBackground from '../components/MatrixBackground.vue';
 import { useLanguage } from 'src/composables/useLanguage';
 
@@ -152,6 +153,37 @@ import AboutPage from './AboutPage.vue';
 import ProjectsPage from './ProjectsPage.vue';
 import EducationPage from './EducationPage.vue';
 import ContactPage from './ContactPage.vue';
+
+// SEO: Meta tags dinámicos para la página principal
+useMeta({
+  title: 'James Frank Mendoza Rios | Desarrollador Full Stack | DevMenfroyt',
+  meta: {
+    description: {
+      name: 'description',
+      content:
+        'James Frank Mendoza Rios - Desarrollador Full Stack especializado en aplicaciones web y móviles. Vue.js, React, Node.js, TypeScript. Portafolio de proyectos y experiencia profesional.',
+    },
+    ogTitle: {
+      property: 'og:title',
+      content: 'James Frank Mendoza Rios | Desarrollador Full Stack',
+    },
+    ogDescription: {
+      property: 'og:description',
+      content:
+        'Desarrollador Full Stack especializado en aplicaciones web y móviles. Vue.js, React, Node.js, TypeScript.',
+    },
+    ogUrl: {
+      property: 'og:url',
+      content: 'https://portafolio.menfroyt-dev.com/',
+    },
+  },
+  link: {
+    canonical: {
+      rel: 'canonical',
+      href: 'https://portafolio.menfroyt-dev.com/',
+    },
+  },
+});
 
 const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/matrix.jpeg`;
 const name = ref('James Mendoza');
