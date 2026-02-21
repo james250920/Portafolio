@@ -6,14 +6,14 @@
     <!-- Back Button -->
     <router-link to="/" class="back-btn">
       <q-icon name="arrow_back" size="24px" />
-      <span>Volver</span>
+      <span>{{ t('services.back') }}</span>
     </router-link>
 
     <!-- Header -->
     <header class="services-header">
       <div class="container">
-        <h1 class="glitch-title" data-text="SERVICIOS">SERVICIOS</h1>
-        <p class="subtitle">Soluciones digitales a tu medida</p>
+        <h1 class="glitch-title" :data-text="t('services.title')">{{ t('services.title') }}</h1>
+        <p class="subtitle">{{ t('services.subtitle') }}</p>
         <div class="header-decoration">
           <span class="line"></span>
           <span class="icon">
@@ -48,7 +48,7 @@
                 </li>
               </ul>
               <a :href="service.link" target="_blank" rel="noopener noreferrer" class="service-cta">
-                <span>Solicitar</span>
+                <span>{{ t('services.request') }}</span>
                 <q-icon name="arrow_forward" />
               </a>
             </div>
@@ -63,8 +63,8 @@
       <div class="container">
         <div class="cta-card">
           <div class="cta-content">
-            <h2>¿Tienes un proyecto en mente?</h2>
-            <p>Transformemos tu idea en realidad con tecnología de vanguardia</p>
+            <h2>{{ t('services.ctaTitle') }}</h2>
+            <p>{{ t('services.ctaSubtitle') }}</p>
             <div class="cta-buttons">
               <a
                 :href="whatsappLink"
@@ -73,24 +73,24 @@
                 class="cta-btn primary"
               >
                 <q-icon name="chat" />
-                Hablemos por WhatsApp
+                {{ t('services.ctaWhatsapp') }}
               </a>
               <button @click="showEmailModal = true" class="cta-btn secondary">
                 <q-icon name="mail" />
-                Enviar Email
+                {{ t('services.ctaEmail') }}
               </button>
             </div>
           </div>
           <div class="cta-decoration">
             <div class="code-block">
-              <pre><code>const proyecto = {
-  cliente: "Tú",
-  desarrollador: "James",
-  estado: "Listo para iniciar",
-  tecnologías: ["Vue", "Node", "Kotlin"]
+              <pre><code>const project = {
+  client: "{{ t('services.codeClient') }}",
+  developer: "{{ t('services.codeDev') }}",
+  status: "{{ t('services.codeStatus') }}",
+  technologies: ["Vue", "Node", "Kotlin"]
 };
 
-iniciarProyecto(proyecto);</code></pre>
+startProject(project);</code></pre>
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@ iniciarProyecto(proyecto);</code></pre>
       <div class="container">
         <div class="matrix-header">
           <span class="matrix-prompt">$ ./loading_stats.sh</span>
-          <span class="matrix-status">// Recopilando datos...</span>
+          <span class="matrix-status">{{ t('services.loading') }}</span>
         </div>
         <div class="matrix-grid">
           <div class="matrix-box" v-for="box in matrixBoxes" :key="box.id">
@@ -127,7 +127,7 @@ iniciarProyecto(proyecto);</code></pre>
         </div>
         <div class="matrix-footer">
           <span class="blink-cursor">_</span>
-          <span class="footer-text">Construyendo experiencia...</span>
+          <span class="footer-text">{{ t('services.building') }}</span>
         </div>
       </div>
     </section>
@@ -148,26 +148,26 @@ iniciarProyecto(proyecto);</code></pre>
               <span class="dot yellow"></span>
               <span class="dot green"></span>
             </div>
-            <h2 class="modal-title"><q-icon name="mail" /> Enviar Mensaje</h2>
-            <p class="modal-subtitle">// Cuéntame sobre tu proyecto</p>
+            <h2 class="modal-title"><q-icon name="mail" /> {{ t('services.modalTitle') }}</h2>
+            <p class="modal-subtitle">{{ t('services.modalSubtitle') }}</p>
           </div>
 
           <q-form @submit="sendMessage" class="modal-form" ref="contactForm">
             <div class="form-group">
-              <label class="form-label">> Nombre</label>
+              <label class="form-label">{{ t('services.formName') }}</label>
               <q-input
                 v-model="form.name"
                 outlined
                 dark
                 dense
                 class="matrix-input"
-                placeholder="Tu nombre"
-                :rules="[(val) => !!val || 'El nombre es requerido']"
+                :placeholder="t('services.formNamePlaceholder')"
+                :rules="[(val) => !!val || t('services.nameRequired')]"
               />
             </div>
 
             <div class="form-group">
-              <label class="form-label">> Email</label>
+              <label class="form-label">{{ t('services.formEmail') }}</label>
               <q-input
                 v-model="form.email"
                 type="email"
@@ -175,16 +175,16 @@ iniciarProyecto(proyecto);</code></pre>
                 dark
                 dense
                 class="matrix-input"
-                placeholder="tu.email@ejemplo.com"
+                :placeholder="t('services.formEmailPlaceholder')"
                 :rules="[
-                  (val) => !!val || 'El email es requerido',
-                  (val) => /.+@.+\..+/.test(val) || 'Email inválido',
+                  (val) => !!val || t('services.emailRequired'),
+                  (val) => /.+@.+\..+/.test(val) || t('services.emailInvalid'),
                 ]"
               />
             </div>
 
             <div class="form-group">
-              <label class="form-label">> Servicio</label>
+              <label class="form-label">{{ t('services.formService') }}</label>
               <q-select
                 v-model="form.subject"
                 :options="subjectOptions"
@@ -195,13 +195,13 @@ iniciarProyecto(proyecto);</code></pre>
                 map-options
                 class="matrix-input"
                 popup-content-class="matrix-select-popup"
-                label="Selecciona un servicio"
-                :rules="[(val) => !!val || 'Selecciona un servicio']"
+                :label="t('services.formSelectService')"
+                :rules="[(val) => !!val || t('services.serviceRequired')]"
               />
             </div>
 
             <div class="form-group">
-              <label class="form-label">> Mensaje</label>
+              <label class="form-label">{{ t('services.formMessage') }}</label>
               <q-input
                 v-model="form.message"
                 type="textarea"
@@ -209,19 +209,19 @@ iniciarProyecto(proyecto);</code></pre>
                 dark
                 dense
                 class="matrix-input"
-                placeholder="Cuéntame sobre tu proyecto..."
-                :rules="[(val) => !!val || 'El mensaje es requerido']"
+                :placeholder="t('services.formMsgPlaceholder')"
+                :rules="[(val) => !!val || t('services.messageRequired')]"
                 rows="4"
               />
             </div>
 
             <div class="form-actions">
               <button type="button" class="cancel-btn" @click="showEmailModal = false">
-                Cancelar
+                {{ t('services.cancel') }}
               </button>
               <button type="submit" class="submit-btn">
                 <q-icon name="send" />
-                Enviar
+                {{ t('services.submit') }}
               </button>
             </div>
           </q-form>
@@ -232,11 +232,13 @@ iniciarProyecto(proyecto);</code></pre>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useQuasar } from 'quasar';
 import CyberpunkBackground from '../components/CyberpunkBackground.vue';
 import { sendEmail } from 'src/service/email.service';
+import { useLanguage } from 'src/composables/useLanguage';
 
+const { t } = useLanguage();
 const $q = useQuasar();
 
 type ContactFormRef = {
@@ -258,13 +260,13 @@ const form = ref({
   message: '',
 });
 
-const subjectOptions = [
-  'Desarrollo Web',
-  'Desarrollo Móvil',
-  'Backend & APIs',
-  'QA & Testing',
-  'Soluciones Digitales',
-];
+const subjectOptions = computed(() => [
+  t('services.opt.webDev'),
+  t('services.opt.mobileDev'),
+  t('services.opt.backend'),
+  t('services.opt.qa'),
+  t('services.opt.digital'),
+]);
 
 // Send message
 const sendMessage = async () => {
@@ -273,7 +275,7 @@ const sendMessage = async () => {
 
   try {
     $q.loading.show({
-      message: 'Enviando mensaje...',
+      message: t('services.sendingMsg'),
     });
 
     await sendEmail({
@@ -326,8 +328,8 @@ const sendMessage = async () => {
 
     $q.notify({
       type: 'positive',
-      message: '¡Mensaje enviado exitosamente!',
-      caption: 'Te responderé lo antes posible',
+      message: t('services.success'),
+      caption: t('services.successCaption'),
       icon: 'check_circle',
       position: 'top',
       timeout: 3000,
@@ -340,8 +342,8 @@ const sendMessage = async () => {
     $q.loading.hide();
     $q.notify({
       type: 'negative',
-      message: 'Error al enviar el mensaje',
-      caption: 'Por favor, intenta de nuevo',
+      message: t('services.errorSend'),
+      caption: t('services.errorCaption'),
       icon: 'error',
       position: 'top',
     });
@@ -357,81 +359,45 @@ interface Service {
   link: string;
 }
 
-const services = ref<Service[]>([
+const services = computed<Service[]>(() => [
   {
     id: 1,
-    name: 'Desarrollo Web',
-    description:
-      'Aplicaciones web modernas, rápidas y escalables con las mejores tecnologías del mercado.',
+    name: t('services.s1.name'),
+    description: t('services.s1.desc'),
     icon: 'language',
-    features: [
-      'Vue.js / Angular / Flask',
-      'Diseño Responsivo',
-      'SEO Optimizado',
-      'Alto Rendimiento',
-    ],
+    features: [t('services.s1.f1'), t('services.s1.f2'), t('services.s1.f3'), t('services.s1.f4')],
     link: `https://wa.me/${whatsappNumber}?text=Hola%20James,%20me%20interesa%20un%20proyecto%20de%20desarrollo%20web`,
   },
   {
     id: 2,
-    name: 'Desarrollo Móvil',
-    description:
-      'Aplicaciones nativas Android con Kotlin y multiplataforma con Flutter para llegar a más usuarios.',
+    name: t('services.s2.name'),
+    description: t('services.s2.desc'),
     icon: 'smartphone',
-    features: [
-      'Kotlin / Jetpack Compose',
-      'Flutter Multiplataforma',
-      'UI/UX Moderno',
-      'Publicación en Stores',
-    ],
+    features: [t('services.s2.f1'), t('services.s2.f2'), t('services.s2.f3'), t('services.s2.f4')],
     link: `https://wa.me/${whatsappNumber}?text=Hola%20James,%20me%20interesa%20un%20proyecto%20de%20desarrollo%20móvil`,
   },
   {
     id: 3,
-    name: 'Backend & APIs',
-    description: 'Arquitecturas robustas y APIs escalables para potenciar tus aplicaciones.',
+    name: t('services.s3.name'),
+    description: t('services.s3.desc'),
     icon: 'dns',
-    features: [
-      '.NET / FastAPI / Express',
-      'Bases de Datos SQL/NoSQL',
-      'APIs RESTful & GraphQL',
-      'Microservicios',
-    ],
+    features: [t('services.s3.f1'), t('services.s3.f2'), t('services.s3.f3'), t('services.s3.f4')],
     link: `https://wa.me/${whatsappNumber}?text=Hola%20James,%20me%20interesa%20un%20proyecto%20de%20backend`,
   },
   {
     id: 4,
-    name: 'QA & Testing',
-    description: 'Asegura la calidad de tu software con pruebas automatizadas y manuales.',
+    name: t('services.s4.name'),
+    description: t('services.s4.desc'),
     icon: 'bug_report',
-    features: [
-      'Cypress / Selenium / Appium',
-      'Pruebas E2E y Unitarias',
-      'Performance con K6',
-      'CI/CD Integration',
-    ],
+    features: [t('services.s4.f1'), t('services.s4.f2'), t('services.s4.f3'), t('services.s4.f4')],
     link: `https://wa.me/${whatsappNumber}?text=Hola%20James,%20me%20interesa%20servicios%20de%20QA`,
   },
-  // Servicio temporalmente oculto
-  // {
-  //   id: 5,
-  //   name: 'Consultoría Tech',
-  //   description: 'Asesoría técnica para tomar las mejores decisiones tecnológicas en tu proyecto.',
-  //   icon: 'psychology',
-  //   features: ['Arquitectura de Software', 'Code Review', 'Optimización', 'Mentoría Técnica'],
-  //   link: `https://wa.me/${whatsappNumber}?text=Hola%20James,%20me%20interesa%20una%20consultoría%20técnica`,
-  // },
   {
     id: 6,
-    name: 'Soluciones Digitales',
-    description: 'Transformación digital completa para llevar tu negocio al siguiente nivel.',
+    name: t('services.s6.name'),
+    description: t('services.s6.desc'),
     icon: 'rocket_launch',
-    features: [
-      'Automatización de Procesos',
-      'Integración de Sistemas',
-      'Dashboards & Analytics',
-      'Soluciones Cloud',
-    ],
+    features: [t('services.s6.f1'), t('services.s6.f2'), t('services.s6.f3'), t('services.s6.f4')],
     link: `https://wa.me/${whatsappNumber}?text=Hola%20James,%20me%20interesan%20soluciones%20digitales%20para%20mi%20negocio`,
   },
 ]);
@@ -445,19 +411,24 @@ const generateChars = () => {
   );
 };
 
-const matrixBoxes = ref([
-  { id: 1, icon: 'code', label: 'Proyectos', chars: generateChars() },
-  { id: 2, icon: 'people', label: 'Clientes', chars: generateChars() },
-  { id: 3, icon: 'memory', label: 'Tecnologías', chars: generateChars() },
-  { id: 4, icon: 'schedule', label: 'Experiencia', chars: generateChars() },
+const matrixCharsData = ref(Array.from({ length: 4 }, () => generateChars()));
+
+const matrixBoxes = computed(() => [
+  { id: 1, icon: 'code', label: t('services.matrix.projects'), chars: matrixCharsData.value[0] },
+  { id: 2, icon: 'people', label: t('services.matrix.clients'), chars: matrixCharsData.value[1] },
+  { id: 3, icon: 'memory', label: t('services.matrix.tech'), chars: matrixCharsData.value[2] },
+  {
+    id: 4,
+    icon: 'schedule',
+    label: t('services.matrix.experience'),
+    chars: matrixCharsData.value[3],
+  },
 ]);
 
 // Regenerate matrix chars periodically
 onMounted(() => {
   setInterval(() => {
-    matrixBoxes.value.forEach((box) => {
-      box.chars = generateChars();
-    });
+    matrixCharsData.value = Array.from({ length: 4 }, () => generateChars());
   }, 3000);
 });
 </script>

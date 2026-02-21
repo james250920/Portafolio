@@ -10,14 +10,14 @@
       </div>
       <div class="btn-ring"></div>
       <div class="btn-ring delay"></div>
-      <span class="btn-tooltip">Mis Servicios</span>
+      <span class="btn-tooltip">{{ t('hero.services') }}</span>
     </router-link>
 
     <!-- Floating Back to Top Button -->
     <Transition name="back-top">
       <button v-if="showBackToTop" class="floating-back-top" @click="scrollToTop">
         <q-icon name="keyboard_arrow_up" size="22px" />
-        <span class="back-top-label">Inicio</span>
+        <span class="back-top-label">{{ t('hero.top') }}</span>
       </button>
     </Transition>
 
@@ -48,7 +48,7 @@
                 <div class="terminal-line">status</div>
                 <div class="output">
                   <span class="text-hack-green">● Online</span> -
-                  <span class="text-hack-blue">Listo para nuevos desafíos</span>
+                  <span class="text-hack-blue">{{ t('hero.status') }}</span>
                 </div>
                 <div class="terminal-line prompt">
                   <span>DevMenfroyt@james:~$ </span>
@@ -61,7 +61,7 @@
             <div class="hero-actions">
               <button class="contact-cta-btn" @click="scrollToContact">
                 <q-icon name="mail" />
-                <span class="btn-text">Contactar</span>
+                <span class="btn-text">{{ t('hero.contact') }}</span>
                 <span class="btn-arrow">→</span>
               </button>
               <div class="social-links">
@@ -130,7 +130,7 @@
     <!-- Skills Preview -->
     <section class="skills-preview">
       <div class="container">
-        <h4 class="section-title text-center">Stack Portafolio</h4>
+        <h4 class="section-title text-center">{{ t('stack.title') }}</h4>
         <div class="tech-stack">
           <div v-for="tech in techStack" :key="tech.name" class="tech-item">
             <img :src="tech.icon" :alt="tech.name" class="tech-icon" />
@@ -143,8 +143,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import MatrixBackground from '../components/MatrixBackground.vue';
+import { useLanguage } from 'src/composables/useLanguage';
+
+const { t } = useLanguage();
 import AboutPage from './AboutPage.vue';
 import ProjectsPage from './ProjectsPage.vue';
 import EducationPage from './EducationPage.vue';
@@ -152,7 +155,7 @@ import ContactPage from './ContactPage.vue';
 
 const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/matrix.jpeg`;
 const name = ref('James Mendoza');
-const title = ref('Desarrollador Full Stack');
+const title = computed(() => t('hero.title'));
 
 // Back to top
 const showBackToTop = ref(false);

@@ -20,7 +20,7 @@
             @click="scrollToSection('home')"
           >
             <q-icon name="home" class="q-mr-xs" />
-            <span class="nav-text">home</span>
+            <span class="nav-text">{{ t('nav.home') }}</span>
           </q-btn>
           <q-btn
             flat
@@ -29,7 +29,7 @@
             @click="scrollToSection('about')"
           >
             <q-icon name="person" class="q-mr-xs" />
-            <span class="nav-text">Sobre mí</span>
+            <span class="nav-text">{{ t('nav.about') }}</span>
           </q-btn>
           <q-btn
             flat
@@ -38,7 +38,7 @@
             @click="scrollToSection('projects')"
           >
             <q-icon name="code" class="q-mr-xs" />
-            <span class="nav-text">proyectos</span>
+            <span class="nav-text">{{ t('nav.projects') }}</span>
           </q-btn>
           <q-btn
             flat
@@ -47,7 +47,7 @@
             @click="scrollToSection('education')"
           >
             <q-icon name="school" class="q-mr-xs" />
-            <span class="nav-text">educación</span>
+            <span class="nav-text">{{ t('nav.education') }}</span>
           </q-btn>
           <q-btn
             flat
@@ -56,11 +56,29 @@
             @click="scrollToSection('contact')"
           >
             <q-icon name="mail" class="q-mr-xs" />
-            <span class="nav-text">contacto</span>
+            <span class="nav-text">{{ t('nav.contact') }}</span>
           </q-btn>
         </div>
       </q-toolbar>
     </q-header>
+
+    <!-- Floating Toggles -->
+    <div class="floating-toggles">
+      <button
+        class="toggle-btn lang-toggle"
+        @click="toggleLang"
+        :title="currentLang === 'es' ? 'Switch to English' : 'Cambiar a Español'"
+      >
+        <span class="toggle-label">{{ currentLang === 'es' ? 'EN' : 'ES' }}</span>
+      </button>
+      <button
+        class="toggle-btn theme-toggle"
+        @click="toggleTheme"
+        :title="currentTheme === 'dark' ? 'Modo claro' : 'Dark mode'"
+      >
+        <q-icon :name="currentTheme === 'dark' ? 'light_mode' : 'dark_mode'" size="18px" />
+      </button>
+    </div>
 
     <q-page-container class="hack-page-container">
       <router-view />
@@ -71,6 +89,11 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { useLanguage } from 'src/composables/useLanguage';
+import { useTheme } from 'src/composables/useTheme';
+
+const { currentLang, t, toggleLang } = useLanguage();
+const { currentTheme, toggleTheme } = useTheme();
 
 const router = useRouter();
 const route = useRoute();
@@ -255,6 +278,56 @@ onUnmounted(() => {
   background: transparent;
 }
 
+// Floating Toggles
+.floating-toggles {
+  position: fixed;
+  top: 68px;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 1999;
+
+  .toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    background: rgba(13, 17, 23, 0.9);
+    backdrop-filter: blur(12px);
+    color: #8b949e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    &:hover {
+      border-color: #00ff88;
+      color: #00ff88;
+      background: rgba(0, 255, 136, 0.08);
+      box-shadow: 0 0 14px rgba(0, 255, 136, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .toggle-label {
+      letter-spacing: 0.05em;
+    }
+  }
+
+  .theme-toggle {
+    .q-icon {
+      transition: transform 0.4s ease;
+    }
+
+    &:hover .q-icon {
+      transform: rotate(30deg);
+    }
+  }
+}
+
 // Responsive
 @media (max-width: 768px) {
   .hack-toolbar {
@@ -282,6 +355,17 @@ onUnmounted(() => {
       .nav-text {
         display: none;
       }
+    }
+  }
+
+  .floating-toggles {
+    top: 62px;
+    right: 0.5rem;
+
+    .toggle-btn {
+      width: 34px;
+      height: 34px;
+      font-size: 0.7rem;
     }
   }
 }

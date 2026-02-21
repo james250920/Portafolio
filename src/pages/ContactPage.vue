@@ -8,7 +8,7 @@
             <q-icon name="terminal" class="text-hack-green" /> Contact.exe
           </h1>
           <p class="page-subtitle animate-fade-in">
-            ¿Listo para colaborar? Construyamos algo increíble juntos.
+            {{ t('contact.subtitle') }}
           </p>
         </div>
       </div>
@@ -21,23 +21,23 @@
           <!-- LEFT: Contact Form -->
           <div class="contact-form-container">
             <div class="hack-card form-card">
-              <h2 class="form-title">Enviar Mensaje</h2>
+              <h2 class="form-title">{{ t('contact.send') }}</h2>
               <q-form @submit="sendMessage" class="contact-form" ref="contactForm">
                 <div class="form-group">
-                  <label for="name" class="form-label">Nombre</label>
+                  <label for="name" class="form-label">{{ t('contact.name') }}</label>
                   <q-input
                     v-model="form.name"
                     id="name"
                     outlined
                     dark
                     class="hack-input"
-                    placeholder="Tu nombre"
-                    :rules="[(val) => !!val || 'El nombre es requerido']"
+                    :placeholder="t('contact.namePlaceholder')"
+                    :rules="[(val) => !!val || t('contact.nameRequired')]"
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="email" class="form-label">{{ t('contact.email') }}</label>
                   <q-input
                     v-model="form.email"
                     id="email"
@@ -45,29 +45,29 @@
                     outlined
                     dark
                     class="hack-input"
-                    placeholder="tu.email@ejemplo.com"
+                    :placeholder="t('contact.emailPlaceholder')"
                     :rules="[
-                      (val) => !!val || 'El email es requerido',
-                      (val) => /.+@.+\..+/.test(val) || 'El email debe ser válido',
+                      (val) => !!val || t('contact.emailRequired'),
+                      (val) => /.+@.+\..+/.test(val) || t('contact.emailInvalid'),
                     ]"
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="subject" class="form-label">Asunto</label>
+                  <label for="subject" class="form-label">{{ t('contact.subject') }}</label>
                   <q-select
                     v-model="form.subject"
                     :options="subjectOptions"
                     outlined
                     dark
                     class="hack-input"
-                    placeholder="Selecciona un asunto"
-                    :rules="[(val) => !!val || 'Debes seleccionar un asunto']"
+                    :placeholder="t('contact.subjectPlaceholder')"
+                    :rules="[(val) => !!val || t('contact.subjectRequired')]"
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="message" class="form-label">Mensaje</label>
+                  <label for="message" class="form-label">{{ t('contact.message') }}</label>
                   <q-input
                     v-model="form.message"
                     id="message"
@@ -75,9 +75,9 @@
                     outlined
                     dark
                     class="hack-input"
-                    placeholder="Cuéntame sobre tu proyecto..."
+                    :placeholder="t('contact.messagePlaceholder')"
                     :rules="[
-                      (val) => !!val || 'El mensaje es requerido',
+                      (val) => !!val || t('contact.messageRequired'),
                       (val) => validateForbiddenWords(val),
                     ]"
                     rows="5"
@@ -86,7 +86,7 @@
 
                 <div class="form-actions">
                   <button type="submit" class="hack-button primary">
-                    <q-icon name="send" /> Enviar Mensaje
+                    <q-icon name="send" /> {{ t('contact.send') }}
                   </button>
                 </div>
               </q-form>
@@ -111,13 +111,14 @@
                       <span class="text-hack-green">Name:</span> James Mendoza
                     </div>
                     <div class="info-line">
-                      <span class="text-hack-blue">Location:</span> Disponible
+                      <span class="text-hack-blue">Location:</span> {{ t('contact.location') }}
                     </div>
                     <div class="info-line">
                       <span class="text-hack-yellow">Timezone:</span> UTC-5 (EST)
                     </div>
                     <div class="info-line">
-                      <span class="text-hack-purple">Availability:</span> Abierto a Oportunidades
+                      <span class="text-hack-purple">Availability:</span>
+                      {{ t('contact.openOpportunities') }}
                     </div>
                     <div class="info-line">
                       <span class="text-hack-cyan">Specialties:</span> Full-Stack Dev
@@ -125,7 +126,8 @@
                   </div>
                   <div class="terminal-line">status --availability</div>
                   <div class="output">
-                    <span class="text-hack-green">● DISPONIBLE</span> - Nuevos proyectos
+                    <span class="text-hack-green">● {{ t('contact.available') }}</span> -
+                    {{ t('contact.readyProjects') }}
                   </div>
                   <div class="terminal-line prompt">
                     <span>DevMenfroyt@contact:~$ </span>
@@ -142,10 +144,10 @@
               </div>
               <h3>LinkedIn</h3>
               <p class="method-info">@menfroyt-dev</p>
-              <p class="method-description">Networking profesional y oportunidades</p>
+              <p class="method-description">{{ t('contact.networking') }}</p>
               <div class="method-status">
                 <span class="status-dot online"></span>
-                Activo
+                {{ t('contact.active') }}
               </div>
             </div>
 
@@ -156,10 +158,10 @@
               </div>
               <h3>GitHub</h3>
               <p class="method-info">@james250920</p>
-              <p class="method-description">Revisa mi código y contribuciones</p>
+              <p class="method-description">{{ t('contact.checkCode') }}</p>
               <div class="method-status">
                 <span class="status-dot online"></span>
-                Actualizado frecuentemente
+                {{ t('contact.updatedFrequently') }}
               </div>
             </div>
           </div>
@@ -170,9 +172,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick } from 'vue';
+import { ref, computed, nextTick } from 'vue';
 import { useQuasar } from 'quasar';
 import { sendEmail } from 'src/service/email.service';
+import { useLanguage } from 'src/composables/useLanguage';
+
+const { t } = useLanguage();
 
 type ContactFormRef = {
   validate: () => Promise<boolean>;
@@ -190,7 +195,11 @@ const form = ref({
   message: '',
 });
 
-const subjectOptions = ['Colaboración en Proyecto', 'Oportunidad Laboral', 'Trabajo Freelance'];
+const subjectOptions = computed(() => [
+  t('contact.opt.collaboration'),
+  t('contact.opt.job'),
+  t('contact.opt.freelance'),
+]);
 
 // Lista de palabras prohibidas
 const forbiddenWords = [
@@ -234,7 +243,7 @@ const validateForbiddenWords = (text: string): boolean | string => {
       .replace(/[\u0300-\u036f]/g, '');
 
     if (normalizedText.includes(normalizedWord)) {
-      return 'Por favor, mantén un lenguaje respetuoso y profesional';
+      return t('contact.respectful');
     }
   }
 
@@ -252,7 +261,7 @@ const sendMessage = async () => {
 
   try {
     $q.loading.show({
-      message: 'Enviando mensaje...',
+      message: t('contact.sending'),
     });
 
     await sendEmail({
@@ -311,8 +320,8 @@ const sendMessage = async () => {
 
     $q.notify({
       type: 'positive',
-      message: '¡Mensaje enviado exitosamente!',
-      caption: 'Te responderé pronto.',
+      message: t('contact.success'),
+      caption: t('contact.successCaption'),
       icon: 'mail',
       color: 'green',
     });
@@ -332,8 +341,8 @@ const sendMessage = async () => {
 
     $q.notify({
       type: 'negative',
-      message: 'Error al enviar el mensaje',
-      caption: 'Por favor, intenta de nuevo más tarde.',
+      message: t('contact.error'),
+      caption: t('contact.errorCaption'),
       icon: 'error',
     });
   } finally {

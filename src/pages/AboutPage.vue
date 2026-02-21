@@ -5,12 +5,10 @@
       <div class="container">
         <div class="header-content">
           <h1 class="page-title animate-slide-up">
-            <q-icon name="person" class="text-hack-blue" /> About.me
+            <q-icon name="person" class="text-hack-blue" /> {{ t('about.title') }}
           </h1>
           <p class="page-subtitle animate-fade-in">
-            Estudiante de Ingeniería en TI enfocado en el desarrollo de software, con una mentalidad
-            orientada a la calidad de software (QA) y la seguridad para crear soluciones robustas y
-            eficientes.
+            {{ t('about.subtitle') }}
           </p>
         </div>
       </div>
@@ -36,18 +34,17 @@
                 <h2 class="profile-name">DevMenfroyt</h2>
                 <h3 class="profile-title"></h3>
                 <p class="profile-bio">
-                  Desarrollador en formación con {{ experience }}+ años de experiencia en el
-                  desarrollo de software.
+                  {{ t('about.bio', { n: experience }) }}
                 </p>
 
                 <div class="profile-stats">
                   <div class="stat-item">
                     <span class="stat-number text-hack-green">{{ experience }}+</span>
-                    <span class="stat-label">Años</span>
+                    <span class="stat-label">{{ t('about.years') }}</span>
                   </div>
                   <div class="stat-item">
                     <span class="stat-number text-hack-blue">{{ projects }}+</span>
-                    <span class="stat-label">Proyectos</span>
+                    <span class="stat-label">{{ t('about.projects') }}</span>
                   </div>
                 </div>
               </div>
@@ -77,11 +74,11 @@
                 </div>
                 <div class="terminal-line">whoami --current-focus</div>
                 <div class="output">
-                  <span class="text-hack-blue">● Desarrollo de aplicaciones web y móviles</span
+                  <span class="text-hack-blue">● {{ t('about.currentFocus1') }}</span
                   ><br />
-                  <span class="text-hack-yellow">● Aprendiendo tecnologías de vanguardia</span
+                  <span class="text-hack-yellow">● {{ t('about.currentFocus2') }}</span
                   ><br />
-                  <span class="text-hack-purple">● Mejorando habilidades en QA y seguridad</span>
+                  <span class="text-hack-purple">● {{ t('about.currentFocus3') }}</span>
                 </div>
                 <div class="terminal-line prompt">
                   <span>DevMenfroyt@about:~$ </span>
@@ -97,7 +94,7 @@
     <!-- Experience Section -->
     <section class="experience-section">
       <div class="container">
-        <h2 class="section-title text-center">Experiencia Profesional</h2>
+        <h2 class="section-title text-center">{{ t('about.expTitle') }}</h2>
         <div class="experience-timeline">
           <div v-for="(exp, index) in experiences" :key="index" class="experience-item">
             <div class="experience-marker">
@@ -150,18 +147,17 @@
       </div>
     </section>
 
-
     <!-- CTA Section -->
     <section class="cta-section">
       <div class="container">
         <div class="hack-card cta-card">
-          <h2 class="cta-title">Construyamos Algo Increíble Juntos</h2>
+          <h2 class="cta-title">{{ t('about.ctaTitle') }}</h2>
           <div class="cta-actions">
             <button class="hack-button primary" @click="scrollToSection('contact')">
-              <q-icon name="message" /> Contáctame
+              <q-icon name="message" /> {{ t('about.ctaContact') }}
             </button>
             <button class="hack-button secondary" @click="scrollToSection('projects')">
-              <q-icon name="work" /> Ver Proyectos
+              <q-icon name="work" /> {{ t('about.ctaProjects') }}
             </button>
           </div>
         </div>
@@ -171,7 +167,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useLanguage } from 'src/composables/useLanguage';
+
+const { t } = useLanguage();
 
 const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/logo.jpg`;
 
@@ -194,15 +193,15 @@ const scrollToSection = (sectionId: string) => {
   }
 };
 
-const careerTimeline = ref([
-  { year: '2018', event: 'Inició mi viaje en la programación' },
-  { year: '2019', event: 'Exploré desarrollo web básico' },
-  { year: '2021', event: 'Inicio de carrera universitaria' },
-  { year: '2022', event: 'Aprendí sobre desarrollo web' },
-  { year: '2023', event: 'Aprendí sobre desarrollo móvil' },
-  { year: '2024', event: 'Desarrollador Full-Stack en prácticas' },
-  { year: '2025', event: 'Actualización de habilidades y conocimientos' },
-  { year: '2026', event: 'En proceso...' },
+const careerTimeline = computed(() => [
+  { year: '2018', event: t('about.timeline.2018') },
+  { year: '2019', event: t('about.timeline.2019') },
+  { year: '2021', event: t('about.timeline.2021') },
+  { year: '2022', event: t('about.timeline.2022') },
+  { year: '2023', event: t('about.timeline.2023') },
+  { year: '2024', event: t('about.timeline.2024') },
+  { year: '2025', event: t('about.timeline.2025') },
+  { year: '2026', event: t('about.timeline.2026') },
 ]);
 
 const skillCategories = ref([
@@ -219,7 +218,7 @@ const skillCategories = ref([
         icon: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Official_CSS_Logo.svg',
       },
       { name: 'Flask', icon: 'https://cdn.simpleicons.org/flask/000000' },
-{
+      {
         name: 'Tailwind',
         icon: 'https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg',
       },
@@ -309,13 +308,12 @@ const skillCategories = ref([
   },
 ]);
 
-const experiences = ref([
+const experiences = computed(() => [
   {
-    title: 'Desarrollador Web - Prácticas',
-    company: 'Corporación Evly',
-    period: '2024 - 2025 (1 año)',
-    description:
-      'Implementé funcionalidades backend en .NET Core y PostgreSQL para aplicaciones internas y para la Municipalidad de Comas. Desarrollé componentes frontend con Angular, integrando diseños UX/UI y consumiendo APIs REST. Gestioné control de versiones con Git.',
+    title: t('about.exp1.title'),
+    company: t('about.exp1.company'),
+    period: t('about.exp1.period'),
+    description: t('about.exp1.desc'),
     technologies: [
       'Angular',
       'Node.js',
@@ -328,23 +326,20 @@ const experiences = ref([
     ],
   },
   {
-    title: 'Área de Arquitectura TI - Prácticas',
-    company: 'Aenza',
-    period: '2025 - 2025 (3 meses)',
-    description:
-      'Recopilé y documenté información de los sistemas de la organización para facilitar la gobernanza de TI. Apoyé en la implementación de la metodología TIME para estandarizar procesos y mejorar la eficiencia operativa. Realicé validación de datos y análisis para la toma de decisiones técnicas.',
+    title: t('about.exp2.title'),
+    company: t('about.exp2.company'),
+    period: t('about.exp2.period'),
+    description: t('about.exp2.desc'),
     technologies: ['Metodología TIME', 'Excel', 'Sass'],
   },
   {
-    title: 'Operador Informático - Voluntariado',
-    company: 'Pronabec',
-    period: '2024 - 2024',
-    description:
-      'Examen Nacional de Preselección del concurso Beca de Excelencia Académica para Hijos de Docentes, convocatoria 2024.',
+    title: t('about.exp3.title'),
+    company: t('about.exp3.company'),
+    period: t('about.exp3.period'),
+    description: t('about.exp3.desc'),
     technologies: ['Microsoft Office', 'QR lector'],
   },
 ]);
-
 </script>
 
 <style lang="scss" scoped>

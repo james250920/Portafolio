@@ -5,10 +5,10 @@
       <div class="container">
         <div class="header-content">
           <h1 class="page-title animate-slide-up">
-            <q-icon name="school" class="text-hack-green" /> Education.academic
+            <q-icon name="school" class="text-hack-green" /> {{ t('education.title') }}
           </h1>
           <p class="page-subtitle animate-fade-in">
-            Mi trayectoria académica y certificaciones profesionales.
+            {{ t('education.subtitle') }}
           </p>
         </div>
       </div>
@@ -54,7 +54,7 @@
                         </div>
                         <p class="education-description">{{ edu.description }}</p>
                         <div v-if="edu.achievements" class="education-achievements">
-                          <h5 class="achievements-title">Logros destacados:</h5>
+                          <h5 class="achievements-title">{{ t('education.achievements') }}</h5>
                           <ul class="achievements-list">
                             <li v-for="(achievement, i) in edu.achievements" :key="i">
                               <q-icon name="check_circle" size="1rem" class="text-hack-green" />
@@ -81,7 +81,8 @@
     <section class="certifications-section">
       <div class="container">
         <h2 class="section-title">
-          <q-icon name="workspace_premium" class="text-hack-yellow" /> Certificaciones
+          <q-icon name="workspace_premium" class="text-hack-yellow" />
+          {{ t('education.certifications') }}
         </h2>
         <div class="certifications-grid">
           <div v-for="cert in certifications" :key="cert.id" class="certification-card-container">
@@ -108,7 +109,7 @@
               </div>
               <div class="cert-actions" v-if="cert.verifyUrl">
                 <button class="action-btn verify" @click="openUrl(cert.verifyUrl)">
-                  <q-icon name="verified" /> Verificar Certificado
+                  <q-icon name="verified" /> {{ t('education.verifyCert') }}
                 </button>
               </div>
             </div>
@@ -121,7 +122,7 @@
     <section class="courses-section">
       <div class="container">
         <h2 class="section-title">
-          <q-icon name="menu_book" class="text-hack-blue" /> Cursos y Formación Continua
+          <q-icon name="menu_book" class="text-hack-blue" /> {{ t('education.coursesTitle') }}
         </h2>
         <div class="terminal-wrapper">
           <div class="terminal">
@@ -142,7 +143,9 @@
                   <div class="category-header">
                     <q-icon :name="category.icon" class="text-hack-green" />
                     <span class="category-name">{{ category.name }}</span>
-                    <span class="category-count">({{ category.courses.length }} cursos)</span>
+                    <span class="category-count"
+                      >({{ category.courses.length }} {{ t('education.courses') }})</span
+                    >
                   </div>
                   <div class="courses-list">
                     <div v-for="course in category.courses" :key="course.name" class="course-item">
@@ -171,7 +174,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed } from 'vue';
+import { useLanguage } from 'src/composables/useLanguage';
+
+const { t } = useLanguage();
 
 // Types
 interface Education {
@@ -209,40 +215,34 @@ interface CourseCategory {
 }
 
 // Data
-const educationTimeline = ref<Education[]>([
+const educationTimeline = computed<Education[]>(() => [
   {
-    degree: 'Ingeniería de Tecnologías de Información y Sistemas',
-    institution: 'Universidad ESAN',
-    period: 'Mar 2021 - Presente',
-    status: 'en-curso',
-    description:
-      'Formación integral en desarrollo de software, arquitectura de sistemas, bases de datos, y gestión de proyectos tecnológicos. Enfoque en desarrollo web, móvil y aseguramiento de calidad con énfasis en innovación tecnológica.',
-    achievements: [
-      'Desarrollo de aplicaciones full-stack con tecnologías modernas',
-      'Implementación de metodologías ágiles en proyectos académicos',
-      'Participación en proyectos de desarrollo de software empresarial',
-    ],
+    degree: t('education.edu1.degree'),
+    institution: t('education.edu1.institution'),
+    period: t('education.edu1.period'),
+    status: t('education.edu1.status'),
+    description: t('education.edu1.desc'),
+    achievements: [t('education.edu1.a1'), t('education.edu1.a2'), t('education.edu1.a3')],
     icon: 'school',
     iconClass: 'text-hack-green',
   },
   {
-    degree: 'AWS Cloud Developing',
-    institution: 'AWS Academy',
-    period: 'Sep 2025 - Nov 2025',
-    description:
-      'Formación especializada en servicios de computación en la nube de Amazon Web Services. Aprendizaje de arquitecturas cloud, implementación de servicios y mejores prácticas en desarrollo cloud-native.',
+    degree: t('education.edu2.degree'),
+    institution: t('education.edu2.institution'),
+    period: t('education.edu2.period'),
+    description: t('education.edu2.desc'),
     achievements: [
-      'Dominio de servicios principales de AWS (EC2, S3, Lambda, RDS)',
-      'Implementación de arquitecturas escalables en la nube',
-      'Gestión de bases de datos y almacenamiento en AWS',
-      'Desarrollo de aplicaciones serverless',
+      t('education.edu2.a1'),
+      t('education.edu2.a2'),
+      t('education.edu2.a3'),
+      t('education.edu2.a4'),
     ],
     icon: 'cloud',
     iconClass: 'text-hack-blue',
   },
 ]);
 
-const certifications = ref<Certification[]>([
+const certifications = computed<Certification[]>(() => [
   {
     id: 1,
     name: 'AWS Academy Cloud Developing',
@@ -254,7 +254,7 @@ const certifications = ref<Certification[]>([
     id: 2,
     name: 'AWS Certified Developer Associate',
     issuer: 'Amazon Web Services',
-    date: 'En preparación',
+    date: t('education.cert.awsDev'),
     icon: 'cloud_queue',
   },
   {
@@ -280,23 +280,23 @@ const certifications = ref<Certification[]>([
   },
   {
     id: 6,
-    name: 'Análisis de Datos con Excel',
+    name: t('education.cert.dataAnalysis'),
     issuer: 'CTIC UNI',
     date: '2025',
     icon: 'analytics',
   },
   {
     id: 7,
-    name: 'Actualización SQL Server 2022',
+    name: t('education.cert.sqlServer'),
     issuer: 'Microsoft',
     date: '2025',
     icon: 'storage',
   },
 ]);
 
-const courseCategories = ref<CourseCategory[]>([
+const courseCategories = computed<CourseCategory[]>(() => [
   {
-    name: 'Desarrollo Web',
+    name: t('education.courseCat.webDev'),
     icon: 'language',
     courses: [{ name: '.NET', platform: 'Microsoft Learn', duration: '40h' }],
   },

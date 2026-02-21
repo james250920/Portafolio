@@ -5,9 +5,9 @@
       <div class="container">
         <div class="header-content">
           <h1 class="page-title animate-slide-up">
-            <q-icon name="code" class="text-hack-green" /> Proyectos.portafolio
+            <q-icon name="code" class="text-hack-green" /> {{ t('projects.title') }}
           </h1>
-          <p class="page-subtitle animate-fade-in">Una muestra de mis trabajos.</p>
+          <p class="page-subtitle animate-fade-in">{{ t('projects.subtitle') }}</p>
         </div>
       </div>
     </section>
@@ -76,7 +76,7 @@
                 <div class="project-overlay">
                   <div class="overlay-content">
                     <q-icon name="visibility" size="1.5rem" class="text-hack-white" />
-                    <span>Ver Detalles</span>
+                    <span>{{ t('projects.viewDetails') }}</span>
                   </div>
                 </div>
               </div>
@@ -105,14 +105,14 @@
                     @click.stop="openProject(project.liveUrl)"
                     v-if="project.liveUrl"
                   >
-                    <q-icon name="launch" /> Demo en Vivo
+                    <q-icon name="launch" /> {{ t('projects.liveDemo') }}
                   </button>
                   <button
                     class="action-btn code"
                     @click.stop="openProject(project.githubUrl)"
                     v-if="project.githubUrl"
                   >
-                    <q-icon name="code" /> Código Fuente
+                    <q-icon name="code" /> {{ t('projects.sourceCode') }}
                   </button>
                 </div>
               </div>
@@ -123,7 +123,7 @@
         <!-- Load More Button -->
         <div class="load-more-section" v-if="hasMoreProjects">
           <button class="hack-button primary" @click="loadMoreProjects">
-            <q-icon name="refresh" /> Cargar Más Proyectos
+            <q-icon name="refresh" /> {{ t('projects.loadMore') }}
           </button>
         </div>
       </div>
@@ -133,6 +133,9 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue';
+import { useLanguage } from 'src/composables/useLanguage';
+
+const { t } = useLanguage();
 
 // Types
 interface Project {
@@ -154,7 +157,13 @@ const selectedCategory = ref('Todos');
 const selectedTech = ref<string | null>('');
 const displayedProjects = ref(6);
 
-const categories = ref(['Todos', 'Web', 'Móvil', 'APIs', 'Herramientas']);
+const categories = computed(() => [
+  t('projects.cat.all'),
+  'Web',
+  t('projects.cat.mobile'),
+  'APIs',
+  t('projects.cat.tools'),
+]);
 
 const techOptions = ref([
   'Vue.js',
@@ -175,15 +184,13 @@ const techOptions = ref([
 
 const IMG_BASE_URL = import.meta.env.VITE_IMG_URL;
 
-const projects = ref<Project[]>([
+const projects = computed<Project[]>(() => [
   {
     id: 1,
-    title: 'Plataforma E-Commerce WEb | Mobile',
-    description:
-      'Solución de comercio electrónico full-stack con características avanzadas e interfaz moderna.',
-    fullDescription:
-      'Una plataforma de comercio electrónico integral construida con tecnologías modernas. Las características incluyen autenticación de usuarios, catálogo de productos, carrito de compras, integración de pagos, gestión de pedidos y panel de administración.',
-    category: ['Web', 'Móvil'],
+    title: t('projects.p1.title'),
+    description: t('projects.p1.desc'),
+    fullDescription: t('projects.p1.fullDesc'),
+    category: ['Web', t('projects.cat.mobile')],
     technologies: [
       'Angular',
       'Node.js',
@@ -198,21 +205,20 @@ const projects = ref<Project[]>([
     liveUrl: '',
     githubUrl: '',
     features: [
-      'Autenticación y autorización de usuarios',
-      'Catálogo de productos con búsqueda y filtros',
-      'Carrito de compras y proceso de pago',
-      'Integración de pagos con Stripe',
-      'Sistema de gestión de pedidos',
-      'Panel de administración para gestión de inventario',
+      t('projects.p1.f1'),
+      t('projects.p1.f2'),
+      t('projects.p1.f3'),
+      t('projects.p1.f4'),
+      t('projects.p1.f5'),
+      t('projects.p1.f6'),
     ],
   },
   {
     id: 2,
     title: 'StudyOso',
-    description: 'Herramienta de gestio educativo para estudiantes universitarios.',
+    description: t('projects.p2.desc'),
     fullDescription: '',
-
-    category: ['Móvil'],
+    category: [t('projects.cat.mobile')],
     technologies: ['JetPack Compose', 'Kotlin', 'SQLite', 'Firebase'],
     image: `https://${IMG_BASE_URL}/imagenes/img/studyoso.png`,
     status: 'completed',
@@ -223,8 +229,8 @@ const projects = ref<Project[]>([
   {
     id: 3,
     title: 'Impulso',
-    description: 'Aplicación móvil para organización de herramientas y recursos de estudio.',
-    category: ['Móvil'],
+    description: t('projects.p3.desc'),
+    category: [t('projects.cat.mobile')],
     technologies: ['JetPack Compose', 'Kotlin', 'SQLite', 'Firebase'],
     image: `https://${IMG_BASE_URL}/imagenes/img/Impluso.png`,
     status: 'completed',
@@ -233,8 +239,8 @@ const projects = ref<Project[]>([
   {
     id: 4,
     title: 'Zentry Tracker',
-    description: 'Aplicación móvil para el seguimiento de denuncias ciudadanas.',
-    category: ['Móvil'],
+    description: t('projects.p4.desc'),
+    category: [t('projects.cat.mobile')],
     technologies: ['Flutter', 'Firebase', 'PostgreSQL'],
     image: `https://${IMG_BASE_URL}/imagenes/img/logo.jpg`,
     status: 'in-progress',
@@ -242,7 +248,7 @@ const projects = ref<Project[]>([
   {
     id: 5,
     title: 'AprendePe',
-    description: 'Aplicación web educativa para aprendizaje interactivo.',
+    description: t('projects.p5.desc'),
     category: ['Web'],
     technologies: ['React', 'PostgreSQL', 'TypeScript', 'SCSS', '.Net'],
     image: `https://${IMG_BASE_URL}/imagenes/img/aprendePE.png`,
@@ -256,7 +262,11 @@ const projects = ref<Project[]>([
 const allFilteredProjects = computed(() => {
   let filtered = projects.value;
 
-  if (selectedCategory.value !== 'Todos') {
+  if (
+    selectedCategory.value !== t('projects.cat.all') &&
+    selectedCategory.value !== 'Todos' &&
+    selectedCategory.value !== 'All'
+  ) {
     filtered = filtered.filter((project) => project.category.includes(selectedCategory.value));
   }
 
