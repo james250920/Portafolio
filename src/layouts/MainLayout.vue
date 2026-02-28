@@ -349,7 +349,7 @@ onUnmounted(() => {
 
       .q-icon {
         margin: 0 !important;
-        font-size: 1.2rem;
+        font-size: 1.9rem;
       }
 
       .nav-text {
@@ -363,9 +363,13 @@ onUnmounted(() => {
     right: 0.5rem;
 
     .toggle-btn {
-      width: 34px;
-      height: 34px;
-      font-size: 0.7rem;
+      width: 40px;
+      height: 40px;
+      font-size: 0.75rem;
+
+      .q-icon {
+        font-size: 20px;
+      }
     }
   }
 }
