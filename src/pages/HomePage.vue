@@ -491,7 +491,7 @@ section {
 
       .profile-image {
         transform: scale(1.02);
-        filter: brightness(1.1);
+        filter: brightness(1.6) contrast(1.12);
         animation: glitch 0.5s ease-in-out;
       }
 
@@ -513,7 +513,7 @@ section {
       display: block;
       min-height: 420px;
       transition: all 0.3s ease;
-      filter: brightness(0.9) contrast(1.06);
+      filter: brightness(1.5) contrast(1.1);
       position: relative;
       animation: glitch 1.5s infinite;
 
