@@ -210,14 +210,13 @@ const skillCategories = ref([
     icon: 'web',
     color: 'text-hack-blue',
     skills: [
-      { name: 'Vue.js / Quasar', icon: 'https://cdn.quasar.dev/logo/svg/quasar-logo.svg' },
+      { name: 'React', icon: 'https://www.pngmart.com/files/23/React-Logo-PNG-200x200.png' },
       { name: 'Angular', icon: 'https://cdn.simpleicons.org/angular/DD0031' },
       { name: 'HTML5', icon: 'https://cdn.simpleicons.org/html5/E34F26' },
       {
         name: 'CSS',
         icon: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Official_CSS_Logo.svg',
       },
-      { name: 'Flask', icon: 'https://cdn.simpleicons.org/flask/000000' },
       {
         name: 'Tailwind',
         icon: 'https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg',
@@ -229,16 +228,11 @@ const skillCategories = ref([
     icon: 'storage',
     color: 'text-hack-green',
     skills: [
-      { name: 'FastAPI', icon: 'https://cdn.simpleicons.org/fastapi/009688' },
       {
         name: '.Net',
-        icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/960px-.NET_Core_Logo.svg.png',
+        icon: 'https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/072015/ms-.net-framework.jpg?itok=_sHbgY_h',
       },
       { name: 'Express', icon: 'https://cdn.simpleicons.org/express/000000' },
-      {
-        name: 'Python',
-        icon: 'https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png',
-      },
       {
         name: 'C#',
         icon: 'https://images.icon-icons.com/2415/PNG/512/csharp_plain_logo_icon_146577.png',
@@ -271,10 +265,9 @@ const skillCategories = ref([
     icon: 'dns',
     color: 'text-hack-orange',
     skills: [
-      { name: 'MySQL', icon: 'https://cdn.simpleicons.org/mysql/4479A1' },
+      { name: 'SQLServer', icon: 'https://logodix.com/logo/1095307.png' },
       { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/4169E1' },
       { name: 'MongoDB', icon: 'https://cdn.simpleicons.org/mongodb/47A248' },
-      { name: 'SQLite', icon: 'https://cdn.simpleicons.org/sqlite/003B57' },
       { name: 'Firebase', icon: 'https://cdn.simpleicons.org/firebase/FFCA28' },
     ],
   },
@@ -284,7 +277,6 @@ const skillCategories = ref([
     color: 'text-hack-teal',
     skills: [
       { name: 'Kotlin', icon: 'https://cdn.simpleicons.org/kotlin/7F52FF' },
-      { name: 'Flutter', icon: 'https://cdn.simpleicons.org/flutter/02569B' },
       { name: 'JetPack Compose', icon: 'https://cdn.simpleicons.org/jetpackcompose/4285F4' },
     ],
   },
@@ -295,7 +287,6 @@ const skillCategories = ref([
     skills: [
       { name: 'Git / GitHub', icon: 'https://www.cesaralexander.dev/github-mark-white.svg' },
       { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker/2496ED' },
-      { name: 'Podman', icon: 'https://cdn.simpleicons.org/podman/892CA0' },
       { name: 'Ubuntu', icon: 'https://cdn.simpleicons.org/ubuntu/E95420' },
       { name: 'Postman', icon: 'https://cdn.simpleicons.org/postman/FF6C37' },
       { name: 'Azure', icon: 'https://swimburger.net/media/fbqnp2ie/azure.svg' },
@@ -304,6 +295,11 @@ const skillCategories = ref([
         name: 'n8n',
         icon: 'https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B',
       },
+      {
+        name: 'Python',
+        icon: 'https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png',
+      },
+      { name: 'SQLite', icon: 'https://cdn.simpleicons.org/sqlite/003B57' },
     ],
   },
 ]);
