@@ -177,7 +177,7 @@ useMeta({
   },
 });
 
-const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/matrix.jpeg`;
+const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/Matrix.png`;
 const name = ref('James Mendoza');
 const title = computed(() => t('hero.title'));
 
