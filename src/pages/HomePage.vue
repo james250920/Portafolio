@@ -2,16 +2,9 @@
   <q-page class="home-page">
     <!-- Matrix Background Effect -->
     <MatrixBackground />
-
-    <!-- Floating Button to Services -->
-    <router-link to="/services" class="floating-services-btn">
-      <div class="btn-content">
-        <q-icon name="code" size="22px" />
-      </div>
-      <div class="btn-ring"></div>
-      <div class="btn-ring delay"></div>
-      <span class="btn-tooltip">{{ t('hero.services') }}</span>
-    </router-link>
+    <Transition v-if="crowTreeMounted" name="crow-scene" appear @after-leave="finishCrowTreeExit">
+      <CrowTree v-show="showCrowTree" floating />
+    </Transition>
 
     <!-- Floating Back to Top Button -->
     <Transition name="back-top">
@@ -82,9 +75,15 @@
           </div>
 
           <!-- RIGHT: Profile Image -->
-          <div class="profile-section">
-            <div class="profile-image-container">
-              <img :src="ImgURL" alt="James Mendoza" class="profile-image" />
+          <div
+            class="profile-section"
+            :class="{ 'is-disintegrating': disintegrationActive }"
+            @pointerenter="enterDisintegration"
+            @pointerleave="leaveDisintegration"
+            @pointercancel="leaveDisintegration"
+          >
+            <div ref="profileContainer" class="profile-image-container">
+              <img ref="profileImage" :src="ImgURL" alt="James Mendoza" class="profile-image" />
               <div class="status-indicator">
                 <div class="status-dot"></div>
                 <span class="status-text">ONLINE</span>
@@ -94,6 +93,7 @@
                 <h2 class="title">{{ title }}</h2>
               </div>
             </div>
+            <canvas ref="profileCanvas" class="disintegration-canvas" aria-hidden="true" />
           </div>
         </div>
       </div>
@@ -109,28 +109,17 @@
       <ProjectsPage />
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="education-section">
-      <EducationPage />
-    </section>
+    <div ref="crowSceneRegion">
+      <!-- Education Section -->
+      <section id="education" class="education-section">
+        <EducationPage />
+      </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-      <ContactPage />
-    </section>
-
-    <!-- Skills Preview -->
-    <section class="skills-preview">
-      <div class="container">
-        <h4 class="section-title text-center">{{ t('stack.title') }}</h4>
-        <div class="tech-stack">
-          <div v-for="tech in techStack" :key="tech.name" class="tech-item">
-            <img :src="tech.icon" :alt="tech.name" class="tech-icon" />
-            <span>{{ tech.name }}</span>
-          </div>
-        </div>
-      </div>
-    </section>
+      <!-- Contact Section -->
+      <section id="contact" class="contact-section">
+        <ContactPage />
+      </section>
+    </div>
   </q-page>
 </template>
 
@@ -138,7 +127,36 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useMeta } from 'quasar';
 import MatrixBackground from '../components/MatrixBackground.vue';
+import CrowTree from '../components/CrowTree.vue';
 import { useLanguage } from 'src/composables/useLanguage';
+import { useImageDisintegration } from 'src/composables/useImageDisintegration';
+
+const crowSceneRegion = ref<HTMLElement>();
+const showCrowTree = ref(false);
+const crowTreeMounted = ref(false);
+let crowSceneObserver: IntersectionObserver | undefined;
+
+const finishCrowTreeExit = () => {
+  if (!showCrowTree.value) crowTreeMounted.value = false;
+};
+
+onMounted(() => {
+  crowSceneObserver = new IntersectionObserver(([entry]) => {
+    showCrowTree.value = entry?.isIntersecting ?? false;
+    if (showCrowTree.value) crowTreeMounted.value = true;
+  });
+  if (crowSceneRegion.value) crowSceneObserver.observe(crowSceneRegion.value);
+});
+onUnmounted(() => crowSceneObserver?.disconnect());
+
+const {
+  image: profileImage,
+  canvas: profileCanvas,
+  container: profileContainer,
+  active: disintegrationActive,
+  enter: enterDisintegration,
+  leave: leaveDisintegration,
+} = useImageDisintegration();
 
 const { t } = useLanguage();
 import AboutPage from './AboutPage.vue';
@@ -214,18 +232,29 @@ const scrollToProjects = () => {
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
   }
 };
-
-const techStack = ref([
-  { name: 'Quasar', icon: 'https://cdn.quasar.dev/logo/svg/quasar-logo.svg' },
-  { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6' },
-  { name: 'Vue.js', icon: 'https://cdn.simpleicons.org/vuedotjs/4FC08D' },
-  { name: 'Node.js', icon: 'https://cdn.simpleicons.org/nodedotjs/339933' },
-  { name: 'Git', icon: 'https://cdn.simpleicons.org/git/F05032' },
-  { name: 'GitHub', icon: 'https://www.cesaralexander.dev/github-mark-white.svg' },
-]);
 </script>
 
 <style lang="scss" scoped>
+.crow-scene-enter-active {
+  transition: opacity 1.8s ease-in-out;
+}
+
+.crow-scene-leave-active {
+  transition: opacity 1.2s ease-in-out;
+}
+
+.crow-scene-enter-from,
+.crow-scene-leave-to {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crow-scene-enter-active,
+  .crow-scene-leave-active {
+    transition: none;
+  }
+}
+
 .home-page {
   min-height: 90vh;
   background: #0d1117;
@@ -446,6 +475,28 @@ section {
 .profile-section {
   display: flex;
   align-items: stretch;
+  position: relative;
+
+  .disintegration-canvas {
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: calc(100% + 400px);
+    height: calc(100% + 400px);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 11;
+  }
+
+  &.is-disintegrating {
+    .profile-image-container {
+      opacity: 0;
+    }
+
+    .disintegration-canvas {
+      opacity: 1;
+    }
+  }
 
   .profile-image-container {
     position: relative;
@@ -456,7 +507,9 @@ section {
     box-shadow:
       0 0 30px rgba(0, 255, 136, 0.1),
       0 8px 24px rgba(0, 0, 0, 0.4);
-    transition: all 0.4s ease;
+    transition:
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
     background: linear-gradient(135deg, rgba(13, 17, 23, 0.8), rgba(22, 27, 34, 0.6));
 
     &::before {
@@ -483,16 +536,9 @@ section {
       box-shadow:
         0 0 40px rgba(0, 255, 136, 0.3),
         0 12px 32px rgba(0, 0, 0, 0.5);
-      transform: translateY(-4px);
 
       &::before {
         opacity: 1;
-      }
-
-      .profile-image {
-        transform: scale(1.02);
-        filter: brightness(1.6) contrast(1.12);
-        animation: glitch 0.5s ease-in-out;
       }
 
       .image-overlay {
@@ -512,10 +558,8 @@ section {
       object-fit: cover;
       display: block;
       min-height: 420px;
-      transition: all 0.3s ease;
       filter: brightness(1.5) contrast(1.1);
       position: relative;
-      animation: glitch 1.5s infinite;
 
       &::before,
       &::after {
@@ -527,12 +571,6 @@ section {
         bottom: 0;
         background: inherit;
         opacity: 0;
-      }
-    }
-
-    &:hover {
-      .profile-image {
-        animation: glitch 0.4s ease-in-out;
       }
     }
 
@@ -686,62 +724,6 @@ section {
   }
 }
 
-// Skills Preview Section
-.skills-preview {
-  padding: 1.5rem 0;
-  background: rgba(22, 27, 34, 0.5);
-
-  .section-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    font-family: 'Space Grotesk', sans-serif;
-    color: $hack-white;
-  }
-
-  .tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.25rem;
-
-    .tech-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.75rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      background: rgba(13, 17, 23, 0.5);
-      border: 1px solid $hack-border;
-      min-width: 85px;
-
-      &:hover {
-        background: rgba(0, 255, 136, 0.1);
-        transform: translateY(-4px);
-        border-color: $hack-green;
-      }
-
-      .tech-icon {
-        width: 2.2rem;
-        height: 2.2rem;
-        object-fit: contain;
-      }
-
-      span {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.78rem;
-        color: $hack-white;
-      }
-    }
-  }
-}
-
-.text-center {
-  text-align: center;
-}
-
 // Section Containers - Remove padding from child pages
 .about-section,
 .projects-section,
@@ -831,33 +813,6 @@ section {
 
         .title {
           font-size: 0.88rem !important;
-        }
-      }
-    }
-  }
-
-  .skills-preview {
-    padding: 2rem 0;
-
-    .section-title {
-      font-size: 1.4rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .tech-stack {
-      gap: 0.75rem;
-
-      .tech-item {
-        padding: 0.75rem;
-        min-width: 70px;
-
-        .tech-icon {
-          width: 1.8rem;
-          height: 1.8rem;
-        }
-
-        span {
-          font-size: 0.68rem;
         }
       }
     }
@@ -978,133 +933,13 @@ section {
   transform: translateY(12px);
 }
 
-// Floating Services Button
-.floating-services-btn {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 9999;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #00ff88, #00cc6a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  box-shadow:
-    0 0 20px rgba(0, 255, 136, 0.5),
-    0 0 40px rgba(0, 255, 136, 0.3),
-    0 4px 15px rgba(0, 0, 0, 0.3);
-
-  &:hover {
-    transform: scale(1.1);
-    box-shadow:
-      0 0 30px rgba(0, 255, 136, 0.7),
-      0 0 60px rgba(0, 255, 136, 0.5),
-      0 6px 20px rgba(0, 0, 0, 0.4);
-
-    .btn-tooltip {
-      opacity: 1;
-      transform: translateX(-10px);
-    }
-  }
-
-  .btn-content {
-    position: relative;
-    z-index: 2;
-    color: #0d1117;
-  }
-
-  .btn-ring {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 2px solid rgba(0, 255, 136, 0.6);
-    animation: ring-pulse 2s infinite;
-
-    &.delay {
-      animation-delay: 1s;
-    }
-  }
-
-  .btn-tooltip {
-    position: absolute;
-    right: 70px;
-    background: rgba(13, 17, 23, 0.95);
-    color: #00ff88;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0, 255, 136, 0.4);
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
-  }
-}
-
-@keyframes ring-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.8);
-    opacity: 0;
-  }
-}
-
-// Responsive - Floating Button
+// Responsive - Back to top
 @media (max-width: 768px) {
   .floating-back-top {
     bottom: 16px;
     left: 16px;
     padding: 6px 10px;
     font-size: 0.6rem;
-  }
-
-  .floating-services-btn {
-    bottom: 16px;
-    right: 16px;
-    width: 42px;
-    height: 42px;
-
-    .btn-content {
-      .q-icon {
-        font-size: 22px !important;
-      }
-    }
-
-    .btn-tooltip {
-      display: none;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .floating-services-btn {
-    bottom: 12px;
-    right: 12px;
-    width: 38px;
-    height: 38px;
-    box-shadow:
-      0 0 15px rgba(0, 255, 136, 0.4),
-      0 0 25px rgba(0, 255, 136, 0.2),
-      0 3px 10px rgba(0, 0, 0, 0.3);
-
-    .btn-content {
-      .q-icon {
-        font-size: 18px !important;
-      }
-    }
-
-    .btn-ring {
-      border-width: 1px;
-    }
   }
 }
 </style>

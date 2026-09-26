@@ -1,0 +1,7 @@
+shamefullyHoist: true
+strictPeerDependencies: false
+resolutionMode: highest
+
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true

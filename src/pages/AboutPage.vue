@@ -219,7 +219,7 @@ const skillCategories = ref([
       },
       {
         name: 'Tailwind',
-        icon: 'https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg',
+        icon: '/icons/tailwindcss.svg',
       },
     ],
   },
@@ -248,8 +248,8 @@ const skillCategories = ref([
       { name: 'K6', icon: 'https://cdn.simpleicons.org/k6/7D64FF' },
       { name: 'Appium', icon: 'https://cdn.simpleicons.org/appium/662D91' },
       {
-        name: 'Nunit',
-        icon: 'https://www.automatetheplanet.com/wp-content/uploads/2023/04/nUnit-logo.png',
+        name: 'NUnit',
+        icon: '/icons/nunit.svg',
       },
       { name: 'Selenium', icon: 'https://cdn.simpleicons.org/selenium/43B02A' },
       { name: 'Cypress', icon: 'https://cdn.worldvectorlogo.com/logos/cypress-1.svg' },

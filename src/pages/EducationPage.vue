@@ -313,7 +313,15 @@ const openUrl = (url: string) => {
 <style lang="scss" scoped>
 .education-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  background: transparent;
+
+  .terminal,
+  .terminal .terminal-header,
+  .hack-card.education-card,
+  .hack-card.certification-card {
+    background: var(--scene-panel-background, transparent) !important;
+    backdrop-filter: var(--scene-panel-filter, none);
+  }
 }
 
 .container {

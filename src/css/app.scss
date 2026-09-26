@@ -359,6 +359,9 @@ code {
 // LIGHT THEME (data-theme="light")
 // =============================================
 html[data-theme='light'] {
+  --scene-panel-background: rgba(255, 255, 255, 0.92);
+  --scene-panel-filter: blur(8px);
+
   // Background stays DARK — only cards, terminals, inputs turn white
 
   // ── Global text color overrides on white surfaces ──
@@ -1011,5 +1014,66 @@ html[data-theme='light'] {
   // ── Quasar Q-notify for light theme ──
   .q-loading__message {
     color: #1a1a2e !important;
+  }
+
+  // Readable accents on the translucent education and contact panels.
+  .education-page,
+  .contact-page {
+    .terminal,
+    .hack-card {
+      text-shadow: none;
+
+      .text-hack-green,
+      .cursor-blink {
+        color: #087443 !important;
+      }
+      .text-hack-blue,
+      .course-bullet {
+        color: #075db5 !important;
+      }
+      .text-hack-yellow {
+        color: #805600 !important;
+      }
+      .text-hack-purple {
+        color: #6d28d9 !important;
+      }
+      .text-hack-cyan {
+        color: #0e697c !important;
+      }
+    }
+  }
+
+  .contact-page .form-card {
+    .hack-input {
+      .q-field__native::placeholder,
+      .q-field__input::placeholder,
+      .q-field__label {
+        color: #57606a !important;
+      }
+
+      &:not(.q-field--error) .q-field__bottom {
+        color: #57606a !important;
+      }
+
+      .q-field__control::before {
+        border-color: #8b949e;
+      }
+    }
+
+    .hack-button.primary {
+      background: #087443 !important;
+      border-color: #087443 !important;
+      color: #ffffff !important;
+
+      &:hover {
+        background: #065c35 !important;
+        border-color: #065c35 !important;
+      }
+
+      &:focus-visible {
+        outline: 2px solid #075db5;
+        outline-offset: 3px;
+      }
+    }
   }
 }

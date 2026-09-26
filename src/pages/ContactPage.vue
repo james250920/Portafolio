@@ -93,7 +93,7 @@
             </div>
           </div>
 
-          <!-- RIGHT: Terminal + LinkedIn + GitHub -->
+          <!-- RIGHT: Terminal -->
           <div class="contact-sidebar">
             <!-- Terminal Info -->
             <div class="terminal-info">
@@ -134,34 +134,6 @@
                     <span class="cursor-blink">|</span>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <!-- LinkedIn -->
-            <div class="hack-card contact-method" @click="openLinkedIn">
-              <div class="method-icon">
-                <q-icon name="work" size="2rem" class="text-hack-blue" />
-              </div>
-              <h3>LinkedIn</h3>
-              <p class="method-info">@menfroyt-dev</p>
-              <p class="method-description">{{ t('contact.networking') }}</p>
-              <div class="method-status">
-                <span class="status-dot online"></span>
-                {{ t('contact.active') }}
-              </div>
-            </div>
-
-            <!-- GitHub -->
-            <div class="hack-card contact-method" @click="openGitHub">
-              <div class="method-icon">
-                <q-icon name="code" size="2rem" class="text-hack-yellow" />
-              </div>
-              <h3>GitHub</h3>
-              <p class="method-info">@james250920</p>
-              <p class="method-description">{{ t('contact.checkCode') }}</p>
-              <div class="method-status">
-                <span class="status-dot online"></span>
-                {{ t('contact.updatedFrequently') }}
               </div>
             </div>
           </div>
@@ -352,20 +324,19 @@ const sendMessage = async () => {
     window.scrollTo({ top: savedScrollY, behavior: 'instant' });
   }
 };
-
-const openLinkedIn = () => {
-  window.open('https://www.linkedin.com/in/menfroyt-dev', '_blank');
-};
-
-const openGitHub = () => {
-  window.open('https://github.com/james250920', '_blank');
-};
 </script>
 
 <style lang="scss" scoped>
 .contact-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  background: transparent;
+
+  .hack-card.form-card,
+  .terminal,
+  .terminal .terminal-header {
+    background: var(--scene-panel-background, transparent) !important;
+    backdrop-filter: var(--scene-panel-filter, none);
+  }
 }
 
 .container {
@@ -497,63 +468,6 @@ const openGitHub = () => {
         }
       }
     }
-
-    .contact-method {
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      flex: 1;
-
-      &:hover {
-        border-color: $hack-green;
-        transform: translateY(-4px);
-        box-shadow: 0 12px 40px rgba(0, 255, 136, 0.15);
-      }
-
-      .method-icon {
-        margin-bottom: 0.5rem;
-      }
-
-      h3 {
-        color: $hack-white;
-        margin-bottom: 0.3rem;
-        font-size: 1.1rem;
-      }
-
-      .method-info {
-        color: $hack-green;
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 600;
-        margin-bottom: 0.3rem;
-        font-size: 0.85rem;
-      }
-
-      .method-description {
-        color: #c9d1d9;
-        font-size: 0.78rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .method-status {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        font-size: 0.78rem;
-        color: $hack-gray;
-
-        .status-dot {
-          width: 7px;
-          height: 7px;
-          border-radius: 50%;
-
-          &.online {
-            background: $hack-green;
-            box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
-          }
-        }
-      }
-    }
   }
 }
 
@@ -639,36 +553,6 @@ const openGitHub = () => {
 
   .container {
     padding: 0 1rem;
-  }
-
-  .contact-methods {
-    padding: 1.25rem 0;
-
-    .hack-grid {
-      grid-template-columns: 1fr !important;
-      gap: 0.75rem;
-    }
-
-    .terminal-info {
-      order: -1;
-    }
-
-    .contact-method {
-      padding: 1rem;
-
-      .method-icon .q-icon {
-        font-size: 1.7rem;
-      }
-      h3 {
-        font-size: 1rem;
-      }
-      .method-info {
-        font-size: 0.78rem;
-      }
-      .method-description {
-        font-size: 0.75rem;
-      }
-    }
   }
 
   .contact-main-section {
