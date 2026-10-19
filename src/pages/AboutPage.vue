@@ -31,7 +31,7 @@
               </div>
 
               <div class="profile-details">
-                <h2 class="profile-name">DevMenfroyt</h2>
+                <h2 class="profile-name">Menfroyt</h2>
                 <h3 class="profile-title"></h3>
                 <p class="profile-bio">
                   {{ t('about.bio', { n: experience }) }}
@@ -172,7 +172,7 @@ import { useLanguage } from 'src/composables/useLanguage';
 
 const { t } = useLanguage();
 
-const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/logo.jpg`;
+const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/logo.png`;
 
 // Data
 const experience = ref(1);

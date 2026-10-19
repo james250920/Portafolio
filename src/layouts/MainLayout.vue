@@ -98,7 +98,7 @@ const { currentTheme, toggleTheme } = useTheme();
 const router = useRouter();
 const route = useRoute();
 
-const logoURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/logo.jpg`;
+const logoURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/logo.png`;
 const activeSection = ref('home');
 
 const SECTION_TO_PATH: Record<string, string> = {

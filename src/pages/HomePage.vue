@@ -32,8 +32,8 @@
                 <div class="output">James Mendoza</div>
                 <div class="terminal-line">cat skills.txt</div>
                 <div class="output">
-                  <div class="skill-line">> Frontend: Quasar, Angular</div>
-                  <div class="skill-line">> Backend: .Net, FastApi, Express</div>
+                  <div class="skill-line">> Frontend: Quasar, Angular, Nuxt</div>
+                  <div class="skill-line">> Backend: .Net, FastApi, Express, Nest</div>
                   <div class="skill-line">> Mobile: Kotlin, Jetpack Compose</div>
                   <div class="skill-line">> QA: K6, Nunit, Appium, Cypress, Selenium</div>
                   <div class="skill-line">> Database: MongoDB, PostgreSQL, MySQL</div>
@@ -166,7 +166,7 @@ import ContactPage from './ContactPage.vue';
 
 // SEO: Meta tags dinámicos para la página principal
 useMeta({
-  title: 'James Frank Mendoza Rios | Desarrollador Full Stack | DevMenfroyt',
+  title: 'James Frank Mendoza Rios | Desarrollador Full Stack | Menfroyt',
   meta: {
     description: {
       name: 'description',
