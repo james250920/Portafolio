@@ -220,7 +220,7 @@ onUnmounted(() => {
   transition: all 0.3s ease;
 
   &:hover {
-    color: #00ff88;
+    color: #04f91e;
     transform: scale(1.05);
   }
 
@@ -229,18 +229,18 @@ onUnmounted(() => {
     height: 2rem;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #00ff88;
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+    border: 2px solid #04f91e;
+    box-shadow: 0 0 10px rgba(4, 249, 30, 0.4);
     transition: all 0.3s ease;
 
     &:hover {
-      box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+      box-shadow: 0 0 15px rgba(4, 249, 30, 0.6);
     }
   }
 
   .brand-icon {
     font-size: 1.5rem;
-    color: #00ff88;
+    color: #04f91e;
   }
 
   .brand-text {
@@ -266,14 +266,14 @@ onUnmounted(() => {
     text-transform: lowercase;
 
     &:hover {
-      color: #00ff88;
-      background: rgba(0, 255, 136, 0.1);
+      color: #04f91e;
+      background: rgba(4, 249, 30, 0.1);
     }
 
     &.active {
-      color: #00ff88;
-      background: rgba(0, 255, 136, 0.15);
-      box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+      color: #04f91e;
+      background: rgba(4, 249, 30, 0.15);
+      box-shadow: 0 0 10px rgba(4, 249, 30, 0.3);
     }
 
     .q-icon {
@@ -313,10 +313,10 @@ onUnmounted(() => {
     font-weight: 700;
 
     &:hover {
-      border-color: #00ff88;
-      color: #00ff88;
-      background: rgba(0, 255, 136, 0.08);
-      box-shadow: 0 0 14px rgba(0, 255, 136, 0.2);
+      border-color: #04f91e;
+      color: #04f91e;
+      background: rgba(4, 249, 30, 0.08);
+      box-shadow: 0 0 14px rgba(4, 249, 30, 0.2);
       transform: translateY(-2px);
     }
 

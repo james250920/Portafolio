@@ -4,9 +4,9 @@
     <section class="projects-header">
       <div class="container">
         <div class="header-content">
-          <h1 class="page-title animate-slide-up">
+          <h2 class="page-title animate-slide-up">
             <q-icon name="code" class="text-hack-green" /> {{ t('projects.title') }}
-          </h1>
+          </h2>
           <p class="page-subtitle animate-fade-in">{{ t('projects.subtitle') }}</p>
         </div>
       </div>
@@ -354,24 +354,6 @@ onMounted(() => {
 .projects-header {
   padding: 3rem 0 1.5rem;
   text-align: center;
-
-  .page-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    font-family: 'Space Grotesk', sans-serif;
-
-    .q-icon {
-      margin-right: 0.75rem;
-    }
-  }
-
-  .page-subtitle {
-    font-size: 1rem;
-    color: #c9d1d9;
-    max-width: 700px;
-    margin: 0 auto;
-  }
 }
 
 // Filter Section
@@ -448,7 +430,7 @@ onMounted(() => {
     &:hover {
       transform: translateY(-8px);
       border-color: $hack-green;
-      box-shadow: 0 16px 50px rgba(0, 255, 136, 0.2);
+      box-shadow: 0 16px 50px rgba(4, 249, 30, 0.2);
 
       .project-overlay {
         opacity: 1;
@@ -561,13 +543,13 @@ onMounted(() => {
         margin-bottom: 1rem;
 
         .tech-tag {
-          background: rgba(0, 255, 136, 0.1);
+          background: rgba(4, 249, 30, 0.1);
           color: $hack-green;
           padding: 0.2rem 0.6rem;
           border-radius: 12px;
           font-size: 0.72rem;
           font-family: 'JetBrains Mono', monospace;
-          border: 1px solid rgba(0, 255, 136, 0.3);
+          border: 1px solid rgba(4, 249, 30, 0.3);
         }
       }
 
@@ -589,12 +571,12 @@ onMounted(() => {
           gap: 0.4rem;
 
           &.live {
-            border-color: $hack-blue;
-            color: $hack-blue;
+            border-color: $hack-green;
+            background: $hack-green;
+            color: #0d1117;
 
             &:hover {
-              background: $hack-blue;
-              color: #000;
+              box-shadow: 0 0 18px rgba(4, 249, 30, 0.45);
             }
           }
 
@@ -621,14 +603,8 @@ onMounted(() => {
 .featured-project {
   padding: 3rem 0;
 
-  .section-title {
-    color: $hack-blue;
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-  }
-
   .featured-card {
-    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 204, 255, 0.05));
+    background: linear-gradient(135deg, rgba(4, 249, 30, 0.05), rgba(4, 249, 30, 0.05));
     border: 1px solid $hack-green;
 
     .featured-content {
@@ -649,7 +625,7 @@ onMounted(() => {
         margin-bottom: 2rem;
 
         h4 {
-          color: $hack-blue;
+          color: $hack-green;
           margin-bottom: 1rem;
         }
 
@@ -671,7 +647,7 @@ onMounted(() => {
         margin-bottom: 2rem;
 
         h4 {
-          color: $hack-blue;
+          color: $hack-green;
           margin-bottom: 1rem;
         }
 
@@ -681,12 +657,12 @@ onMounted(() => {
           gap: 0.5rem;
 
           .tech-tag.featured {
-            background: rgba(0, 255, 136, 0.15);
+            background: rgba(4, 249, 30, 0.15);
             color: $hack-green;
             padding: 0.5rem 1rem;
             border-radius: 15px;
             font-family: 'JetBrains Mono', monospace;
-            border: 1px solid rgba(0, 255, 136, 0.4);
+            border: 1px solid rgba(4, 249, 30, 0.4);
           }
         }
       }
@@ -793,7 +769,7 @@ onMounted(() => {
         margin-bottom: 2rem;
 
         h4 {
-          color: $hack-blue;
+          color: $hack-green;
           margin-bottom: 1rem;
         }
 
@@ -851,18 +827,6 @@ onMounted(() => {
 @media (max-width: 768px) {
   .projects-header {
     padding: 1.5rem 0 1rem;
-
-    .page-title {
-      font-size: 1.6rem;
-      .q-icon {
-        font-size: 1.4rem;
-      }
-    }
-
-    .page-subtitle {
-      font-size: 0.9rem;
-      padding: 0 0.5rem;
-    }
   }
 
   .container {

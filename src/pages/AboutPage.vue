@@ -4,9 +4,9 @@
     <section class="about-header">
       <div class="container">
         <div class="header-content">
-          <h1 class="page-title animate-slide-up">
-            <q-icon name="person" class="text-hack-blue" /> {{ t('about.title') }}
-          </h1>
+          <h2 class="page-title animate-slide-up">
+            <q-icon name="person" class="text-hack-green" /> {{ t('about.title') }}
+          </h2>
           <p class="page-subtitle animate-fade-in">
             {{ t('about.subtitle') }}
           </p>
@@ -65,11 +65,11 @@
                 </div>
                 <div class="terminal-line">whoami --current-focus</div>
                 <div class="output">
-                  <span class="text-hack-blue">● {{ t('about.currentFocus1') }}</span
+                  <span class="text-hack-green">● {{ t('about.currentFocus1') }}</span
                   ><br />
-                  <span class="text-hack-yellow">● {{ t('about.currentFocus2') }}</span
+                  <span class="text-hack-green">● {{ t('about.currentFocus2') }}</span
                   ><br />
-                  <span class="text-hack-purple">● {{ t('about.currentFocus3') }}</span>
+                  <span class="text-hack-green">● {{ t('about.currentFocus3') }}</span>
                 </div>
                 <div class="terminal-line prompt">
                   <span>DevMenfroyt@about:~$ </span>
@@ -205,7 +205,7 @@ const skillCategories = ref([
   {
     name: 'Frontend',
     icon: 'web',
-    color: 'text-hack-blue',
+    color: 'text-hack-green',
     skills: [
       { name: 'React', icon: 'https://www.pngmart.com/files/23/React-Logo-PNG-200x200.png' },
       { name: 'Angular', icon: 'https://cdn.simpleicons.org/angular/DD0031' },
@@ -240,7 +240,7 @@ const skillCategories = ref([
   {
     name: 'QA & Testing',
     icon: 'check_circle',
-    color: 'text-hack-purple',
+    color: 'text-hack-green',
     skills: [
       { name: 'K6', icon: 'https://cdn.simpleicons.org/k6/7D64FF' },
       { name: 'Appium', icon: 'https://cdn.simpleicons.org/appium/662D91' },
@@ -260,7 +260,7 @@ const skillCategories = ref([
   {
     name: 'Databases',
     icon: 'dns',
-    color: 'text-hack-orange',
+    color: 'text-hack-green',
     skills: [
       { name: 'SQLServer', icon: 'https://logodix.com/logo/1095307.png' },
       { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/4169E1' },
@@ -271,7 +271,7 @@ const skillCategories = ref([
   {
     name: 'Mobile',
     icon: 'smartphone',
-    color: 'text-hack-teal',
+    color: 'text-hack-green',
     skills: [
       { name: 'Kotlin', icon: 'https://cdn.simpleicons.org/kotlin/7F52FF' },
       { name: 'JetPack Compose', icon: 'https://cdn.simpleicons.org/jetpackcompose/4285F4' },
@@ -280,7 +280,7 @@ const skillCategories = ref([
   {
     name: 'Tools & DevOps',
     icon: 'build',
-    color: 'text-hack-yellow',
+    color: 'text-hack-green',
     skills: [
       { name: 'Git / GitHub', icon: 'https://cdn.simpleicons.org/github/FFFFFF' },
       { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker/2496ED' },
@@ -351,24 +351,6 @@ const experiences = computed(() => [
 .about-header {
   padding: 3rem 0 1.5rem;
   text-align: center;
-
-  .page-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    font-family: 'Space Grotesk', sans-serif;
-
-    .q-icon {
-      margin-right: 0.75rem;
-    }
-  }
-
-  .page-subtitle {
-    font-size: 1rem;
-    color: #c9d1d9;
-    max-width: 600px;
-    margin: 0 auto;
-  }
 }
 
 // Profile Section
@@ -415,9 +397,9 @@ const experiences = computed(() => [
     width: 100%;
     border-radius: 12px;
     overflow: hidden;
-    border: 2px solid rgba(0, 255, 136, 0.272);
+    border: 2px solid rgba(4, 249, 30, 0.272);
     box-shadow:
-      0 0 30px rgba(0, 255, 136, 0.1),
+      0 0 30px rgba(4, 249, 30, 0.1),
       0 8px 24px rgba(0, 0, 0, 0.4);
     transition:
       border-color 0.4s ease,
@@ -425,9 +407,9 @@ const experiences = computed(() => [
     background: linear-gradient(135deg, rgba(13, 17, 23, 0.8), rgba(22, 27, 34, 0.6));
 
     &:hover {
-      border-color: rgba(0, 255, 136, 0.6);
+      border-color: rgba(4, 249, 30, 0.6);
       box-shadow:
-        0 0 40px rgba(0, 255, 136, 0.3),
+        0 0 40px rgba(4, 249, 30, 0.3),
         0 12px 32px rgba(0, 0, 0, 0.5);
 
       .image-overlay {
@@ -459,7 +441,7 @@ const experiences = computed(() => [
       background: rgba(13, 17, 23, 0.9);
       padding: 0.5rem 1rem;
       border-radius: 20px;
-      border: 1px solid rgba(0, 255, 136, 0.3);
+      border: 1px solid rgba(4, 249, 30, 0.3);
       backdrop-filter: blur(10px);
       z-index: 10;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
@@ -505,7 +487,7 @@ const experiences = computed(() => [
         line-height: 1.2;
         text-shadow:
           0 2px 12px rgba(0, 0, 0, 0.9),
-          0 0 20px rgba(0, 255, 136, 0.3);
+          0 0 20px rgba(4, 249, 30, 0.3);
         font-family: 'Space Grotesk', sans-serif;
         letter-spacing: -0.5px;
       }
@@ -518,7 +500,7 @@ const experiences = computed(() => [
         line-height: 1.4;
         text-shadow:
           0 2px 12px rgba(0, 0, 0, 0.9),
-          0 0 15px rgba(0, 255, 136, 0.5);
+          0 0 15px rgba(4, 249, 30, 0.5);
         font-family: 'JetBrains Mono', monospace;
       }
     }
@@ -549,12 +531,6 @@ const experiences = computed(() => [
 // Skills Section — grid of grids
 .skills-section {
   padding: 3rem 0;
-
-  .section-title {
-    color: $hack-blue;
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-  }
 
   .categories-grid {
     display: grid;
@@ -605,7 +581,7 @@ const experiences = computed(() => [
       &:hover {
         transform: translateY(-4px);
         border-color: $hack-green;
-        box-shadow: 0 6px 18px rgba(0, 255, 136, 0.15);
+        box-shadow: 0 6px 18px rgba(4, 249, 30, 0.15);
 
         .skill-icon {
           transform: scale(1.12);
@@ -642,12 +618,6 @@ const experiences = computed(() => [
 .experience-section {
   padding: 3rem 0;
 
-  .section-title {
-    color: $hack-blue;
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-  }
-
   .experience-timeline {
     max-width: 800px;
     margin: 0 auto;
@@ -668,7 +638,7 @@ const experiences = computed(() => [
           height: 16px;
           border-radius: 50%;
           background: $hack-green;
-          box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+          box-shadow: 0 0 10px rgba(4, 249, 30, 0.5);
           z-index: 2;
         }
 
@@ -693,7 +663,7 @@ const experiences = computed(() => [
           }
 
           .experience-company {
-            color: $hack-blue;
+            color: $hack-green;
             font-weight: 600;
             font-size: 0.95rem;
           }
@@ -718,13 +688,13 @@ const experiences = computed(() => [
           gap: 0.5rem;
 
           .tech-tag {
-            background: rgba(0, 255, 136, 0.1);
+            background: rgba(4, 249, 30, 0.1);
             color: $hack-green;
             padding: 0.25rem 0.75rem;
             border-radius: 15px;
             font-size: 0.8rem;
             font-family: 'JetBrains Mono', monospace;
-            border: 1px solid rgba(0, 255, 136, 0.3);
+            border: 1px solid rgba(4, 249, 30, 0.3);
           }
         }
       }
@@ -735,12 +705,6 @@ const experiences = computed(() => [
 // Interests Section
 .interests-section {
   padding: 3rem 0;
-
-  .section-title {
-    color: $hack-blue;
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-  }
 
   .interests-grid {
     display: grid;
@@ -764,7 +728,7 @@ const experiences = computed(() => [
       &:hover {
         transform: translateY(-8px);
         border-color: $hack-green;
-        box-shadow: 0 12px 40px rgba(0, 255, 136, 0.15);
+        box-shadow: 0 12px 40px rgba(4, 249, 30, 0.15);
 
         .q-icon {
           transform: scale(1.1);
@@ -797,7 +761,7 @@ const experiences = computed(() => [
 
   .cta-card {
     text-align: center;
-    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 255, 0.1));
+    background: linear-gradient(135deg, rgba(4, 249, 30, 0.1), rgba(4, 249, 30, 0.1));
     border: 1px solid $hack-green;
 
     .cta-title {
@@ -820,28 +784,6 @@ const experiences = computed(() => [
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
-
-      .hack-button {
-        &.primary {
-          border-color: $hack-green;
-          color: $hack-green;
-
-          &:hover {
-            background: $hack-green;
-            color: #000;
-          }
-        }
-
-        &.secondary {
-          border-color: $hack-blue;
-          color: $hack-blue;
-
-          &:hover {
-            background: $hack-blue;
-            color: #000;
-          }
-        }
-      }
     }
   }
 }
@@ -850,18 +792,6 @@ const experiences = computed(() => [
 @media (max-width: 768px) {
   .about-header {
     padding: 1.5rem 0 1rem;
-
-    .page-title {
-      font-size: 1.6rem;
-      .q-icon {
-        font-size: 1.4rem;
-      }
-    }
-
-    .page-subtitle {
-      font-size: 0.9rem;
-      padding: 0 0.5rem;
-    }
   }
 
   .container {
@@ -909,10 +839,6 @@ const experiences = computed(() => [
   }
 
   .skills-section {
-    .section-title {
-      font-size: 1.3rem;
-    }
-
     .categories-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 0.75rem;
@@ -949,10 +875,6 @@ const experiences = computed(() => [
   }
 
   .experience-section {
-    .section-title {
-      font-size: 1.3rem;
-    }
-
     .experience-timeline {
       .experience-item {
         flex-direction: column;
@@ -998,10 +920,6 @@ const experiences = computed(() => [
   }
 
   .interests-section {
-    .section-title {
-      font-size: 1.3rem;
-    }
-
     .interests-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 0.6rem;

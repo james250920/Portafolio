@@ -242,7 +242,7 @@ onMounted(() => {
     ctx.lineWidth = 1;
     for (const line of gridLines) {
       const pulse = Math.sin(time * SPEED_CONFIG.gridPulseSpeed + line.pulsePhase) * 0.5 + 0.5;
-      ctx.strokeStyle = `rgba(0, 255, 136, ${line.opacity * (0.5 + pulse * 0.5)})`;
+      ctx.strokeStyle = `rgba(4, 249, 30, ${line.opacity * (0.5 + pulse * 0.5)})`;
       ctx.beginPath();
       ctx.moveTo(line.start.x, line.start.y);
       ctx.lineTo(line.end.x, line.end.y);
@@ -253,7 +253,7 @@ onMounted(() => {
     for (const symbol of floatingSymbols) {
       const pulse = Math.sin(time * symbol.pulseSpeed + symbol.pulsePhase) * 0.5 + 0.5;
       ctx.font = `${symbol.size}px 'JetBrains Mono', monospace`;
-      ctx.fillStyle = `rgba(0, 255, 136, ${symbol.opacity * (0.3 + pulse * 0.7)})`;
+      ctx.fillStyle = `rgba(4, 249, 30, ${symbol.opacity * (0.3 + pulse * 0.7)})`;
       ctx.fillText(symbol.char, symbol.x, symbol.y);
     }
 
@@ -262,9 +262,9 @@ onMounted(() => {
       const pulse = Math.sin(time * shape.pulseSpeed + shape.pulsePhase) * 0.5 + 0.5;
       const alpha = shape.opacity * (0.5 + pulse * 0.5);
 
-      ctx.strokeStyle = `rgba(0, 255, 136, ${alpha})`;
+      ctx.strokeStyle = `rgba(4, 249, 30, ${alpha})`;
       ctx.lineWidth = 1;
-      ctx.shadowColor = '#00ff88';
+      ctx.shadowColor = '#04f91e';
       ctx.shadowBlur = 5 * pulse;
 
       if (shape.type === 'hexagon') {
@@ -280,7 +280,7 @@ onMounted(() => {
       ctx.stroke();
 
       // Inner shape with less opacity
-      ctx.strokeStyle = `rgba(0, 255, 136, ${alpha * 0.3})`;
+      ctx.strokeStyle = `rgba(4, 249, 30, ${alpha * 0.3})`;
       if (shape.type === 'hexagon') {
         drawHexagon(shape.x, shape.y, shape.size * 0.6, shape.rotation);
       } else if (shape.type === 'triangle') {
@@ -319,7 +319,7 @@ onMounted(() => {
         const target = circuitNodes[targetIdx];
         if (!target) continue;
 
-        ctx.strokeStyle = `rgba(0, 255, 136, ${0.02 + pulse * 0.02})`;
+        ctx.strokeStyle = `rgba(4, 249, 30, ${0.02 + pulse * 0.02})`;
         ctx.beginPath();
         ctx.moveTo(node.x, node.y);
 
@@ -332,13 +332,13 @@ onMounted(() => {
       }
 
       // Draw node
-      ctx.fillStyle = `rgba(0, 255, 136, ${0.05 + pulse * 0.05})`;
+      ctx.fillStyle = `rgba(4, 249, 30, ${0.05 + pulse * 0.05})`;
       ctx.beginPath();
       ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
       ctx.fill();
 
       // Draw outer ring
-      ctx.strokeStyle = `rgba(0, 255, 136, ${0.03 + pulse * 0.03})`;
+      ctx.strokeStyle = `rgba(4, 249, 30, ${0.03 + pulse * 0.03})`;
       ctx.beginPath();
       ctx.arc(node.x, node.y, node.size * 2, 0, Math.PI * 2);
       ctx.stroke();
@@ -359,11 +359,11 @@ onMounted(() => {
         if (j === 0) {
           // Head character - brightest
           ctx.fillStyle = `rgba(180, 255, 200, ${Math.min(1, alpha + 0.3)})`;
-          ctx.shadowColor = '#00ff88';
+          ctx.shadowColor = '#04f91e';
           ctx.shadowBlur = 10;
         } else if (j < 3) {
           // Near head - bright green
-          ctx.fillStyle = `rgba(0, 255, 136, ${alpha})`;
+          ctx.fillStyle = `rgba(4, 249, 30, ${alpha})`;
           ctx.shadowBlur = 5;
         } else {
           // Trail - fading green
@@ -397,7 +397,7 @@ onMounted(() => {
       const x = Math.random() * (canvas.value!.width - 200);
       const y = Math.random() * canvas.value!.height;
       ctx.font = "bold 12px 'JetBrains Mono', monospace";
-      ctx.fillStyle = 'rgba(0, 255, 136, 0.15)';
+      ctx.fillStyle = 'rgba(4, 249, 30, 0.15)';
       ctx.fillText(`// ${brandText}`, x, y);
     }
 

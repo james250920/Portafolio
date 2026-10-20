@@ -38,11 +38,11 @@
           </p>
 
           <div class="hero-cta">
-            <button class="cta-btn primary" @click="scrollToSection('projects')">
+            <button class="hack-button primary" @click="scrollToSection('projects')">
               <q-icon name="folder_open" />
               {{ t('hero.cta.projects') }}
             </button>
-            <button class="cta-btn secondary" @click="scrollToSection('contact')">
+            <button class="hack-button secondary" @click="scrollToSection('contact')">
               <q-icon name="mail" />
               {{ t('hero.cta.contact') }}
             </button>
@@ -337,7 +337,7 @@ section {
   text-transform: uppercase;
   color: $hack-green;
   letter-spacing: 0.02em;
-  text-shadow: 0 0 22px rgba(0, 255, 136, 0.55);
+  text-shadow: 0 0 22px rgba(4, 249, 30, 0.55);
 
   &::before,
   &::after {
@@ -346,7 +346,7 @@ section {
     height: 4px;
     border-radius: 2px;
     background: $hack-green;
-    box-shadow: 0 0 12px rgba(0, 255, 136, 0.7);
+    box-shadow: 0 0 12px rgba(4, 249, 30, 0.7);
   }
 }
 
@@ -365,7 +365,7 @@ section {
   .scrambled {
     color: $hack-green;
     font-weight: 500;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+    text-shadow: 0 0 10px rgba(4, 249, 30, 0.8);
   }
 }
 
@@ -381,7 +381,7 @@ section {
 .hero-tagline {
   margin: 0.75rem 0 0;
   padding-top: 0.6rem;
-  border-top: 1px solid rgba(0, 255, 136, 0.5);
+  border-top: 1px solid rgba(4, 249, 30, 0.5);
   font-family: 'JetBrains Mono', monospace;
   font-size: clamp(0.8rem, 1.1vw, 1rem);
   font-style: italic;
@@ -421,7 +421,7 @@ section {
     min-width: 4.5rem;
     padding: 0 clamp(0.6rem, 1vw, 1.2rem);
     // Every item carries its own divider so both halves are the same width
-    border-right: 1px solid rgba(0, 255, 136, 0.35);
+    border-right: 1px solid rgba(4, 249, 30, 0.35);
   }
 
   .tech-icon {
@@ -444,51 +444,6 @@ section {
   justify-content: center;
   gap: 0.85rem;
   margin-top: 1.5rem;
-
-  .cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-height: 44px;
-    padding: 0 1.4rem;
-    border: 2px solid $hack-green;
-    border-radius: 6px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.88rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    transition:
-      background 0.25s ease,
-      color 0.25s ease,
-      box-shadow 0.25s ease,
-      transform 0.25s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 22px rgba(0, 255, 136, 0.45);
-    }
-
-    &:focus-visible {
-      outline: 2px solid #fff;
-      outline-offset: 3px;
-    }
-
-    &.primary {
-      background: $hack-green;
-      color: #0d1117;
-    }
-
-    &.secondary {
-      background: rgba(13, 17, 23, 0.6);
-      color: $hack-green;
-      backdrop-filter: blur(4px);
-
-      &:hover {
-        background: rgba(0, 255, 136, 0.12);
-      }
-    }
-  }
 }
 
 .hero-scroll {
@@ -560,9 +515,9 @@ section {
   grid-area: terminal;
   width: clamp(10rem, 13vw, 14rem);
   background: rgba(13, 17, 23, 0.82);
-  border: 1px solid rgba(0, 255, 136, 0.55);
+  border: 1px solid rgba(4, 249, 30, 0.55);
   border-radius: 8px;
-  box-shadow: 0 0 24px rgba(0, 255, 136, 0.25);
+  box-shadow: 0 0 24px rgba(4, 249, 30, 0.25);
   backdrop-filter: blur(4px);
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.78rem;
@@ -572,7 +527,7 @@ section {
     display: flex;
     gap: 0.35rem;
     padding: 0.5rem 0.7rem;
-    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+    border-bottom: 1px solid rgba(4, 249, 30, 0.3);
 
     .dot {
       width: 9px;
@@ -623,7 +578,7 @@ section {
   padding: 0.65rem 1rem;
   list-style: none;
   background: rgba(13, 17, 23, 0.7);
-  border: 1px solid rgba(0, 255, 136, 0.35);
+  border: 1px solid rgba(4, 249, 30, 0.35);
   border-radius: 8px;
   backdrop-filter: blur(4px);
 
@@ -637,7 +592,7 @@ section {
     color: #e6edf3;
 
     & + .area-item {
-      border-left: 1px solid rgba(0, 255, 136, 0.45);
+      border-left: 1px solid rgba(4, 249, 30, 0.45);
     }
   }
 
@@ -738,12 +693,12 @@ section {
   letter-spacing: 0.05em;
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
-  box-shadow: 0 0 16px rgba(0, 255, 136, 0.25);
+  box-shadow: 0 0 16px rgba(4, 249, 30, 0.25);
 
   &:hover {
     background: $hack-green;
     color: #000;
-    box-shadow: 0 0 28px rgba(0, 255, 136, 0.55);
+    box-shadow: 0 0 28px rgba(4, 249, 30, 0.55);
     transform: translateY(-3px);
 
     .q-icon {

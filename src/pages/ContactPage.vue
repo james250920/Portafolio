@@ -4,9 +4,9 @@
     <section class="contact-header">
       <div class="container">
         <div class="header-content">
-          <h1 class="page-title animate-slide-up">
+          <h2 class="page-title animate-slide-up">
             <q-icon name="terminal" class="text-hack-green" /> Contact.exe
-          </h1>
+          </h2>
           <p class="page-subtitle animate-fade-in">
             {{ t('contact.subtitle') }}
           </p>
@@ -117,17 +117,17 @@
                       <span class="text-hack-green">Name:</span> James Mendoza
                     </div>
                     <div class="info-line">
-                      <span class="text-hack-blue">Location:</span> {{ t('contact.location') }}
+                      <span class="text-hack-green">Location:</span> {{ t('contact.location') }}
                     </div>
                     <div class="info-line">
-                      <span class="text-hack-yellow">Timezone:</span> UTC-5 (PET)
+                      <span class="text-hack-green">Timezone:</span> UTC-5 (PET)
                     </div>
                     <div class="info-line">
-                      <span class="text-hack-purple">Availability:</span>
+                      <span class="text-hack-green">Availability:</span>
                       {{ t('contact.openOpportunities') }}
                     </div>
                     <div class="info-line">
-                      <span class="text-hack-cyan">Specialties:</span> Full-Stack Dev
+                      <span class="text-hack-green">Specialties:</span> Full-Stack Dev
                     </div>
                   </div>
                   <div class="terminal-line">status --availability</div>
@@ -364,24 +364,6 @@ const sendMessage = async () => {
 .contact-header {
   padding: 3rem 0 1.5rem;
   text-align: center;
-
-  .page-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    font-family: 'Space Grotesk', sans-serif;
-
-    .q-icon {
-      margin-right: 0.75rem;
-    }
-  }
-
-  .page-subtitle {
-    font-size: 1rem;
-    color: #c9d1d9;
-    max-width: 600px;
-    margin: 0 auto;
-  }
 }
 
 // Main Contact Section
@@ -407,7 +389,7 @@ const sendMessage = async () => {
     }
 
     .form-title {
-      color: $hack-blue;
+      color: $hack-green;
       margin-bottom: 1.5rem;
       font-size: 1.5rem;
     }
@@ -435,29 +417,6 @@ const sendMessage = async () => {
 
         .hack-button {
           width: 100%;
-          padding: 0.75rem;
-          font-size: 0.88rem;
-
-          &.primary {
-            border-color: $hack-green;
-            color: $hack-green;
-
-            &:hover {
-              background: $hack-green;
-              color: #000;
-            }
-
-            &:disabled {
-              opacity: 0.5;
-              cursor: not-allowed;
-
-              &:hover {
-                background: transparent;
-                color: $hack-green;
-                transform: none;
-              }
-            }
-          }
         }
       }
     }
@@ -486,7 +445,7 @@ const sendMessage = async () => {
       max-width: 100%;
       height: auto;
       max-height: 340px;
-      filter: drop-shadow(0 0 18px rgba(0, 255, 136, 0.3));
+      filter: drop-shadow(0 0 18px rgba(4, 249, 30, 0.3));
     }
   }
 }
@@ -494,12 +453,6 @@ const sendMessage = async () => {
 // Quick Contact
 .quick-contact {
   padding: 2rem 0;
-
-  .section-title {
-    color: $hack-blue;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-  }
 
   .quick-contact-grid {
     display: flex;
@@ -521,13 +474,13 @@ const sendMessage = async () => {
       color: $hack-white;
 
       &:hover {
-        border-color: $hack-blue;
-        background: rgba(0, 204, 255, 0.1);
+        border-color: $hack-green;
+        background: rgba(4, 249, 30, 0.1);
         transform: translateY(-2px);
       }
 
       .copy-icon {
-        color: $hack-blue;
+        color: $hack-green;
       }
     }
   }
@@ -552,7 +505,7 @@ const sendMessage = async () => {
   &.q-field--focused {
     .q-field__control {
       border-color: $hack-green;
-      box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+      box-shadow: 0 0 10px rgba(4, 249, 30, 0.3);
     }
   }
 }
@@ -561,18 +514,6 @@ const sendMessage = async () => {
 @media (max-width: 768px) {
   .contact-header {
     padding: 1.5rem 0 1rem;
-
-    .page-title {
-      font-size: 1.5rem;
-      .q-icon {
-        font-size: 1.3rem;
-      }
-    }
-
-    .page-subtitle {
-      font-size: 0.82rem;
-      padding: 0 0.5rem;
-    }
   }
 
   .container {
@@ -609,10 +550,6 @@ const sendMessage = async () => {
   }
 
   .quick-contact {
-    .section-title {
-      font-size: 1.25rem;
-    }
-
     .quick-contact-grid {
       flex-direction: column;
       gap: 0.6rem;
@@ -634,9 +571,6 @@ const sendMessage = async () => {
 
 @media (max-width: 480px) {
   .contact-header {
-    .page-title {
-      font-size: 1.3rem;
-    }
   }
 }
 
