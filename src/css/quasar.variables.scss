@@ -3,23 +3,24 @@
 
 // Colores principales estilo hacking limpio
 $primary: #04f91e; // Verde hacker principal
-$secondary: #ff4444; // Rojo de alerta
-$accent: #00ccff; // Azul cian accent
+$secondary: #ff2bd6; // Magenta neón (complementario del verde)
+$accent: #ff2bd6; // Magenta neón para acentos
 
 $dark: #0a0a0a; // Negro profundo
 $dark-page: #000000; // Negro terminal
 
 $positive: #04f91e; // Verde success
-$negative: #ff4444; // Rojo error
+$negative: #ff4d6d; // Rojo coral error
 $info: #00ccff; // Azul info
-$warning: #ffaa00; // Amarillo warning
+$warning: #ffb020; // Ámbar aviso
 
 // Paleta de colores hacking clean
 $hack-green: #04f91e; // Verde hacker principal
-$hack-red: #ff4444; // Rojo de alerta
+$hack-magenta: #ff2bd6; // Contraste del neón (usar con moderación)
+$hack-red: #ff4d6d; // Rojo coral error
 $hack-blue: #00ccff; // Azul cian
 $hack-purple: #aa88ff; // Púrpura suave
-$hack-yellow: #ffdd00; // Amarillo dorado
+$hack-yellow: #ffb020; // Ámbar: estado en progreso
 $hack-cyan: #88ffff; // Cian claro
 $hack-orange: #ff8844; // Naranja suave
 $hack-white: #ffffff; // Blanco puro

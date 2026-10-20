@@ -361,11 +361,11 @@ section {
   color: #e6edf3;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 
-  // Glyphs shown mid-decode
+  // Glyphs shown mid-decode: magenta flicker against the green brand
   .scrambled {
-    color: $hack-green;
+    color: $hack-magenta;
     font-weight: 500;
-    text-shadow: 0 0 10px rgba(4, 249, 30, 0.8);
+    text-shadow: 0 0 10px rgba(255, 43, 214, 0.8);
   }
 }
 
@@ -390,7 +390,7 @@ section {
 
   span {
     margin: 0 0.5rem;
-    color: #e6edf3;
+    color: $hack-magenta;
   }
 }
 
@@ -466,7 +466,7 @@ section {
   animation: scroll-bob 2s ease-in-out infinite;
 
   &:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid $hack-magenta;
     outline-offset: 2px;
     border-radius: 50%;
   }

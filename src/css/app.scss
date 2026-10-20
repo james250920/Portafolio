@@ -150,7 +150,13 @@ code {
 }
 
 .cursor-blink {
+  color: $hack-magenta;
   animation: blink 1s infinite;
+}
+
+::selection {
+  background: $hack-magenta;
+  color: #0d1117;
 }
 
 // =============================================
@@ -187,7 +193,7 @@ code {
   }
 
   &:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid $hack-magenta;
     outline-offset: 3px;
   }
 
@@ -465,7 +471,7 @@ html[data-theme='light'] {
       color: #038211 !important;
     }
     .text-hack-yellow {
-      color: #038211 !important;
+      color: #9e6600 !important;
     }
     .text-hack-purple {
       color: #038211 !important;
@@ -513,7 +519,7 @@ html[data-theme='light'] {
           color: #038211 !important;
         }
         .text-hack-yellow {
-          color: #038211 !important;
+          color: #9e6600 !important;
         }
         .text-hack-purple {
           color: #038211 !important;
@@ -626,6 +632,15 @@ html[data-theme='light'] {
   // White brand logos (Express, GitHub) would vanish on white cards
   .skill-icon[src$='/FFFFFF'] {
     filter: invert(1);
+  }
+
+  .cursor-blink {
+    color: #d600ad;
+  }
+
+  ::selection {
+    background: #d600ad;
+    color: #fff;
   }
 
   // ── Skills section ──
@@ -1086,16 +1101,18 @@ html[data-theme='light'] {
     .hack-card {
       text-shadow: none;
 
-      .text-hack-green,
-      .cursor-blink {
+      .text-hack-green {
         color: #03760f !important;
+      }
+      .cursor-blink {
+        color: #d600ad !important;
       }
       .text-hack-blue,
       .course-bullet {
         color: #025d0c !important;
       }
       .text-hack-yellow {
-        color: #025d0c !important;
+        color: #9e6600 !important;
       }
       .text-hack-purple {
         color: #025d0c !important;
