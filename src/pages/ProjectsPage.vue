@@ -34,7 +34,7 @@
                       @click="selectedCategory = category"
                       :class="['filter-btn', { active: selectedCategory === category }]"
                     >
-                      {{ category }}
+                      {{ categoryLabels[category] }}
                     </button>
                   </div>
                 </div>
@@ -48,9 +48,15 @@
                       dark
                       dense
                       class="tech-select"
-                      placeholder="Filtrar por tecnología"
                       clearable
-                    />
+                    >
+                      <template #selected>
+                        <span v-if="selectedTech">{{ selectedTech }}</span>
+                        <span v-else class="select-placeholder">{{
+                          t('projects.filterPlaceholder')
+                        }}</span>
+                      </template>
+                    </q-select>
                   </div>
                 </div>
                 <div class="terminal-line prompt">
@@ -69,11 +75,15 @@
       <div class="container">
         <div class="projects-grid">
           <div v-for="project in filteredProjects" :key="project.id" class="project-card-container">
-            <div class="hack-card project-card" @click="openProjectModal(project)">
+            <div
+              class="hack-card project-card"
+              :class="{ 'is-linked': hasLink(project) }"
+              @click="openProjectModal(project)"
+            >
               <!-- Project Image -->
               <div class="project-image">
                 <img :src="project.image" :alt="project.title" />
-                <div class="project-overlay">
+                <div v-if="hasLink(project)" class="project-overlay">
                   <div class="overlay-content">
                     <q-icon name="visibility" size="1.5rem" class="text-hack-white" />
                     <span>{{ t('projects.viewDetails') }}</span>
@@ -120,6 +130,14 @@
           </div>
         </div>
 
+        <div v-if="allFilteredProjects.length === 0" class="empty-state">
+          <q-icon name="search_off" size="2rem" class="text-hack-green" />
+          <p>{{ t('projects.empty') }}</p>
+          <button class="hack-button secondary" @click="clearFilters">
+            <q-icon name="filter_alt_off" /> {{ t('projects.clearFilters') }}
+          </button>
+        </div>
+
         <!-- Load More Button -->
         <div class="load-more-section" v-if="hasMoreProjects">
           <button class="hack-button primary" @click="loadMoreProjects">
@@ -153,34 +171,35 @@ interface Project {
 }
 
 // Data
-const selectedCategory = ref('Todos');
+// Stored as a key so the active filter survives a language switch
+type CategoryKey = 'all' | 'web' | 'mobile' | 'apis' | 'tools';
+const selectedCategory = ref<CategoryKey>('all');
 const selectedTech = ref<string | null>('');
 const displayedProjects = ref(6);
 
-const categories = computed(() => [
-  t('projects.cat.all'),
-  'Web',
-  t('projects.cat.mobile'),
-  'APIs',
-  t('projects.cat.tools'),
-]);
+const categoryLabels = computed<Record<CategoryKey, string>>(() => ({
+  all: t('projects.cat.all'),
+  web: 'Web',
+  mobile: t('projects.cat.mobile'),
+  apis: 'APIs',
+  tools: t('projects.cat.tools'),
+}));
 
-const techOptions = ref([
-  'Vue.js',
-  'React',
-  'Node.js',
-  'TypeScript',
-  'Python',
-  'PostgreSQL',
-  'MongoDB',
-  'SQLite',
-  'AWS',
-  'Kotlin',
-  'Flutter',
-  'JetPack Compose',
-  'Firebase',
-  '.Net',
-]);
+// Only offer categories that have at least one project
+const categories = computed(() =>
+  (Object.keys(categoryLabels.value) as CategoryKey[]).filter(
+    (key) =>
+      key === 'all' ||
+      projects.value.some((project) => project.category.includes(categoryLabels.value[key])),
+  ),
+);
+
+// Built from the projects so every option returns at least one result
+const techOptions = computed(() =>
+  [...new Set(projects.value.flatMap((project) => project.technologies))].sort((a, b) =>
+    a.localeCompare(b),
+  ),
+);
 
 const IMG_BASE_URL = import.meta.env.VITE_IMG_URL;
 
@@ -262,12 +281,9 @@ const projects = computed<Project[]>(() => [
 const allFilteredProjects = computed(() => {
   let filtered = projects.value;
 
-  if (
-    selectedCategory.value !== t('projects.cat.all') &&
-    selectedCategory.value !== 'Todos' &&
-    selectedCategory.value !== 'All'
-  ) {
-    filtered = filtered.filter((project) => project.category.includes(selectedCategory.value));
+  if (selectedCategory.value !== 'all') {
+    const label = categoryLabels.value[selectedCategory.value];
+    filtered = filtered.filter((project) => project.category.includes(label));
   }
 
   const tech = selectedTech.value;
@@ -287,6 +303,13 @@ const hasMoreProjects = computed(() => {
 });
 
 // Methods
+const hasLink = (project: Project) => Boolean(project.liveUrl || project.githubUrl);
+
+const clearFilters = () => {
+  selectedCategory.value = 'all';
+  selectedTech.value = '';
+};
+
 const openProjectModal = (project: Project) => {
   openProject(project.liveUrl || project.githubUrl || '');
 };
@@ -411,8 +434,12 @@ onMounted(() => {
   }
 
   .project-card {
-    cursor: pointer;
     transition: all 0.3s ease;
+
+    &.is-linked {
+      cursor: pointer;
+    }
+
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -787,7 +814,22 @@ onMounted(() => {
 }
 
 // Custom select styles
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3rem 1rem;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  color: #c9d1d9;
+}
+
 :deep(.tech-select) {
+  .select-placeholder {
+    color: #8b949e;
+  }
+
   .q-field__control {
     background: rgba(13, 17, 23, 0.8);
     border-color: $hack-border;
@@ -806,15 +848,6 @@ onMounted(() => {
 }
 
 // Responsive Design
-@media (max-width: 480px) {
-  .projects-grid-section {
-    .projects-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-  }
-}
-
 @media (max-width: 768px) {
   .projects-header {
     padding: 1.5rem 0 1rem;
@@ -914,6 +947,16 @@ onMounted(() => {
           }
         }
       }
+    }
+  }
+}
+
+// After the 768px block so the single column wins on phones
+@media (max-width: 480px) {
+  .projects-grid-section {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
   }
 }

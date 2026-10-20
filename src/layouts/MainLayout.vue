@@ -63,7 +63,7 @@
     </q-header>
 
     <!-- Floating Toggles -->
-    <div class="floating-toggles">
+    <div class="floating-toggles" :class="{ 'is-hidden': togglesHidden }">
       <button
         class="toggle-btn lang-toggle"
         @click="toggleLang"
@@ -137,7 +137,15 @@ const scrollToSection = (sectionId: string) => {
   }
 };
 
+// Mobile: hide the floating toggles while scrolling down so they don't cover content
+const togglesHidden = ref(false);
+let lastScrollY = 0;
+
 const handleScroll = () => {
+  const currentY = window.scrollY;
+  togglesHidden.value = currentY > 120 && currentY > lastScrollY;
+  lastScrollY = currentY;
+
   const sections = ['home', 'about', 'education', 'projects', 'contact'];
   const scrollPosition = window.scrollY + 60;
 
@@ -163,7 +171,7 @@ const handleScroll = () => {
 };
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll, { passive: true });
 
   // Al cargar directamente una URL de sección (ej: /#/contact), hacer scroll a esa sección
   const initialSection = PATH_TO_SECTION[route.path];
@@ -361,6 +369,15 @@ onUnmounted(() => {
   .floating-toggles {
     top: 62px;
     right: 0.5rem;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+
+    &.is-hidden {
+      opacity: 0;
+      transform: translateY(-12px);
+      pointer-events: none;
+    }
 
     .toggle-btn {
       width: 40px;

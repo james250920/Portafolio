@@ -61,9 +61,15 @@
                     outlined
                     dark
                     class="hack-input"
-                    :placeholder="t('contact.subjectPlaceholder')"
                     :rules="[(val) => !!val || t('contact.subjectRequired')]"
-                  />
+                  >
+                    <template #selected>
+                      <span v-if="form.subject">{{ form.subject }}</span>
+                      <span v-else class="select-placeholder">{{
+                        t('contact.subjectPlaceholder')
+                      }}</span>
+                    </template>
+                  </q-select>
                 </div>
 
                 <div class="form-group">
@@ -114,7 +120,7 @@
                       <span class="text-hack-blue">Location:</span> {{ t('contact.location') }}
                     </div>
                     <div class="info-line">
-                      <span class="text-hack-yellow">Timezone:</span> UTC-5 (EST)
+                      <span class="text-hack-yellow">Timezone:</span> UTC-5 (PET)
                     </div>
                     <div class="info-line">
                       <span class="text-hack-purple">Availability:</span>
@@ -136,6 +142,15 @@
                 </div>
               </div>
             </div>
+
+            <img
+              src="/images/duo-hacker.webp"
+              :alt="t('contact.mascotAlt')"
+              class="contact-mascot"
+              width="600"
+              height="800"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -455,11 +470,7 @@ const sendMessage = async () => {
     gap: 1rem;
 
     .terminal-info {
-      flex: 1;
-
       .terminal {
-        height: 100%;
-
         .info-line {
           margin: 0.4rem 0;
           display: flex;
@@ -467,6 +478,15 @@ const sendMessage = async () => {
           font-size: 0.82rem;
         }
       }
+    }
+
+    .contact-mascot {
+      align-self: center;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 340px;
+      filter: drop-shadow(0 0 18px rgba(0, 255, 136, 0.3));
     }
   }
 }
@@ -515,6 +535,10 @@ const sendMessage = async () => {
 
 // Custom input styles
 :deep(.hack-input) {
+  .select-placeholder {
+    color: #8b949e;
+  }
+
   .q-field__control {
     background: rgba(13, 17, 23, 0.8);
     border-color: $hack-border;
@@ -577,6 +601,10 @@ const sendMessage = async () => {
 
     .contact-sidebar {
       flex-direction: column;
+
+      .contact-mascot {
+        max-height: 260px;
+      }
     }
   }
 
@@ -609,6 +637,14 @@ const sendMessage = async () => {
     .page-title {
       font-size: 1.3rem;
     }
+  }
+}
+
+// On narrow screens the crow tree sits right behind the form, so give it a solid panel
+@media (max-width: 768px) {
+  :global(html:not([data-theme='light'])) .contact-page .hack-card.form-card {
+    background: rgba(13, 17, 23, 0.88) !important;
+    backdrop-filter: blur(6px);
   }
 }
 </style>

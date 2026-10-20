@@ -20,34 +20,25 @@
         <div class="hack-grid cols-2">
           <!-- Profile Info -->
           <div class="profile-info">
-            <div class="hack-card profile-card">
-              <div class="profile-avatar">
-                <div class="avatar-container">
-                  <img :src="ImgURL" alt="DevMenfroyt" class="avatar-image" />
-                  <div class="status-ring">
-                    <div class="status-dot active"></div>
-                  </div>
+            <div
+              class="profile-photo"
+              :class="{ 'is-disintegrating': disintegrationActive }"
+              @pointerenter="enterDisintegration"
+              @pointerleave="leaveDisintegration"
+              @pointercancel="leaveDisintegration"
+            >
+              <div ref="profileContainer" class="profile-image-container">
+                <img ref="profileImage" :src="ImgURL" alt="James Mendoza" class="profile-image" />
+                <div class="status-indicator">
+                  <div class="status-dot"></div>
+                  <span class="status-text">ONLINE</span>
+                </div>
+                <div class="image-overlay">
+                  <h2 class="name">James Mendoza</h2>
+                  <h3 class="title">{{ t('hero.title') }}</h3>
                 </div>
               </div>
-
-              <div class="profile-details">
-                <h2 class="profile-name">Menfroyt</h2>
-                <h3 class="profile-title"></h3>
-                <p class="profile-bio">
-                  {{ t('about.bio', { n: experience }) }}
-                </p>
-
-                <div class="profile-stats">
-                  <div class="stat-item">
-                    <span class="stat-number text-hack-green">{{ experience }}+</span>
-                    <span class="stat-label">{{ t('about.years') }}</span>
-                  </div>
-                  <div class="stat-item">
-                    <span class="stat-number text-hack-blue">{{ projects }}+</span>
-                    <span class="stat-label">{{ t('about.projects') }}</span>
-                  </div>
-                </div>
-              </div>
+              <canvas ref="profileCanvas" class="disintegration-canvas" aria-hidden="true" />
             </div>
           </div>
 
@@ -169,14 +160,20 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useLanguage } from 'src/composables/useLanguage';
+import { useImageDisintegration } from 'src/composables/useImageDisintegration';
 
 const { t } = useLanguage();
 
-const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/logo.png`;
+const {
+  image: profileImage,
+  canvas: profileCanvas,
+  container: profileContainer,
+  active: disintegrationActive,
+  enter: enterDisintegration,
+  leave: leaveDisintegration,
+} = useImageDisintegration();
 
-// Data
-const experience = ref(1);
-const projects = ref(3);
+const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/Matrix.png`;
 
 // Scroll to section function
 const scrollToSection = (sectionId: string) => {
@@ -230,12 +227,12 @@ const skillCategories = ref([
     skills: [
       {
         name: '.Net',
-        icon: 'https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/072015/ms-.net-framework.jpg?itok=_sHbgY_h',
+        icon: 'https://cdn.simpleicons.org/dotnet/8C6CFF',
       },
-      { name: 'Express', icon: 'https://cdn.simpleicons.org/express/000000' },
+      { name: 'Express', icon: 'https://cdn.simpleicons.org/express/FFFFFF' },
       {
         name: 'C#',
-        icon: 'https://images.icon-icons.com/2415/PNG/512/csharp_plain_logo_icon_146577.png',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/csharp/csharp-original.svg',
       },
       { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6' },
     ],
@@ -285,7 +282,7 @@ const skillCategories = ref([
     icon: 'build',
     color: 'text-hack-yellow',
     skills: [
-      { name: 'Git / GitHub', icon: 'https://www.cesaralexander.dev/github-mark-white.svg' },
+      { name: 'Git / GitHub', icon: 'https://cdn.simpleicons.org/github/FFFFFF' },
       { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker/2496ED' },
       { name: 'Ubuntu', icon: 'https://cdn.simpleicons.org/ubuntu/E95420' },
       { name: 'Postman', icon: 'https://cdn.simpleicons.org/postman/FF6C37' },
@@ -293,13 +290,13 @@ const skillCategories = ref([
       { name: 'AWS', icon: 'https://www.pngall.com/wp-content/uploads/13/AWS-Logo-PNG-File.png' },
       {
         name: 'n8n',
-        icon: 'https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B',
+        icon: 'https://cdn.simpleicons.org/n8n/EA4B71',
       },
       {
         name: 'Python',
         icon: 'https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png',
       },
-      { name: 'SQLite', icon: 'https://cdn.simpleicons.org/sqlite/003B57' },
+      { name: 'SQLite', icon: 'https://cdn.simpleicons.org/sqlite/0F80CC' },
     ],
   },
 ]);
@@ -378,92 +375,151 @@ const experiences = computed(() => [
 .profile-section {
   padding: 2rem 0;
 
-  .profile-card {
-    text-align: center;
+  .profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .profile-avatar {
-      margin-bottom: 2rem;
+  .profile-photo {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
 
-      .avatar-container {
-        position: relative;
-        display: inline-block;
+    .disintegration-canvas {
+      position: absolute;
+      top: -200px;
+      left: -200px;
+      width: calc(100% + 400px);
+      height: calc(100% + 400px);
+      pointer-events: none;
+      opacity: 0;
+      z-index: 11;
+    }
 
-        .avatar-image {
-          width: 9rem;
-          height: 9rem;
-          border-radius: 50%;
-          object-fit: cover;
-          border: 3px solid $hack-green;
-          box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
-          transition: all 0.3s ease;
+    &.is-disintegrating {
+      .profile-image-container {
+        opacity: 0;
+      }
 
-          &:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
-          }
-        }
+      .disintegration-canvas {
+        opacity: 1;
+      }
+    }
+  }
 
-        .status-ring {
-          position: absolute;
-          bottom: 1rem;
-          right: 1rem;
+  .profile-image-container {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid rgba(0, 255, 136, 0.272);
+    box-shadow:
+      0 0 30px rgba(0, 255, 136, 0.1),
+      0 8px 24px rgba(0, 0, 0, 0.4);
+    transition:
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
+    background: linear-gradient(135deg, rgba(13, 17, 23, 0.8), rgba(22, 27, 34, 0.6));
 
-          .status-dot {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 3px solid #161b22;
+    &:hover {
+      border-color: rgba(0, 255, 136, 0.6);
+      box-shadow:
+        0 0 40px rgba(0, 255, 136, 0.3),
+        0 12px 32px rgba(0, 0, 0, 0.5);
 
-            &.active {
-              background: $hack-green;
-              box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
-            }
-          }
-        }
+      .image-overlay {
+        opacity: 1;
+        background: linear-gradient(
+          to top,
+          rgba(13, 17, 23, 0.98),
+          rgba(13, 17, 23, 0.7) 50%,
+          transparent
+        );
       }
     }
 
-    .profile-name {
-      color: $hack-white;
-      font-size: 1.8rem;
-      margin-bottom: 0.4rem;
+    .profile-image {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(1.5) contrast(1.1);
     }
 
-    .profile-title {
-      color: $hack-blue;
-      font-size: 1.15rem;
-      margin-bottom: 1.2rem;
-      font-weight: 500;
-    }
-
-    .profile-bio {
-      color: #c9d1d9;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .profile-stats {
+    .status-indicator {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
       display: flex;
-      justify-content: space-around;
-      gap: 2rem;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(13, 17, 23, 0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      backdrop-filter: blur(10px);
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 
-      .stat-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: $hack-green;
+        animation: pulse 2s ease-in-out infinite;
+        box-shadow: 0 0 19px $hack-green;
+      }
 
-        .stat-number {
-          font-size: 1.6rem;
-          font-weight: 700;
-          font-family: 'JetBrains Mono', monospace;
-        }
+      .status-text {
+        color: $hack-green;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+    }
 
-        .stat-label {
-          color: #c9d1d9;
-          font-size: 0.82rem;
-          margin-top: 0.4rem;
-        }
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(
+        to top,
+        rgba(13, 17, 23, 0.95),
+        rgba(13, 17, 23, 0.5) 40%,
+        transparent
+      );
+      padding: 1.8rem 1.5rem;
+      opacity: 0.95;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(2px);
+
+      .name {
+        color: $hack-white;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem;
+        line-height: 1.2;
+        text-shadow:
+          0 2px 12px rgba(0, 0, 0, 0.9),
+          0 0 20px rgba(0, 255, 136, 0.3);
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.5px;
+      }
+
+      .title {
+        color: $hack-green;
+        font-size: 1.05rem;
+        font-weight: 500;
+        margin: 0;
+        line-height: 1.4;
+        text-shadow:
+          0 2px 12px rgba(0, 0, 0, 0.9),
+          0 0 15px rgba(0, 255, 136, 0.5);
+        font-family: 'JetBrains Mono', monospace;
       }
     }
   }
@@ -813,33 +869,40 @@ const experiences = computed(() => [
   }
 
   .profile-section {
-    .profile-card {
-      .profile-avatar .avatar-container .avatar-image {
-        width: 7rem;
-        height: 7rem;
+    .profile-photo {
+      max-width: 320px;
+    }
+
+    .profile-image-container {
+      .profile-image {
+        height: 340px;
       }
 
-      .profile-name {
-        font-size: 1.4rem;
-      }
-      .profile-title {
-        font-size: 0.9rem;
-      }
-      .profile-bio {
-        font-size: 0.82rem;
+      .status-indicator {
+        bottom: 12px;
+        right: 12px;
+        padding: 0.3rem 0.6rem;
+
+        .status-dot {
+          width: 7px;
+          height: 7px;
+        }
+
+        .status-text {
+          font-size: 0.68rem;
+        }
       }
 
-      .profile-stats {
-        flex-direction: row;
-        gap: 1rem !important;
+      .image-overlay {
+        padding: 1.2rem 1rem;
 
-        .stat-item {
-          .stat-number {
-            font-size: 1.3rem;
-          }
-          .stat-label {
-            font-size: 0.72rem;
-          }
+        .name {
+          font-size: 1.4rem;
+          margin-bottom: 0.2rem;
+        }
+
+        .title {
+          font-size: 0.88rem;
         }
       }
     }
@@ -990,6 +1053,18 @@ const experiences = computed(() => [
     .interests-grid {
       grid-template-columns: 1fr;
     }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 19px $hack-green;
+  }
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 29px $hack-green;
   }
 }
 </style>

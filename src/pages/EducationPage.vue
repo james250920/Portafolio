@@ -144,7 +144,10 @@
                     <q-icon :name="category.icon" class="text-hack-green" />
                     <span class="category-name">{{ category.name }}</span>
                     <span class="category-count"
-                      >({{ category.courses.length }} {{ t('education.courses') }})</span
+                      >({{ category.courses.length }}
+                      {{
+                        t(category.courses.length === 1 ? 'education.course' : 'education.courses')
+                      }})</span
                     >
                   </div>
                   <div class="courses-list">

@@ -13,10 +13,22 @@ const translations: Record<string, Record<Lang, string>> = {
   'nav.contact': { es: 'contacto', en: 'contact' },
 
   // ===================== HERO / HOME =====================
-  'hero.status': { es: 'Listo para nuevos desafíos', en: 'Ready for new challenges' },
-  'hero.contact': { es: 'Contactar', en: 'Contact' },
   'hero.title': { es: 'Desarrollador Full Stack', en: 'Full Stack Developer' },
   'hero.top': { es: 'Inicio', en: 'Top' },
+  'hero.role': { es: 'Developer', en: 'Developer' },
+  'hero.role2': { es: 'Full Stack', en: 'Full Stack' },
+  'hero.tagline1': { es: 'Tecnología', en: 'Technology' },
+  'hero.tagline2': { es: 'Código', en: 'Code' },
+  'hero.tagline3': { es: 'Soluciones', en: 'Solutions' },
+  'hero.area.backend': { es: 'Backend', en: 'Backend' },
+  'hero.area.automation': { es: 'Automatización', en: 'Automation' },
+  'hero.area.security': { es: 'Seguridad', en: 'Security' },
+  'hero.area.data': { es: 'Data Engineer', en: 'Data Engineer' },
+  'hero.cta.projects': { es: 'Ver proyectos', en: 'View projects' },
+  'hero.cta.contact': { es: 'Contactar', en: 'Contact me' },
+  'hero.scroll': { es: 'Ir a Sobre mí', en: 'Go to About me' },
+  'hero.term.status': { es: 'Disponible', en: 'Available' },
+  'hero.term.location': { es: 'Perú · Remoto', en: 'Peru · Remote' },
 
   // ===================== ABOUT =====================
   'about.title': { es: 'About.me', en: 'About.me' },
@@ -24,12 +36,6 @@ const translations: Record<string, Record<Lang, string>> = {
     es: 'Full Stack Software Engineer especializado en Angular, .NET y FastAPI, con experiencia en desarrollo web y mobile, despliegues cloud en AWS y Azure, testing automatizado y arquitectura orientada a escalabilidad y calidad.',
     en: 'Full Stack Software Engineer specialized in Angular, .NET, and FastAPI, with experience in web and mobile development, cloud deployments on AWS and Azure, automated testing, and architecture focused on scalability and quality.',
   },
-  'about.bio': {
-    es: 'Full Stack Software Engineer con más de {n}+ años de experiencia en el desarrollo de software y cloud.',
-    en: 'Full Stack Software Engineer with {n}+ years of software development and cloud experience.',
-  },
-  'about.years': { es: 'Años', en: 'Years' },
-  'about.projects': { es: 'Proyectos', en: 'Projects' },
   'about.currentFocus1': {
     es: 'Desarrollo de aplicaciones web y móviles',
     en: 'Web and mobile application development',
@@ -113,6 +119,11 @@ const translations: Record<string, Record<Lang, string>> = {
   'projects.sourceCode': { es: 'Código Fuente', en: 'Source Code' },
   'projects.loadMore': { es: 'Cargar Más Proyectos', en: 'Load More Projects' },
   'projects.cat.all': { es: 'Todos', en: 'All' },
+  'projects.empty': {
+    es: 'No hay proyectos con ese filtro.',
+    en: 'No projects match that filter.',
+  },
+  'projects.clearFilters': { es: 'Limpiar filtros', en: 'Clear filters' },
   'projects.cat.web': { es: 'Web', en: 'Web' },
   'projects.cat.mobile': { es: 'Móvil', en: 'Mobile' },
   'projects.cat.apis': { es: 'APIs', en: 'APIs' },
@@ -177,6 +188,7 @@ const translations: Record<string, Record<Lang, string>> = {
     es: 'Cursos y Formación Continua',
     en: 'Courses & Continuous Learning',
   },
+  'education.course': { es: 'curso', en: 'course' },
   'education.courses': { es: 'cursos', en: 'courses' },
   'education.edu1.degree': {
     es: 'Ingeniería de Tecnologías de Información y Sistemas',
@@ -251,7 +263,11 @@ const translations: Record<string, Record<Lang, string>> = {
     en: 'Tell me about your project...',
   },
   'contact.available': { es: 'DISPONIBLE', en: 'AVAILABLE' },
-  'contact.location': { es: 'Disponible', en: 'Available' },
+  'contact.location': { es: 'Perú · Remoto', en: 'Peru · Remote' },
+  'contact.mascotAlt': {
+    es: 'Pingüino y cuervo hacker con lentes verdes, mascotas de DevMenfroyt',
+    en: 'Hacker penguin and crow with green glasses, DevMenfroyt mascots',
+  },
   'contact.readyProjects': { es: 'Nuevos proyectos', en: 'New projects' },
   'contact.openOpportunities': { es: 'Abierto a Oportunidades', en: 'Open to Opportunities' },
 
