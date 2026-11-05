@@ -1,5 +1,5 @@
 <template>
-  <q-page class="about-page">
+  <div class="about-page">
     <!-- Header Section -->
     <section class="about-header">
       <div class="container">
@@ -34,8 +34,8 @@
                   <span class="status-text">ONLINE</span>
                 </div>
                 <div class="image-overlay">
-                  <h2 class="name">James Mendoza</h2>
-                  <h3 class="title">{{ t('hero.title') }}</h3>
+                  <p class="name">James Mendoza</p>
+                  <p class="title">{{ t('hero.title') }}</p>
                 </div>
               </div>
               <canvas ref="profileCanvas" class="disintegration-canvas" aria-hidden="true" />
@@ -128,7 +128,7 @@
             <div class="skills-inner-grid">
               <div v-for="skill in category.skills" :key="skill.name" class="skill-item">
                 <div class="skill-icon-wrap">
-                  <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
+                  <img :src="skill.icon" alt="" class="skill-icon" loading="lazy" />
                 </div>
                 <span class="skill-name">{{ skill.name }}</span>
               </div>
@@ -154,13 +154,14 @@
         </div>
       </div>
     </section>
-  </q-page>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useLanguage } from 'src/composables/useLanguage';
 import { useImageDisintegration } from 'src/composables/useImageDisintegration';
+import { scrollToSection } from 'src/composables/useSectionScroll';
 
 const { t } = useLanguage();
 
@@ -174,21 +175,6 @@ const {
 } = useImageDisintegration();
 
 const ImgURL = `https://${import.meta.env.VITE_IMG_URL}/imagenes/img/Matrix.png`;
-
-// Scroll to section function
-const scrollToSection = (sectionId: string) => {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    const headerOffset = 56;
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth',
-    });
-  }
-};
 
 const careerTimeline = computed(() => [
   { year: '2018', event: t('about.timeline.2018') },
@@ -338,7 +324,6 @@ const experiences = computed(() => [
 <style lang="scss" scoped>
 .about-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
 }
 
 .container {
@@ -433,7 +418,7 @@ const experiences = computed(() => [
 
     .status-indicator {
       position: absolute;
-      bottom: 20px;
+      top: 1rem;
       right: 20px;
       display: flex;
       align-items: center;
@@ -532,9 +517,10 @@ const experiences = computed(() => [
 .skills-section {
   padding: 3rem 0;
 
+  // As many columns as fit without squeezing the logos; min() avoids overflow on tiny screens
   .categories-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
     gap: 1.25rem;
     align-items: start;
   }
@@ -605,7 +591,7 @@ const experiences = computed(() => [
 
       .skill-name {
         color: $hack-white;
-        font-size: 0.72rem;
+        font-size: 0.75rem;
         font-weight: 500;
         text-align: center;
         line-height: 1.2;
@@ -809,7 +795,7 @@ const experiences = computed(() => [
       }
 
       .status-indicator {
-        bottom: 12px;
+        top: 12px;
         right: 12px;
         padding: 0.3rem 0.6rem;
 
@@ -819,7 +805,7 @@ const experiences = computed(() => [
         }
 
         .status-text {
-          font-size: 0.68rem;
+          font-size: 0.75rem;
         }
       }
 
@@ -840,7 +826,6 @@ const experiences = computed(() => [
 
   .skills-section {
     .categories-grid {
-      grid-template-columns: repeat(2, 1fr);
       gap: 0.75rem;
     }
 
@@ -868,7 +853,7 @@ const experiences = computed(() => [
           height: 1.5rem;
         }
         .skill-name {
-          font-size: 0.62rem;
+          font-size: 0.75rem;
         }
       }
     }
@@ -902,16 +887,16 @@ const experiences = computed(() => [
               font-size: 0.82rem;
             }
             .experience-period {
-              font-size: 0.72rem;
+              font-size: 0.75rem;
             }
           }
 
           .experience-description {
-            font-size: 0.78rem;
+            font-size: 0.875rem;
           }
 
           .experience-tech .tech-tag {
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             padding: 0.15rem 0.45rem;
           }
         }
@@ -961,12 +946,6 @@ const experiences = computed(() => [
 }
 
 @media (max-width: 480px) {
-  .skills-section {
-    .categories-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
   .interests-section {
     .interests-grid {
       grid-template-columns: 1fr;

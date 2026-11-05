@@ -1,5 +1,5 @@
 <template>
-  <q-page class="education-page">
+  <div class="education-page">
     <!-- Header Section -->
     <section class="education-header">
       <div class="container">
@@ -46,7 +46,7 @@
                             <div class="education-period">
                               <q-icon name="event" size="1rem" class="text-hack-green" />
                               {{ edu.period }}
-                              <span v-if="edu.status" class="status-badge" :class="edu.status">
+                              <span v-if="edu.status" class="status-badge en-curso">
                                 {{ edu.status }}
                               </span>
                             </div>
@@ -173,7 +173,7 @@
         </div>
       </div>
     </section>
-  </q-page>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -566,7 +566,7 @@ const openUrl = (url: string) => {
       .cert-date {
         color: #8b949e;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.72rem;
+        font-size: 0.75rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -582,7 +582,7 @@ const openUrl = (url: string) => {
 
         .credential-label {
           color: #8b949e;
-          font-size: 0.72rem;
+          font-size: 0.75rem;
         }
 
         .credential-id {
@@ -591,7 +591,7 @@ const openUrl = (url: string) => {
           padding: 0.15rem 0.5rem;
           border-radius: 4px;
           font-family: 'JetBrains Mono', monospace;
-          font-size: 0.7rem;
+          font-size: 0.75rem;
           border: 1px solid rgba(4, 249, 30, 0.3);
         }
       }
@@ -769,7 +769,7 @@ const openUrl = (url: string) => {
         }
 
         .education-description {
-          font-size: 0.8rem;
+          font-size: 0.875rem;
         }
 
         .education-achievements {
@@ -777,7 +777,7 @@ const openUrl = (url: string) => {
             font-size: 0.8rem;
           }
           .achievements-list li {
-            font-size: 0.78rem;
+            font-size: 0.875rem;
           }
         }
       }
@@ -805,11 +805,11 @@ const openUrl = (url: string) => {
         padding-left: 0.75rem;
 
         .course-item .course-name {
-          font-size: 0.78rem;
+          font-size: 0.875rem;
         }
         .course-platform,
         .course-duration {
-          font-size: 0.72rem;
+          font-size: 0.75rem;
         }
       }
     }

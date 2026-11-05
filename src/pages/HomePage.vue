@@ -8,7 +8,7 @@
 
     <!-- Floating Back to Top Button -->
     <Transition name="back-top">
-      <button v-if="showBackToTop" class="floating-back-top" @click="scrollToTop">
+      <button v-if="showBackToTop" class="floating-back-top" @click="scrollToSection('home')">
         <q-icon name="keyboard_arrow_up" size="22px" />
         <span class="back-top-label">{{ t('hero.top') }}</span>
       </button>
@@ -16,7 +16,7 @@
 
     <!-- Home Section -->
     <section id="home" class="hero-section">
-      <img :src="bannerURL" alt="" class="hero-banner" />
+      <img :src="bannerURL" alt="" class="hero-banner" fetchpriority="high" />
 
       <div class="hero-overlay">
         <div class="hero-main">
@@ -57,7 +57,7 @@
                 class="tech-item"
                 :aria-hidden="i >= heroTech.length"
               >
-                <img :src="tech.icon" :alt="tech.name" class="tech-icon" />
+                <img :src="tech.icon" alt="" class="tech-icon" />
                 <span class="tech-name">{{ tech.name }}</span>
               </li>
             </ul>
@@ -127,6 +127,7 @@ import MatrixBackground from '../components/MatrixBackground.vue';
 import CrowTree from '../components/CrowTree.vue';
 import { useLanguage } from 'src/composables/useLanguage';
 import { useTextScramble } from 'src/composables/useTextScramble';
+import { scrollToSection } from 'src/composables/useSectionScroll';
 import AboutPage from './AboutPage.vue';
 import ProjectsPage from './ProjectsPage.vue';
 import EducationPage from './EducationPage.vue';
@@ -215,19 +216,7 @@ const handleScrollTop = () => {
   showBackToTop.value = scrolled >= total - 300;
 };
 
-const scrollToSection = (id: string) => {
-  const element = document.getElementById(id);
-  if (!element) return;
-  const headerOffset = 56;
-  const top = element.getBoundingClientRect().top + window.scrollY - headerOffset;
-  window.scrollTo({ top, behavior: 'smooth' });
-};
-
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-};
-
-onMounted(() => window.addEventListener('scroll', handleScrollTop));
+onMounted(() => window.addEventListener('scroll', handleScrollTop, { passive: true }));
 onUnmounted(() => window.removeEventListener('scroll', handleScrollTop));
 </script>
 
@@ -291,7 +280,8 @@ section {
   grid-template-areas: '. main terminal';
   align-items: center;
   gap: 2rem;
-  padding: 2rem clamp(1rem, 3vw, 3rem) 1.5rem;
+  // Extra bottom space centers the content above the pinned areas panel
+  padding: 2rem clamp(1rem, 3vw, 3rem) clamp(1.5rem, 12vh, 6rem);
 }
 
 .hero-main {
@@ -387,6 +377,10 @@ section {
   font-style: italic;
   color: $hack-green;
   letter-spacing: 0.08em;
+  // Same green as parts of the banner behind it
+  text-shadow:
+    0 1px 2px #000,
+    0 2px 10px rgba(0, 0, 0, 0.9);
 
   span {
     margin: 0 0.5rem;
@@ -433,7 +427,7 @@ section {
 
   .tech-name {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: #e6edf3;
   }
 }
@@ -619,7 +613,7 @@ section {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(13, 17, 23, 0.55);
+    background: rgba(13, 17, 23, 0.72);
   }
 
   .hero-overlay {
@@ -661,13 +655,30 @@ section {
   }
 }
 
-// Section Containers - Remove padding from child pages
-.about-section,
-.projects-section,
-.education-section,
-.contact-section {
-  :deep(.q-page) {
-    background: transparent;
+// Short phones: the stacked content would run into the areas panel, so the logo strip goes first
+@media (max-width: 768px) and (max-height: 720px) {
+  .hero-tech {
+    display: none;
+  }
+}
+
+// Landscape phones: only the name and the calls to action fit
+@media (max-height: 480px) {
+  .hero-tech,
+  .hero-areas {
+    display: none;
+  }
+}
+
+// Narrowest phones: keep the tagline on one line
+@media (max-width: 360px) {
+  .hero-tagline {
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+
+    span {
+      margin: 0 0.25rem;
+    }
   }
 }
 
@@ -687,8 +698,10 @@ section {
   padding: 8px 12px;
   border-radius: 10px;
   cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   transition: all 0.3s ease;
@@ -730,7 +743,6 @@ section {
     bottom: 16px;
     left: 16px;
     padding: 6px 10px;
-    font-size: 0.6rem;
   }
 }
 </style>

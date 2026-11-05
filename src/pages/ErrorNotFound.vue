@@ -1,58 +1,55 @@
 <template>
-  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
-    <div class="error-content">
-      <div class="error-code">404</div>
-
-      <div class="error-message">Oops. Nothing here...</div>
-
-      <q-btn
-        class="q-mt-xl go-home-btn"
-        color="white"
-        text-color="blue"
-        unelevated
-        to="/"
-        label="Go Home"
-        no-caps
-      />
-    </div>
-  </div>
+  <main class="not-found">
+    <p class="not-found__code" aria-hidden="true">404</p>
+    <h1 class="not-found__title">{{ t('notFound.title') }}</h1>
+    <p class="not-found__text">{{ t('notFound.text') }}</p>
+    <router-link to="/" class="hack-button primary not-found__cta">
+      <q-icon name="home" /> {{ t('notFound.cta') }}
+    </router-link>
+  </main>
 </template>
 
 <script setup lang="ts">
-//
+import { useLanguage } from 'src/composables/useLanguage';
+
+const { t } = useLanguage();
 </script>
 
 <style lang="scss" scoped>
-.error-content {
-  .error-code {
-    font-size: 30vh;
-  }
-
-  .error-message {
-    font-size: 2rem;
-    opacity: 0.4;
-  }
-
-  .go-home-btn {
-    min-width: 120px;
-  }
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: #0d1117;
 }
 
-// Responsive Design
-@media (max-width: 768px) {
-  .error-content {
-    .error-code {
-      font-size: 20vh;
-    }
+.not-found__code {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(5rem, 22vw, 11rem);
+  font-weight: 900;
+  line-height: 1;
+  color: $hack-green;
+  text-shadow: 0 0 28px rgba(4, 249, 30, 0.45);
+}
 
-    .error-message {
-      font-size: 1.5rem;
-    }
+.not-found__title {
+  margin: 1rem 0 0.5rem;
+  font-size: clamp(1.4rem, 3.4vw, 2rem);
+  color: #fff;
+}
 
-    .go-home-btn {
-      width: 100%;
-      max-width: 250px;
-    }
-  }
+.not-found__text {
+  max-width: 28rem;
+  margin: 0 0 2rem;
+}
+
+.not-found__cta {
+  text-decoration: none;
 }
 </style>

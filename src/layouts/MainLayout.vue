@@ -1,84 +1,61 @@
 <template>
-  <q-layout view="lHh Rpr LFf" class="hack-layout">
+  <q-layout view="lHh Lpr lFf" class="hack-layout">
     <q-header class="hack-header">
       <q-toolbar class="hack-toolbar">
         <!-- Logo/Brand -->
-        <div class="hack-brand" @click="scrollToSection('home')">
-          <img :src="logoURL" alt="DevMenfroyt" class="brand-logo" />
+        <button
+          type="button"
+          class="hack-brand"
+          :aria-label="`DevMenfroyt@james, ${t('nav.home')}`"
+          @click="goToSection('home')"
+        >
+          <img :src="logoURL" alt="" class="brand-logo" width="32" height="32" />
           <span class="brand-text">DevMenfroyt@james:~$</span>
-        </div>
+        </button>
 
         <!-- Spacer -->
         <q-space />
 
         <!-- Navigation -->
-        <div class="hack-nav">
+        <nav class="hack-nav" :aria-label="t('nav.label')">
           <q-btn
+            v-for="item in navItems"
+            :key="item.id"
             flat
             class="nav-btn"
-            :class="{ active: activeSection === 'home' }"
-            @click="scrollToSection('home')"
+            :class="{ active: activeSection === item.id }"
+            :aria-label="t(`nav.${item.id}`)"
+            :aria-current="activeSection === item.id ? 'location' : undefined"
+            @click="goToSection(item.id)"
           >
-            <q-icon name="home" class="q-mr-xs" />
-            <span class="nav-text">{{ t('nav.home') }}</span>
+            <q-icon :name="item.icon" class="q-mr-xs" />
+            <span class="nav-text">{{ t(`nav.${item.id}`) }}</span>
           </q-btn>
-          <q-btn
-            flat
-            class="nav-btn"
-            :class="{ active: activeSection === 'about' }"
-            @click="scrollToSection('about')"
+        </nav>
+
+        <!-- Language and theme: in the toolbar on desktop, floating below it on phones -->
+        <div class="floating-toggles" :class="{ 'is-hidden': togglesHidden }">
+          <button
+            type="button"
+            class="toggle-btn lang-toggle"
+            :aria-label="langLabel"
+            :title="t('toggle.lang')"
+            @click="toggleLang"
           >
-            <q-icon name="person" class="q-mr-xs" />
-            <span class="nav-text">{{ t('nav.about') }}</span>
-          </q-btn>
-          <q-btn
-            flat
-            class="nav-btn"
-            :class="{ active: activeSection === 'projects' }"
-            @click="scrollToSection('projects')"
+            <span class="toggle-label">{{ nextLang }}</span>
+          </button>
+          <button
+            type="button"
+            class="toggle-btn theme-toggle"
+            :aria-label="themeLabel"
+            :title="themeLabel"
+            @click="toggleTheme"
           >
-            <q-icon name="code" class="q-mr-xs" />
-            <span class="nav-text">{{ t('nav.projects') }}</span>
-          </q-btn>
-          <q-btn
-            flat
-            class="nav-btn"
-            :class="{ active: activeSection === 'education' }"
-            @click="scrollToSection('education')"
-          >
-            <q-icon name="school" class="q-mr-xs" />
-            <span class="nav-text">{{ t('nav.education') }}</span>
-          </q-btn>
-          <q-btn
-            flat
-            class="nav-btn"
-            :class="{ active: activeSection === 'contact' }"
-            @click="scrollToSection('contact')"
-          >
-            <q-icon name="mail" class="q-mr-xs" />
-            <span class="nav-text">{{ t('nav.contact') }}</span>
-          </q-btn>
+            <q-icon :name="currentTheme === 'dark' ? 'light_mode' : 'dark_mode'" size="18px" />
+          </button>
         </div>
       </q-toolbar>
     </q-header>
-
-    <!-- Floating Toggles -->
-    <div class="floating-toggles" :class="{ 'is-hidden': togglesHidden }">
-      <button
-        class="toggle-btn lang-toggle"
-        @click="toggleLang"
-        :title="currentLang === 'es' ? 'Switch to English' : 'Cambiar a Español'"
-      >
-        <span class="toggle-label">{{ currentLang === 'es' ? 'EN' : 'ES' }}</span>
-      </button>
-      <button
-        class="toggle-btn theme-toggle"
-        @click="toggleTheme"
-        :title="currentTheme === 'dark' ? 'Modo claro' : 'Dark mode'"
-      >
-        <q-icon :name="currentTheme === 'dark' ? 'light_mode' : 'dark_mode'" size="18px" />
-      </button>
-    </div>
 
     <q-page-container class="hack-page-container">
       <router-view />
@@ -87,13 +64,30 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLanguage } from 'src/composables/useLanguage';
 import { useTheme } from 'src/composables/useTheme';
+import { scrollToSection } from 'src/composables/useSectionScroll';
 
 const { currentLang, t, toggleLang } = useLanguage();
 const { currentTheme, toggleTheme } = useTheme();
+
+const themeLabel = computed(() =>
+  t(currentTheme.value === 'dark' ? 'toggle.themeLight' : 'toggle.themeDark'),
+);
+
+const nextLang = computed(() => (currentLang.value === 'es' ? 'EN' : 'ES'));
+// Starts with the visible text so voice control can target it
+const langLabel = computed(() => `${nextLang.value}: ${t('toggle.lang')}`);
+
+const navItems = [
+  { id: 'home', icon: 'home' },
+  { id: 'about', icon: 'person' },
+  { id: 'projects', icon: 'code' },
+  { id: 'education', icon: 'school' },
+  { id: 'contact', icon: 'mail' },
+];
 
 const router = useRouter();
 const route = useRoute();
@@ -117,24 +111,14 @@ const PATH_TO_SECTION: Record<string, string> = {
   '/contact': 'contact',
 };
 
-const scrollToSection = (sectionId: string) => {
+const goToSection = (sectionId: string) => {
   // Actualizar la URL para reflejar la sección actual
   const path = SECTION_TO_PATH[sectionId] ?? '/';
   if (route.path !== path) {
     void router.replace(path);
   }
 
-  const element = document.getElementById(sectionId);
-  if (element) {
-    const headerOffset = 56;
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth',
-    });
-  }
+  scrollToSection(sectionId);
 };
 
 // Mobile: hide the floating toggles while scrolling down so they don't cover content
@@ -177,15 +161,7 @@ onMounted(() => {
   const initialSection = PATH_TO_SECTION[route.path];
   if (initialSection && initialSection !== 'home') {
     activeSection.value = initialSection;
-    setTimeout(() => {
-      const element = document.getElementById(initialSection);
-      if (element) {
-        const headerOffset = 56;
-        const offsetPosition =
-          element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      }
-    }, 400);
+    setTimeout(() => scrollToSection(initialSection, { moveFocus: false }), 400);
   } else {
     handleScroll();
   }
@@ -216,6 +192,12 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
   cursor: pointer;
   transition: all 0.3s ease;
 
@@ -256,6 +238,7 @@ onUnmounted(() => {
   gap: 0.5rem;
 
   .nav-btn {
+    min-height: 44px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
     font-weight: 400;
@@ -286,21 +269,18 @@ onUnmounted(() => {
   background: transparent;
 }
 
-// Floating Toggles
+// Language and theme toggles
 .floating-toggles {
-  position: fixed;
-  top: 68px;
-  right: 1.5rem;
   display: flex;
   gap: 0.5rem;
-  z-index: 1999;
+  margin-left: 0.75rem;
 
   .toggle-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     border-radius: 8px;
     border: 1px solid #30363d;
     background: rgba(13, 17, 23, 0.9);
@@ -337,27 +317,28 @@ onUnmounted(() => {
 }
 
 // Responsive
+// The full prompt doesn't fit next to the nav and toggles on tablets
+@media (max-width: 1024px) {
+  .hack-brand .brand-text {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .hack-toolbar {
     padding: 0 0.5rem;
-  }
-
-  .hack-brand {
-    .brand-text {
-      display: none;
-    }
   }
 
   .hack-nav {
     gap: 0.15rem;
 
     .nav-btn {
-      padding: 0.5rem;
-      min-width: auto;
+      padding: 0;
+      min-width: 44px;
 
       .q-icon {
         margin: 0 !important;
-        font-size: 1.9rem;
+        font-size: 1.5rem;
       }
 
       .nav-text {
@@ -367,26 +348,23 @@ onUnmounted(() => {
   }
 
   .floating-toggles {
-    top: 62px;
+    position: absolute;
+    top: calc(100% + 6px);
     right: 0.5rem;
+    margin-left: 0;
     transition:
       opacity 0.25s ease,
       transform 0.25s ease;
 
-    &.is-hidden {
+    // Stays reachable if it holds keyboard focus
+    &.is-hidden:not(:focus-within) {
       opacity: 0;
       transform: translateY(-12px);
       pointer-events: none;
     }
 
-    .toggle-btn {
-      width: 40px;
-      height: 40px;
-      font-size: 0.75rem;
-
-      .q-icon {
-        font-size: 20px;
-      }
+    .toggle-btn .q-icon {
+      font-size: 20px;
     }
   }
 }

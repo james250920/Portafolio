@@ -1,5 +1,5 @@
 <template>
-  <q-page class="projects-page">
+  <div class="projects-page">
     <!-- Header Section -->
     <section class="projects-header">
       <div class="container">
@@ -27,10 +27,16 @@
               <div class="terminal-content">
                 <div class="terminal-line">ls --categories</div>
                 <div class="output">
-                  <div class="filter-options">
+                  <div
+                    class="filter-options"
+                    role="group"
+                    :aria-label="t('projects.categoryFilter')"
+                  >
                     <button
                       v-for="category in categories"
                       :key="category"
+                      type="button"
+                      :aria-pressed="selectedCategory === category"
                       @click="selectedCategory = category"
                       :class="['filter-btn', { active: selectedCategory === category }]"
                     >
@@ -49,14 +55,8 @@
                       dense
                       class="tech-select"
                       clearable
-                    >
-                      <template #selected>
-                        <span v-if="selectedTech">{{ selectedTech }}</span>
-                        <span v-else class="select-placeholder">{{
-                          t('projects.filterPlaceholder')
-                        }}</span>
-                      </template>
-                    </q-select>
+                      :label="t('projects.filterPlaceholder')"
+                    />
                   </div>
                 </div>
                 <div class="terminal-line prompt">
@@ -82,7 +82,7 @@
             >
               <!-- Project Image -->
               <div class="project-image">
-                <img :src="project.image" :alt="project.title" />
+                <img :src="project.image" :alt="project.title" loading="lazy" />
                 <div v-if="hasLink(project)" class="project-overlay">
                   <div class="overlay-content">
                     <q-icon name="visibility" size="1.5rem" class="text-hack-white" />
@@ -97,7 +97,7 @@
                   <h3 class="project-title">{{ project.title }}</h3>
                   <div class="project-status" :class="project.status">
                     <span class="status-dot"></span>
-                    {{ project.status }}
+                    {{ t(`projects.status.${project.status}`) }}
                   </div>
                 </div>
 
@@ -110,20 +110,26 @@
                 </div>
 
                 <div class="project-actions">
-                  <button
-                    class="action-btn live"
-                    @click.stop="openProject(project.liveUrl)"
+                  <a
                     v-if="project.liveUrl"
+                    class="action-btn live"
+                    :href="project.liveUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    @click.stop
                   >
                     <q-icon name="launch" /> {{ t('projects.liveDemo') }}
-                  </button>
-                  <button
-                    class="action-btn code"
-                    @click.stop="openProject(project.githubUrl)"
+                  </a>
+                  <a
                     v-if="project.githubUrl"
+                    class="action-btn code"
+                    :href="project.githubUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    @click.stop
                   >
                     <q-icon name="code" /> {{ t('projects.sourceCode') }}
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -146,11 +152,11 @@
         </div>
       </div>
     </section>
-  </q-page>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useLanguage } from 'src/composables/useLanguage';
 
 const { t } = useLanguage();
@@ -316,7 +322,7 @@ const openProjectModal = (project: Project) => {
 
 const openProject = (url: string) => {
   if (url) {
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 };
 
@@ -332,16 +338,11 @@ watch(selectedCategory, () => {
 watch(selectedTech, () => {
   displayedProjects.value = 6;
 });
-
-onMounted(() => {
-  // Animation on mount
-});
 </script>
 
 <style lang="scss" scoped>
 .projects-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
 }
 
 .container {
@@ -371,6 +372,7 @@ onMounted(() => {
       margin: 1rem 0;
 
       .filter-btn {
+        min-height: 44px;
         background: transparent;
         border: 1px solid $hack-border;
         color: #c9d1d9;
@@ -427,7 +429,8 @@ onMounted(() => {
     flex-direction: column;
     width: 100%;
 
-    &:hover {
+    // Only cards with a destination react as clickable
+    &.is-linked:hover {
       transform: translateY(-8px);
       border-color: $hack-green;
       box-shadow: 0 16px 50px rgba(4, 249, 30, 0.2);
@@ -447,11 +450,13 @@ onMounted(() => {
       height: 170px;
       overflow: hidden;
       border-radius: 8px 8px 0 0;
+      background: #0d1117;
 
+      // Logos and tall phone screenshots would lose their content if cropped
       img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         transition: transform 0.3s ease;
       }
 
@@ -487,8 +492,9 @@ onMounted(() => {
 
       .project-header {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: flex-start;
+        gap: 0.3rem;
         margin-bottom: 0.75rem;
 
         .project-title {
@@ -547,7 +553,7 @@ onMounted(() => {
           color: $hack-green;
           padding: 0.2rem 0.6rem;
           border-radius: 12px;
-          font-size: 0.72rem;
+          font-size: 0.75rem;
           font-family: 'JetBrains Mono', monospace;
           border: 1px solid rgba(4, 249, 30, 0.3);
         }
@@ -558,14 +564,16 @@ onMounted(() => {
         gap: 0.4rem;
 
         .action-btn {
+          min-height: 44px;
           background: transparent;
           border: 1px solid;
           padding: 0.4rem 0.8rem;
           border-radius: 4px;
           cursor: pointer;
+          text-decoration: none;
           transition: all 0.3s ease;
           font-family: 'JetBrains Mono', monospace;
-          font-size: 0.72rem;
+          font-size: 0.8rem;
           display: flex;
           align-items: center;
           gap: 0.4rem;
@@ -802,10 +810,6 @@ onMounted(() => {
 }
 
 :deep(.tech-select) {
-  .select-placeholder {
-    color: #8b949e;
-  }
-
   .q-field__control {
     background: rgba(13, 17, 23, 0.8);
     border-color: $hack-border;
@@ -838,7 +842,7 @@ onMounted(() => {
 
     .terminal-filter {
       .terminal-title {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
       }
 
       .filter-options {
@@ -847,8 +851,8 @@ onMounted(() => {
         flex-wrap: wrap;
 
         .filter-btn {
-          padding: 0.35rem 0.7rem;
-          font-size: 0.78rem;
+          padding: 0.35rem 0.85rem;
+          font-size: 0.8rem;
         }
       }
 
@@ -875,27 +879,23 @@ onMounted(() => {
         padding: 0.85rem;
 
         .project-header {
-          flex-direction: column;
-          gap: 0.3rem;
-          align-items: flex-start;
-
           .project-title {
-            font-size: 0.9rem;
+            font-size: 1rem;
           }
           .project-status {
-            font-size: 0.65rem;
+            font-size: 0.75rem;
           }
         }
 
         .project-description {
-          font-size: 0.75rem;
+          font-size: 0.875rem;
         }
 
         .project-tech {
           gap: 0.3rem;
           .tech-tag {
-            font-size: 0.62rem;
-            padding: 0.15rem 0.4rem;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.5rem;
           }
         }
 
@@ -906,7 +906,7 @@ onMounted(() => {
           .action-btn {
             width: 100%;
             justify-content: center;
-            font-size: 0.72rem;
+            font-size: 0.8rem;
             padding: 0.4rem 0.6rem;
           }
         }

@@ -1,5 +1,5 @@
 <template>
-  <canvas ref="canvas" class="matrix-background"></canvas>
+  <canvas ref="canvas" class="matrix-background" aria-hidden="true"></canvas>
 </template>
 
 <script setup lang="ts">
@@ -64,6 +64,9 @@ onMounted(() => {
 
   canvas.value.width = window.innerWidth;
   canvas.value.height = window.innerHeight;
+
+  // With reduced motion only a single still frame is painted
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ==========================================
   // 🎮 CONFIGURACIÓN DE VELOCIDADES
@@ -407,7 +410,7 @@ onMounted(() => {
       ctx.fillRect(0, y, canvas.value!.width, 1);
     }
 
-    animationFrameId = requestAnimationFrame(draw);
+    if (!reducedMotion) animationFrameId = requestAnimationFrame(draw);
   };
 
   draw();

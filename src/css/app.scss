@@ -17,7 +17,8 @@ body {
   background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
   color: #ffffff;
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  // Follows the browser's font-size setting; never scaled down on small screens
+  font-size: 100%;
   line-height: 1.6;
   margin: 0;
   padding: 0;
@@ -159,6 +160,48 @@ code {
   color: #0d1117;
 }
 
+// Visible keyboard focus on every control
+a:focus-visible,
+button:focus-visible,
+[role='button']:focus-visible {
+  outline: 2px solid var(--focus-ring, #{$hack-magenta});
+  outline-offset: 2px;
+}
+
+// q-btn keeps its outline off even with the rule above, so it needs a stronger one
+.q-btn:focus-visible {
+  outline: 2px solid var(--focus-ring, #{$hack-magenta}) !important;
+  outline-offset: 2px;
+}
+
+// Sections receive focus programmatically after in-page navigation
+section[tabindex='-1']:focus {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-glow,
+  .cursor-blink {
+    animation: none;
+  }
+
+  .hack-button,
+  .hack-card {
+    transition: none;
+  }
+
+  .hack-button:hover {
+    transform: none;
+  }
+}
+
 // =============================================
 // COMPONENTES BASE
 // =============================================
@@ -219,10 +262,10 @@ code {
   backdrop-filter: blur(6px);
   transition: all 0.3s ease;
 
+  // No lift here: most cards aren't clickable, and the form must not move while typing
   &:hover {
     border-color: rgba(4, 249, 30, 0.55);
     box-shadow: 0 0 24px rgba(4, 249, 30, 0.18);
-    transform: translateY(-4px);
   }
 }
 
@@ -386,11 +429,6 @@ code {
 // TIPOGRAFÍA RESPONSIVE GLOBAL
 // =============================================
 @media (max-width: 768px) {
-  html,
-  body {
-    font-size: 14px;
-  }
-
   h1 {
     font-size: 1.8rem;
   }
@@ -403,11 +441,6 @@ code {
 }
 
 @media (max-width: 480px) {
-  html,
-  body {
-    font-size: 13px;
-  }
-
   h1 {
     font-size: 1.55rem;
   }
@@ -423,6 +456,7 @@ code {
 // LIGHT THEME (data-theme="light")
 // =============================================
 html[data-theme='light'] {
+  --focus-ring: #d600ad;
   --scene-panel-background: rgba(255, 255, 255, 0.92);
   --scene-panel-filter: blur(8px);
 
@@ -458,30 +492,54 @@ html[data-theme='light'] {
     span,
     li,
     div {
-      &:not([class*='text-hack-']):not([class*='status']):not(.q-icon):not(.dot) {
+      // q-icon renders its glyph in an inner span, which must keep the icon's own color
+      &:not([class*='text-hack-']):not([class*='status']):not(.q-icon):not(.q-icon > span):not(
+          .dot
+        ) {
         color: #3d4852 !important;
       }
     }
 
     // Specific overrides for colored utility classes (keep but darken)
     .text-hack-green {
-      color: #038211 !important;
+      color: #03760f !important;
     }
     .text-hack-blue {
-      color: #038211 !important;
+      color: #03760f !important;
     }
     .text-hack-yellow {
       color: #9e6600 !important;
     }
     .text-hack-purple {
-      color: #038211 !important;
+      color: #03760f !important;
     }
     .text-hack-cyan {
-      color: #038211 !important;
+      color: #03760f !important;
     }
   }
 
+  .hack-card .hack-button.secondary {
+    border-color: #03760f;
+    color: #03760f !important;
+    background: transparent;
+  }
+
+  // Quasar paints the focused field outline with currentColor (neon by default)
+  .hack-input.q-field--focused .q-field__control,
+  .tech-select.q-field--focused .q-field__control {
+    color: #03760f !important;
+  }
+
+  .tech-select .q-field__label,
+  .hack-input .select-placeholder {
+    color: #57606a !important;
+  }
+
   // Terminal → white with contrast
+  .terminal .text-hack-green {
+    color: #03760f !important;
+  }
+
   .terminal {
     background: #ffffff !important;
     border-color: #d0d7de !important;
@@ -498,7 +556,7 @@ html[data-theme='light'] {
 
     .terminal-content {
       .terminal-line {
-        color: #038211 !important;
+        color: #03760f !important;
       }
 
       .output {
@@ -513,19 +571,19 @@ html[data-theme='light'] {
       .info-line {
         color: #3d4852 !important;
         .text-hack-green {
-          color: #038211 !important;
+          color: #03760f !important;
         }
         .text-hack-blue {
-          color: #038211 !important;
+          color: #03760f !important;
         }
         .text-hack-yellow {
           color: #9e6600 !important;
         }
         .text-hack-purple {
-          color: #038211 !important;
+          color: #03760f !important;
         }
         .text-hack-cyan {
-          color: #038211 !important;
+          color: #03760f !important;
         }
       }
 
@@ -535,7 +593,7 @@ html[data-theme='light'] {
           color: #3d4852 !important;
         }
         .timeline-year {
-          color: #038211 !important;
+          color: #03760f !important;
         }
       }
     }
@@ -593,7 +651,7 @@ html[data-theme='light'] {
   // ── Contact page form ──
   .form-card {
     .form-title {
-      color: #038211 !important;
+      color: #03760f !important;
     }
 
     .form-label {
@@ -607,7 +665,7 @@ html[data-theme='light'] {
   }
 
   .hack-card .profile-title {
-    color: #038211 !important;
+    color: #03760f !important;
   }
 
   .hack-card .profile-bio,
@@ -618,10 +676,10 @@ html[data-theme='light'] {
   .stat-item {
     .stat-number {
       &.text-hack-green {
-        color: #038211 !important;
+        color: #03760f !important;
       }
       &.text-hack-blue {
-        color: #038211 !important;
+        color: #03760f !important;
       }
     }
     .stat-label {
@@ -692,17 +750,17 @@ html[data-theme='light'] {
       color: #1a1a2e !important;
     }
     .experience-company {
-      color: #038211 !important;
+      color: #03760f !important;
     }
     .experience-period {
-      color: #038211 !important;
+      color: #03760f !important;
     }
     .experience-description {
       color: #3d4852 !important;
     }
     .tech-tag {
       background: rgba(0, 153, 92, 0.08) !important;
-      color: #038211 !important;
+      color: #03760f !important;
       border-color: rgba(0, 153, 92, 0.3) !important;
     }
   }
@@ -753,7 +811,7 @@ html[data-theme='light'] {
       color: #1a1a2e !important;
     }
     .education-institution {
-      color: #038211 !important;
+      color: #03760f !important;
     }
     .education-period {
       color: #57606a !important;
@@ -762,14 +820,14 @@ html[data-theme='light'] {
       color: #3d4852 !important;
     }
     .achievements-title {
-      color: #038211 !important;
+      color: #03760f !important;
     }
     .achievements-list li {
       color: #3d4852 !important;
     }
     .status-badge.en-curso {
       background: rgba(0, 153, 92, 0.1) !important;
-      color: #038211 !important;
+      color: #03760f !important;
       border-color: rgba(0, 153, 92, 0.3) !important;
     }
   }
@@ -784,7 +842,7 @@ html[data-theme='light'] {
       color: #1a1a2e !important;
     }
     .cert-issuer {
-      color: #038211 !important;
+      color: #03760f !important;
     }
     .cert-date {
       color: #57606a !important;
@@ -794,7 +852,7 @@ html[data-theme='light'] {
     }
     .credential-id {
       background: rgba(0, 153, 92, 0.08) !important;
-      color: #038211 !important;
+      color: #03760f !important;
       border-color: rgba(0, 153, 92, 0.3) !important;
     }
   }
@@ -812,7 +870,7 @@ html[data-theme='light'] {
     }
   }
   .category-header {
-    color: #038211 !important;
+    color: #03760f !important;
     .category-count {
       color: #57606a !important;
     }
@@ -835,24 +893,40 @@ html[data-theme='light'] {
 
       .project-tech .tech-tag {
         background: rgba(0, 153, 92, 0.08) !important;
-        color: #038211 !important;
+        color: #03760f !important;
         border-color: rgba(0, 153, 92, 0.3) !important;
+      }
+
+      .project-header .project-status {
+        &.completed {
+          color: #03760f !important;
+          .status-dot {
+            background: #03760f !important;
+          }
+        }
+        &.in-progress {
+          color: #8a5900 !important;
+          .status-dot {
+            background: #8a5900 !important;
+          }
+        }
       }
 
       .project-actions .action-btn {
         &.live {
-          border-color: #038211 !important;
-          color: #038211 !important;
+          border-color: #03760f !important;
+          background: #03760f !important;
+          color: #fff !important;
           &:hover {
-            background: #038211 !important;
-            color: #fff !important;
+            background: #025d0c !important;
+            border-color: #025d0c !important;
           }
         }
         &.code {
-          border-color: #038211 !important;
-          color: #038211 !important;
+          border-color: #03760f !important;
+          color: #03760f !important;
           &:hover {
-            background: #038211 !important;
+            background: #03760f !important;
             color: #fff !important;
           }
         }
@@ -867,15 +941,15 @@ html[data-theme='light'] {
     background: rgba(255, 255, 255, 0.85) !important;
 
     &:hover {
-      color: #038211 !important;
-      border-color: #038211 !important;
+      color: #03760f !important;
+      border-color: #03760f !important;
       background: rgba(0, 153, 92, 0.06) !important;
     }
 
     &.active {
-      background: #049b14 !important;
+      background: #03760f !important;
       color: #fff !important;
-      border-color: #049b14 !important;
+      border-color: #03760f !important;
     }
   }
 
@@ -903,7 +977,7 @@ html[data-theme='light'] {
     }
     .featured-highlights {
       h4 {
-        color: #038211 !important;
+        color: #03760f !important;
       }
       ul li {
         color: #3d4852 !important;
@@ -911,7 +985,7 @@ html[data-theme='light'] {
     }
     .tech-tag.featured {
       background: rgba(0, 153, 92, 0.08) !important;
-      color: #038211 !important;
+      color: #03760f !important;
       border-color: rgba(0, 153, 92, 0.3) !important;
     }
   }
@@ -934,11 +1008,11 @@ html[data-theme='light'] {
       .service-icon {
         background: rgba(0, 153, 92, 0.08) !important;
         border-color: rgba(0, 153, 92, 0.25) !important;
-        color: #038211 !important;
+        color: #03760f !important;
       }
 
       .service-title {
-        color: #038211 !important;
+        color: #03760f !important;
         &::before {
           color: rgba(0, 128, 74, 0.4) !important;
         }
@@ -955,7 +1029,7 @@ html[data-theme='light'] {
           color: #3d4852 !important;
 
           .q-icon {
-            color: #038211 !important;
+            color: #03760f !important;
           }
         }
       }
@@ -996,20 +1070,6 @@ html[data-theme='light'] {
       .status-dot.online {
         background: #049b14 !important;
       }
-    }
-  }
-
-  // ── Floating toggles ──
-  .floating-toggles .toggle-btn {
-    background: rgba(255, 255, 255, 0.92) !important;
-    border-color: #d0d7de !important;
-    color: #57606a !important;
-
-    &:hover {
-      border-color: #049b14 !important;
-      color: #049b14 !important;
-      background: rgba(0, 153, 92, 0.06) !important;
-      box-shadow: 0 0 12px rgba(0, 153, 92, 0.15) !important;
     }
   }
 
@@ -1086,7 +1146,7 @@ html[data-theme='light'] {
 
   // ── Section titles inside white cards only ──
   .hack-card .section-title {
-    color: #038211 !important;
+    color: #03760f !important;
   }
 
   // ── Quasar Q-notify for light theme ──

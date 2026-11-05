@@ -1,5 +1,5 @@
 <template>
-  <q-page class="contact-page">
+  <div class="contact-page">
     <!-- Header Section -->
     <section class="contact-header">
       <div class="container">
@@ -22,12 +22,15 @@
           <div class="contact-form-container">
             <div class="hack-card form-card">
               <h2 class="form-title">{{ t('contact.send') }}</h2>
-              <q-form @submit="sendMessage" class="contact-form" ref="contactForm">
+              <q-form greedy class="contact-form" ref="contactForm" @submit="sendMessage">
                 <div class="form-group">
                   <label for="name" class="form-label">{{ t('contact.name') }}</label>
                   <q-input
                     v-model="form.name"
-                    id="name"
+                    for="name"
+                    autocomplete="name"
+                    aria-required="true"
+                    lazy-rules
                     outlined
                     dark
                     class="hack-input"
@@ -40,8 +43,11 @@
                   <label for="email" class="form-label">{{ t('contact.email') }}</label>
                   <q-input
                     v-model="form.email"
-                    id="email"
+                    for="email"
                     type="email"
+                    autocomplete="email"
+                    aria-required="true"
+                    lazy-rules
                     outlined
                     dark
                     class="hack-input"
@@ -57,7 +63,9 @@
                   <label for="subject" class="form-label">{{ t('contact.subject') }}</label>
                   <q-select
                     v-model="form.subject"
+                    for="subject"
                     :options="subjectOptions"
+                    lazy-rules
                     outlined
                     dark
                     class="hack-input"
@@ -76,8 +84,10 @@
                   <label for="message" class="form-label">{{ t('contact.message') }}</label>
                   <q-input
                     v-model="form.message"
-                    id="message"
+                    for="message"
                     type="textarea"
+                    aria-required="true"
+                    lazy-rules
                     outlined
                     dark
                     class="hack-input"
@@ -91,8 +101,10 @@
                 </div>
 
                 <div class="form-actions">
-                  <button type="submit" class="hack-button primary">
-                    <q-icon name="send" /> {{ t('contact.send') }}
+                  <button type="submit" class="hack-button primary" :disabled="sending">
+                    <q-spinner v-if="sending" size="1.1em" />
+                    <q-icon v-else name="send" />
+                    {{ t(sending ? 'contact.sending' : 'contact.send') }}
                   </button>
                 </div>
               </q-form>
@@ -155,7 +167,7 @@
         </div>
       </div>
     </section>
-  </q-page>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -173,6 +185,7 @@ type ContactFormRef = {
 
 const $q = useQuasar();
 const contactForm = ref<ContactFormRef | null>(null);
+const sending = ref(false);
 
 // Form data
 const form = ref({
@@ -214,27 +227,18 @@ const forbiddenWords = [
   'hijo de perra',
 ];
 
-// Función para validar palabras prohibidas
-const validateForbiddenWords = (text: string): boolean | string => {
-  if (!text) return true;
-
-  const normalizedText = text
+const removeAccents = (text: string) =>
+  text
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, ''); // Elimina acentos
+    .replace(/[\u0300-\u036f]/g, '');
 
-  for (const word of forbiddenWords) {
-    const normalizedWord = word
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
+// Whole words only: a substring check would reject "computación" or "reputación"
+const forbiddenPattern = new RegExp(`\\b(${forbiddenWords.map(removeAccents).join('|')})\\b`);
 
-    if (normalizedText.includes(normalizedWord)) {
-      return t('contact.respectful');
-    }
-  }
-
-  return true;
+const validateForbiddenWords = (text: string): boolean | string => {
+  if (!text) return true;
+  return forbiddenPattern.test(removeAccents(text)) ? t('contact.respectful') : true;
 };
 
 // Methods
@@ -246,11 +250,8 @@ const sendMessage = async () => {
   // Guardar posición de scroll para restaurarla después del envío
   const savedScrollY = window.scrollY;
 
+  sending.value = true;
   try {
-    $q.loading.show({
-      message: t('contact.sending'),
-    });
-
     await sendEmail({
       sender: {
         email: 'jamesfrankmendozarios@gmail.com',
@@ -310,7 +311,8 @@ const sendMessage = async () => {
       message: t('contact.success'),
       caption: t('contact.successCaption'),
       icon: 'mail',
-      color: 'green',
+      textColor: 'dark',
+      position: 'top',
     });
 
     // Reset form
@@ -331,9 +333,10 @@ const sendMessage = async () => {
       message: t('contact.error'),
       caption: t('contact.errorCaption'),
       icon: 'error',
+      position: 'top',
     });
   } finally {
-    $q.loading.hide();
+    sending.value = false;
     // Restaurar posición de scroll para que no suba al inicio de la página
     await nextTick();
     window.scrollTo({ top: savedScrollY, behavior: 'instant' });
@@ -497,9 +500,11 @@ const sendMessage = async () => {
     border-color: $hack-border;
   }
 
+  // 16px keeps iOS from zooming the page when a field gets focus
   .q-field__native {
     color: $hack-white;
     font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
   }
 
   &.q-field--focused {
@@ -531,13 +536,7 @@ const sendMessage = async () => {
       font-size: 1.2rem;
     }
     .form-label {
-      font-size: 0.8rem;
-    }
-
-    .form-actions .hack-button {
-      width: 100%;
-      font-size: 0.82rem;
-      padding: 0.6rem 1rem;
+      font-size: 0.875rem;
     }
 
     .contact-sidebar {

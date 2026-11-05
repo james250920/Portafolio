@@ -1,16 +1,23 @@
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 
 export type Lang = 'es' | 'en';
 
-const currentLang = ref<Lang>('es');
+const STORAGE_KEY = 'portfolio-lang';
+
+const currentLang = ref<Lang>(localStorage.getItem(STORAGE_KEY) === 'en' ? 'en' : 'es');
 
 const translations: Record<string, Record<Lang, string>> = {
   // ===================== NAV =====================
-  'nav.home': { es: 'home', en: 'home' },
+  'nav.label': { es: 'Navegación principal', en: 'Main navigation' },
+  'nav.home': { es: 'inicio', en: 'home' },
   'nav.about': { es: 'Sobre mí', en: 'About me' },
   'nav.projects': { es: 'proyectos', en: 'projects' },
   'nav.education': { es: 'educación', en: 'education' },
   'nav.contact': { es: 'contacto', en: 'contact' },
+
+  'toggle.lang': { es: 'Switch to English', en: 'Cambiar a español' },
+  'toggle.themeLight': { es: 'Cambiar a modo claro', en: 'Switch to light mode' },
+  'toggle.themeDark': { es: 'Cambiar a modo oscuro', en: 'Switch to dark mode' },
 
   // ===================== HERO / HOME =====================
   'hero.title': { es: 'Desarrollador Full Stack', en: 'Full Stack Developer' },
@@ -48,17 +55,17 @@ const translations: Record<string, Record<Lang, string>> = {
     es: 'Mejorando habilidades en QA y seguridad',
     en: 'Improving QA and security skills',
   },
-  'about.expTitle': { es: 'Experiencia Profesional', en: 'Professional Experience' },
+  'about.expTitle': { es: 'Experiencia profesional', en: 'Professional Experience' },
   'about.ctaTitle': {
-    es: 'Construyamos Algo Increíble Juntos',
+    es: 'Construyamos algo increíble juntos',
     en: "Let's Build Something Amazing Together",
   },
   'about.ctaContact': { es: 'Contáctame', en: 'Contact Me' },
-  'about.ctaProjects': { es: 'Ver Proyectos', en: 'View Projects' },
+  'about.ctaProjects': { es: 'Ver proyectos', en: 'View Projects' },
 
   // About - Career Timeline
   'about.timeline.2018': {
-    es: 'Inició mi viaje en la programación',
+    es: 'Inicié mi viaje en la programación',
     en: 'Started my programming journey',
   },
   'about.timeline.2019': {
@@ -114,11 +121,14 @@ const translations: Record<string, Record<Lang, string>> = {
   'projects.title': { es: 'Proyectos.portafolio', en: 'Projects.portfolio' },
   'projects.subtitle': { es: 'Una muestra de mis trabajos.', en: 'A showcase of my work.' },
   'projects.filterPlaceholder': { es: 'Filtrar por tecnología', en: 'Filter by technology' },
-  'projects.viewDetails': { es: 'Ver Detalles', en: 'View Details' },
-  'projects.liveDemo': { es: 'Demo en Vivo', en: 'Live Demo' },
-  'projects.sourceCode': { es: 'Código Fuente', en: 'Source Code' },
-  'projects.loadMore': { es: 'Cargar Más Proyectos', en: 'Load More Projects' },
+  'projects.viewDetails': { es: 'Abrir proyecto', en: 'Open project' },
+  'projects.liveDemo': { es: 'Demo en vivo', en: 'Live Demo' },
+  'projects.sourceCode': { es: 'Código fuente', en: 'Source Code' },
+  'projects.loadMore': { es: 'Cargar más proyectos', en: 'Load More Projects' },
   'projects.cat.all': { es: 'Todos', en: 'All' },
+  'projects.categoryFilter': { es: 'Filtrar por categoría', en: 'Filter by category' },
+  'projects.status.completed': { es: 'Completado', en: 'Completed' },
+  'projects.status.in-progress': { es: 'En desarrollo', en: 'In progress' },
   'projects.empty': {
     es: 'No hay proyectos con ese filtro.',
     en: 'No projects match that filter.',
@@ -129,7 +139,7 @@ const translations: Record<string, Record<Lang, string>> = {
   'projects.cat.apis': { es: 'APIs', en: 'APIs' },
   'projects.cat.tools': { es: 'Herramientas', en: 'Tools' },
   'projects.p1.title': {
-    es: 'Plataforma E-Commerce WEb | Mobile',
+    es: 'Plataforma e-commerce web | móvil',
     en: 'E-Commerce Platform Web | Mobile',
   },
   'projects.p1.desc': {
@@ -159,7 +169,7 @@ const translations: Record<string, Record<Lang, string>> = {
     en: 'Admin panel for inventory management',
   },
   'projects.p2.desc': {
-    es: 'Herramienta de gestio educativo para estudiantes universitarios.',
+    es: 'Herramienta de gestión educativa para estudiantes universitarios.',
     en: 'Educational management tool for university students.',
   },
   'projects.p3.desc': {
@@ -183,9 +193,9 @@ const translations: Record<string, Record<Lang, string>> = {
   },
   'education.certifications': { es: 'Certificaciones', en: 'Certifications' },
   'education.achievements': { es: 'Logros destacados:', en: 'Key achievements:' },
-  'education.verifyCert': { es: 'Verificar Certificado', en: 'Verify Certificate' },
+  'education.verifyCert': { es: 'Verificar certificado', en: 'Verify Certificate' },
   'education.coursesTitle': {
-    es: 'Cursos y Formación Continua',
+    es: 'Cursos y formación continua',
     en: 'Courses & Continuous Learning',
   },
   'education.course': { es: 'curso', en: 'course' },
@@ -196,7 +206,7 @@ const translations: Record<string, Record<Lang, string>> = {
   },
   'education.edu1.institution': { es: 'Universidad ESAN', en: 'ESAN University' },
   'education.edu1.period': { es: 'Mar 2021 - Presente', en: 'Mar 2021 - Present' },
-  'education.edu1.status': { es: 'en-curso', en: 'in-progress' },
+  'education.edu1.status': { es: 'En curso', en: 'In progress' },
   'education.edu1.desc': {
     es: 'Formación integral en desarrollo de software, arquitectura de sistemas, bases de datos, y gestión de proyectos tecnológicos. Enfoque en desarrollo web, móvil y aseguramiento de calidad con énfasis en innovación tecnológica.',
     en: 'Comprehensive training in software development, system architecture, databases, and technology project management. Focus on web/mobile development and quality assurance with emphasis on technological innovation.',
@@ -238,11 +248,19 @@ const translations: Record<string, Record<Lang, string>> = {
   },
   'education.cert.awsDev': { es: 'En preparación', en: 'In preparation' },
   'education.cert.dataAnalysis': {
-    es: 'Análisis de Datos con Excel',
+    es: 'Análisis de datos con Excel',
     en: 'Data Analysis with Excel',
   },
   'education.cert.sqlServer': { es: 'Actualización SQL Server 2022', en: 'SQL Server 2022 Update' },
   'education.courseCat.webDev': { es: 'Desarrollo Web', en: 'Web Development' },
+
+  // ===================== 404 =====================
+  'notFound.title': { es: 'Página no encontrada', en: 'Page not found' },
+  'notFound.text': {
+    es: 'La ruta que buscas no existe o cambió de lugar.',
+    en: 'The path you are looking for does not exist or has moved.',
+  },
+  'notFound.cta': { es: 'Volver al inicio', en: 'Back to home' },
 
   // ===================== CONTACT =====================
   'contact.title': { es: 'Contact.exe', en: 'Contact.exe' },
@@ -250,7 +268,7 @@ const translations: Record<string, Record<Lang, string>> = {
     es: '¿Listo para colaborar? Construyamos algo increíble juntos.',
     en: "Ready to collaborate? Let's build something amazing together.",
   },
-  'contact.send': { es: 'Enviar Mensaje', en: 'Send Message' },
+  'contact.send': { es: 'Enviar mensaje', en: 'Send Message' },
   'contact.name': { es: 'Nombre', en: 'Name' },
   'contact.email': { es: 'Email', en: 'Email' },
   'contact.subject': { es: 'Asunto', en: 'Subject' },
@@ -269,7 +287,7 @@ const translations: Record<string, Record<Lang, string>> = {
     en: 'Hacker penguin and crow with green glasses, DevMenfroyt mascots',
   },
   'contact.readyProjects': { es: 'Nuevos proyectos', en: 'New projects' },
-  'contact.openOpportunities': { es: 'Abierto a Oportunidades', en: 'Open to Opportunities' },
+  'contact.openOpportunities': { es: 'Abierto a oportunidades', en: 'Open to Opportunities' },
 
   'contact.nameRequired': { es: 'El nombre es requerido', en: 'Name is required' },
   'contact.emailRequired': { es: 'El email es requerido', en: 'Email is required' },
@@ -288,9 +306,9 @@ const translations: Record<string, Record<Lang, string>> = {
     es: 'Por favor, intenta de nuevo más tarde.',
     en: 'Please try again later.',
   },
-  'contact.opt.collaboration': { es: 'Colaboración en Proyecto', en: 'Project Collaboration' },
-  'contact.opt.job': { es: 'Oportunidad Laboral', en: 'Job Opportunity' },
-  'contact.opt.freelance': { es: 'Trabajo Freelance', en: 'Freelance Work' },
+  'contact.opt.collaboration': { es: 'Colaboración en proyecto', en: 'Project Collaboration' },
+  'contact.opt.job': { es: 'Oportunidad laboral', en: 'Job Opportunity' },
+  'contact.opt.freelance': { es: 'Trabajo freelance', en: 'Freelance Work' },
 };
 
 export function useLanguage() {
@@ -306,7 +324,13 @@ export function useLanguage() {
 
   const toggleLang = () => {
     currentLang.value = currentLang.value === 'es' ? 'en' : 'es';
+    localStorage.setItem(STORAGE_KEY, currentLang.value);
   };
+
+  // Quasar resets <html lang> to its own language pack at startup
+  watchEffect(() => {
+    document.documentElement.lang = currentLang.value;
+  });
 
   return { currentLang, t, toggleLang };
 }

@@ -2,11 +2,14 @@ import { ref, watchEffect } from 'vue';
 
 export type Theme = 'dark' | 'light';
 
-const currentTheme = ref<Theme>('dark');
+const STORAGE_KEY = 'portfolio-theme';
+
+const currentTheme = ref<Theme>(localStorage.getItem(STORAGE_KEY) === 'light' ? 'light' : 'dark');
 
 export function useTheme() {
   const toggleTheme = () => {
     currentTheme.value = currentTheme.value === 'dark' ? 'light' : 'dark';
+    localStorage.setItem(STORAGE_KEY, currentTheme.value);
   };
 
   watchEffect(() => {
